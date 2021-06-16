@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<KNX xmlns:mc="http://github.com/mumpf/multiply-channels" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" CreatedBy="KNX MT" ToolVersion="5.1.255.16695" xmlns="http://knx.org/xml/project/14">
+  <ManufacturerData>
+    <Manufacturer RefId="M-00FA">
+      <Catalog>
+        <CatalogSection Id="M-00FA_CS-1" Name="Geräte" Number="1" DefaultLanguage="de">
+          <CatalogItem Id="M-00FA_H-202-1_HP-0000-00-0000_CI-202-1" Name="EnoceanGateway" Number="1" ProductRefId="M-00FA_H-202-1_P-202" Hardware2ProgramRefId="M-00FA_H-202-1_HP-0000-00-0000" DefaultLanguage="de" />
+        </CatalogSection>
+      </Catalog>
+      <ApplicationPrograms>
+        <ApplicationProgram Id="M-00FA_A-0000-00-0000" ApplicationNumber="202" ApplicationVersion="4" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="EnoceanGateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ReplacesVersions="3">
+          <Static>
+            <Code>
+              <RelativeSegment Id="M-00FA_A-0000-00-0000_RS-04-00000" Name="Parameters" Offset="0" Size="4" LoadStateMachine="4" />
+            </Code>
+            <mc:define prefix="ENO" header="EnoceanGateway.h" NumChannels="50" KoOffset="10" />
+            <ParameterTypes>
+              <mc:include href="EnoceanGateway.share.xml" xpath="//ParameterTypes/ParameterType" prefix="ENO" />
+            </ParameterTypes>
+            <Parameters>
+              <mc:include href="EnoceanGateway.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" prefix="ENO" />
+              <mc:include href="EnoceanGateway.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="ENO" />
+            </Parameters>
+            <ParameterRefs>
+              <mc:include href="EnoceanGateway.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="ENO" />
+              <mc:include href="EnoceanGateway.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="ENO" />
+            </ParameterRefs>
+            <ComObjectTable>
+              <mc:include href="EnoceanGateway.share.xml" xpath="//ComObjectTable/ComObject" prefix="ENO" />
+              <mc:include href="EnoceanGateway.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="ENO" />
+            </ComObjectTable>
+            <ComObjectRefs>
+              <mc:include href="EnoceanGateway.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="ENO" />
+              <mc:include href="EnoceanGateway.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="ENO" />
+            </ComObjectRefs>
+            <AddressTable MaxEntries="65535" />
+            <AssociationTable MaxEntries="65535" />
+            <LoadProcedures>
+              <LoadProcedure MergeId="2">
+                <LdCtrlRelSegment LsmIdx="4" Size="4" Mode="0" Fill="0" AppliesTo="full" />
+              </LoadProcedure>
+              <LoadProcedure MergeId="4">
+                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="4" Verify="true" />
+              </LoadProcedure>
+            </LoadProcedures>
+            <Options />
+          </Static>
+          <!-- Here statrs the UI definition -->
+          <Dynamic>
+            <!-- The following block is always there -->
+             <mc:include href="EnoceanGateway.share.xml" xpath="//Dynamic/*" prefix="ENO" />
+             <!-- Erster Enocean Kanal -->
+             <Channel Id="M-00FA_A-0000-00-0000_CH-1" Name="Standard" Number="1" Text="Enocean">
+                <mc:include href="EnoceanGateway.templ.xml" xpath="//Dynamic/*" type="template" prefix="ENO" />
+              </Channel>
+          </Dynamic>
+        </ApplicationProgram>
+      </ApplicationPrograms>
+      <Hardware>
+        <Hardware Id="M-00FA_H-202-1" Name="EnoceanGateway" SerialNumber="202" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+          <Products>
+            <Product Id="M-00FA_H-202-1_P-202" Text="EnoceanGateway" OrderNumber="202" IsRailMounted="false" DefaultLanguage="de">
+              <RegistrationInfo RegistrationStatus="Registered" />
+            </Product>
+          </Products>
+          <Hardware2Programs>
+            <Hardware2Program Id="M-00FA_H-202-1_HP-0000-00-0000" MediumTypes="MT-0 MT-5">
+              <ApplicationProgramRef RefId="M-00FA_A-0000-00-0000" />
+              <RegistrationInfo RegistrationStatus="Registered" RegistrationNumber="0001/11" />
+            </Hardware2Program>
+          </Hardware2Programs>
+        </Hardware>
+      </Hardware>
+    </Manufacturer>
+  </ManufacturerData>
+</KNX>
