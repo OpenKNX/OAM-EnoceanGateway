@@ -1,8 +1,6 @@
 /*
    EnOcean.h
 
-    Created on: 08.03.2018
-        Author: Jens
 */
 
 #ifndef ENOCEAN_H_
