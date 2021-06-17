@@ -37,16 +37,8 @@ From now on we work in this terminal window:
 
 You should be now in a directory ending with ...\Documents\PlatformIO\Projects
 
-    git clone https://github.com/mumpf/knx.git
-    git clone https://github.com/mumpf/knx-common.git
-    git clone https://github.com/mumpf/knx-logic.git
-    git clone https://github.com/mumpf/knx-wire.git
-    git clone https://github.com/mumpf/knx-sensor.git
-    cd knx
-    git checkout release
-    cd ..\knx-sensor
-    code Sensormodul.code-workspace
-
+    git clone https://gitlab.com/DIY-Smarthome-Projekt/knx-enocean-gateway.git
+  
 Now a new instance of Visual Studio Code is started. You can close the other (previous) instance.
 
 The current board version from MASIFI is v3.1. Due to the fact, that I have to test the release with diferent versions, it might happen, that the firmware is released for any of the tested versions v2, v3 or v3.1.
