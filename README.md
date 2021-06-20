@@ -12,7 +12,7 @@ _Hinweise bitte vorher lesen:_
 
 **Anleitung "build and flash" Firmware**
 
-1. Firmware für eine ETS integration -> _link_
+1. Firmware für eine ETS integration -> [_link_](https://gitlab.com/DIY-Smarthome-Projekt/knx-enocean-gateway/-/blob/main/doc/knx-dev-setup.md)
 
 2. Firmware für eine Konnekting-Suite integration -> _link_
 
