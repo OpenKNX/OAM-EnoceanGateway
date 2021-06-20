@@ -8,7 +8,7 @@ I used the KNX cable for that
 
 Solder point for antenna cable (red arrow)
 
-![AntennaPos-Icon](AntennePos.png)
+![AntennaPos-Icon](AntennePos.jpg)
 
 ----------------------------------------------------------
 
