@@ -2,7 +2,13 @@
 
 **Varinate 1: Whip antenna** 
 
+I used the KNX cable for that
+
 ![Antenna-Icon](Antenne.png)
+
+Solder point for antenna cable (red arrow)
+
+![AntennaPos-Icon](AntennePos.png)
 
 ----------------------------------------------------------
 
