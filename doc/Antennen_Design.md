@@ -4,11 +4,11 @@
 
 I used the KNX cable for that
 
-![Antenna-Icon](Antenne.png)
+![Antenna-Icon](pic/Antenne.png)
 
 Solder point for antenna cable (red arrow)
 
-![AntennaPos-Icon](AntennePos.jpg)
+![AntennaPos-Icon](pic/AntennePos.jpg)
 
 ----------------------------------------------------------
 
@@ -16,7 +16,7 @@ Solder point for antenna cable (red arrow)
 
 _Important: SMA with Pin (red arrow)_
 
-![Antenna2-Icon](AntenneSMA.png)
+![Antenna2-Icon](pic/AntenneSMA.png)
 
 
 
