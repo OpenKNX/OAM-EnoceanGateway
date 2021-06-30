@@ -26,7 +26,7 @@ In the upcoming dialog, provide the name "Test", Board "Sparkfun SAMD21 Dev Brea
 
 Click "Finish" and wait until finished. Visuals Studio Code will open the newly created project afterwards. The new project is just used to create default envoronment and can be deleted afterwards.
 
-Click again the PlatformIO Icon ![PIO-Icon](PIO2.png)
+Click again the PlatformIO Icon ![PIO-Icon](pic/PIO2.png)
 
 Again "Quick Access" appears, click "Miscellaneous->PlatformIO Core CLI"
 
