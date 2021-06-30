@@ -11,11 +11,11 @@ the device kit consists of this parts:
 - KNX Pins
 - SMA Antenna Connector (female) 
 
-![Antenna-Icon](Bestueckung_Bot.png)
-![Antenna-Icon](Bestueckung_Top.png)
+<img src="Bestueckung_Bot.png"  width="250" >
+<img src="Bestueckung_Top.png"  width="380" >
 
-
+--------------------------------------------------
 **final assembly** 
 
-![Antenna-Icon](Bestueckung_Bot_final.png)
-![Antenna-Icon](Bestueckung_Top_final.png)
+<img src="Bestueckung_Bot_final.png"  width="310" >
+<img src="Bestueckung_Top_final.png"  width="320" >
