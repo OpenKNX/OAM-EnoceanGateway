@@ -17,5 +17,5 @@ the device kit consists of this parts:
 --------------------------------------------------
 **final assembly** 
 
-<img src="Bestueckung_Bot_final.png"  width="310" >
-<img src="Bestueckung_Top_final.png"  width="320" >
+<img src="pic/Bestueckung_Bot_final.png"  width="310" >
+<img src="pic/Bestueckung_Top_final.png"  width="320" >
