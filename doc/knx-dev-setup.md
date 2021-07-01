@@ -1,3 +1,14 @@
+**ACHTUNG:**
+Es handelt sich hier nicht um eine offizielle KNX ETS Firmware !!! 
+
+Diese Firmware basiert im KNX Teil auf der Arbeit von: [https://github.com/thelsing](https://github.com/thelsing) und im EnOcean Teil auf der Konnekting Firmware [https://gitlab.com/konnekting/firmware/eo-gw1.1](https://gitlab.com/konnekting/firmware/eo-gw1.1)
+
+Der Einsatz dieser Firmware entspricht in keinster Weise den Vorgaben der KNX-Association !!!  
+
+--> Jeder baut sich seine Firmware selber und übernimmt damit selber die Verantwortung für sein Handeln
+
+-------------------------------------------------
+
 # Installation of dev-Environment for Sensormodule
 
 Only tested on Windows 10!
