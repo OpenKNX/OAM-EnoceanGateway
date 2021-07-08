@@ -169,6 +169,32 @@ struct FOURBS_A5_07_03_DATA_TYPE2
   uint8_t PIR : 1; // (DB_BIT 7)   PIR
 };
 
+struct FOURBS_A5_07_14_01_06_DATA_TYPE
+{
+  uint8_t CT  : 1;   // (DB_BIT 0)    Contact 
+  uint8_t VIB : 1;   // (DB_BIT 1)    Vibration Detection 
+  uint8_t Na  : 1;   // (DB_BIT 2)    Not used
+  uint8_t LR  : 1;   // (DB_BIT 3)    LR
+  uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
+};
+
+struct FOURBS_A5_07_14_07_08_DATA_TYPE
+{
+  uint8_t VIB : 1;   // (DB_BIT 0)    Vibration Detection 
+  uint8_t LCT : 1;   // (DB_BIT 1)    Lock contact
+  uint8_t DCT : 1;   // (DB_BIT 2)    Door contact
+  uint8_t LR  : 1;   // (DB_BIT 3)    LR
+  uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
+};
+
+struct FOURBS_A5_07_14_09_0A_DATA_TYPE
+{
+  uint8_t VIB : 1;   // (DB_BIT 0)    Vibration Detection 
+  uint8_t CT  : 2;   // (DB_BIT 1 -2) contact
+  uint8_t LR  : 1;   // (DB_BIT 3)    LR
+  uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
+};
+
 /*
 struct 
 {
@@ -367,6 +393,36 @@ struct FOURBS_A5_07_03_TYPE
   uint8_t u8LuxMSB;
   FOURBS_A5_07_03_DATA_TYPE u84BsTelData2;
   FOURBS_A5_07_03_DATA_TYPE2 u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_14_01_06_TYPE
+{
+  uint8_t u8SupplyVoltage;
+  uint8_t u8Lux;
+  uint8_t u8Free;
+  FOURBS_A5_07_14_01_06_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_14_07_08_TYPE
+{
+  uint8_t u8SupplyVoltage;
+  uint8_t u8Free;
+  uint8_t u8Free2;
+  FOURBS_A5_07_14_07_08_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_14_09_0A_TYPE
+{
+  uint8_t u8SupplyVoltage;
+  uint8_t u8Free;
+  uint8_t u8Free2;
+  FOURBS_A5_07_14_09_0A_DATA_TYPE u84BsTelData;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };

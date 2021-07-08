@@ -109,7 +109,7 @@
                   <Enumeration Text="A5-11  N.A." Value="11" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-11" />
                   <Enumeration Text="A5-12  N.A." Value="12" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-12" />
                   <Enumeration Text="A5-13  N.A." Value="13" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-13" />
-                  <Enumeration Text="A5-14  N.A." Value="14" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-14" />
+                  <Enumeration Text="A5-14   Multi-Func Sensor" Value="14" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-14" />
                   <Enumeration Text="A5-20  N.A." Value="20" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-20" />
                   <Enumeration Text="A5-30  N.A." Value="30" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-30" />
                   <Enumeration Text="A5-37  N.A." Value="37" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS_EN-37" />
@@ -142,27 +142,27 @@
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201" Name="ProfilSelectionD201">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-01-00 N.A." Value="133" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-0" />
-                  <Enumeration Text="D2-01-01 N.A." Value="134" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-1" />
-                  <Enumeration Text="D2-01-02 N.A." Value="135" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-2" />
-                  <Enumeration Text="D2-01-03 N.A." Value="136" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-3" />
-                  <Enumeration Text="D2-01-04 N.A." Value="137" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-4" />
-                  <Enumeration Text="D2-01-05 N.A." Value="138" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-5" />
-                  <Enumeration Text="D2-01-06 N.A." Value="139" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-6" />
-                  <Enumeration Text="D2-01-07 N.A." Value="140" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-7" />
-                  <Enumeration Text="D2-01-08 N.A." Value="141" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-8" />
-                  <Enumeration Text="D2-01-09 N.A." Value="142" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-9" />
-                  <Enumeration Text="D2-01-0A N.A." Value="143" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-10" />
-                  <Enumeration Text="D2-01-0B N.A." Value="144" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-11" />
-                  <Enumeration Text="D2-01-0C N.A." Value="145" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-12" />
-                  <Enumeration Text="D2-01-0D N.A." Value="146" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-13" />
-                  <Enumeration Text="D2-01-0E N.A." Value="147" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-14" />
-                  <Enumeration Text="D2-01-0F N.A." Value="148" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-15" />
-                  <Enumeration Text="D2-01-10 N.A." Value="149" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-16" />
-                  <Enumeration Text="D2-01-11 N.A." Value="150" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-17" />
-                  <Enumeration Text="D2-01-12 N.A." Value="151" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-18" />
-                  <Enumeration Text="D2-01-13 N.A." Value="152" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-19" />
-                  <Enumeration Text="D2-01-14 N.A." Value="153" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-20" />
+                  <Enumeration Text="D2-01-00 N.A." Value="137" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-0" />
+                  <Enumeration Text="D2-01-01 N.A." Value="138" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-1" />
+                  <Enumeration Text="D2-01-02 N.A." Value="139" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-2" />
+                  <Enumeration Text="D2-01-03 N.A." Value="140" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-3" />
+                  <Enumeration Text="D2-01-04 N.A." Value="141" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-4" />
+                  <Enumeration Text="D2-01-05 N.A." Value="142" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-5" />
+                  <Enumeration Text="D2-01-06 N.A." Value="143" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-6" />
+                  <Enumeration Text="D2-01-07 N.A." Value="144" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-7" />
+                  <Enumeration Text="D2-01-08 N.A." Value="145" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-8" />
+                  <Enumeration Text="D2-01-09 N.A." Value="146" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-9" />
+                  <Enumeration Text="D2-01-0A N.A." Value="147" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-10" />
+                  <Enumeration Text="D2-01-0B N.A." Value="148" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-11" />
+                  <Enumeration Text="D2-01-0C N.A." Value="149" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-12" />
+                  <Enumeration Text="D2-01-0D N.A." Value="150" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-13" />
+                  <Enumeration Text="D2-01-0E N.A." Value="151" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-14" />
+                  <Enumeration Text="D2-01-0F N.A." Value="152" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-15" />
+                  <Enumeration Text="D2-01-10 N.A." Value="153" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-16" />
+                  <Enumeration Text="D2-01-11 N.A." Value="154" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-17" />
+                  <Enumeration Text="D2-01-12 Type 0x12" Value="155" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-18" />
+                  <Enumeration Text="D2-01-13 N.A." Value="156" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-19" />
+                  <Enumeration Text="D2-01-14 N.A." Value="157" Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionD201_EN-20" />
                 </TypeRestriction>
               </ParameterType>
               <!-- Parameter type for EEP Profil 4BS -->
@@ -220,121 +220,170 @@
                   <Enumeration Text="A5-07-02   " Value="45" Id="M-00FA_A-0000-00-0000_PT-Profil4BS07_EN-45" />
                   <Enumeration Text="A5-07-03   " Value="46" Id="M-00FA_A-0000-00-0000_PT-Profil4BS07_EN-46" />
                 </TypeRestriction>
-              </ParameterType>
+              </ParameterType>             
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS08" Name="Profil4BS08">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="A5-08-01   Range 0lx to 510lx, 0°C to +51°C and Occupancy Button" Value="47" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-47" />
                 </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS09" Name="Profil4BS09">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-09-   " Value="50" Id="M-00FA_A-0000-00-0000_PT-Profil4BS09_EN-1" />
+                </TypeRestriction>
               </ParameterType> 
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS10" Name="Profil4BS10">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-10-   " Value="60" Id="M-00FA_A-0000-00-0000_PT-Profil4BS10_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS11" Name="Profil4BS11">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-11-   " Value="91" Id="M-00FA_A-0000-00-0000_PT-Profil4BS11_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS12" Name="Profil4BS12">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-12-   " Value="95" Id="M-00FA_A-0000-00-0000_PT-Profil4BS12_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS13" Name="Profil4BS13">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-13-   " Value="102" Id="M-00FA_A-0000-00-0000_PT-Profil4BS13_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS14" Name="Profil4BS14">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-14-01   Single Input Contact (Window/Door), Supply voltage monitor"                         Value="109" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-109" />
+                  <Enumeration Text="A5-14-02   Single Input Contact (Window/Door), Supply voltage monitor and Illumination"        Value="110" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-110" />
+                  <Enumeration Text="A5-14-03   Single Input Contact (Window/Door), Supply voltage monitor and Vibration"           Value="111" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-111" />
+                  <Enumeration Text="A5-14-04   Single Input Contact (Window/Door), Supply voltage monitor, Vib and Illumination"   Value="112" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-112" />
+                  <Enumeration Text="A5-14-05   Vibration/Tilt, Supply voltage monitor"                                             Value="113" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-113" />
+                  <Enumeration Text="A5-14-06   Vibration/Tilt, Illumination and Supply voltage monitor"                            Value="114" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-114" />
+                  <Enumeration Text="A5-14-07   Dual-door-contact Open/Closed and Locked/Unlocked, Supply voltage"                  Value="115" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-115" />
+                  <Enumeration Text="A5-14-08   Dual-door-contact Open/Closed and Locked/Unlocked, Supply voltage and Vibration"    Value="116" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-116" />
+                  <Enumeration Text="A5-14-09   Window/Door-Sensor with States Open/Closed/Tilt, Supply voltage"                    Value="117" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-117" />
+                  <Enumeration Text="A5-14-0A   Window/Door-Sensor with States Open/Closed/Tilt, Supply voltage and Vibration"      Value="118" Id="M-00FA_A-0000-00-0000_PT-Profil4BS08_EN-118" />
+                </TypeRestriction>
+              </ParameterType> 
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS20" Name="Profil4BS20">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-20-   " Value="119" Id="M-00FA_A-0000-00-0000_PT-Profil4BS20_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS30" Name="Profil4BS30">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="A5-30-   " Value="126" Id="M-00FA_A-0000-00-0000_PT-Profil4BS30_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
               <!-- Parameter type for EEP Profil VLD -->
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD00" Name="ProfilVLD00">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-00-01   RCP with Temperature Measurement and Display (BI-DIR)" Value="132" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD00_EN-132" />
+                  <Enumeration Text="D2-00-01   RCP with Temperature Measurement and Display (BI-DIR)" Value="136" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD00_EN-1" />
                 </TypeRestriction>
               </ParameterType> 
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD01" Name="ProfilVLD01">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-01-12   Type 0x12" Value="151" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD01_EN-151" />
+                  <Enumeration Text="D2-01-12   Type 0x12" Value="155" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD01_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD02" Name="ProfilVLD02">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-02-00   Type 0x00" Value="154" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD02_EN-154" />
+                  <Enumeration Text="D2-02-00   Type 0x00" Value="158" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD02_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD03" Name="ProfilVLD03">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-03-00   Type 0x00" Value="157" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD03_EN-157" />
+                  <Enumeration Text="D2-03-00   Type 0x00" Value="161" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD03_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04" Name="ProfilVLD04">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-04-00   Type 0x00" Value="160" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-160" />
-                  <Enumeration Text="D2-04-01   Type 0x01" Value="161" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-161" />
-                  <Enumeration Text="D2-04-02   Type 0x02" Value="162" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-162" />
-                  <Enumeration Text="D2-04-03   Type 0x03" Value="163" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-163" />
-                  <Enumeration Text="D2-04-04   Type 0x04" Value="164" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-164" />
-                  <Enumeration Text="D2-04-05   Type 0x05" Value="165" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-165" />
-                  <Enumeration Text="D2-04-06   Type 0x06" Value="166" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-166" />
-                  <Enumeration Text="D2-04-07   Type 0x07" Value="167" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-167" />
-                  <Enumeration Text="D2-04-08   Type 0x08" Value="168" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-168" />
-                  <Enumeration Text="D2-04-09   Type 0x09" Value="169" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-169" />
-                  <Enumeration Text="D2-04-10   Type 0x10" Value="170" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-170" />
-                  <Enumeration Text="D2-04-0A   Type 0x0A" Value="171" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-171" />
-                  <Enumeration Text="D2-04-0B   Type 0x0B" Value="172" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-172" />
-                  <Enumeration Text="D2-04-0C   Type 0x0C" Value="173" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-173" />
-                  <Enumeration Text="D2-04-0D   Type 0x0D" Value="174" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-174" />
-                  <Enumeration Text="D2-04-0E   Type 0x0E" Value="175" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-175" />
+                  <Enumeration Text="D2-04-00   Type 0x00" Value="164" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-1" />
+                  <Enumeration Text="D2-04-01   Type 0x01" Value="165" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-2" />
+                  <Enumeration Text="D2-04-02   Type 0x02" Value="166" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-3" />
+                  <Enumeration Text="D2-04-03   Type 0x03" Value="167" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-4" />
+                  <Enumeration Text="D2-04-04   Type 0x04" Value="168" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-5" />
+                  <Enumeration Text="D2-04-05   Type 0x05" Value="169" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-6" />
+                  <Enumeration Text="D2-04-06   Type 0x06" Value="170" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-7" />
+                  <Enumeration Text="D2-04-07   Type 0x07" Value="171" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-8" />
+                  <Enumeration Text="D2-04-08   Type 0x08" Value="172" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-9" />
+                  <Enumeration Text="D2-04-09   Type 0x09" Value="173" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-10" />
+                  <Enumeration Text="D2-04-10   Type 0x10" Value="174" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-11" />
+                  <Enumeration Text="D2-04-0A   Type 0x0A" Value="175" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-12" />
+                  <Enumeration Text="D2-04-0B   Type 0x0B" Value="176" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-13" />
+                  <Enumeration Text="D2-04-0C   Type 0x0C" Value="177" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-14" />
+                  <Enumeration Text="D2-04-0D   Type 0x0D" Value="178" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-15" />
+                  <Enumeration Text="D2-04-0E   Type 0x0E" Value="179" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD04_EN-16" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD05" Name="ProfilVLD05">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-05-00   Type 0x00" Value="176" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD05_EN-176" />
+                  <Enumeration Text="D2-05-00   Type 0x00" Value="180" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD05_EN-180" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD06" Name="ProfilVLD06">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-06-00   Type 0x00" Value="179" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD06_EN-179" />
+                  <Enumeration Text="D2-06-00   Type 0x00" Value="183" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD06_EN-183" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD10" Name="ProfilVLD10">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-10-00   Type 0x00" Value="180" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD10_EN-180" />
+                  <Enumeration Text="D2-10-00   Type 0x00" Value="184" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD10_EN-184" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD11" Name="ProfilVLD11">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-11-01   Type 0x00" Value="183" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD11_EN-183" />
+                  <Enumeration Text="D2-11-01   Type 0x00" Value="187" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD11_EN-187" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD20" Name="ProfilVLD20">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-20-00   Type 0x00" Value="191" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD20_EN-191" />
+                  <Enumeration Text="D2-20-00   Type 0x00" Value="195" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD20_EN-195" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD30" Name="ProfilVLD30">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-30-00   Type 0x00" Value="194" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD30_EN-194" />
+                  <Enumeration Text="D2-30-00   Type 0x00" Value="198" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD30_EN-198" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD31" Name="ProfilVLD31">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-31-00   Type 0x00" Value="201" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD31_EN-201" />
+                  <Enumeration Text="D2-31-00   Type 0x00" Value="205" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD31_EN-205" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD32" Name="ProfilVLD32">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-32-00   Type 0x00" Value="203" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD32_EN-203" />
+                  <Enumeration Text="D2-32-00   Type 0x00" Value="207" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD32_EN-207" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD33" Name="ProfilVLD33">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-33-00   Type 0x00" Value="206" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD33_EN-206" />
+                  <Enumeration Text="D2-33-00   Type 0x00" Value="210" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD33_EN-210" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD34" Name="ProfilVLD34" >
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-34-00   1 Output Channel" Value="207" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD34_EN-207" />
+                  <Enumeration Text="D2-34-00   1 Output Channel" Value="211" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD34_EN-211" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD40" Name="ProfilVLD40">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-40-00   Type 0x00" Value="210" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD40_EN-210" />
+                  <Enumeration Text="D2-40-00   Type 0x00" Value="214" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD40_EN-214" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLD50" Name="ProfilVLD50">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-50-00   Type 0x00" Value="212" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD50_EN-212" />
+                  <Enumeration Text="D2-50-00   Type 0x00" Value="216" Id="M-00FA_A-0000-00-0000_PT-ProfilVLD50_EN-216" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLDA0" Name="ProfilVLDA0">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-A0-01   Valve Control (BI-DIR)" Value="216" Id="M-00FA_A-0000-00-0000_PT-ProfilVLDA0_EN-216" />
+                  <Enumeration Text="D2-A0-01   Valve Control (BI-DIR)" Value="220" Id="M-00FA_A-0000-00-0000_PT-ProfilVLDA0_EN-220" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilVLDB0" Name="ProfilVLDB0">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="D2-B0-51   Mechanic Harvester" Value="217" Id="M-00FA_A-0000-00-0000_PT-ProfilVLDB0_EN-217" />
+                  <Enumeration Text="D2-B0-51   Mechanic Harvester" Value="221" Id="M-00FA_A-0000-00-0000_PT-ProfilVLDB0_EN-221" />
                 </TypeRestriction>
               </ParameterType>
               <!-- Parameter type for Rocker Schalter -->
