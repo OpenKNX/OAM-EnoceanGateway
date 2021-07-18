@@ -9,6 +9,36 @@ Der Einsatz dieser Firmware entspricht in keinster Weise den Vorgaben der KNX-As
 
 -------------------------------------------------
 
+## How to build a knxprod for this firmware
+
+Open [https://github.com/mumpf/multiply-channels/releases](https://github.com/mumpf/multiply-channels/releases)
+
+Download the newest release of multiply-channels, currently it is version 2.1.2.
+
+
+
+The executable is MultiplyChannels.exe
+
+Save it to C:\Users\\\<username>\bin (usually you have to create bin directory)
+
+If this is not your ETS-PC, install ETS5 on this PC (ETS5.7.x demo is sufficient, even any 5.6.x should do)
+
+Go to the Visual Studio Code instance, which is containing the knx-enocean-gateway project
+
+Press Ctrl-Shift-P, enter "run test task" and click the appearing "Tasks: Run Test Task"
+
+In the following dropdown select "**MultiplyChannels**"
+
+Wait for the success message in the terminal window
+
+The freshly build
+
+* EnoceanGateway.knxprod
+
+you will find in the release directory of the knx-enocean-gateway project
+
+You can import this knxprod in your ETS (minimum 5.6) like any other knxprod.
+
 # Installation of dev-Environment for Sensormodule
 
 Only tested on Windows 10!
@@ -27,7 +57,7 @@ Install "PlatformIO IDE" extension
 
 Wait until installation is finished, do the necessary reload window afterwards (may take some time)
 
-Click on the new PlatformIO-Icon on the left ![PIO-Icon](PIO2.png)
+Click on the new PlatformIO-Icon on the left ![PIO-Icon](pic/PIO2.png)
 
 In "Quick Access", choose open
 
@@ -69,6 +99,7 @@ At the end, there should be a message like
 Now you successfully build the Firmware for the Module.
 
 Precompiled firmware versions are not released anymore, you have always to compile your own.
+
 ## How to upload the Firmware to your Hardware
 
 Connect your device via USB to your PC
@@ -78,36 +109,6 @@ Connect your device via USB to your PC
 Press Ctrl-Shift-B, select **Upload USB** build task and press enter.
 
 Wait until file is uploaded.
-
-## How to build a knxprod for this firmware
-
-Open [https://github.com/mumpf/multiply-channels/releases](https://github.com/mumpf/multiply-channels/releases)
-
-Download the newest release of multiply-channels, currently it is version 2.1.2.
-
-
-
-The executable is MultiplyChannels.exe
-
-Save it to C:\Users\\\<username>\bin (usually you have to create bin directory)
-
-If this is not your ETS-PC, install ETS5 on this PC (ETS5.7.x demo is sufficient, even any 5.6.x should do)
-
-Go to the Visual Studio Code instance, which is containing the knx-sensor project
-
-Press Ctrl-Shift-P, enter "run test task" and click the appearing "Tasks: Run Test Task"
-
-In the following dropdown select "**MultiplyChannels-Release** knx-sensor"
-
-Wait for the success message in the terminal window
-
-The freshly build
-
-* Sensormodul-v3.0.knxprod
-
-you will find in the release directory of the knx-sensor project
-
-You can import this knxprod in your ETS (minimum 5.6) like any other knxprod.
 
 ## Programming with ETS
 
