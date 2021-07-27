@@ -76,6 +76,10 @@ void appLoop()
   // handle KNX stuff
   if (startupDelayfunc())
     return;
+    
+  // at this point startup-delay is done
+  // we process heartbeat
+  ProcessHeartbeat();
 
   enOcean.task();
 }
