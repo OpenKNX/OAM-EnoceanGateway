@@ -2,24 +2,24 @@
 
 ## Wichtige Hinweise:
 
-•	Diese KNXprod wird nicht von der KNX Association offiziell unterstützt! 
-•	Die Erzeugung der KNXprod geschieht auf Eure eigene Verantwortung!
+* Diese KNXprod wird nicht von der KNX Association offiziell unterstützt! 
+* Die Erzeugung der KNXprod geschieht auf Eure eigene Verantwortung!
 
 ## Änderungshistorie
 
 10.07.2021: Applikation 0.10
 
-•	Add EEP Profil A5-14-0x
+* Add EEP Profil A5-14-0x
 
 ## Dokumentation:
 
-** BILD ** 
+![Dokumenation](pic/Dokumentation.png)
 
 Hier findet man eine Kurzbeschreibung zu allen wichtigen Funktionen
 
 ## Allgemeine Parameter:
 
-** BILD ** 
+![AllgemeineParameter](pic/Kanal_Beschreibung.png) 
 
 ### In Betrieb senden alle
 
@@ -87,9 +87,9 @@ Pro Wippe stehen vier Funktionen bereit: Schalten, Dimmen, Jalousie und Szenen.
 
 Wird der Taster nach Vorgabe (State=0 oben) verbaut, dann kann gewählt werden: 
 
-•	Schalten EIN/AUS (Oben/Unten Wippe) 
-•	Dimmen Heller/Dunkler (Oben/Unten Wippe)
-•	Jalousie AUF/AB (Oben/Unten Wippe)
+* Schalten EIN/AUS (Oben/Unten Wippe) 
+* Dimmen Heller/Dunkler (Oben/Unten Wippe)
+* Jalousie AUF/AB (Oben/Unten Wippe)
 
 Sollte diese Richtung nicht passen, kann jeweils die gegenläufige Position gewählt werden. Fehlt euch die Information wie rum der Taster verbaut ist, hilft nur das ausprobieren. 
 
