@@ -11,8 +11,12 @@
 #include "EnoceanGateway.h"
 #include <knx.h>
 
+#ifndef EnOceanTEST
 // important to change this to the number of devices defined.
 #define MAX_NUMBER_OF_DEVICES     50
+#else
+#define MAX_NUMBER_OF_DEVICES     1
+#endif
 
 #define SIMULATE_NOTHING 0
 #define SIMULATE_PUSH    1
@@ -47,6 +51,11 @@
 
 // Send
 #define u8RORG_COMMON_COMMAND 0x05
+#define u8KNX_RORG_Rocker 1
+#define u8KNX_RORG_VLD    2
+#define u8KNX_RORG_4BS    3
+
+
 // COMANDS
 
 #define u8CO_RD_IDBASE 0x08
@@ -195,6 +204,12 @@ struct FOURBS_A5_07_14_09_0A_DATA_TYPE
   uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
 };
 
+struct FOURBS_A5_20_06_DATA_TYPE
+{
+  uint8_t Offset  : 7;   // (DB_BIT 0-6)  Offset
+  uint8_t LOM     : 1;   // (DB_BIT 7)    LOM (local offset mode)
+};
+
 /*
 struct 
 {
@@ -283,6 +298,18 @@ struct VLD_D2_05_00_TELEGRAM_CMD_04_TYPE
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
+
+struct VLD_D2_14_00_TELEGRAM
+{
+  uint8_t u8B1;
+  uint8_t u8B2;
+  uint8_t u8B3;
+  uint8_t u8B4;
+  uint8_t u8B5;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
 
 
 struct RPS_TELEGRAM_TYPE
@@ -423,6 +450,16 @@ struct FOURBS_A5_14_09_0A_TYPE
   uint8_t u8Free;
   uint8_t u8Free2;
   FOURBS_A5_07_14_09_0A_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_20_06_TYPE
+{
+  uint8_t u8CurrentPos;
+  FOURBS_A5_20_06_DATA_TYPE u84BsTelData;
+  uint8_t u8Temp;
+  uint8_t u8StatusBits;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };

@@ -36,28 +36,28 @@ void ProcessKoCallback(GroupObject &iKo)
   {
     if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
     {
-      SERIAL_PORT.println("reviev KO1");
-      enOcean.handleKnxEvents(koIndex, 1, iKo);
+      SERIAL_PORT.println("reviev KO_0");
+      enOcean.handleKnxEvents(koIndex, 0, iKo);
     }
     if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
     {
-      SERIAL_PORT.println("reviev KO2");
-      enOcean.handleKnxEvents(koIndex, 2, iKo);
+      SERIAL_PORT.println("reviev KO_1");
+      enOcean.handleKnxEvents(koIndex, 1, iKo);
     }
     if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
     {
-      SERIAL_PORT.println("reviev KO3");
-      enOcean.handleKnxEvents(koIndex, 3, iKo);
+      SERIAL_PORT.println("reviev KO_2");
+      enOcean.handleKnxEvents(koIndex, 2, iKo);
     }
     if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
     {
-      SERIAL_PORT.println("reviev KO4");
-      enOcean.handleKnxEvents(koIndex, 4, iKo);
+      SERIAL_PORT.println("reviev KO_3");
+      enOcean.handleKnxEvents(koIndex, 3, iKo);
     }
     if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
     {
-      SERIAL_PORT.println("reviev KO5");
-      enOcean.handleKnxEvents(koIndex, 5, iKo);
+      SERIAL_PORT.println("reviev KO_4");
+      enOcean.handleKnxEvents(koIndex, 4, iKo);
     }
   }
 }
@@ -70,16 +70,19 @@ void appSetup()
 
 void appLoop()
 {
+#ifdef KNXenable
   if (!knx.configured())
     return;
+
 
   // handle KNX stuff
   if (startupDelayfunc())
     return;
-    
+
   // at this point startup-delay is done
   // we process heartbeat
   ProcessHeartbeat();
+#endif
 
   enOcean.task();
 }

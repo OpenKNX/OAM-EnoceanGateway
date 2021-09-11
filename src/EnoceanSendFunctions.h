@@ -4,6 +4,32 @@
 #include "EnoceanGateway.h"
 #include "hardware.h"
 
+void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t koIndex, uint8_t *inputs)
+{
+    PACKET_SERIAL_TYPE l_TestPacket_st;
+    uint8_t l_TestBuf_p[10];
+    l_TestPacket_st.u16DataLength = 0x000A;
+    l_TestPacket_st.u8OptionLength = 0x00;
+    l_TestPacket_st.u8Type = u8RADIO_ERP1;
+    l_TestPacket_st.u8DataBuffer = &l_TestBuf_p[0];
+
+    l_TestBuf_p[0] = u8RORG_4BS;
+
+    l_TestBuf_p[1] = inputs[0];
+    l_TestBuf_p[2] = inputs[1];
+    l_TestBuf_p[3] = inputs[2];
+    l_TestBuf_p[4] = inputs[3];
+
+    for (int i = 0; i < 4; i++)
+    {
+        l_TestBuf_p[i + 5] = fui8_BaseID_p[i];
+    }
+    // passt ID an damit sie einmalig ist 
+    l_TestBuf_p[9] = fui8_BaseID_p[3] + koIndex;
+
+    enOcean.sendPacket(&l_TestPacket_st);
+}
+
 void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t koIndex, boolean state, boolean pressed)
 {
     PACKET_SERIAL_TYPE l_TestPacket_st;

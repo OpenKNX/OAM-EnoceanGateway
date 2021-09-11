@@ -24,7 +24,7 @@ void setup()
 
     pinMode(PROG_LED_PIN, OUTPUT);
     digitalWrite(PROG_LED_PIN, HIGH);
-    //delay(5000);
+    delay(6000);
     digitalWrite(PROG_LED_PIN, LOW);
 #ifdef KDEBUG_min
     SERIAL_PORT.begin(115200);
@@ -37,6 +37,7 @@ void setup()
     digitalWrite(LED_YELLOW_PIN, HIGH);
 #endif
 
+#ifdef KNXenable
     // moved to checkBoard!!!
     // Wire.begin();
     knx.readMemory();
@@ -49,12 +50,16 @@ void setup()
     knx.buttonPin(PROG_BUTTON_PIN);
     // Is the interrup created in RISING or FALLING signal? Default is RISING
     knx.buttonPinInterruptOn(PROG_BUTTON_PIN_INTERRUPT_ON);
+ #endif   
 
     // print values of parameters if device is already configured
     appSetup();
+    SERIAL_PORT.println(F("Setup DONE"));
 
+#ifdef KNXenable
     // start the framework.
     knx.start();
+#endif
 
     // start Enocean
     for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
@@ -70,7 +75,7 @@ void setup()
     enOcean.initSerial(Serial2);
     enOcean.init();
 
-#ifdef  KDEBUG_min
+#ifdef KDEBUG_min
     if (enOcean.getNumberDevices() != MAX_NUMBER_OF_DEVICES)
         SERIAL_PORT.println(F("!!! NUMBER OF DEVICES != MAX DEVICES -> change!!!"));
     else
@@ -84,11 +89,16 @@ void setup()
 
 void loop()
 {
+#ifdef KNXenable
     // don't delay here to much. Otherwise you might lose packages or mess up the timing with ETS
     knx.loop();
+#endif
 
+#ifdef KNXenable
     // only run the application code if the device was configured with ETS
     if (knx.configured())
         appLoop();
-
+#else
+    appLoop();
+#endif
 }

@@ -15,14 +15,15 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
       VLD_D2_01_TELEGRAM_CMD_04_TYPE *ActStatResp;
       VLD_D2_04_00_TELEGRAM *SenVal_D2_04;
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
+      VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
 
-      switch (knx.paramByte(firstParameter + ENO_CHProfilSelectionVLD))
+      switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionVLD))
       {
       case D2_01:
             //**************************************************************
             // ----------------- Profil: D2-01-xx --------------------------
             //**************************************************************
-            switch (knx.paramByte(firstParameter + ENO_CHProfilVLD04))
+            switch (knx.paramWord(firstParameter + ENO_CHProfilVLD04))
             {
             case D2_01_12:
 #ifdef KDEBUG
@@ -43,10 +44,10 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 
                         if (ActStatResp->u8VldTelActResp2.IOChannel == 0) // Abfrage ob CH1
                         {
-                              if(ActStatResp->u8VldTelActResp.outputValue == 0)
-                              knx.getGroupObject(firstComObj +2).value(false, getDPT(VAL_DPT_1));
+                              if (ActStatResp->u8VldTelActResp.outputValue == 0)
+                                    knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
                               else
-                              knx.getGroupObject(firstComObj +2).value(true, getDPT(VAL_DPT_1));
+                                    knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                               SERIAL_PORT.print(F("CH1: "));
                               SERIAL_PORT.println(ActStatResp->u8VldTelActResp.outputValue);
@@ -54,10 +55,10 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
                         }
                         else if (ActStatResp->u8VldTelActResp2.IOChannel == 1) // Abfrage ob CH2
                         {
-                              if(ActStatResp->u8VldTelActResp.outputValue == 0)
-                              knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
+                              if (ActStatResp->u8VldTelActResp.outputValue == 0)
+                                    knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
                               else
-                              knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1));
+                                    knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                               SERIAL_PORT.print(F("CH2: "));
                               SERIAL_PORT.println(ActStatResp->u8VldTelActResp.outputValue);
@@ -81,7 +82,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
             voc1_s = (float)(SenVal_D2_04->voc) * 7.84;
             voc2_s = (float)(SenVal_D2_04->voc) * 19.6;
 
-            switch (knx.paramByte(firstParameter + ENO_CHProfilVLD04))
+            switch (knx.paramWord(firstParameter + ENO_CHProfilVLD04))
             {
             case D2_04_00:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
@@ -187,49 +188,49 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
                   SERIAL_PORT.println(F("Profil: D2-04-10"));
 #endif
                   break;
-            case D2_04_0A:
+            case D2_04_1A:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
-                  SERIAL_PORT.println(F("Profil: D2-04-0A"));
+                  SERIAL_PORT.println(F("Profil: D2-04-1A"));
 #endif
                   break;
-            case D2_04_0B:
+            case D2_04_1B:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
-                  SERIAL_PORT.println(F("Profil: D2-04-0B"));
+                  SERIAL_PORT.println(F("Profil: D2-04-1B"));
 #endif
                   break;
-            case D2_04_0C:
+            case D2_04_1C:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
-                  SERIAL_PORT.println(F("Profil: D2-04-0C"));
+                  SERIAL_PORT.println(F("Profil: D2-04-1C"));
 #endif
                   break;
-            case D2_04_0D:
+            case D2_04_1D:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
-                  SERIAL_PORT.println(F("Profil: D2-04-0D"));
+                  SERIAL_PORT.println(F("Profil: D2-04-1D"));
 #endif
                   break;
-            case D2_04_0E:
+            case D2_04_1E:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
-                  SERIAL_PORT.println(F("Profil: D2-04-0E"));
+                  SERIAL_PORT.println(F("Profil: D2-04-1E"));
 #endif
                   break;
 
@@ -293,6 +294,23 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
                   break;
             }
             break; // ENDE D2-05
+
+      case D2_14:
+            //**************************************************************
+            // ----------------- Profil: D2-14-xx --------------------------
+            //**************************************************************
+
+            SenVal_D2_14 = (VLD_D2_14_00_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
+
+            switch (knx.paramWord(firstParameter + ENO_CHProfilVLD14))
+            {
+            case D2_14_30:
+
+                  break;
+            default:
+                  break;
+            }
+            break; // ENDE D2-14
 
       default:
 #ifdef KDEBUG

@@ -860,13 +860,36 @@ void handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t fir
   }
 }
 
+void handle_F6_05_0x(uint8_t firstComObj, uint8_t value)
+{
+  switch (value)
+  {
+  case 0x00: // Alarm OFF
+    knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1));
+    break;
+  case 0x10: // Alarm ON
+    knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
+    break;
+  case 0x11: // Water detected
+    knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1));
+    break;
+  case 0x30: // Energy LOW
+    knx.getGroupObject(firstComObj + 4).value(true, getDPT(VAL_DPT_1));
+    break;
+  default:
+    break;
+  }
+}
+
 void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter)
 {
   RPS_F6_10_00_TYPE *lRpsTlg_p;
   RPS_F6_10_01_TYPE *lRpsTlg2_p;
-
+#ifndef EnOceanTEST
   switch (knx.paramByte(firstParameter + ENO_CHProfilSelectionRPS)) // -------------->>>>>> Anpassen ETS <<<<<---------------------------
-  //switch (profil)
+#else
+  switch (profil)
+#endif
   {
   case F6_02_01:
 #ifdef KDEBUG
@@ -887,6 +910,33 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #ifdef KDEBUG
     SERIAL_PORT.println(F("Profil: F6-03-02"));
 #endif
+    break;
+  //**************************************************************
+  // ----------------- Profil: F6-05-00   ------------------------
+  //**************************************************************
+  case F6_05_00:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("Profil: F6-05-00"));
+#endif
+    handle_F6_05_0x(firstComObj, f_Pkt_st->u8DataBuffer[1]);
+    break;
+  //**************************************************************
+  // ----------------- Profil: F6-05-01 --------------------------
+  //**************************************************************
+  case F6_05_01:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("Profil: F6-05-01"));
+#endif
+    handle_F6_05_0x(firstComObj, f_Pkt_st->u8DataBuffer[1]);
+    break;
+    //**************************************************************
+  // ----------------- Profil: F6-05-02   ------------------------
+  //**************************************************************
+  case F6_05_02:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("Profil: F6-05-02"));
+#endif
+    handle_F6_05_0x(firstComObj, f_Pkt_st->u8DataBuffer[1]);
     break;
   //**************************************************************
   // ----------------- Profil: F6-10-00 --------------------------

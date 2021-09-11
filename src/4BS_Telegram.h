@@ -2,13 +2,14 @@
 
 #include "EnoceanProfils.h"
 
-void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter)
+void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd, uint8_t firstComObj, uint8_t firstParameter)
 {
 
       uint16_t lux;
       float luxfloat;
       float temp;
       float hum;
+      int8_t value;
 
       FOURBS_A5_02_TYPE *fourBsA5_02_Tlg_p;
       FOURBS_A5_02_2030TYPE *fourBsA5_02_2030_Tlg_p;
@@ -23,19 +24,24 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
       FOURBS_A5_14_01_06_TYPE *fourBsA5_17_01_06_Tlg_p;
       FOURBS_A5_14_07_08_TYPE *fourBsA5_17_07_08_Tlg_p;
       FOURBS_A5_14_09_0A_TYPE *fourBsA5_17_09_0A_Tlg_p;
+      FOURBS_A5_20_06_TYPE *fourBsA5_20_06_Tlg_p;
 
 #ifdef KDEBUG
       SERIAL_PORT.print("Profil: 4BS - ");
       SERIAL_PORT.println(firstParameter + ENO_CHProfilSelection4BS);
 #endif
 
-      switch (knx.paramByte(firstParameter + ENO_CHProfilSelection4BS))
+#ifndef EnOceanTEST
+      switch (knx.paramWord(firstParameter + ENO_CHProfilSelection4BS))
+#else
+      switch (profil)
+#endif
       {
       case A5_02:
 #ifdef KDEBUG
             SERIAL_PORT.print("A5-02-");
 #endif
-            switch (knx.paramByte(firstParameter + ENO_CHProfil4BS02))
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BS02))
             {
             //**************************************************************
             // ----------------- Profil: A5-02-01 --------------------------
@@ -371,7 +377,7 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #ifdef KDEBUG
             SERIAL_PORT.print("A5-04-");
 #endif
-            switch (knx.paramByte(firstParameter + ENO_CHProfil4BS04))
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BS04))
             {
             //**************************************************************
             // ----------------- Profil: A5-04-01 --------------------------
@@ -432,7 +438,7 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #ifdef KDEBUG
             SERIAL_PORT.print("A5-06-");
 #endif
-            switch (knx.paramByte(firstParameter + ENO_CHProfil4BS06))
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BS06))
             {
             //**************************************************************
             // ----------------- Profil: A5-06-01 --------------------------
@@ -525,7 +531,7 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #ifdef KDEBUG
             SERIAL_PORT.print("A5-07-");
 #endif
-            switch (knx.paramByte(firstParameter + ENO_CHProfil4BS07))
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BS07))
             {
             //**************************************************************
             // ----------------- Profil: A5-07-01 --------------------------
@@ -607,7 +613,7 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #ifdef KDEBUG
             SERIAL_PORT.print("A5-14-");
 #endif
-            switch (knx.paramByte(firstParameter + ENO_CHProfil4BS07))
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BS07))
             {
             //**************************************************************
             // ----------------- Profil: A5-14-01 --------------------------
@@ -882,6 +888,118 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
                   break;
             }
             break; // ENDE A5-14-XX
+      case A5_20:
+#ifdef KDEBUG
+            SERIAL_PORT.print("A5-20-");
+#endif
+#ifndef EnOceanTEST
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BS20))
+#else
+            switch (profil2nd)
+#endif
+            {
+            //**************************************************************
+            // ----------------- Profil: A5-20-06 --------------------------
+            //**************************************************************
+            case A5_20_06:
+                  fourBsA5_20_06_Tlg_p = (FOURBS_A5_20_06_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("06"));
+#endif
+                  // ......Current Position.........................................
+#ifndef EnOceanTEST
+                  knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_06_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
+                  #endif
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("current Pos: "));
+                  SERIAL_PORT.print(fourBsA5_20_06_Tlg_p->u8CurrentPos);
+                  SERIAL_PORT.println("%");
+#endif
+
+                  // ......Temperature Offset.........................................
+                  if (fourBsA5_20_06_Tlg_p->u84BsTelData.LOM == 1)
+                  {
+#ifndef EnOceanTEST
+                        knx.getGroupObject(firstComObj + 8).value(fourBsA5_20_06_Tlg_p->u84BsTelData.Offset / 2.0, getDPT(VAL_DPT_9));
+#endif
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Local offset: "));
+                        SERIAL_PORT.print(fourBsA5_20_06_Tlg_p->u84BsTelData.Offset / 2.0);
+                        SERIAL_PORT.println("°C");
+#endif
+                  }
+                  else if (fourBsA5_20_06_Tlg_p->u84BsTelData.LOM == 0)
+                  {
+                        switch (fourBsA5_20_06_Tlg_p->u84BsTelData.Offset)
+                        {
+                        case 0x0:
+                              value = 0;
+                              break;
+                        case 0x1:
+                              value = 1;
+                              break;
+                        case 0x2:
+                              value = 2;
+                              break;
+                        case 0x3:
+                              value = 3;
+                              break;
+                        case 0x4:
+                              value = 4;
+                              break;
+                        case 0x5:
+                              value = 5;
+                              break;
+                        case 0x7B:
+                              value = -5;
+                              break;
+                        case 0x7C:
+                              value = -4;
+                              break;
+                        case 0x7D:
+                              value = -3;
+                              break;
+                        case 0x7E:
+                              value = -2;
+                              break;
+                        case 0x7F:
+                              value = -1;
+                              break;
+
+                        default:
+                              break;
+                        }
+#ifndef EnOceanTEST
+                        knx.getGroupObject(firstComObj + 8).value(value, getDPT(VAL_DPT_9));
+#endif
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Local offset: "));
+                        SERIAL_PORT.print(value);
+                        SERIAL_PORT.println("%");
+#endif
+                  }
+#ifndef EnOceanTEST
+                  // ......Temperature.........................................
+                  knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_06_Tlg_p->u8Temp/2.0, getDPT(VAL_DPT_9));
+                  // ......Status Bits.........................................
+                  knx.getGroupObject(firstComObj + 9).value(fourBsA5_20_06_Tlg_p->u8StatusBits, getDPT(VAL_DPT_5));
+#endif
+
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Temperature: "));
+                  SERIAL_PORT.println(fourBsA5_20_06_Tlg_p->u8Temp/2.0);
+                  SERIAL_PORT.print(F("Status Bits (MSB-LSB): "));
+                  SERIAL_PORT.println(fourBsA5_20_06_Tlg_p->u8StatusBits,BIN);
+#endif
+                  break; // ENDE A5-20-06
+            default:
+                  break;
+#ifdef KDEBUG
+                  SERIAL_PORT.println("ERROR");
+#endif
+                  break;
+            }
+            break; // ENDE A5-20-XX
 
       //**************************************************************
       default:

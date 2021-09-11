@@ -19,6 +19,12 @@
 #define KDEBUG_min
 #define KDEBUG
 
+// Defines for Testing
+//#define EnOceanTEST
+
+// disable define to disable KNX Funktion (for Testing ENocean ONLY)
+#define KNXenable
+
 #ifdef KDEBUG
 // Get correct serial port for debugging
 #ifdef ArduinoZero

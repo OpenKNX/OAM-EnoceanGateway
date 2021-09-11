@@ -1,6 +1,19 @@
 #pragma once
 
 
+#define KO_0  0
+#define KO_1  1
+#define KO_2  2
+#define KO_3  3
+#define KO_4  4
+#define KO_5  5
+#define KO_6  6
+#define KO_7  7
+#define KO_8  8
+#define KO_9  9
+
+
+
 #define RockerA  1
 #define RockerB  2
 #define RockerC  3
@@ -19,16 +32,19 @@
 #define D2_04    4
 #define D2_05    5
 #define D2_06    6
-#define D2_10    10
-#define D2_11    11
-#define D2_20    20
-#define D2_30    30
-#define D2_31    31
-#define D2_32    32
-#define D2_33    33
-#define D2_34    34
-#define D2_40    40
-#define D2_50    50
+#define D2_07    7
+#define D2_0A    10
+#define D2_10    16
+#define D2_11    17
+#define D2_14    20
+#define D2_20    32
+#define D2_30    48
+#define D2_31    49
+#define D2_32    50
+#define D2_33    51
+#define D2_34    52
+#define D2_40    64
+#define D2_50    80
 #define D2_A0    160
 #define D2_B0    176
 
@@ -40,82 +56,71 @@
 #define A5_07    7 
 #define A5_08    8 
 #define A5_09    9 
-#define A5_10    10 
-#define A5_11    11
-#define A5_12    12 
-#define A5_13    13 
-#define A5_14    14 
-#define A5_20    20 
-#define A5_30    30
-#define A5_37    37 
-#define A5_38    38
-#define A5_3F    3F
+#define A5_10    16 
+#define A5_11    17
+#define A5_12    18 
+#define A5_13    19 
+#define A5_14    20 
+#define A5_20    32 
+#define A5_30    48
+#define A5_37    55 
+#define A5_38    56
+#define A5_3F    63
 
 
-
-// RPS Profils
-#define F6_02_01 0
-#define F6_02_02 1
-#define F6_02_03 2
-#define F6_02_04 3
-#define F6_03_01 4
-#define F6_03_02 5
-#define F6_04_01 6
-#define F6_04_02 7
-#define F6_05_01 8
-#define F6_10_00 9
-#define F6_10_01 10
-
-// 1BS Profils
-#define D5_00_01 11
 
 // 4BS Profils
-#define A5_02_01 12
-#define A5_02_02 13
-#define A5_02_03 14
-#define A5_02_04 15
-#define A5_02_05 16
-#define A5_02_06 17
-#define A5_02_07 18
-#define A5_02_08 19
-#define A5_02_09 20
-#define A5_02_0A 21 
-#define A5_02_0B 22
-#define A5_02_10 23
-#define A5_02_11 24
-#define A5_02_12 25
-#define A5_02_13 26
-#define A5_02_14 27
-#define A5_02_15 28
-#define A5_02_16 29
-#define A5_02_17 30
-#define A5_02_18 31
-#define A5_02_19 32
-#define A5_02_1A 33
-#define A5_02_1B 34
-#define A5_02_20 35
-#define A5_02_30 36
-#define A5_04_01 37
-#define A5_04_02 38
-#define A5_04_03 39
-#define A5_05_01 40
-#define A5_06_01 41
-#define A5_06_02 42
-#define A5_06_03 43
-#define A5_07_01 44
-#define A5_07_02 45
-#define A5_07_03 46
+#define A5_02_01  1
+#define A5_02_02  2
+#define A5_02_03  3
+#define A5_02_04  4
+#define A5_02_05  5
+#define A5_02_06  6
+#define A5_02_07  7
+#define A5_02_08  8
+#define A5_02_09  9 
+#define A5_02_0A 10 
+#define A5_02_0B 11
+#define A5_02_10 12
+#define A5_02_11 13
+#define A5_02_12 14
+#define A5_02_13 15
+#define A5_02_14 16
+#define A5_02_15 17
+#define A5_02_16 18
+#define A5_02_17 19
+#define A5_02_18 20
+#define A5_02_19 21
+#define A5_02_1A 22
+#define A5_02_1B 23
+#define A5_02_20 24
+#define A5_02_30 25
+#define A5_04_01 26
+#define A5_04_02 27
+#define A5_04_03 28
+#define A5_04_04 29
+#define A5_05_01 30
+#define A5_06_01 31
+#define A5_06_02 32
+#define A5_06_03 33
+#define A5_06_04 34
+#define A5_06_05 35
+#define A5_07_01 36
+#define A5_07_02 37
+#define A5_07_03 38
 
-#define A5_14_01 109
-#define A5_14_02 110
-#define A5_14_03 111
-#define A5_14_04 112
-#define A5_14_05 113
-#define A5_14_06 114
-#define A5_14_07 115
-#define A5_14_08 116
-#define A5_14_09 117
-#define A5_14_0A 118
+#define A5_14_01 106
+#define A5_14_02 107
+#define A5_14_03 108
+#define A5_14_04 109
+#define A5_14_05 110
+#define A5_14_06 111
+#define A5_14_07 112
+#define A5_14_08 113
+#define A5_14_09 114
+#define A5_14_0A 115
+
+#define A5_20_06 121
 
 // VLD Profils
 #define D2_00_01 136
@@ -141,20 +146,49 @@
 #define D2_01_12 155
 #define D2_01_13 156
 #define D2_01_14 157
+#define D2_01_15 158
+#define D2_01_16 159
 
-#define D2_04_00 164
-#define D2_04_01 165
-#define D2_04_02 166
-#define D2_04_03 167
-#define D2_04_04 168
-#define D2_04_05 169
-#define D2_04_06 170
-#define D2_04_07 161
-#define D2_04_08 162
-#define D2_04_09 163
-#define D2_04_10 174
-#define D2_04_0A 175
-#define D2_04_0B 176
-#define D2_04_0C 177
-#define D2_04_0D 178
-#define D2_04_0E 179
+
+
+#define D2_04_00 167
+#define D2_04_01 168
+#define D2_04_02 169
+#define D2_04_03 170
+#define D2_04_04 171
+#define D2_04_05 172
+#define D2_04_06 173
+#define D2_04_07 174
+#define D2_04_08 175
+#define D2_04_09 176
+#define D2_04_0A 177
+#define D2_04_10 178
+#define D2_04_1A 179
+#define D2_04_1B 180
+#define D2_04_1C 181
+#define D2_04_1D 182
+#define D2_04_1E 183
+#define D2_04_1F 184
+
+#define D2_14_30 241
+
+// 1BS Profils
+#define D5_00_01 281
+
+// RPS Profils
+#define F6_01_01 282
+#define F6_02_01 283
+#define F6_02_02 284
+#define F6_02_03 285
+#define F6_02_04 286
+#define F6_03_01 287
+#define F6_03_02 288
+#define F6_04_01 289
+#define F6_04_02 290
+#define F6_05_00 291
+#define F6_05_01 292
+#define F6_05_02 293
+#define F6_10_00 294
+#define F6_10_01 295
+
+
