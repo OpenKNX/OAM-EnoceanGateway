@@ -380,7 +380,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
                   // time since last Event
                   mem = (SenStat_D2_14_30->u8VldTelSenSta5.LastEvent_MSB << 5) | SenStat_D2_14_30->u8VldTelSenSta4.LastEvent_LSB;
-                  knx.getGroupObject(firstComObj + 5).value(mem, getDPT(VAL_DPT_5));
+                  knx.getGroupObject(firstComObj + 8).value(mem, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("Time last Event: "));
                   SERIAL_PORT.println(mem);
