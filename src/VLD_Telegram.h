@@ -70,6 +70,20 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
             }
             break;
 
+      case D2_03:
+            //**************************************************************
+            // ----------------- Profil: D2-03-xx --------------------------
+            //**************************************************************
+            switch (knx.paramWord(firstParameter + ENO_CHProfilVLD03))
+            {
+            case D2_03_0A:
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("Profil: D2-03-0A"));
+#endif
+                  break; // ENDE CASE D2_03_0A
+            }
+            break; // ENDE CASE D2_03
+
       case D2_04:
             //**************************************************************
             // ----------------- Profil: D2-04-xx --------------------------
