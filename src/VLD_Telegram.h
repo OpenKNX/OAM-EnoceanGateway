@@ -16,6 +16,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
       VLD_D2_04_00_TELEGRAM *SenVal_D2_04;
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
       VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
+      VLD_D2_14_30_TELEGRAM *SenStat_D2_14_30;
 
       switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionVLD))
       {
@@ -313,12 +314,77 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
             //**************************************************************
             // ----------------- Profil: D2-14-xx --------------------------
             //**************************************************************
-
-            SenVal_D2_14 = (VLD_D2_14_00_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
-
             switch (knx.paramWord(firstParameter + ENO_CHProfilVLD14))
             {
+            //**************************************************************
+            // ----------------- Profil: D2-14-30 --------------------------
+            //**************************************************************
             case D2_14_30:
+                  SenStat_D2_14_30 = (VLD_D2_14_30_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("Profil: D2-14-30"));
+#endif
+                  // Smoke Alarm
+                  knx.getGroupObject(firstComObj + 3).value(SenStat_D2_14_30->u8VldTelSenSta5.smokeAlarm, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Smoke Alarm: "));
+                  SERIAL_PORT.println(SenStat_D2_14_30->u8VldTelSenSta5.smokeAlarm);
+#endif
+                  // Status Bits
+                  knx.getGroupObject(firstComObj + 9).value(SenStat_D2_14_30->u8VldTelSenSta5.statusbits, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Status Bits: "));
+                  SERIAL_PORT.println(SenStat_D2_14_30->u8VldTelSenSta5.statusbits);
+#endif
+                  // Energy Storage (Battery)
+                  knx.getGroupObject(firstComObj + 4).value(SenStat_D2_14_30->u8VldTelSenSta4.ES, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Battery: "));
+                  SERIAL_PORT.println(SenStat_D2_14_30->u8VldTelSenSta4.ES);
+#endif
+                  // IAQTH indoor AIR Quality
+                  knx.getGroupObject(firstComObj + 7).value(SenStat_D2_14_30->u8VldTelSenSta.IAQTH, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Air Quality: "));
+                  SERIAL_PORT.println(SenStat_D2_14_30->u8VldTelSenSta.IAQTH);
+#endif
+                  // HUM
+                  mem = (SenStat_D2_14_30->u8VldTelSenSta2.HUM_MSB << 7) | SenStat_D2_14_30->u8VldTelSenSta1.HUM_LSB;
+                  hum_s = mem / 2.0;
+                  knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Hum: "));
+                  SERIAL_PORT.println(hum_s);
+#endif
+                  // TEMP
+                  mem = (SenStat_D2_14_30->u8VldTelSenSta3.Temp_MSB << 7) | SenStat_D2_14_30->u8VldTelSenSta2.Temp_LSB;
+                  temp_s = mem / 5.0;
+                  knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Temp: "));
+                  SERIAL_PORT.println(temp_s);
+#endif
+                  // HCI
+                  mem = (SenStat_D2_14_30->u8VldTelSenSta1.HCI_MSB << 1) | SenStat_D2_14_30->u8VldTelSenSta.HCI_LSB;
+                  knx.getGroupObject(firstComObj + 6).value(mem, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("HCI: "));
+                  SERIAL_PORT.println(mem);
+#endif
+                  // RPLT
+                  mem = (SenStat_D2_14_30->u8VldTelSenSta4.RPLT_MSB << 7) | SenStat_D2_14_30->u8VldTelSenSta3.RPLT_LSB;
+                  knx.getGroupObject(firstComObj + 5).value(mem, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("RPLT: "));
+                  SERIAL_PORT.println(mem);
+#endif
+                  // time since last Event
+                  mem = (SenStat_D2_14_30->u8VldTelSenSta5.LastEvent_MSB << 5) | SenStat_D2_14_30->u8VldTelSenSta4.LastEvent_LSB;
+                  knx.getGroupObject(firstComObj + 5).value(mem, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Time last Event: "));
+                  SERIAL_PORT.println(mem);
+#endif
 
                   break;
             default:

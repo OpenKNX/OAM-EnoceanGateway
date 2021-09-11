@@ -259,6 +259,45 @@ struct VLD_D2_05_TELEGRAM_CMD_04_ACTRESP_TYPE
   uint16_t NA : 5;        // (DB_BIT 7-3) NOT USED
 };
 
+struct VLD_D2_14_30_Data_TYPE
+{
+  uint8_t VIB : 4;       // (DB_BIT 0-3)  not used 
+  uint8_t IAQTH : 3;     // (DB_BIT 4-6)  IAQTH
+  uint8_t HCI_LSB : 1;   // (DB_BIT 7)    HCI 
+};
+
+struct VLD_D2_14_30_Data_TYPE1
+{
+  uint8_t HCI_MSB : 1;   // (DB_BIT 0)    HCI 
+  uint8_t HUM_LSB : 7;   // (DB_BIT 1-7)  HUM
+};
+
+struct VLD_D2_14_30_Data_TYPE2
+{
+  uint8_t HUM_MSB : 1;   // (DB_BIT 0)    HUM
+  uint8_t Temp_LSB : 7;   // (DB_BIT 1-7) Temp
+};
+
+struct VLD_D2_14_30_Data_TYPE3
+{
+  uint8_t Temp_MSB : 1;   // (DB_BIT 0)    Temp
+  uint8_t RPLT_LSB : 7;   // (DB_BIT 1-7)  RPLT
+};
+
+struct VLD_D2_14_30_Data_TYPE4
+{
+  uint8_t RPLT_MSB : 1;       // (DB_BIT 0)    EPLT
+  uint8_t ES : 2;             // (DB_BIT 1-2)  ES
+  uint8_t LastEvent_LSB : 5;  // (DB_BIT 3-7)  LastEvent Bits
+};
+
+struct VLD_D2_14_30_Data_TYPE5
+{
+  uint8_t LastEvent_MSB : 3;   // (DB_BIT 0-2)  LastEvent Bits
+  uint8_t statusbits : 4;      // (DB_BIT 3-6)  Status Bits
+  uint8_t smokeAlarm : 1;      // (DB_BIT 7)    Smoke Alarm
+};
+
 
 
 
@@ -306,6 +345,18 @@ struct VLD_D2_14_00_TELEGRAM
   uint8_t u8B3;
   uint8_t u8B4;
   uint8_t u8B5;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_14_30_TELEGRAM
+{
+  VLD_D2_14_30_Data_TYPE5 u8VldTelSenSta5;
+  VLD_D2_14_30_Data_TYPE4 u8VldTelSenSta4;
+  VLD_D2_14_30_Data_TYPE3 u8VldTelSenSta3;
+  VLD_D2_14_30_Data_TYPE2 u8VldTelSenSta2;
+  VLD_D2_14_30_Data_TYPE1 u8VldTelSenSta1;
+  VLD_D2_14_30_Data_TYPE  u8VldTelSenSta;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };

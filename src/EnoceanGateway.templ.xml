@@ -276,15 +276,18 @@
               
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%098" RefId="M-00FA_A-0000-00-0000_O-%K4%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Alarm Energy Low" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-5" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <!-- Base  5 -->
-              
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K5%_R-%K5%110" RefId="M-00FA_A-0000-00-0000_O-%K5%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Restlaufzeit (Monate)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <!-- Base  6 -->
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K6%_R-%K6%130" RefId="M-00FA_A-0000-00-0000_O-%K6%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temperatur from Device" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />  
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K6%_R-%K6%131" RefId="M-00FA_A-0000-00-0000_O-%K6%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Comfort Index" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <!-- Base  7 -->
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%150" RefId="M-00FA_A-0000-00-0000_O-%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Ventil Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%151" RefId="M-00FA_A-0000-00-0000_O-%K7%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Single press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%152" RefId="M-00FA_A-0000-00-0000_O-%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Indoor Air Quality" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <!-- Base  8 -->
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%170" RefId="M-00FA_A-0000-00-0000_O-%K8%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp Offset" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%171" RefId="M-00FA_A-0000-00-0000_O-%K8%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Double press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%172" RefId="M-00FA_A-0000-00-0000_O-%K8%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Wochen seit letztem Alarm" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <!-- Base  9 -->
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%190" RefId="M-00FA_A-0000-00-0000_O-%K9%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status (8Bits)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%191" RefId="M-00FA_A-0000-00-0000_O-%K9%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%53_R-%C%53" />
@@ -346,7 +349,7 @@
                         </choose> 
                         <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%04_R-%C%04" />
                         <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%04_R-%C%04">
-                        <!-- RPS F6 (246)-->
+                          <!-- RPS F6 (246)-->
                           <when test="246">
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%05_R-%C%05" />
                             <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%05_R-%C%05">
@@ -374,408 +377,428 @@
                           </when>
                           <!-- 4BS A5 (165)-->
                           <when test="165">
-                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%07_R-%C%07" />
-                          <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%07_R-%C%07">
-                            <!-- A5-02 -->
-                            <when test="2">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%10_R-%C%10" />
-                              <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
-                            </when>
-                            <!-- A5-04 -->
-                            <when test="4">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%11_R-%C%11" />
-                              <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
-                              <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" />
-                            </when>
-                            <!-- A5-06 -->
-                            <when test="6">
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%13_R-%C%13" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%13_R-%C%13">
-                                <when test="41">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
-                                </when>
-                                <when test="42">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
-                                </when>
-                                <when test="43">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
-                                </when>
-                              </choose> 
-                            </when>
-                            <!-- A5-07 -->
-                            <when test="7">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%14_R-%C%14" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%14_R-%C%14">
-                                <when test="44">
-                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR)" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
-                                </when>
-                                <when test="45">
-                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR, Batterie Spannung)" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
-                                </when>
-                                <when test="46">
-                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR, LUX, Batterie Spannung)" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
-                                </when>
-                              </choose> 
-                            </when>
-                            <!-- A5-14 -->
-                            <when test="20">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%21_R-%C%21" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%21_R-%C%21">
-                                <!-- A5-14.01 -->
-                                <when test="106">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
-                                </when>
-                                <!-- A5-14.02 -->
-                                <when test="107">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
-                                </when>
-                                <!-- A5-14.03 -->
-                                <when test="108">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.04 -->
-                                <when test="109">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.05 -->
-                                <when test="110">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.06 -->
-                                <when test="111">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.07 -->
-                                <when test="112">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door state -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- Lock state -->
-                                </when>
-                                <!-- A5-14.08 -->
-                                <when test="113">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door state -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- Lock state -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.09 -->
-                                <when test="114">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door open -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%056" /> <!-- Door Tilt -->
-                                </when>
-                                <!-- A5-14.0A -->
-                                <when test="115">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door open -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%056" /> <!-- Door Tilt -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
-                                </when>
-                              </choose>  
-                            </when>
-                            <!-- A5-20 -->
-                            <when test="32">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%22_R-%C%22" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%22_R-%C%22">
-                                <when test="121">
-                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Energieautarker Heizkörperstellantrieb" />
-                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%64_R-%C%64" /> <!-- RFC -->
-                                  <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%65_R-%C%65" /> <!-  SB -->
-                                  <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66" /> <!-- SPS -->
-                                  <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%67_R-%C%67" /> <!-- TSL -->
-                                  <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%68_R-%C%68" /> <!- SBY -->
-                                  <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66">
-                                    <when test="0">
-                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%024" /> <!-- Set Temp -->
-                                    </when>
-                                    <when test="1">
-                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%023" /> <!-- Set Pos 0...100% -->
-                                    </when> 
-                                  </choose>    
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%041" /> <!-- Sommer Umschaltung-->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%061" /> <!-- Refenrence RUN-->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%080" /> <!-- Raum Temperatur -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%096" /> <!-- Standby -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K6%_R-%K6%130" /> <!-- Temperatur am Ventil  -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%170" /> <!-- ATemp Offset -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%150" /> <!-- Aktuelle Ventil Pos -->
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%190" /> <!-- Status Bits -->
-                                </when>
-                              </choose> 
-                            </when> 
-                          </choose>  
-                        </when>
-                        <!-- VLD D2 (210)-->
-                        <when test="210">
-                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%08_R-%C%08" />
-                          <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%08_R-%C%08">
-                            <!-- VLD D2-01 -->
-                            <when test="1">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%25_R-%C%25" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%25_R-%C%25">
-                                <when test="155">
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%020" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%040" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%058" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%076" />
-                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%094" />
-                                </when>
-                              </choose> 
-                            </when>
-                            <!-- VLD D2-03 -->
-                            <when test="3">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%27_R-%C%27" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%27_R-%C%27">
-                               <!-- VLD D2-03-0A --> 
-                               <when test="164">
-                                 <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
-                                 <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Button: single / double / long press" />
-                                 <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%151" />
-                                 <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%171" />
-                                 <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%191" />
-                               </when>
-                              </choose>  
-                            </when>
-                            <!-- VLD D2-04 -->
-                            <when test="4">
-                              <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%28_R-%C%28" />
-                              <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%28_R-%C%28">
-                              <when test="167 175">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%07_R-%C%07" />
+                            <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%07_R-%C%07">
+                              <!-- A5-02 -->
+                              <when test="2">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%10_R-%C%10" />
+                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
+                              </when>
+                              <!-- A5-04 -->
+                              <when test="4">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%11_R-%C%11" />
                                 <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
                                 <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
                               </when>
-                              <when test="168 176">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
-                              </when>
-                              <when test="169 178">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
-                              </when>
-                              <when test="170 179">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
-                              </when>
-                              <when test="171 180">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
-                              </when>
-                              <when test="172 181">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
-                              </when>
-                              <when test="173 182">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
-                              </when>
-                              <when test="174 183">
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
-                                <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
-                              </when>
-                          </choose> 
-                            </when>
-                          </choose> 
-                        </when>
-                        <!-- Rocker (250)-->
-                        <when test="250">
-                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%09_R-%C%09" />
-                          <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%09_R-%C%09">
-                              <!-- ********** ENOCEAN -> KNX ****************************** -->
-                             <when test="0">
-                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%43_R-%C%43" />
-                                <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%43_R-%C%43">
-                                  <!-- 1 Wippe -->
-                                  <when test="1">
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44">
-                                      <!-- Wippe schalten -->
-                                      <when test = "1 2">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%010" />
-                                      </when>
-                                      <!-- Wippe Dimmen -->
-                                      <when test = "3 4">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%012" />
-                                      </when>
-                                      <!-- Wippe Jalousie -->
-                                      <when test = "5 6">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%013" />
-                                      </when>
-                                      <!-- Wippe Szene -->
-                                      <when test="7">
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%45_R-%C%45" />
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%46_R-%C%46" />
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%014" />
-                                    </when>
-                                    </choose>   
+                              <!-- A5-06 -->
+                              <when test="6">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%13_R-%C%13" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%13_R-%C%13">
+                                  <when test="41">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
                                   </when>
-                                  <!-- 2 Wippen -->
-                                  <when test="2">
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44">
-                                      <!-- Wippe 1 schalten -->
-                                      <when test = "1 2">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%010" />
-                                      </when>
-                                      <!-- Wippe 1 Dimming -->
-                                      <when test = "3 4">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%012" />
-                                      </when>
-                                      <!-- Wippe 1 Jalousie -->
-                                      <when test = "5 6">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%013" />
-                                      </when>
-                                      <!-- Wippe 1 Szene -->
-                                      <when test="7">
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%45_R-%C%45" />
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%46_R-%C%46" />
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%014" />
-                                    </when>
-                                    </choose>   
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47">
-                                      <!-- Wippe 2 Szene -->
-                                      <when test = "1 2">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%030" />
-                                      </when>
-                                      <!-- Wippe 2 Szene -->
-                                      <when test = "3 4">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%032" />
-                                      </when>
-                                      <!-- Wippe 2 Szene -->
-                                      <when test = "5 6">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%033" />
-                                      </when>
-                                      <!-- Wippe 2 Szene -->
-                                      <when test="7">
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%48_R-%C%48" />
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%49_R-%C%49" />
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%034" />
-                                    </when>
-                                    </choose>  
+                                  <when test="42">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
                                   </when>
-                                  <!-- 3 Wippen -->
-                                  <when test="3">
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44">
-                                      <!-- Wippe 1 schalten -->
-                                      <when test = "1 2">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%010" />
-                                      </when>
-                                      <!-- Wippe 1 Dimming -->
-                                      <when test = "3 4">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%012" />
-                                      </when>
-                                      <!-- Wippe 1 Jalousie -->
-                                      <when test = "5 6">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%013" />
-                                      </when>
-                                      <!-- Wippe 1 Szene -->
-                                      <when test="7">
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%45_R-%C%45" />
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%46_R-%C%46" />
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%014" />
-                                    </when>
-                                    </choose>   
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47">
-                                      <!-- Wippe 2 Schalten -->
-                                      <when test = "1 2">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%030" />
-                                      </when>
-                                      <!-- Wippe 2 Dimming -->
-                                      <when test = "3 4">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%032" />
-                                      </when>
-                                      <!-- Wippe 2 Jalousie -->
-                                      <when test = "5 6">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%033" />
-                                      </when>
-                                      <!-- Wippe 2 Szene -->
-                                      <when test="7">
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%48_R-%C%48" />
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%49_R-%C%49" />
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%034" />
-                                    </when>
-                                    </choose>  
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%50_R-%C%50" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%50_R-%C%50">
-                                      <!-- Wippe 3 Schalten -->
-                                      <when test = "1 2">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%050" />
-                                      </when>
-                                      <!-- Wippe 3 Dimming -->
-                                      <when test = "3 4">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%052" />
-                                      </when>
-                                      <!-- Wippe 3 Jalousie -->
-                                      <when test = "5 6">
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%053" />
-                                      </when>
-                                      <!-- Wippe 3 Szene -->
-                                      <when test="7">
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%51_R-%C%51" />
-                                        <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%52_R-%C%52" />
-                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%054" />
-                                    </when>
-                                    </choose>
+                                  <when test="43">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                  </when>
+                                </choose> 
+                              </when>
+                              <!-- A5-07 -->
+                              <when test="7">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%14_R-%C%14" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%14_R-%C%14">
+                                  <when test="44">
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR)" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
+                                  </when>
+                                  <when test="45">
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR, Batterie Spannung)" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                  </when>
+                                  <when test="46">
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR, LUX, Batterie Spannung)" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                  </when>
+                                </choose> 
+                              </when>
+                              <!-- A5-14 -->
+                              <when test="20">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%21_R-%C%21" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%21_R-%C%21">
+                                  <!-- A5-14.01 -->
+                                  <when test="106">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
+                                  </when>
+                                  <!-- A5-14.02 -->
+                                  <when test="107">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
+                                  </when>
+                                  <!-- A5-14.03 -->
+                                  <when test="108">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
+                                  </when>
+                                  <!-- A5-14.04 -->
+                                  <when test="109">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
+                                  </when>
+                                  <!-- A5-14.05 -->
+                                  <when test="110">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
+                                  </when>
+                                  <!-- A5-14.06 -->
+                                  <when test="111">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
+                                  </when>
+                                  <!-- A5-14.07 -->
+                                  <when test="112">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door state -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- Lock state -->
+                                  </when>
+                                  <!-- A5-14.08 -->
+                                  <when test="113">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door state -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- Lock state -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
+                                  </when>
+                                  <!-- A5-14.09 -->
+                                  <when test="114">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door open -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%056" /> <!-- Door Tilt -->
+                                  </when>
+                                  <!-- A5-14.0A -->
+                                  <when test="115">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%036" /> <!-- Door open -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%056" /> <!-- Door Tilt -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->
                                   </when>
                                 </choose>  
-                             </when>
-                              <!-- ********** KNX -> ENOCEAN ****************************** -->
-                             <when test="1">  
-                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%54_R-%C%54" />
-                                <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%54_R-%C%54">
-                                  <!-- schalten -->
-                                  <when test="1">
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%093" />
+                              </when>
+                              <!-- A5-20 -->
+                              <when test="32">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%22_R-%C%22" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%22_R-%C%22">
+                                  <when test="121">
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Energieautarker Heizkörperstellantrieb" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%64_R-%C%64" /> <!-- RFC -->
+                                    <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%65_R-%C%65" /> <!-  SB -->
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66" /> <!-- SPS -->
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%67_R-%C%67" /> <!-- TSL -->
+                                    <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%68_R-%C%68" /> <!- SBY -->
+                                    <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66">
+                                      <when test="0">
+                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%024" /> <!-- Set Temp -->
+                                      </when>
+                                      <when test="1">
+                                        <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%023" /> <!-- Set Pos 0...100% -->
+                                      </when> 
+                                    </choose>    
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%041" /> <!-- Sommer Umschaltung-->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%061" /> <!-- Refenrence RUN-->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%080" /> <!-- Raum Temperatur -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%096" /> <!-- Standby -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K6%_R-%K6%130" /> <!-- Temperatur am Ventil  -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%170" /> <!-- ATemp Offset -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%150" /> <!-- Aktuelle Ventil Pos -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%190" /> <!-- Status Bits -->
                                   </when>
-                                  <!-- Dimmen -->
-                                  <when test="2">
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%091" />
-                                  </when>
-                                  <!-- Jalousie -->
-                                  <when test="3">
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%092" />
-                                  </when>
-                                </choose>   
-                             </when>
+                                </choose> 
+                              </when> 
                             </choose>  
-                         </when>
-                       </choose>  
-                     
-                </ParameterBlock>
+                          </when>
+                          <!-- VLD D2 (210)-->
+                          <when test="210">
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%08_R-%C%08" />
+                            <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%08_R-%C%08">
+                              <!-- VLD D2-01 -->
+                              <when test="1">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%25_R-%C%25" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%25_R-%C%25">
+                                  <when test="155">
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%020" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%040" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%058" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%076" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%094" />
+                                  </when>
+                                </choose> 
+                              </when>
+                              <!-- VLD D2-03 -->
+                              <when test="3">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%27_R-%C%27" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%27_R-%C%27">
+                                <!-- VLD D2-03-0A --> 
+                                <when test="164">
+                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
+                                  <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Button: single / double / long press" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%151" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%171" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%191" />
+                                </when>
+                                </choose>  
+                              </when>
+                              <!-- VLD D2-04 -->
+                              <when test="4">
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%28_R-%C%28" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%28_R-%C%28">
+                                <when test="167 175">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
+                                </when>
+                                <when test="168 176">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
+                                </when>
+                                <when test="169 178">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
+                                </when>
+                                <when test="170 179">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
+                                </when>
+                                <when test="171 180">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
+                                </when>
+                                <when test="172 181">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
+                                </when>
+                                <when test="173 182">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
+                                </when>
+                                <when test="174 183">
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%017" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%075" />
+                                  <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" />
+                                </when>
+                              </choose>  
+                              </when>
+                              <!-- VLD D2-14 -->
+                              <when test="20"> <!-- 0x14 = 20dec -->
+                                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%63_R-%C%63" />
+                                <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%63_R-%C%63">
+                                <!-- VLD D2-14-30 --> 
+                                  <when test="241">       
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%037" /> <!-- Temp -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" /> <!-- Hum -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%079" /> <!-- ALARM -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%090" /> <!-- Energy Storage -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K5%_R-%K5%110" /> <!-- Product life time -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K6%_R-%K6%131" /> <!-- Human Comfort Index -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K7%_R-%K7%152" /> <!-- AIR Quality -->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K8%_R-%K8%172" /> <!-- Time since last Maintaince-->
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K9%_R-%K9%190" /> <!-- Status Bits-->
+                                  </when>
+                                </choose>  
+                              </when>
+                              <!-- VLD D2-20 -->
+                              <when test="32"> <!-- 0x20 = 32dec -->
+                              </when>  
+                            </choose> 
+                          </when>
+                          <!-- Rocker (250)-->
+                          <when test="250">
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%09_R-%C%09" />
+                            <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%09_R-%C%09">
+                                <!-- ********** ENOCEAN -> KNX ****************************** -->
+                              <when test="0">
+                                  <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%43_R-%C%43" />
+                                  <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%43_R-%C%43">
+                                    <!-- 1 Wippe -->
+                                    <when test="1">
+                                      <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44" />
+                                      <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44">
+                                        <!-- Wippe schalten -->
+                                        <when test = "1 2">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%010" />
+                                        </when>
+                                        <!-- Wippe Dimmen -->
+                                        <when test = "3 4">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%012" />
+                                        </when>
+                                        <!-- Wippe Jalousie -->
+                                        <when test = "5 6">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%013" />
+                                        </when>
+                                        <!-- Wippe Szene -->
+                                        <when test="7">
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%45_R-%C%45" />
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%46_R-%C%46" />
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%014" />
+                                      </when>
+                                      </choose>   
+                                    </when>
+                                    <!-- 2 Wippen -->
+                                    <when test="2">
+                                      <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44" />
+                                      <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44">
+                                        <!-- Wippe 1 schalten -->
+                                        <when test = "1 2">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%010" />
+                                        </when>
+                                        <!-- Wippe 1 Dimming -->
+                                        <when test = "3 4">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%012" />
+                                        </when>
+                                        <!-- Wippe 1 Jalousie -->
+                                        <when test = "5 6">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%013" />
+                                        </when>
+                                        <!-- Wippe 1 Szene -->
+                                        <when test="7">
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%45_R-%C%45" />
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%46_R-%C%46" />
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%014" />
+                                      </when>
+                                      </choose>   
+                                      <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47" />
+                                      <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47">
+                                        <!-- Wippe 2 Szene -->
+                                        <when test = "1 2">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%030" />
+                                        </when>
+                                        <!-- Wippe 2 Szene -->
+                                        <when test = "3 4">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%032" />
+                                        </when>
+                                        <!-- Wippe 2 Szene -->
+                                        <when test = "5 6">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%033" />
+                                        </when>
+                                        <!-- Wippe 2 Szene -->
+                                        <when test="7">
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%48_R-%C%48" />
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%49_R-%C%49" />
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%034" />
+                                      </when>
+                                      </choose>  
+                                    </when>
+                                    <!-- 3 Wippen -->
+                                    <when test="3">
+                                      <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44" />
+                                      <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%44_R-%C%44">
+                                        <!-- Wippe 1 schalten -->
+                                        <when test = "1 2">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%010" />
+                                        </when>
+                                        <!-- Wippe 1 Dimming -->
+                                        <when test = "3 4">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%012" />
+                                        </when>
+                                        <!-- Wippe 1 Jalousie -->
+                                        <when test = "5 6">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%013" />
+                                        </when>
+                                        <!-- Wippe 1 Szene -->
+                                        <when test="7">
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%45_R-%C%45" />
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%46_R-%C%46" />
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%014" />
+                                      </when>
+                                      </choose>   
+                                      <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47" />
+                                      <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%47_R-%C%47">
+                                        <!-- Wippe 2 Schalten -->
+                                        <when test = "1 2">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%030" />
+                                        </when>
+                                        <!-- Wippe 2 Dimming -->
+                                        <when test = "3 4">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%032" />
+                                        </when>
+                                        <!-- Wippe 2 Jalousie -->
+                                        <when test = "5 6">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%033" />
+                                        </when>
+                                        <!-- Wippe 2 Szene -->
+                                        <when test="7">
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%48_R-%C%48" />
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%49_R-%C%49" />
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%034" />
+                                      </when>
+                                      </choose>  
+                                      <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%50_R-%C%50" />
+                                      <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%50_R-%C%50">
+                                        <!-- Wippe 3 Schalten -->
+                                        <when test = "1 2">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%050" />
+                                        </when>
+                                        <!-- Wippe 3 Dimming -->
+                                        <when test = "3 4">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%052" />
+                                        </when>
+                                        <!-- Wippe 3 Jalousie -->
+                                        <when test = "5 6">
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%053" />
+                                        </when>
+                                        <!-- Wippe 3 Szene -->
+                                        <when test="7">
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%51_R-%C%51" />
+                                          <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%52_R-%C%52" />
+                                          <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%054" />
+                                      </when>
+                                      </choose>
+                                    </when>
+                                  </choose>  
+                              </when>
+                                <!-- ********** KNX -> ENOCEAN ****************************** -->
+                              <when test="1">  
+                                  <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%54_R-%C%54" />
+                                  <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%54_R-%C%54">
+                                    <!-- schalten -->
+                                    <when test="1">
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%093" />
+                                    </when>
+                                    <!-- Dimmen -->
+                                    <when test="2">
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%091" />
+                                    </when>
+                                    <!-- Jalousie -->
+                                    <when test="3">
+                                      <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%092" />
+                                    </when>
+                                  </choose>   
+                              </when>
+                            </choose>  
+                          </when>
+                        </choose>  
+              </ParameterBlock>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
