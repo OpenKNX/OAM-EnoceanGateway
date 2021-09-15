@@ -587,6 +587,9 @@
               <Parameter Id="M-00FA_A-0000-00-0000_P-3" Name="Heartbeat" ParameterType="M-00FA_A-0000-00-0000_PT-DelaySeconds" Text="'In Betrieb'-Telegramm senden alle" SuffixText="Sekunden" Value="300">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="6" BitOffset="0" />
               </Parameter>
+              <Parameter Id="M-00FA_A-0000-00-0000_P-100" Name="RepeaterFunc" ParameterType="M-00FA_A-0000-00-0000_PT-YesNo" Text="Repeater-Function:" Value="0">
+                <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="10" BitOffset="0" />
+              </Parameter>
             </Parameters>
             <ParameterRefs>
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
@@ -594,6 +597,7 @@
               <ParameterRef Id="M-00FA_A-0000-00-0000_P-1_R-1" RefId="M-00FA_A-0000-00-0000_P-1" />
               <ParameterRef Id="M-00FA_A-0000-00-0000_P-2_R-2" RefId="M-00FA_A-0000-00-0000_P-2" />
               <ParameterRef Id="M-00FA_A-0000-00-0000_P-3_R-3" RefId="M-00FA_A-0000-00-0000_P-3" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_P-100_R-100" RefId="M-00FA_A-0000-00-0000_P-100" />
             </ParameterRefs>
             <ComObjectTable>
               <!-- ComObject sending a 'still alive' signal, DPT 1 (1 bit) -->
@@ -649,6 +653,9 @@
                     <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-1_R-1" />
                   </when>
                 </choose>
+                <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-6" Text="" UIHint="HorizontalRuler" />
+                <!-- Parameter to choose startup delay -->
+                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-100_R-100" />
               </ParameterBlock>
             </ChannelIndependentBlock>    
               <!-- Erster Enocean Kanal -->   
