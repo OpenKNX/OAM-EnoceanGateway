@@ -338,6 +338,8 @@ public:
   }
 #pragma GCC diagnostic pop // I don't want a warning, just because we don't do anything here
 
+
+
   // decode EnOcean message. Fail fast!
 #pragma GCC diagnostic push // If you don't want to be warned because you are not using index, include that pragma stuff
 #pragma GCC diagnostic ignored "-Wunused-parameter"
@@ -488,7 +490,7 @@ public:
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
     case u8RORG_1BS:
-#ifdef KDEBUG
+#ifdef KDEBUG_ID
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
       SERIAL_PORT.print(" ");
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
@@ -521,7 +523,7 @@ public:
       if (f_Pkt_st->u8DataBuffer[5] != deviceId_Arr[3])
         return false;
 
-#ifdef KDEBUG
+#ifdef KDEBUG_ID
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
       SERIAL_PORT.print("-");
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
@@ -546,7 +548,7 @@ public:
       if (f_Pkt_st->u8DataBuffer[8] != deviceId_Arr[3])
         return false;
 
-#ifdef KDEBUG
+#ifdef KDEBUG_ID
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[5], HEX);
       SERIAL_PORT.print(" ");
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[6], HEX);
@@ -571,7 +573,7 @@ public:
       if (f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 2] != deviceId_Arr[3])
         return false;
 
-#ifdef KDEBUG
+#ifdef KDEBUG_ID
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 5], HEX);
       SERIAL_PORT.print(" ");
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 4], HEX);

@@ -294,13 +294,53 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
 
 #ifdef KDEBUG
       if (f_Pkt_st->u8DataBuffer[0] == u8RORG_RPS)
+      {
         SERIAL_PORT.println(F("Received RPS telegram."));
+        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
+        SERIAL_PORT.print("-");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
+        SERIAL_PORT.print("-");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
+        SERIAL_PORT.print("-");
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
+      }
       else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_VLD)
+      {
         SERIAL_PORT.println(F("Received VLD telegram."));
+        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 5], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 4], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 3], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 2], HEX);
+      }
       else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_4BS)
+      {
         SERIAL_PORT.println(F("Received 4BS telegram."));
+        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[5], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[6], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[7], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[8], HEX);
+      }
       else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_1BS)
+      {
         SERIAL_PORT.println(F("Received 1BS telegram."));
+        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
+        SERIAL_PORT.print(" ");
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
+      }
 #endif
 
       bool packetWasHandled = false;
