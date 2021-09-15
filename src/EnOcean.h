@@ -329,6 +329,14 @@ struct VLD_D2_04_00_TELEGRAM
   uint8_t u8Status;
 };
 
+struct VLD_D2_03_0A_TELEGRAM
+{
+  uint8_t bat;
+  uint8_t value;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
 struct VLD_D2_05_00_TELEGRAM_CMD_04_TYPE
 {
   uint8_t pos;

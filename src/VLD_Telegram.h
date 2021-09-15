@@ -14,6 +14,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 
       VLD_D2_01_TELEGRAM_CMD_04_TYPE *ActStatResp;
       VLD_D2_04_00_TELEGRAM *SenVal_D2_04;
+      VLD_D2_03_0A_TELEGRAM *SenVal_D2_03_0A;
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
       VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
       VLD_D2_14_30_TELEGRAM *SenStat_D2_14_30;
@@ -78,9 +79,33 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
             switch (knx.paramWord(firstParameter + ENO_CHProfilVLD03))
             {
             case D2_03_0A:
+                  SenVal_D2_03_0A = (VLD_D2_03_0A_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-03-0A"));
 #endif
+                  // Batterie
+                  knx.getGroupObject(firstComObj + 4).value(SenVal_D2_03_0A->bat, getDPT(VAL_DPT_5));
+                  // Buttons
+                  switch (SenVal_D2_03_0A->value)
+                  {
+                  case 1: //single click
+                        knx.getGroupObject(firstComObj + 6).value(true, getDPT(VAL_DPT_1));
+                        break;
+                  case 2: //double click
+                        knx.getGroupObject(firstComObj + 7).value(true, getDPT(VAL_DPT_1));
+                        break;
+                  case 3: //long click
+                        knx.getGroupObject(firstComObj + 8).value(true, getDPT(VAL_DPT_1));
+                        break;
+                  case 4: //long click release
+                        knx.getGroupObject(firstComObj + 9).value(true, getDPT(VAL_DPT_1));
+                        break;
+
+                  default:
+                        break;
+                  }
+                  break;
+
                   break; // ENDE CASE D2_03_0A
             }
             break; // ENDE CASE D2_03
