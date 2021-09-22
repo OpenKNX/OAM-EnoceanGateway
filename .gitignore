@@ -5,6 +5,4 @@
 .vscode/launch.json
 .vscode/ipch
 src/ModbusGateway.knxprod
-src/EnoceanGateway.debug.xml
-src/EnoceanGateway.h
-src/EnoceanGateway.knxprod
+
