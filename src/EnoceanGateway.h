@@ -119,4 +119,5 @@
 
 // Communication objects with single occurance
 #define ENO_KoHeartbeat 1
+#define ENO_KoTeachInMSG 2
 

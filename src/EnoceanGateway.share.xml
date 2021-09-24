@@ -601,11 +601,13 @@
             </ParameterRefs>
             <ComObjectTable>
               <!-- ComObject sending a 'still alive' signal, DPT 1 (1 bit) -->
-              <ComObject Id="M-00FA_A-0000-00-0000_O-1" Name="Heartbeat" Text="In Betieb" Number="1" FunctionText="Ausgang (zyklisch)" ObjectSize="1 Bit" ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-2" />
+              <ComObject Id="M-00FA_A-0000-00-0000_O-1" Name="Heartbeat"  Text="Out: In Betieb"      Number="1" FunctionText="Status (zyklisch)"      ObjectSize="1 Bit"  ReadFlag="Enabled" WriteFlag="Disabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-1-2" />
+              <ComObject Id="M-00FA_A-0000-00-0000_O-2" Name="TeachInMSG" Text="In:   Teach-in MSG"  Number="2" FunctionText="KO value = Channel-Nr." ObjectSize="1 Byte" ReadFlag="Disabled"  WriteFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Disabled" UpdateFlag="Disabled" ReadOnInitFlag="Disabled" DatapointType="DPST-5-10" />
             </ComObjectTable>
             <ComObjectRefs>
               <!-- A ComObjecdtRef is necessary for each ComObject, ComObjectRef are used in the ETS UI -->
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-1_R-1" RefId="M-00FA_A-0000-00-0000_O-1" />
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-2_R-2" RefId="M-00FA_A-0000-00-0000_O-2" />
             </ComObjectRefs>
             <AddressTable MaxEntries="65535" />
             <AssociationTable MaxEntries="65535" />
