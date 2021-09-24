@@ -32,6 +32,8 @@ private:
   uint8_t koIndex1;
   uint8_t koIndex2;
 
+  uint8_t msg_sent_after_receive = 0;
+
   union
   {
     byte val_A5_20_06[4];
@@ -158,6 +160,12 @@ public:
         SERIAL_PORT.println(F(" Release"));
 #endif
       }
+    }
+    //msg_sent_after_receive
+    if(msg_sent_after_receive == msg_A5_20_06)
+    {
+      send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+      msg_sent_after_receive = 0;
     }
   }
 
@@ -558,7 +566,7 @@ public:
       SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[8], HEX);
 #endif
 
-      handle_4BS(f_Pkt_st, profil, profil2nd, firstComObj, firstParameter);
+      msg_sent_after_receive = handle_4BS(f_Pkt_st, profil, profil2nd, firstComObj, firstParameter);
       break;
 
     case u8RORG_VLD:

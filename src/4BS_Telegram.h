@@ -2,7 +2,7 @@
 
 #include "EnoceanProfils.h"
 
-void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd, uint8_t firstComObj, uint8_t firstParameter)
+uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd, uint8_t firstComObj, uint8_t firstParameter)
 {
 
       uint16_t lux;
@@ -999,6 +999,7 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd,
 #endif
                   break;
             }
+            return msg_A5_20_06;
             break; // ENDE A5-20-XX
 
       //**************************************************************
@@ -1008,4 +1009,6 @@ void handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd,
 #endif
             break;
       }
+
+      return 0;
 }
