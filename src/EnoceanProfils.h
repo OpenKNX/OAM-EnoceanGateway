@@ -12,6 +12,8 @@
 #define KO_8  8
 #define KO_9  9
 
+#define KO_Teachin  100
+
 //direct answer after msg recive
 #define msg_A5_20_06 1
 

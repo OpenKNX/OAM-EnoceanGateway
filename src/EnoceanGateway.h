@@ -87,21 +87,15 @@
 #define ENO_CHId7                     20      // 4 Bits, Bit 3-0
 #define     ENO_CHId7Mask 0x0F
 #define     ENO_CHId7Shift 0
-#define ENO_CHA52006RFC               21      // 2 Bits, Bit 3-2
-#define     ENO_CHA52006RFCMask 0x0C
-#define     ENO_CHA52006RFCShift 2
-#define ENO_CHA52006SB                21      // 1 Bit, Bit 4
-#define     ENO_CHA52006SBMask 0x10
-#define     ENO_CHA52006SBShift 4
-#define ENO_CHA52006SPS               21      // 1 Bit, Bit 5
-#define     ENO_CHA52006SPSMask 0x20
-#define     ENO_CHA52006SPSShift 5
-#define ENO_CHA52006TSL               21      // 1 Bit, Bit 6
-#define     ENO_CHA52006TSLMask 0x40
-#define     ENO_CHA52006TSLShift 6
-#define ENO_CHA52006SBY               21      // 1 Bit, Bit 7
-#define     ENO_CHA52006SBYMask 0x80
-#define     ENO_CHA52006SBYShift 7
+#define ENO_CHA52006RFC               21      // 2 Bits, Bit 6-5
+#define     ENO_CHA52006RFCMask 0x60
+#define     ENO_CHA52006RFCShift 5
+#define ENO_CHA52006SPS               21      // 1 Bit, Bit 2
+#define     ENO_CHA52006SPSMask 0x04
+#define     ENO_CHA52006SPSShift 2
+#define ENO_CHA52006TSL               21      // 1 Bit, Bit 1
+#define     ENO_CHA52006TSLMask 0x02
+#define     ENO_CHA52006TSLShift 1
 
 // Communication objects per channel (multiple occurance)
 #define ENO_KoOffset 10

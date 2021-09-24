@@ -566,6 +566,9 @@ class IEnOceanDevice
     uint8_t firstComObj = 0;
     uint8_t firstParameter = 0;
     uint8_t index = 0;
+
+
+
   public :
     uint8_t numberOfComObjects;
     uint8_t numberOfParameters;
@@ -586,8 +589,6 @@ class EnOcean
 
   public:
     static EnOcean Eno;
-
-    
 
     void initSerial(Stream &serial);
     void init();

@@ -8,6 +8,7 @@
 #include "RPS_Telegram.h"
 #include "4BS_Telegram.h"
 #include "VLD_Telegram.h"
+#include "hardware.h"
 
 // ################################################
 // ### DEBUG CONFIGURATION
@@ -31,6 +32,8 @@ private:
   uint32_t buttonLastPushTime2 = 0;
   uint8_t koIndex1;
   uint8_t koIndex2;
+
+  float fvalue;
 
   uint8_t msg_sent_after_receive = 0;
 
@@ -66,6 +69,9 @@ public:
     deviceId_Arr[1] = knx.paramByte(ENO_CHId2 + firstParameter);
     deviceId_Arr[2] = knx.paramByte(ENO_CHId4 + firstParameter);
     deviceId_Arr[3] = knx.paramByte(ENO_CHId6 + firstParameter);
+
+    // init parameter
+    union1.val_A5_20_06[1] = 160;
 
     //profil = 45; // nur zum Testen <<<<----------------------------------------------------
 
@@ -114,7 +120,7 @@ public:
     //------------  Channel 1 ---------------------------------------
     if (buttonStateSimulation1 == SIMULATE_PUSH)
     {
-      send_RPS_Taster(enOcean.getBaseId(), koIndex1, buttonMessage1, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+      send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
       buttonLastPushTime1 = millis();
       buttonStateSimulation1 = SIMULATE_RELEASE;
 #ifdef KDEBUG
@@ -127,7 +133,7 @@ public:
     {
       if (millis() - buttonLastPushTime1 >= SIMULATE_PAUSE_BEFORE_RELEASE)
       {
-        send_RPS_Taster(enOcean.getBaseId(), koIndex1, buttonMessage1, false);
+        send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, false);
         buttonStateSimulation1 = SIMULATE_NOTHING;
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Triggered "));
@@ -139,7 +145,7 @@ public:
     //------------  Channel 2 ---------------------------------------
     if (buttonStateSimulation2 == SIMULATE_PUSH)
     {
-      send_RPS_Taster(enOcean.getBaseId(), koIndex2, buttonMessage2, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+      send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
       buttonLastPushTime2 = millis();
       buttonStateSimulation2 = SIMULATE_RELEASE;
 #ifdef KDEBUG
@@ -152,7 +158,7 @@ public:
     {
       if (millis() - buttonLastPushTime2 >= SIMULATE_PAUSE_BEFORE_RELEASE)
       {
-        send_RPS_Taster(enOcean.getBaseId(), koIndex2, buttonMessage2, false);
+        send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, false);
         buttonStateSimulation2 = SIMULATE_NOTHING;
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Triggered "));
@@ -161,10 +167,15 @@ public:
 #endif
       }
     }
-    //msg_sent_after_receive
-    if(msg_sent_after_receive == msg_A5_20_06)
+
+    // *************** Sent after receive ***********************************************************************
+    //-----------------------------------------------------------------------------------------------------------
+    //A5-20-06
+    if (msg_sent_after_receive == msg_A5_20_06)
     {
       send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+      // löscht Ref Run Bit
+      union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit  
       msg_sent_after_receive = 0;
     }
   }
@@ -176,9 +187,16 @@ public:
   {
     static bool init1 = true;
     static bool init2 = true;
+    static bool init3 = true;
+    uint8_t teachinCH = 0;
 
-    SERIAL_PORT.print(F("Profil: "));
-    SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
+    if (koIndex != index) // prüft ob KO zum CHannel passt
+    {
+      return;
+    }
+
+    //SERIAL_PORT.print(F("Profil: "));
+    //SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
 
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
@@ -195,37 +213,56 @@ public:
         if (init1)
           union1.val_A5_20_06[0] = 0;
         if (init2)
-          union1.val_A5_20_06[1] = 160;
-        // set Settings from ETS
-        union1.val_A5_20_06[2] = knx.paramByte(ENO_CHA52006RFC + firstParameter); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+          union1.val_A5_20_06[1] = 88;
+        if (init3)                                                                  // set Settings from ETS
+          union1.val_A5_20_06[2] = knx.paramByte(ENO_CHA52006RFC + firstParameter); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+
 
         switch (koNr)
         {
+        case KO_Teachin: // Teach-in MSG
+          teachinCH = iKo.value(getDPT(VAL_DPT_5));
+          SERIAL_PORT.println(teachinCH);
+          SERIAL_PORT.println(index + 1);
+          if (teachinCH != index + 1)
+          {
+            return;
+          }
+          SERIAL_PORT.println(F("ready to send"));
+          union1.val_A5_20_06[0] = 0x80;
+          union1.val_A5_20_06[1] = 0x30;
+          union1.val_A5_20_06[2] = 0x49;
+          union1.val_A5_20_06[3] = 0x80;
+          init1 = true;
+          send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+          break;
+
         case KO_0: // SET Temp oder SET Pos
           init1 = false;
-
-          if (knx.paramByte(ENO_CHA52006SPS + firstParameter) & ENO_CHA52006SPSMask > 0)
+          if (knx.paramByte(ENO_CHA52006SPS + firstParameter) & ENO_CHA52006SPSMask)
           {
             union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 2.0; // Set Point Temp
 #ifdef KDEBUG
             SERIAL_PORT.print(F("SET Temp to: "));
-            SERIAL_PORT.print((uint8_t)iKo.value(getDPT(VAL_DPT_9)));
+            SERIAL_PORT.print(union1.val_A5_20_06[0]);
             SERIAL_PORT.println(F("°C"));
 #endif
           }
-
           else
+          {
             union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
 #ifdef KDEBUG
-          SERIAL_PORT.print(F("SET Pos to: "));
-          SERIAL_PORT.print((uint8_t)iKo.value(getDPT(VAL_DPT_5)));
-          SERIAL_PORT.println(F("%"));
+            SERIAL_PORT.print(F("SET Pos to: "));
+            SERIAL_PORT.print(union1.val_A5_20_06[0]);
+            SERIAL_PORT.println(F("%"));
 #endif
+          }
           break;
 
         case KO_1: // Sommer Umschaltung
           if (iKo.value(getDPT(VAL_DPT_1)))
           {
+            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] | (1 << 3); // Set Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Sommer Umschaltung: aktiv"));
@@ -233,6 +270,7 @@ public:
           }
           else
           {
+            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 3); // clear Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Sommer Umschaltung: inaktiv"));
@@ -243,6 +281,7 @@ public:
         case KO_2: // Run Reference
           if (iKo.value(getDPT(VAL_DPT_1)))
           {
+            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] | (1 << 7); // Set Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("RUN Reference"));
@@ -250,6 +289,9 @@ public:
           }
           else
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
+#ifdef KDEBUG
+          SERIAL_PORT.println(F("RUN Reference OFF"));
+#endif
           break;
 
         case KO_3: // Raum Temperatur
@@ -257,7 +299,7 @@ public:
           union1.val_A5_20_06[1] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 4.0; // Raumtemperatur
 #ifdef KDEBUG
           SERIAL_PORT.print(F("Raum-Temp: "));
-          SERIAL_PORT.print((uint8_t)iKo.value(getDPT(VAL_DPT_9)));
+          SERIAL_PORT.print(union1.val_A5_20_06[1]);
           SERIAL_PORT.println(F("°C"));
 #endif
           break;
@@ -265,6 +307,7 @@ public:
         case KO_4: // Standby
           if (iKo.value(getDPT(VAL_DPT_1)))
           {
+            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] | (1 << 0); // Set Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Standby"));
@@ -272,6 +315,7 @@ public:
           }
           else
           {
+            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 0); // clear Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("normal Mode"));
@@ -282,11 +326,10 @@ public:
         default:
           break;
         }
-        union1.val_A5_20_06[3] = 0; // only TeachIn
-
-        send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+        // gesendet wird in der TASK() da das Device nur nachrichten Empfangen kann, 1sek nachdem es eine Nachrticht geschickt hat
+        //send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
         break;
-      }
+      } // ENDE 2BS
       break;
     case u8RORG_VLD:
       switch (knx.paramWord(ENO_CHProfilSelectionVLD + firstParameter))
@@ -320,15 +363,15 @@ public:
             buttonMessage2 = false;
           }
           break;
-        case KO_4:                                         // Request Aktor Status
-          getStatusActors(enOcean.getBaseId(), index + 1); // index + 1 -> da es reicht einen Kanal anzufragen, die Antwort kommt immer für beide Kanäle
+        case KO_4:
+          getStatusActors(enOcean.getBaseId(), index); // Request Aktor Status
           break;
         default:
           break;
         }
         break;
       }
-      break;
+      break; // ENDE VLD
 
     case u8RORG_Rocker:
       switch (knx.paramByte(ENO_CHDirectionKnxEnocean + firstParameter))
@@ -341,12 +384,10 @@ public:
 
     default:
       return;
-      break;
+      break; // ENDE ROCKER
     }
   }
 #pragma GCC diagnostic pop // I don't want a warning, just because we don't do anything here
-
-
 
   // decode EnOcean message. Fail fast!
 #pragma GCC diagnostic push // If you don't want to be warned because you are not using index, include that pragma stuff
@@ -362,7 +403,8 @@ public:
       return false;
 #endif
 
-// ONLY FOR TESTING
+    // ONLY FOR TESTING
+    /*
 #ifdef EnOceanTEST
     SERIAL_PORT.println("ENOCEAN TEST");
 
@@ -493,7 +535,7 @@ public:
       handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
       break;
     }
-#else
+#else*/
     // Normal Funktion !!!!
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
@@ -565,7 +607,6 @@ public:
       SERIAL_PORT.print(" ");
       SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[8], HEX);
 #endif
-
       msg_sent_after_receive = handle_4BS(f_Pkt_st, profil, profil2nd, firstComObj, firstParameter);
       break;
 
@@ -618,7 +659,7 @@ public:
       handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
       break;
     }
-#endif
+    //#endif
     return true;
   }
 #pragma GCC diagnostic pop // I don't want a warning, just because we don't do anything here

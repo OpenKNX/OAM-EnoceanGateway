@@ -140,7 +140,7 @@ void EnOcean::init()
   //****************** Read EnOcean Gateway Base ID  ************************************
   // communicates via Enocean UART channel
   readBaseId(&lui8_BaseID_p[0]);
-
+  
 #ifdef KDEBUG
   SERIAL_PORT.print("BASEID: ");
 
@@ -607,7 +607,6 @@ uint8_t EnOcean::uart_sendPacket(PACKET_SERIAL_TYPE *pPacket)
 
   // Data CRC
   while (_serial->write(u8CRC) != 1)
-    ;
-
+    ; 
   return ENOCEAN_OK;
 }

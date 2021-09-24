@@ -4,7 +4,7 @@
 #include "EnoceanGateway.h"
 #include "hardware.h"
 
-void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t koIndex, uint8_t *inputs)
+void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs)
 {
     PACKET_SERIAL_TYPE l_TestPacket_st;
     uint8_t l_TestBuf_p[10];
@@ -25,12 +25,11 @@ void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t koIndex, uint8_t *inputs)
         l_TestBuf_p[i + 5] = fui8_BaseID_p[i];
     }
     // passt ID an damit sie einmalig ist 
-    l_TestBuf_p[9] = fui8_BaseID_p[3] + koIndex;
-
+    l_TestBuf_p[8] = fui8_BaseID_p[3] + Index;
     enOcean.sendPacket(&l_TestPacket_st);
 }
 
-void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t koIndex, boolean state, boolean pressed)
+void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t Index, boolean state, boolean pressed)
 {
     PACKET_SERIAL_TYPE l_TestPacket_st;
     uint8_t l_TestBuf_p[7];
@@ -73,7 +72,7 @@ void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t koIndex, boolean state, boo
         l_TestBuf_p[i + 2] = fui8_BaseID_p[i];
     }
     // passt ID an damit sie einmalig ist 
-    l_TestBuf_p[5] = fui8_BaseID_p[3] + koIndex;
+    l_TestBuf_p[5] = fui8_BaseID_p[3] + Index;
 
     enOcean.sendPacket(&l_TestPacket_st);
 }
