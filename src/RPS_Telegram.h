@@ -886,7 +886,7 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
   RPS_F6_10_00_TYPE *lRpsTlg_p;
   RPS_F6_10_01_TYPE *lRpsTlg2_p;
 #ifndef EnOceanTEST
-  switch (knx.paramByte(firstParameter + ENO_CHProfilSelectionRPS)) // -------------->>>>>> Anpassen ETS <<<<<---------------------------
+  switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionRPS)) 
 #else
   switch (profil)
 #endif
