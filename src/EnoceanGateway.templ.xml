@@ -391,17 +391,17 @@
                               <when test="6">
                                 <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%13_R-%C%13" />
                                 <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%13_R-%C%13">
-                                  <when test="41">
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                  <when test="31"> <!-- A5-06-01 -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" /> <!-- Bat -->
                                   </when>
-                                  <when test="42">
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                  <when test="32"> <!-- A5-06-02 -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" /> <!-- Bat -->
                                   </when>
-                                  <when test="43">
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                  <when test="33"> <!-- A5-06-03 -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" /> <!-- Bat -->
                                   </when>
                                 </choose> 
                               </when>
@@ -409,20 +409,20 @@
                               <when test="7">
                                 <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%14_R-%C%14" />
                                 <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%14_R-%C%14">
-                                  <when test="44">
+                                  <when test="36"> <!-- A5-07-01 -->
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR)" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" /> <!-- PIR -->
                                   </when>
-                                  <when test="45">
+                                  <when test="37"> <!-- A5-07-02 -->
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR, Batterie Spannung)" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" /> <!-- PIR -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" /> <!-- Bat -->
                                   </when>
-                                  <when test="46">
+                                  <when test="38"> <!-- A5-07-03 -->
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Bewegungsmelder ( PIR, LUX, Batterie Spannung)" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" />
-                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" />
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%016" /> <!-- PIR -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX -->
+                                    <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" /> <!-- Bat -->
                                   </when>
                                 </choose> 
                               </when>
