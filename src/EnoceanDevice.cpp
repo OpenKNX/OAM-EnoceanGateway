@@ -76,8 +76,11 @@ void ProcessKoCallback(GroupObject &iKo)
 
 void appSetup()
 {
-  if (GroupObject::classCallback() == 0)
-    GroupObject::classCallback(ProcessKoCallback);
+  if (!knx.configured())
+  {
+    if (GroupObject::classCallback() == 0)
+      GroupObject::classCallback(ProcessKoCallback);
+  }
 }
 
 void appLoop()
