@@ -11,7 +11,7 @@
 
 // Parameter per channel
 #define ENO_ParamBlockOffset 11
-#define ENO_ParamBlockSize 25
+#define ENO_ParamBlockSize 22
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
 #define ENO_CHProfilSelection1BS       1      // char*, 2 Byte
@@ -87,9 +87,9 @@
 #define ENO_CHId7                     20      // 4 Bits, Bit 3-0
 #define     ENO_CHId7Mask 0x0F
 #define     ENO_CHId7Shift 0
-#define ENO_CHA52006RFC               21      // 2 Bits, Bit 6-5
-#define     ENO_CHA52006RFCMask 0x60
-#define     ENO_CHA52006RFCShift 5
+#define ENO_CHA52006RFC               21      // 3 Bits, Bit 6-4
+#define     ENO_CHA52006RFCMask 0x70
+#define     ENO_CHA52006RFCShift 4
 #define ENO_CHA52006SPS               21      // 1 Bit, Bit 2
 #define     ENO_CHA52006SPSMask 0x04
 #define     ENO_CHA52006SPSShift 2

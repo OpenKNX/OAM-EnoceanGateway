@@ -117,11 +117,11 @@
                 <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%62" Name="CH%C%Id7" Offset="3" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble" Text="" Value="0" />
               </Union>
               <!-- Parameter UP63 schon belegt in UNION oben !!!! -->
-              <Union SizeInBit="32">
+              <Union SizeInBit="8">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="21" BitOffset="0" />
                 <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%64" Name="CH%C%A52006RFC" Offset="0" BitOffset="1" ParameterType="M-00FA_A-0000-00-0000_PT-A52006RFC" Text="RFC Interval" Value="0" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%66" Name="CH%C%A52006SPS" Offset="0" BitOffset="5" ParameterType="M-00FA_A-0000-00-0000_PT-A52006SPS" Text="Set Point Selection" Value="1" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%67" Name="CH%C%A52006TSL" Offset="0" BitOffset="6" ParameterType="M-00FA_A-0000-00-0000_PT-A52006TSL" Text="Temperatur Auswahl" Value="0" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%65" Name="CH%C%A52006SPS" Offset="0" BitOffset="5" ParameterType="M-00FA_A-0000-00-0000_PT-A52006SPS" Text="Set Point Selection" Value="1" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%66" Name="CH%C%A52006TSL" Offset="0" BitOffset="6" ParameterType="M-00FA_A-0000-00-0000_PT-A52006TSL" Text="Temperatur Auswahl" Value="0" />
               </Union>  
             </Parameters>
             <ParameterRefs>
@@ -189,8 +189,8 @@
               <ParameterRef Id="M-00FA_A-0000-00-0000_UP-%C%62_R-%C%62" RefId="M-00FA_A-0000-00-0000_UP-%C%62" /> 
               <ParameterRef Id="M-00FA_A-0000-00-0000_UP-%C%63_R-%C%63" RefId="M-00FA_A-0000-00-0000_UP-%C%63" /> 
               <ParameterRef Id="M-00FA_A-0000-00-0000_UP-%C%64_R-%C%64" RefId="M-00FA_A-0000-00-0000_UP-%C%64" /> 
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-%C%65_R-%C%65" RefId="M-00FA_A-0000-00-0000_UP-%C%65" /> 
               <ParameterRef Id="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66" RefId="M-00FA_A-0000-00-0000_UP-%C%66" /> 
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-%C%67_R-%C%67" RefId="M-00FA_A-0000-00-0000_UP-%C%67" /> 
             </ParameterRefs>
             <ComObjectTable>
               <!-- ComOject Kanal 1 -->
@@ -504,8 +504,8 @@
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
                                     <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%64_R-%C%64" /> <!-- RFC -->
                                     <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%65_R-%C%65" /> <!-  SB -->
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66" /> <!-- SPS -->
-                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%67_R-%C%67" /> <!-- TSL -->
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%65_R-%C%65" /> <!-- SPS -->
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66" /> <!-- TSL -->
                                     <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%68_R-%C%68" /> <!- SBY -->
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-3" Text="" UIHint="HorizontalRuler" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-11" Text="KO Status byte:" />
@@ -517,7 +517,7 @@
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-17" Text="Bit6: ES" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-18" Text="Bit7: ENIE" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-19" Text="Bit8: TSL" />
-                                    <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%66_R-%C%66">
+                                    <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%65_R-%C%65">
                                       <when test="0">
                                         <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%024" /> <!-- Set Temp -->
                                       </when>

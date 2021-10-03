@@ -559,7 +559,7 @@
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-A52006RFC" Name="A52006RFC">
-                <TypeRestriction Base="Value" SizeInBit="2">
+                <TypeRestriction Base="Value" SizeInBit="3">
                   <Enumeration Text="Auto" Value="0" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-0" />
                   <Enumeration Text="2min" Value="1" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-1" />
                   <Enumeration Text="5min" Value="2" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-2" />
