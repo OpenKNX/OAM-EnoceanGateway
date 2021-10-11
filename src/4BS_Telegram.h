@@ -851,6 +851,8 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage / 50.0);
+
+                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u84BsTelData.CT);
 #endif
                   switch (fourBsA5_17_09_0A_Tlg_p->u84BsTelData.CT)
                   {
@@ -858,21 +860,21 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
-                        SERIAL_PORT.print("State: close");
+                        SERIAL_PORT.println("State: close");
 #endif
                         break;
                   case 0x01: //tilt
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
-                        SERIAL_PORT.print("State: gekippt");
+                        SERIAL_PORT.println("State: gekippt");
 #endif
                         break;
-                  case 0x11: //open
+                  case 3: //open
                         knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
-                        SERIAL_PORT.print("State: open");
+                        SERIAL_PORT.println("State: open");
 #endif
                         break;
 
