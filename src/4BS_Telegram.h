@@ -10,6 +10,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
       float temp;
       float hum;
       int8_t value;
+      bool bvalue;
 
       FOURBS_A5_02_TYPE *fourBsA5_02_Tlg_p;
       FOURBS_A5_02_2030TYPE *fourBsA5_02_2030_Tlg_p;
@@ -838,7 +839,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA5_17_07_08_Tlg_p->u84BsTelData.LCT);
 #endif
                   break;
-                  //**************************************************************
+            //**************************************************************
             // ----------------- Profil: A5-14-09 --------------------------
             //**************************************************************
             case A5_14_09:
@@ -851,14 +852,18 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage / 50.0);
-
-                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u84BsTelData.CT);
 #endif
                   switch (fourBsA5_17_09_0A_Tlg_p->u84BsTelData.CT)
                   {
                   case 0x00: //close
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
+                        if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+                              bvalue = true;
+                        else
+                              bvalue = false;
+                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));      
+
 #ifdef KDEBUG
                         SERIAL_PORT.println("State: close");
 #endif
@@ -866,13 +871,24 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   case 0x01: //tilt
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
+                        if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+                              bvalue = false;
+                        else
+                              bvalue = true;
+                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));      
+
 #ifdef KDEBUG
                         SERIAL_PORT.println("State: gekippt");
 #endif
                         break;
-                  case 3: //open
+                  case 0x03: //open
                         knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
+                        if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+                              bvalue = false;
+                        else
+                              bvalue = true;
+                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                         SERIAL_PORT.println("State: open");
 #endif
@@ -911,7 +927,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   // ......Current Position.........................................
 #ifndef EnOceanTEST
                   knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_06_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
-                  #endif
+#endif
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("current Pos: "));
                   SERIAL_PORT.print(fourBsA5_20_06_Tlg_p->u8CurrentPos);
@@ -982,16 +998,16 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   }
 #ifndef EnOceanTEST
                   // ......Temperature.........................................
-                  knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_06_Tlg_p->u8Temp/2.0, getDPT(VAL_DPT_9));
+                  knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_06_Tlg_p->u8Temp / 2.0, getDPT(VAL_DPT_9));
                   // ......Status Bits.........................................
                   knx.getGroupObject(firstComObj + 9).value(fourBsA5_20_06_Tlg_p->u8StatusBits, getDPT(VAL_DPT_5));
 #endif
 
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("Temperature: "));
-                  SERIAL_PORT.println(fourBsA5_20_06_Tlg_p->u8Temp/2.0);
+                  SERIAL_PORT.println(fourBsA5_20_06_Tlg_p->u8Temp / 2.0);
                   SERIAL_PORT.print(F("Status Bits (MSB-LSB): "));
-                  SERIAL_PORT.println(fourBsA5_20_06_Tlg_p->u8StatusBits,BIN);
+                  SERIAL_PORT.println(fourBsA5_20_06_Tlg_p->u8StatusBits, BIN);
 #endif
                   break; // ENDE A5-20-06
             default:

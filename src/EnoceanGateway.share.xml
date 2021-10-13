@@ -51,6 +51,12 @@
                   <Enumeration Text="Ja" Value="1" Id="M-00FA_A-0000-00-0000_PT-YesNo_EN-1" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-OneZero" Name="OneZero">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="0" Value="0" Id="M-00FA_A-0000-00-0000_PT-OneZero_EN-0" />
+                  <Enumeration Text="1" Value="1" Id="M-00FA_A-0000-00-0000_PT-OneZero_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
               <!-- Parameter type for an 8 bit percent parameter -->
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-Percentage" Name="Percentage">
                 <TypeNumber SizeInBit="8" Type="signedInt" minInclusive="0" maxInclusive="100" />

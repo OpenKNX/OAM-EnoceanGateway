@@ -60,7 +60,7 @@ void setup()
     // start the framework.
     knx.start();
 #endif
-
+    
     // start Enocean
     for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
     {
