@@ -885,8 +885,11 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 {
   RPS_F6_10_00_TYPE *lRpsTlg_p;
   RPS_F6_10_01_TYPE *lRpsTlg2_p;
+
+  bool bvalue;
+
 #ifndef EnOceanTEST
-  switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionRPS)) 
+  switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionRPS))
 #else
   switch (profil)
 #endif
@@ -959,6 +962,11 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1111: // Hebel unten
       knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
+      if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+        bvalue = true;
+      else
+        bvalue = false;
+      knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
       SERIAL_PORT.println("Hebel unten");
 #endif
@@ -966,6 +974,11 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1101: // Hebel Oben
       knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1_19));
+      if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+        bvalue = false;
+      else
+        bvalue = true;
+      knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
       SERIAL_PORT.println("Hebel oben");
 #endif
@@ -973,6 +986,11 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1100: // Hebel Mitte
       knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
+      if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+        bvalue = false;
+      else
+        bvalue = true;
+      knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
       SERIAL_PORT.println("Hebel mitte");
 #endif
@@ -980,6 +998,11 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1110: // Hebel Mitte
       knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
+      if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+        bvalue = false;
+      else
+        bvalue = true;
+      knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
       SERIAL_PORT.println("Hebel mitte");
 #endif
