@@ -196,6 +196,7 @@
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-Profil4BS06" Name="Profil4BS06">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="A5-06-01   Range 300lx to 60.000lx" Value="31" Id="M-00FA_A-0000-00-0000_PT-Profil4BS06_EN-31" />
+                  <Enumeration Text="A5-06-01*  300lx to 30.000lx (TF-AHDSB)" Value="296" Id="M-00FA_A-0000-00-0000_PT-Profil4BS06_EN-296" />
                   <Enumeration Text="A5-06-02   Range 0lx to 1.020lx" Value="32" Id="M-00FA_A-0000-00-0000_PT-Profil4BS06_EN-32" />
                   <Enumeration Text="A5-06-03   10 Bit Range 0lx to 1.000lx" Value="33" Id="M-00FA_A-0000-00-0000_PT-Profil4BS06_EN-33" />
                   <Enumeration Text="A5-06-04   N.A." Value="34" Id="M-00FA_A-0000-00-0000_PT-Profil4BS06_EN-34" />

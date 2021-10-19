@@ -442,6 +442,16 @@ struct FOURBS_A5_06_01_TYPE
   uint8_t u8Status;
 };
 
+struct FOURBS_A5_06_01_V2_TYPE
+{
+  uint8_t u8Illumbyte3;
+  uint8_t u8Illumbyte2;
+  uint8_t u8byte1;
+  uint8_t u8byte0;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
 struct FOURBS_A5_06_03_TYPE
 {
   uint8_t u8SupplyVoltage;

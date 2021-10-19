@@ -17,6 +17,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
       FOURBS_A5_04_TYPE *fourBsA5_04_Tlg_p;
       FOURBS_A5_04_03_TYPE *fourBsA5_04_03_Tlg_p;
       FOURBS_A5_06_01_TYPE *fourBsA5_06_01_Tlg_p;
+      FOURBS_A5_06_01_V2_TYPE *fourBsA5_06_01_V2_Tlg_p;
       FOURBS_A5_06_01_TYPE *fourBsA5_06_02_Tlg_p;
       FOURBS_A5_06_03_TYPE *fourBsA5_06_03_Tlg_p;
       FOURBS_A5_07_01_TYPE *fourBsTlg2_p;
@@ -473,6 +474,35 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #endif
                   break;
             //**************************************************************
+            // ----------------- Profil: A5-06-01 Version 2 ----------------
+            //**************************************************************
+            case A5_06_01_V2:
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("01*"));
+#endif
+                  fourBsA5_06_01_V2_Tlg_p = (FOURBS_A5_06_01_V2_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
+
+                  if (fourBsA5_06_01_V2_Tlg_p->u8byte0 == 0x08)
+                  {
+                        if (fourBsA5_06_01_V2_Tlg_p->u8Illumbyte2 == 0) // Helligkeit 0..50LUX
+                        {
+                              // Range 0 ... 50 lux
+                              luxfloat = (float)(fourBsA5_06_01_V2_Tlg_p->u8Illumbyte3)/2.0;
+                        }
+                        else
+                        {
+                              // Range 300 ... 30000 lux
+                              luxfloat = (float)(fourBsA5_06_01_V2_Tlg_p->u8Illumbyte2 * 116.470588) + 300.0;
+                        }
+                  }
+                  knx.getGroupObject(firstComObj + 1).value(luxfloat, getDPT(VAL_DPT_9));
+                  
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("LUX: "));
+                  SERIAL_PORT.println(luxfloat);          
+#endif
+                  break;
+            //**************************************************************
             // ----------------- Profil: A5-06-02 --------------------------
             //**************************************************************
             case A5_06_02:
@@ -862,7 +892,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                               bvalue = true;
                         else
                               bvalue = false;
-                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));      
+                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 
 #ifdef KDEBUG
                         SERIAL_PORT.println("State: close");
@@ -875,7 +905,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                               bvalue = false;
                         else
                               bvalue = true;
-                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));      
+                        knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 
 #ifdef KDEBUG
                         SERIAL_PORT.println("State: gekippt");
