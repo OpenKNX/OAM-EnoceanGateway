@@ -29,6 +29,6 @@ Note: the SMA connector is only needed in case you want to use an external Anten
 
 It is only necessay to solder that pad with the yellow arrow. You can test the solder connection if you press the reset button and check if the board do a reset. The other three pads are only necessary in case you want to use a JTAG connection (green arrows)
 
-<img src="pic/SoderingVCC.png"  width="320" >
+<img src="pic/SolderingVCC.png"  width="320" >
 
 This pads you do not need to solder (red arrows)
