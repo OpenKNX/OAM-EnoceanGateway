@@ -484,7 +484,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 
                   if (fourBsA5_06_01_V2_Tlg_p->u8byte0 == 0x09)
                   {
-                        if (fourBsA5_06_01_V2_Tlg_p->u8Illumbyte2 == 0) // Helligkeit 0..50LUX
+                        if (fourBsA5_06_01_V2_Tlg_p->u8Illumbyte2 == 0) // Helligkeit 0..100LUX
                         {
                               // Range 0 ... 50 lux
                               luxfloat = (float)(fourBsA5_06_01_V2_Tlg_p->u8Illumbyte3);
