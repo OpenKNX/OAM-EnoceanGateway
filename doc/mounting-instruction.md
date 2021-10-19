@@ -21,3 +21,14 @@ Note: the SMA connector is only needed in case you want to use an external Anten
 
 <img src="pic/Bestueckung_Bot_final.png"  width="310" >
 <img src="pic/Bestueckung_Top_final.png"  width="320" >
+
+---------------------------------------------------
+**special solder points**
+
+<img src="pic/SolderingReset.png"  width="310" >
+
+It is only necessay to solder that pad with the yellow arrow. You can test the solder connection if you press the reset button and check if the board do a reset. The other three pads are only necessary in case you want to use a JTAG connection (green arrows)
+
+<img src="pic/SoderingVCC.png"  width="320" >
+
+This pads you do not need to solder (red arrows)
