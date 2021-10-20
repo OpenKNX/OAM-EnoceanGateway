@@ -888,7 +888,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   case 0x00: //close
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-                        if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+                        if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
                               bvalue = true;
                         else
                               bvalue = false;
@@ -901,7 +901,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   case 0x01: //tilt
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-                        if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+                        if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
                               bvalue = false;
                         else
                               bvalue = true;
@@ -914,7 +914,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   case 0x03: //open
                         knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-                        if (knx.paramWord(firstParameter + ENO_CHA51409closeValue))
+                        if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
                               bvalue = false;
                         else
                               bvalue = true;

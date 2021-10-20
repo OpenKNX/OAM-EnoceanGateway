@@ -96,9 +96,9 @@
 #define ENO_CHA52006TSL               21      // 1 Bit, Bit 1
 #define     ENO_CHA52006TSLMask 0x02
 #define     ENO_CHA52006TSLShift 1
-#define ENO_CHA51409closeValue        21      // 1 Bit, Bit 7
-#define     ENO_CHA51409closeValueMask 0x80
-#define     ENO_CHA51409closeValueShift 7
+#define ENO_CHWindowcloseValue        21      // 1 Bit, Bit 7
+#define     ENO_CHWindowcloseValueMask 0x80
+#define     ENO_CHWindowcloseValueShift 7
 
 // Communication objects per channel (multiple occurance)
 #define ENO_KoOffset 10
