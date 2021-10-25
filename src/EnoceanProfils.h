@@ -14,8 +14,10 @@
 
 #define KO_Teachin  100
 
-//direct answer after msg recive
+//direct answer after msg recive & TEACHin
 #define msg_A5_20_06 1
+#define TEACHIN_A52006 10
+
 
 
 #define RockerA  1
