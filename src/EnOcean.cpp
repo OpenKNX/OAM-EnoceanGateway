@@ -111,13 +111,16 @@ void EnOcean::configureDevice(IEnOceanDevice &device, uint8_t channel)
   device.init(lastComObj, lastParam, channel);
 
 #ifdef KDEBUG
-  SERIAL_PORT.print("CH:");
-  SERIAL_PORT.println(channel + 1);
-  SERIAL_PORT.print("KO:");
-  SERIAL_PORT.println(lastComObj);
-  SERIAL_PORT.print("Par:");
-  SERIAL_PORT.println(lastParam);
-  SERIAL_PORT.println("----------------------");
+  if (knx.configured())
+  {
+    SERIAL_PORT.print("CH:");
+    SERIAL_PORT.println(channel + 1);
+    SERIAL_PORT.print("KO:");
+    SERIAL_PORT.println(lastComObj);
+    SERIAL_PORT.print("Par:");
+    SERIAL_PORT.println(lastParam);
+    SERIAL_PORT.println("----------------------");
+  }
 #endif
 
   deviceRegistry[lastDevice] = &device;
@@ -140,7 +143,7 @@ void EnOcean::init()
   //****************** Read EnOcean Gateway Base ID  ************************************
   // communicates via Enocean UART channel
   readBaseId(&lui8_BaseID_p[0]);
-  
+
 #ifdef KDEBUG
   SERIAL_PORT.print("BASEID: ");
 
@@ -196,6 +199,7 @@ void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
   PACKET_SERIAL_TYPE lRdBaseIDPkt_st;
 
   uint8_t lu8SndBuf = u8CO_RD_IDBASE;
+  uint8_t loopCount = 0;
 
   lRdBaseIDPkt_st.u16DataLength = 0x0001;
   lRdBaseIDPkt_st.u8OptionLength = 0x00;
@@ -219,9 +223,10 @@ void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
 #ifdef KDEBUG
     SERIAL_PORT.println("Receiving telegram (read base ID).");
 #endif
-    while (u8RetVal == ENOCEAN_NO_RX_TEL)
+    while (u8RetVal == ENOCEAN_NO_RX_TEL && loopCount < 200)
     {
       u8RetVal = uart_getPacket(&m_Pkt_st, (uint16_t)DATBUF_SZ);
+      loopCount++;
     }
 
     switch (u8RetVal)
@@ -264,6 +269,11 @@ void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
       }
     }
     break;
+    case ENOCEAN_NO_RX_TEL:
+#ifdef KDEBUG
+      SERIAL_PORT.println("ERROR Receiving telegram (read base ID).");
+#endif
+      break;
     default:
     {
 #ifdef KDEBUG
@@ -607,6 +617,6 @@ uint8_t EnOcean::uart_sendPacket(PACKET_SERIAL_TYPE *pPacket)
 
   // Data CRC
   while (_serial->write(u8CRC) != 1)
-    ; 
+    ;
   return ENOCEAN_OK;
 }

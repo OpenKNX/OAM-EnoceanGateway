@@ -76,40 +76,43 @@ public:
     //profil = 45; // nur zum Testen <<<<----------------------------------------------------
 
 #ifdef KDEBUG
-    SERIAL_PORT.print(F("I am: "));
-    for (int i = 0; i < BASEID_BYTES; i++)
+    if (knx.configured())
     {
-      SERIAL_PORT.print(deviceId_Arr[i], HEX);
-    }
-    SERIAL_PORT.println(F(""));
-    SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
-
-    switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
-    //switch (u8RORG_Rocker)                                 // nur zum Testen <<<<----------------------------------------------------
-    {
-    case u8RORG_1BS:
-      SERIAL_PORT.print(F("Profil: 1BS "));
-      SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelection1BS + firstParameter));
-      break;
-    case u8RORG_4BS:
-      SERIAL_PORT.print(F("Profil: 4BS "));
-      SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelection4BS + firstParameter));
-      break;
-    case u8RORG_RPS:
-      SERIAL_PORT.print(F("Profil: RPS "));
-      SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelectionRPS + firstParameter));
-      break;
-    case u8RORG_VLD:
-      SERIAL_PORT.print(F("Profil: VLD "));
-      SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelectionVLD + firstParameter));
-      break;
-    case u8RORG_Rocker:
-      SERIAL_PORT.print(F("Profil: Rocker Switch "));
+      SERIAL_PORT.print(F("I am: "));
+      for (int i = 0; i < BASEID_BYTES; i++)
+      {
+        SERIAL_PORT.print(deviceId_Arr[i], HEX);
+      }
+      SERIAL_PORT.println(F(""));
       SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
-      break;
-    default:
-      SERIAL_PORT.println(F("Profil: ERROR"));
-      break;
+
+      switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
+      //switch (u8RORG_Rocker)                                 // nur zum Testen <<<<----------------------------------------------------
+      {
+      case u8RORG_1BS:
+        SERIAL_PORT.print(F("Profil: 1BS "));
+        SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelection1BS + firstParameter));
+        break;
+      case u8RORG_4BS:
+        SERIAL_PORT.print(F("Profil: 4BS "));
+        SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelection4BS + firstParameter));
+        break;
+      case u8RORG_RPS:
+        SERIAL_PORT.print(F("Profil: RPS "));
+        SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelectionRPS + firstParameter));
+        break;
+      case u8RORG_VLD:
+        SERIAL_PORT.print(F("Profil: VLD "));
+        SERIAL_PORT.println(knx.paramWord(ENO_CHProfilSelectionVLD + firstParameter));
+        break;
+      case u8RORG_Rocker:
+        SERIAL_PORT.print(F("Profil: Rocker Switch "));
+        SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
+        break;
+      default:
+        SERIAL_PORT.println(F("Profil: ERROR"));
+        break;
+      }
     }
 #endif
   }
@@ -175,7 +178,7 @@ public:
     {
       send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
       // löscht Ref Run Bit
-      union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit  
+      union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
       msg_sent_after_receive = 0;
     }
   }
@@ -216,7 +219,6 @@ public:
           union1.val_A5_20_06[1] = 88;
         if (init3)                                                                  // set Settings from ETS
           union1.val_A5_20_06[2] = knx.paramByte(ENO_CHA52006RFC + firstParameter); // Ein Parameter reicht, da alles im UNION gespeichert wird.
-
 
         switch (koNr)
         {
