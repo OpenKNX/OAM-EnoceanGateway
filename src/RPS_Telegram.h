@@ -962,7 +962,7 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1111: // Hebel unten
       knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
-      if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = true;
       else
         bvalue = false;
@@ -974,7 +974,7 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1101: // Hebel Oben
       knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1_19));
-      if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = false;
       else
         bvalue = true;
@@ -986,7 +986,7 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1100: // Hebel Mitte
       knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
-      if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = false;
       else
         bvalue = true;
@@ -998,7 +998,7 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     case 0b1110: // Hebel Mitte
       knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1_19));
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
-      if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = false;
       else
         bvalue = true;

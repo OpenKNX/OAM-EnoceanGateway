@@ -36,6 +36,7 @@ private:
   float fvalue;
 
   uint8_t msg_sent_after_receive = 0;
+  byte val_A5_20_06_TeachIn[4];
 
   union
   {
@@ -186,11 +187,11 @@ public:
     //A5-20-06
     if (msg_sent_after_receive == TEACHIN_A52006)
     {
-      union1.val_A5_20_06[0] = 0x80;
-      union1.val_A5_20_06[1] = 0x30;
-      union1.val_A5_20_06[2] = 0x49;
-      union1.val_A5_20_06[3] = 0xF0;
-      send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+      val_A5_20_06_TeachIn[0] = 0x80;
+      val_A5_20_06_TeachIn[1] = 0x30;
+      val_A5_20_06_TeachIn[2] = 0x49;
+      val_A5_20_06_TeachIn[3] = 0xF0;
+      send_4BS_Msg(enOcean.getBaseId(), index, val_A5_20_06_TeachIn);
 #ifdef KDEBUG
       SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif

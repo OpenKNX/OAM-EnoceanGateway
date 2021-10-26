@@ -876,6 +876,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   fourBsA5_17_09_0A_Tlg_p = (FOURBS_A5_14_09_0A_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("09"));
+                  SERIAL_PORT.println(firstParameter);
 #endif
                   // ...................  Supply Voltage .......................
                   knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
@@ -883,12 +884,13 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage / 50.0);
 #endif
+
                   switch (fourBsA5_17_09_0A_Tlg_p->u84BsTelData.CT)
                   {
                   case 0x00: //close
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-                        if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
                               bvalue = true;
                         else
                               bvalue = false;
@@ -901,7 +903,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   case 0x01: //tilt
                         knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-                        if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
                               bvalue = false;
                         else
                               bvalue = true;
@@ -914,7 +916,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   case 0x03: //open
                         knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
                         knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-                        if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
                               bvalue = false;
                         else
                               bvalue = true;

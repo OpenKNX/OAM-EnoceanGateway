@@ -33,50 +33,40 @@ void ProcessHeartbeat()
 
 void ProcessKoCallback(GroupObject &iKo)
 {
-  if (iKo.asap() == ENO_KoTeachInMSG) //Teach-in MSG
+  for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
   {
-    SERIAL_PORT.print("reviev Teach-in CH: ");
-    uint8_t Value = iKo.value(getDPT(VAL_DPT_5));
-    SERIAL_PORT.println(Value);
-    enOcean.handleKnxEvents(MAX_NUMBER_OF_DEVICES + 1, KO_Teachin, iKo);
-  }
-  else
-  {
-    for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
-    {
 
-      if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
-      {
-        SERIAL_PORT.println("reviev KO_0");
-        enOcean.handleKnxEvents(koIndex, 0, iKo);
-      }
-      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
-      {
-        SERIAL_PORT.println("reviev KO_1");
-        enOcean.handleKnxEvents(koIndex, 1, iKo);
-      }
-      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
-      {
-        SERIAL_PORT.println("reviev KO_2");
-        enOcean.handleKnxEvents(koIndex, 2, iKo);
-      }
-      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
-      {
-        SERIAL_PORT.println("reviev KO_3");
-        enOcean.handleKnxEvents(koIndex, 3, iKo);
-      }
-      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
-      {
-        SERIAL_PORT.println("reviev KO_4");
-        enOcean.handleKnxEvents(koIndex, 4, iKo);
-      }
+    if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
+    {
+      SERIAL_PORT.println("reviev KO_0");
+      enOcean.handleKnxEvents(koIndex, 0, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
+    {
+      SERIAL_PORT.println("reviev KO_1");
+      enOcean.handleKnxEvents(koIndex, 1, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
+    {
+      SERIAL_PORT.println("reviev KO_2");
+      enOcean.handleKnxEvents(koIndex, 2, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
+    {
+      SERIAL_PORT.println("reviev KO_3");
+      enOcean.handleKnxEvents(koIndex, 3, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
+    {
+      SERIAL_PORT.println("reviev KO_4");
+      enOcean.handleKnxEvents(koIndex, 4, iKo);
     }
   }
 }
 
 void appSetup()
 {
-  if (!knx.configured())
+  if (knx.configured())
   {
     if (GroupObject::classCallback() == 0)
       GroupObject::classCallback(ProcessKoCallback);
