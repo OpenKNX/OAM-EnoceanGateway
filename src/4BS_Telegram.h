@@ -1066,7 +1066,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                               knx.getGroupObject(firstComObj + 8).value(fourBsA5_20_06_Tlg_p->u84BsTelData.Offset / 2.0, getDPT(VAL_DPT_9));
 #endif
 #ifdef KDEBUG
-                              SERIAL_PORT.print(F("Local offset: "));
+                              SERIAL_PORT.print(F("LOM = 1 Local offset: "));
                               SERIAL_PORT.print(fourBsA5_20_06_Tlg_p->u84BsTelData.Offset / 2.0);
                               SERIAL_PORT.println("°C");
 #endif
@@ -1116,9 +1116,9 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                               knx.getGroupObject(firstComObj + 8).value(value, getDPT(VAL_DPT_9));
 #endif
 #ifdef KDEBUG
-                              SERIAL_PORT.print(F("Local offset: "));
+                              SERIAL_PORT.print(F("LOM = 0 Local offset: "));
                               SERIAL_PORT.print(value);
-                              SERIAL_PORT.println("%");
+                              SERIAL_PORT.println("°C");
 #endif
                         }
 #ifndef EnOceanTEST

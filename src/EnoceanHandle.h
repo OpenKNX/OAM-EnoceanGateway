@@ -50,7 +50,13 @@ public:
     // numberOfParameters = 2;
   }
 
-  // pre-configure device, set sender-id etc.
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
+  //
+  //   init()        // things that need to be done regularly
+  //
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
   void init(uint8_t startAtComObj, uint8_t startAtParameter, uint8_t channel)
   {
     firstComObj = startAtComObj;
@@ -72,7 +78,14 @@ public:
     deviceId_Arr[3] = knx.paramByte(ENO_CHId6 + firstParameter);
 
     // init parameter
-    union1.val_A5_20_06[1] = 160;
+
+    //default Werte
+    if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06)
+    {
+      union1.val_A5_20_06[0] = 0;
+      union1.val_A5_20_06[1] = 88;
+      union1.val_A5_20_06[2] = (knx.paramByte(ENO_CHA52006RFC + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+    }
 
     //profil = 45; // nur zum Testen <<<<----------------------------------------------------
 
@@ -118,7 +131,13 @@ public:
 #endif
   }
 
-  // things that need to be done regularly
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
+  //
+  //   Task ()        // things that need to be done regularly
+  //
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
   void task()
   {
     //------------  Channel 1 ---------------------------------------
@@ -177,9 +196,11 @@ public:
     //A5-20-06
     if (msg_sent_after_receive == msg_A5_20_06)
     {
+      // Set LNRB
+      union1.val_A5_20_06[3] |= 1 << 3; // Set LNRB
       send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
       // löscht Ref Run Bit
-      union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
+      union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
       msg_sent_after_receive = 0;
     }
     // *************** Teachin Funktion  ***********************************************************************
@@ -202,6 +223,14 @@ public:
   // something happened on the bus, let's react
 #pragma GCC diagnostic push // If you don't want to be warned because you are not using index, include that pragma stuff
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
+  //
+  //   KNX handle
+  //
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
   void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo)
   {
     static bool init1 = true;
@@ -229,12 +258,14 @@ public:
       case A5_20_06:
 
         //default Werte
+        /*
         if (init1)
           union1.val_A5_20_06[0] = 0;
         if (init2)
           union1.val_A5_20_06[1] = 88;
-        if (init3)                                                                  // set Settings from ETS
-          union1.val_A5_20_06[2] = knx.paramByte(ENO_CHA52006RFC + firstParameter); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+        if (init3)                                                                    // set Settings from ETS
+          union1.val_A5_20_06[2] = (knx.paramByte(ENO_CHA52006RFC + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+        */
 
         switch (koNr)
         {
@@ -251,25 +282,24 @@ public:
           union1.val_A5_20_06[1] = 0x30;
           union1.val_A5_20_06[2] = 0x49;
           union1.val_A5_20_06[3] = 0x80;
-          init1 = true;
           send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
           break;
 
         case KO_0: // SET Temp oder SET Pos
           init1 = false;
-          if (knx.paramByte(ENO_CHA52006SPS + firstParameter) & ENO_CHA52006SPSMask)
+          if ((knx.paramByte(ENO_CHA52006SPS + firstParameter) >> ENO_CHA52006SPSShift) & 1)
           {
             union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 2.0; // Set Point Temp
 #ifdef KDEBUG
             SERIAL_PORT.print(F("SET Temp to: "));
-            SERIAL_PORT.print(union1.val_A5_20_06[0]);
+            SERIAL_PORT.print(union1.val_A5_20_06[0] / 2.0);
             SERIAL_PORT.println(F("°C"));
 #endif
           }
           else
           {
             union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
-#ifdef KDEBUG
+#ifdef KDEBUG #
             SERIAL_PORT.print(F("SET Pos to: "));
             SERIAL_PORT.print(union1.val_A5_20_06[0]);
             SERIAL_PORT.println(F("%"));
@@ -410,6 +440,14 @@ public:
   // decode EnOcean message. Fail fast!
 #pragma GCC diagnostic push // If you don't want to be warned because you are not using index, include that pragma stuff
 #pragma GCC diagnostic ignored "-Wunused-parameter"
+
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
+  //
+  //   EnOcean handle
+  //
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
   bool handleEnOceanPacket(PACKET_SERIAL_TYPE *f_Pkt_st)
   {
     uint8_t DevicId_Arr_TEST[4] = {0xFF, 0xDC, 0xD4, 0x80};
@@ -684,7 +722,6 @@ public:
 
   /*******************************************************************************************
  *  1BS
- * 
  *******************************************************************************************/
 
   void handle_1BS(PACKET_SERIAL_TYPE *f_Pkt_st)
