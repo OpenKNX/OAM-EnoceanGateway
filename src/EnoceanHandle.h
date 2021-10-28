@@ -9,6 +9,7 @@
 #include "4BS_Telegram.h"
 #include "VLD_Telegram.h"
 #include "hardware.h"
+#include "KnxHelper.h"
 
 // ################################################
 // ### DEBUG CONFIGURATION
@@ -37,6 +38,10 @@ private:
 
   uint8_t msg_sent_after_receive = 0;
   byte val_A5_20_06_TeachIn[4];
+
+  // Task variable Read Request
+  uint8_t sCalled = 1;
+  uint32_t gStartupDelay = 0;
 
   union
   {
@@ -86,6 +91,9 @@ public:
       union1.val_A5_20_06[1] = 88;
       union1.val_A5_20_06[2] = (knx.paramByte(ENO_CHA52006RFC + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
     }
+
+    // default Startup delay Startpunkt
+    gStartupDelay = millis(); // Read Request Delay startup
 
     //profil = 45; // nur zum Testen <<<<----------------------------------------------------
 
@@ -217,6 +225,26 @@ public:
       SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif
       msg_sent_after_receive = 0;
+    }
+    // *************** Read Request  ***********************************************************************
+    //-----------------------------------------------------------------------------------------------------------
+    //A5-20-06
+    if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06 && sCalled < 255)
+    {
+      if (sCalled == 1 && delayCheck(gStartupDelay, sCalled * 1000))
+      {
+        sCalled += 1;
+        knx.getGroupObject(firstComObj).requestObjectRead();  // Set Temp / Pos
+      }
+      if (sCalled == 2 && delayCheck(gStartupDelay, sCalled * 1000))
+      {
+        sCalled += 1;
+        knx.getGroupObject(firstComObj+3).requestObjectRead(); // Raum Temp
+      }
+      if (sCalled == 3)
+      {
+        sCalled = 255;
+      }
     }
   }
 
