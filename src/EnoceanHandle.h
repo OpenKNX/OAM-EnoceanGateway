@@ -151,51 +151,51 @@ public:
     //------------  Channel 1 ---------------------------------------
     if (buttonStateSimulation1 == SIMULATE_PUSH)
     {
-      send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
-      buttonLastPushTime1 = millis();
-      buttonStateSimulation1 = SIMULATE_RELEASE;
 #ifdef KDEBUG
       SERIAL_PORT.print(F("Triggered "));
       SERIAL_PORT.print(firstComObj);
       SERIAL_PORT.println(F(" Push"));
 #endif
+      send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+      buttonLastPushTime1 = millis();
+      buttonStateSimulation1 = SIMULATE_RELEASE;
     }
     else if (buttonStateSimulation1 == SIMULATE_RELEASE)
     {
       if (millis() - buttonLastPushTime1 >= SIMULATE_PAUSE_BEFORE_RELEASE)
       {
-        send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, false);
-        buttonStateSimulation1 = SIMULATE_NOTHING;
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Triggered "));
         SERIAL_PORT.print(firstComObj);
         SERIAL_PORT.println(F(" Release"));
 #endif
+        send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, false);
+        buttonStateSimulation1 = SIMULATE_NOTHING;
       }
     }
     //------------  Channel 2 ---------------------------------------
     if (buttonStateSimulation2 == SIMULATE_PUSH)
     {
-      send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
-      buttonLastPushTime2 = millis();
-      buttonStateSimulation2 = SIMULATE_RELEASE;
 #ifdef KDEBUG
       SERIAL_PORT.print(F("Triggered "));
       SERIAL_PORT.print(firstComObj + 1);
       SERIAL_PORT.println(F(" Push"));
 #endif
+      send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+      buttonLastPushTime2 = millis();
+      buttonStateSimulation2 = SIMULATE_RELEASE;
     }
     else if (buttonStateSimulation2 == SIMULATE_RELEASE)
     {
       if (millis() - buttonLastPushTime2 >= SIMULATE_PAUSE_BEFORE_RELEASE)
       {
-        send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, false);
-        buttonStateSimulation2 = SIMULATE_NOTHING;
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Triggered "));
         SERIAL_PORT.print(firstComObj + 1);
         SERIAL_PORT.println(F(" Release"));
 #endif
+        send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, false);
+        buttonStateSimulation2 = SIMULATE_NOTHING;
       }
     }
 
@@ -234,12 +234,12 @@ public:
       if (sCalled == 1 && delayCheck(gStartupDelay, sCalled * 1000))
       {
         sCalled += 1;
-        knx.getGroupObject(firstComObj).requestObjectRead();  // Set Temp / Pos
+        knx.getGroupObject(firstComObj).requestObjectRead(); // Set Temp / Pos
       }
       if (sCalled == 2 && delayCheck(gStartupDelay, sCalled * 1000))
       {
         sCalled += 1;
-        knx.getGroupObject(firstComObj+3).requestObjectRead(); // Raum Temp
+        knx.getGroupObject(firstComObj + 3).requestObjectRead(); // Raum Temp
       }
       if (sCalled == 3)
       {
@@ -410,42 +410,56 @@ public:
     case u8RORG_VLD:
       switch (knx.paramWord(ENO_CHProfilSelectionVLD + firstParameter))
       {
-      case D2_01_12:
-        switch (koNr)
+      case D2_01:
+        switch (knx.paramWord(ENO_CHProfilVLD01 + firstParameter))
         {
-        case KO_0: // chalten Aktor CH1
-          koIndex1 = index + 1;
-          if (iKo.value(getDPT(VAL_DPT_1)))
+        case D2_01_12:
+          switch (koNr)
           {
-            buttonStateSimulation1 = SIMULATE_PUSH;
-            buttonMessage1 = true;
+          case KO_0: // chalten Aktor CH1
+            koIndex1 = index + 1;
+            if (iKo.value(getDPT(VAL_DPT_1)))
+            {
+              buttonStateSimulation1 = SIMULATE_PUSH;
+              buttonMessage1 = true;
+            }
+            else
+            {
+              buttonStateSimulation1 = SIMULATE_PUSH;
+              buttonMessage1 = false;
+            }
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("KNX KO_0 handled"));
+#endif
+            break;
+          case KO_1: //  Schalten Aktor CH2
+            koIndex2 = index + 2;
+            if (iKo.value(getDPT(VAL_DPT_1)))
+            {
+              buttonStateSimulation2 = SIMULATE_PUSH;
+              buttonMessage2 = true;
+            }
+            else
+            {
+              buttonStateSimulation2 = SIMULATE_PUSH;
+              buttonMessage2 = false;
+            }
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("KNX KO_1 handled"));
+#endif
+            break;
+          case KO_4:
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("KNX KO_4 handled"));
+#endif
+            getStatusActors(enOcean.getBaseId(), index); // Request Aktor Status
+            break;
+          default:
+            break;
           }
-          else
-          {
-            buttonStateSimulation1 = SIMULATE_PUSH;
-            buttonMessage1 = false;
-          }
-          break;
-        case KO_1: //  Schalten Aktor CH2
-          koIndex2 = index + 2;
-          if (iKo.value(getDPT(VAL_DPT_1)))
-          {
-            buttonStateSimulation2 = SIMULATE_PUSH;
-            buttonMessage2 = true;
-          }
-          else
-          {
-            buttonStateSimulation2 = SIMULATE_PUSH;
-            buttonMessage2 = false;
-          }
-          break;
-        case KO_4:
-          getStatusActors(enOcean.getBaseId(), index); // Request Aktor Status
-          break;
-        default:
-          break;
+          break; // ENDE VLD D2_01_12
         }
-        break;
+        break; // ENDE VLD D2_01
       }
       break; // ENDE VLD
 

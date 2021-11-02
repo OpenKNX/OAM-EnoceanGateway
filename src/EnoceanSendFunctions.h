@@ -74,6 +74,17 @@ void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t Index, boolean state, boole
     // passt ID an damit sie einmalig ist 
     l_TestBuf_p[5] = fui8_BaseID_p[3] + Index;
 
+#ifdef KDEBUG
+      SERIAL_PORT.print(F("Send-ID: "));
+      SERIAL_PORT.print(l_TestBuf_p[2]);
+      SERIAL_PORT.print(F(" "));
+      SERIAL_PORT.print(l_TestBuf_p[3]);
+      SERIAL_PORT.print(F(" "));
+      SERIAL_PORT.print(l_TestBuf_p[4]);
+      SERIAL_PORT.print(F(" "));
+      SERIAL_PORT.println(l_TestBuf_p[5]);
+#endif
+
     enOcean.sendPacket(&l_TestPacket_st);
 }
 

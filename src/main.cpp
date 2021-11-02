@@ -62,28 +62,28 @@ void setup()
 #endif
 
     // start Enocean
-    if (knx.configured())
+    for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
     {
-        for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
-        {
-            enOcean.configureDevice(device[i], i);
-        }
+        enOcean.configureDevice(device[i], i);
+    }
 
-        Serial2.begin(57600); // Change to Serial wenn original Platine
-                              // Assign pins 2 & 3 SERCOM functionality
-        pinPeripheral(2, PIO_SERCOM_ALT);
-        pinPeripheral(3, PIO_SERCOM_ALT);
+    Serial2.begin(57600); // Change to Serial wenn original Platine
+                          // Assign pins 2 & 3 SERCOM functionality
+    pinPeripheral(2, PIO_SERCOM_ALT);
+    pinPeripheral(3, PIO_SERCOM_ALT);
 
-        enOcean.initSerial(Serial2);
-        enOcean.init();
+    enOcean.initSerial(Serial2);
+    enOcean.init();
 
 #ifdef KDEBUG_min
+    if (knx.configured())
+    {
         if (enOcean.getNumberDevices() != MAX_NUMBER_OF_DEVICES)
             SERIAL_PORT.println(F("!!! NUMBER OF DEVICES != MAX DEVICES -> change!!!"));
         else
             SERIAL_PORT.println(F("Ready for normal operation"));
-#endif
     }
+#endif
 
 #ifdef LED_YELLOW_PIN
     digitalWrite(LED_YELLOW_PIN, LOW);
