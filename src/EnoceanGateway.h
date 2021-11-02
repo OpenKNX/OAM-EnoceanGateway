@@ -8,9 +8,36 @@
 #define ENO_RepeaterFunc              10      // 1 Bit, Bit 7
 #define     ENO_RepeaterFuncMask 0x80
 #define     ENO_RepeaterFuncShift 7
+#define ENO_SetBaseIdFunc             11      // 1 Bit, Bit 7
+#define     ENO_SetBaseIdFuncMask 0x80
+#define     ENO_SetBaseIdFuncShift 7
+#define ENO_Id0                       12      // 4 Bits, Bit 7-4
+#define     ENO_Id0Mask 0xF0
+#define     ENO_Id0Shift 4
+#define ENO_Id1                       12      // 4 Bits, Bit 3-0
+#define     ENO_Id1Mask 0x0F
+#define     ENO_Id1Shift 0
+#define ENO_Id2                       13      // 4 Bits, Bit 7-4
+#define     ENO_Id2Mask 0xF0
+#define     ENO_Id2Shift 4
+#define ENO_Id3                       13      // 4 Bits, Bit 3-0
+#define     ENO_Id3Mask 0x0F
+#define     ENO_Id3Shift 0
+#define ENO_Id4                       14      // 4 Bits, Bit 7-4
+#define     ENO_Id4Mask 0xF0
+#define     ENO_Id4Shift 4
+#define ENO_Id5                       14      // 4 Bits, Bit 3-0
+#define     ENO_Id5Mask 0x0F
+#define     ENO_Id5Shift 0
+#define ENO_Id6                       15      // 4 Bits, Bit 7-4
+#define     ENO_Id6Mask 0xF0
+#define     ENO_Id6Shift 4
+#define ENO_Id7                       15      // 4 Bits, Bit 3-0
+#define     ENO_Id7Mask 0x0F
+#define     ENO_Id7Shift 0
 
 // Parameter per channel
-#define ENO_ParamBlockOffset 11
+#define ENO_ParamBlockOffset 16
 #define ENO_ParamBlockSize 22
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
