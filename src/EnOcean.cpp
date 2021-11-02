@@ -103,6 +103,11 @@ void EnOcean::task()
   }
 }
 
+void EnOcean::configureDeviceBaseID(IEnOceanDevice &device, uint8_t channel)
+{
+  device.initBaseID(channel,lui8_BaseID_p[0],lui8_BaseID_p[1], lui8_BaseID_p[2], lui8_BaseID_p[3]);
+}
+
 void EnOcean::configureDevice(IEnOceanDevice &device, uint8_t channel)
 {
   lastComObj = ENO_KoOffset + (channel * ENO_KoBlockSize);
@@ -158,23 +163,23 @@ void EnOcean::init()
   isInited = true;
 }
 
-void EnOcean::obtainSenderId(uint8_t *senderAdress)
+void EnOcean::obtainSenderId(uint8_t *senderAdress, uint8_t channel)
 {
   if (!isInited)
     init();
 
-  lastSenderIdOffset++;
+  
 
-  senderAdress[0] = lui8_BaseID_p[0];
+  senderAdress[0] = lui8_BaseID_p[0]; 
   senderAdress[1] = lui8_BaseID_p[1];
   senderAdress[2] = lui8_BaseID_p[2];
-  senderAdress[3] = lui8_BaseID_p[3] + lastSenderIdOffset;
+  if(lui8_BaseID_p[3] <= 125)
+  senderAdress[3] = lui8_BaseID_p[3] + channel;
+  else
+  senderAdress[3] = lui8_BaseID_p[3] - channel;
 
 #ifdef KDEBUG
-  SERIAL_PORT.print("SENDER_ID for offset ");
-  //SERIAL_PORT.print("%u", lastSenderIdOffset);
-  SERIAL_PORT.print(lastSenderIdOffset);
-  SERIAL_PORT.print(": ");
+  SERIAL_PORT.print("SENDER_ID: ");
   for (int i = 0; i < BASEID_BYTES; i++)
   {
     //SERIAL_PORT.print("%X", senderAdress[i]);
@@ -223,10 +228,9 @@ void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
 #ifdef KDEBUG
     SERIAL_PORT.println("Receiving telegram (read base ID).");
 #endif
-    while (u8RetVal == ENOCEAN_NO_RX_TEL && loopCount < 200)
+    while (u8RetVal == ENOCEAN_NO_RX_TEL) 
     {
       u8RetVal = uart_getPacket(&m_Pkt_st, (uint16_t)DATBUF_SZ);
-      loopCount++;
     }
 
     switch (u8RetVal)

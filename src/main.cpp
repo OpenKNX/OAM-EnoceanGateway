@@ -75,6 +75,12 @@ void setup()
     enOcean.initSerial(Serial2);
     enOcean.init();
 
+     // start Enocean
+    for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
+    {
+        enOcean.configureDeviceBaseID(device[i], i);
+    }
+
 #ifdef KDEBUG_min
     if (knx.configured())
     {

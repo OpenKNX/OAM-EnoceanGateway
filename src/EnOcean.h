@@ -13,7 +13,7 @@
 
 #ifndef EnOceanTEST
 // important to change this to the number of devices defined.
-#define MAX_NUMBER_OF_DEVICES     50
+#define MAX_NUMBER_OF_DEVICES     20
 #else
 #define MAX_NUMBER_OF_DEVICES     1
 #endif
@@ -587,6 +587,7 @@ class IEnOceanDevice
     {
     }
     virtual void init(uint8_t startAtComObj, uint8_t startAtParameter, uint8_t channel) = 0;
+    virtual void initBaseID(uint8_t channel, uint8_t BaseID1, uint8_t BaseID2, uint8_t BaseID3, uint8_t BaseID4) = 0;
     virtual void task() = 0;
     virtual bool handleEnOceanPacket(PACKET_SERIAL_TYPE* f_Pkt_st) = 0;
     virtual void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo) = 0;
@@ -605,9 +606,9 @@ class EnOcean
     void task();
 
     bool sendPacket(PACKET_SERIAL_TYPE *pPacket);
-    void obtainSenderId(uint8_t* senderId);
+    void obtainSenderId(uint8_t* senderId, uint8_t channel);
     void handleKnxEvents(byte koIndex, byte koNr,GroupObject &iKo);
-
+    void configureDeviceBaseID(IEnOceanDevice &device, uint8_t channel);
     void configureDevice(IEnOceanDevice &device, uint8_t channel);
     uint16_t getNumberDevices();
     uint8_t* getBaseId();

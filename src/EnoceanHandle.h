@@ -20,6 +20,7 @@
 class EnOceanDevice : public IEnOceanDevice
 {
 private:
+  uint8_t lui8_SendeID_p[4] = {0x0A, 0x0B, 0x0C, 0x0D};
   uint8_t deviceId_Arr[4] = {0, 0, 0, 0};
   uint32_t deviceId = 0;
   uint8_t profil = 0;
@@ -53,6 +54,39 @@ public:
   {
     // numberOfComObjects = 4;
     // numberOfParameters = 2;
+  }
+
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
+  //
+  //   initBaseId()        // things that need to be done regularly
+  //
+  //*************************************************************************************************************************************************************
+  //*************************************************************************************************************************************************************
+
+  void initBaseID(uint8_t channel, uint8_t BaseID1, uint8_t BaseID2, uint8_t BaseID3, uint8_t BaseID4)
+  {
+    lui8_SendeID_p[0] = BaseID1;
+    lui8_SendeID_p[1] = BaseID2;
+    lui8_SendeID_p[2] = BaseID3;
+    lui8_SendeID_p[3] = BaseID4 + (4*channel);
+    // ACHTUNG: es stehen nur 128 frei wählbare IDs zur verfügung. 
+    // Die 128 Stk können NICHT frei bestimmt werden -> Es gehen nur die 128 folgenden ID !!! 
+    // D.h. BaseID4 liegt default immer zwischen 0x00 und 0x80 
+    // Auf BaseID4 können dann maximal die 127 weiteren IDs gelegt werden. 
+    // -> 4 * Channels (20CH) = 80 --> OK 
+
+#ifdef KDEBUG
+    SERIAL_PORT.print("CH");
+    SERIAL_PORT.print(channel);
+    SERIAL_PORT.print(" SENDER_ID: ");
+    for (int i = 0; i < BASEID_BYTES; i++)
+    {
+      SERIAL_PORT.print(lui8_SendeID_p[i],HEX);
+      SERIAL_PORT.print("");
+    }
+    SERIAL_PORT.println("");
+#endif
   }
 
   //*************************************************************************************************************************************************************
@@ -156,7 +190,7 @@ public:
       SERIAL_PORT.print(firstComObj);
       SERIAL_PORT.println(F(" Push"));
 #endif
-      send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+      send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); //BaseID_CH = 0 
       buttonLastPushTime1 = millis();
       buttonStateSimulation1 = SIMULATE_RELEASE;
     }
@@ -169,7 +203,7 @@ public:
         SERIAL_PORT.print(firstComObj);
         SERIAL_PORT.println(F(" Release"));
 #endif
-        send_RPS_Taster(enOcean.getBaseId(), index, buttonMessage1, false);
+        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); //BaseID_CH = 0 
         buttonStateSimulation1 = SIMULATE_NOTHING;
       }
     }
@@ -181,7 +215,7 @@ public:
       SERIAL_PORT.print(firstComObj + 1);
       SERIAL_PORT.println(F(" Push"));
 #endif
-      send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, true); // +koIndex zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+      send_RPS_Taster(lui8_SendeID_p, buttonMessage2, true, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
       buttonLastPushTime2 = millis();
       buttonStateSimulation2 = SIMULATE_RELEASE;
     }
@@ -194,7 +228,7 @@ public:
         SERIAL_PORT.print(firstComObj + 1);
         SERIAL_PORT.println(F(" Release"));
 #endif
-        send_RPS_Taster(enOcean.getBaseId(), index + MAX_NUMBER_OF_DEVICES, buttonMessage2, false);
+        send_RPS_Taster(lui8_SendeID_p, buttonMessage2, false, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
         buttonStateSimulation2 = SIMULATE_NOTHING;
       }
     }
@@ -206,7 +240,7 @@ public:
     {
       // Set LNRB
       union1.val_A5_20_06[3] |= 1 << 3; // Set LNRB
-      send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+      send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06, 0);
       // löscht Ref Run Bit
       union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
       msg_sent_after_receive = 0;
@@ -220,7 +254,7 @@ public:
       val_A5_20_06_TeachIn[1] = 0x30;
       val_A5_20_06_TeachIn[2] = 0x49;
       val_A5_20_06_TeachIn[3] = 0xF0;
-      send_4BS_Msg(enOcean.getBaseId(), index, val_A5_20_06_TeachIn);
+      send_4BS_Msg(enOcean.getBaseId(), index, val_A5_20_06_TeachIn, 0);
 #ifdef KDEBUG
       SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif
@@ -310,14 +344,14 @@ public:
           union1.val_A5_20_06[1] = 0x30;
           union1.val_A5_20_06[2] = 0x49;
           union1.val_A5_20_06[3] = 0x80;
-          send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+          send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06, 0);
           break;
 
         case KO_0: // SET Temp oder SET Pos
           init1 = false;
           if ((knx.paramByte(ENO_CHA52006SPS + firstParameter) >> ENO_CHA52006SPSShift) & 1)
           {
-            union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 2.0; // Set Point Temp
+            union1.val_A5_20_06[0] = (float)iKo.value(getDPT(VAL_DPT_9)) * 2.0; // Set Point Temp
 #ifdef KDEBUG
             SERIAL_PORT.print(F("SET Temp to: "));
             SERIAL_PORT.print(union1.val_A5_20_06[0] / 2.0);

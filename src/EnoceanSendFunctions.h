@@ -4,7 +4,7 @@
 #include "EnoceanGateway.h"
 #include "hardware.h"
 
-void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs)
+void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs, uint8_t baseID_CH)
 {
     PACKET_SERIAL_TYPE l_TestPacket_st;
     uint8_t l_TestBuf_p[10];
@@ -24,12 +24,13 @@ void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs)
     {
         l_TestBuf_p[i + 5] = fui8_BaseID_p[i];
     }
-    // passt ID an damit sie einmalig ist 
-    l_TestBuf_p[8] = fui8_BaseID_p[3] + Index;
+    if (baseID_CH <= 4) // anpassen der Sende ID -> baseID_CH max 4 !!!
+        l_TestBuf_p[8] = l_TestBuf_p[8] + baseID_CH;
+
     enOcean.sendPacket(&l_TestPacket_st);
 }
 
-void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t Index, boolean state, boolean pressed)
+void send_RPS_Taster(uint8_t *fui8_BaseID_p, boolean state, boolean pressed, uint8_t baseID_CH)
 {
     PACKET_SERIAL_TYPE l_TestPacket_st;
     uint8_t l_TestBuf_p[7];
@@ -71,18 +72,19 @@ void send_RPS_Taster(uint8_t *fui8_BaseID_p, uint8_t Index, boolean state, boole
     {
         l_TestBuf_p[i + 2] = fui8_BaseID_p[i];
     }
-    // passt ID an damit sie einmalig ist 
-    l_TestBuf_p[5] = fui8_BaseID_p[3] + Index;
+
+    if (baseID_CH <= 4) // anpassen der Sende ID -> baseID_CH max 4 !!!
+        l_TestBuf_p[5] = l_TestBuf_p[5] + baseID_CH;
 
 #ifdef KDEBUG
-      SERIAL_PORT.print(F("Send-ID: "));
-      SERIAL_PORT.print(l_TestBuf_p[2]);
-      SERIAL_PORT.print(F(" "));
-      SERIAL_PORT.print(l_TestBuf_p[3]);
-      SERIAL_PORT.print(F(" "));
-      SERIAL_PORT.print(l_TestBuf_p[4]);
-      SERIAL_PORT.print(F(" "));
-      SERIAL_PORT.println(l_TestBuf_p[5]);
+    SERIAL_PORT.print(F("Send-ID: "));
+    SERIAL_PORT.print(l_TestBuf_p[2], HEX);
+    SERIAL_PORT.print(F(" "));
+    SERIAL_PORT.print(l_TestBuf_p[3], HEX);
+    SERIAL_PORT.print(F(" "));
+    SERIAL_PORT.print(l_TestBuf_p[4], HEX);
+    SERIAL_PORT.print(F(" "));
+    SERIAL_PORT.println(l_TestBuf_p[5], HEX);
 #endif
 
     enOcean.sendPacket(&l_TestPacket_st);
