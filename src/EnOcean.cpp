@@ -105,7 +105,7 @@ void EnOcean::task()
 
 void EnOcean::configureDeviceBaseID(IEnOceanDevice &device, uint8_t channel)
 {
-  device.initBaseID(channel,lui8_BaseID_p[0],lui8_BaseID_p[1], lui8_BaseID_p[2], lui8_BaseID_p[3]);
+  device.initBaseID(channel, lui8_BaseID_p[0], lui8_BaseID_p[1], lui8_BaseID_p[2], lui8_BaseID_p[3]);
 }
 
 void EnOcean::configureDevice(IEnOceanDevice &device, uint8_t channel)
@@ -137,24 +137,53 @@ void EnOcean::initSerial(Stream &serial)
   _serial = &serial;
 }
 
+bool EnOcean::checkBaseID()
+{
+  if (lui8_BaseID_p[0] != 0xFF)
+    return 1;
+  else if (lui8_BaseID_p[1] != knx.paramByte(ENO_Id2))
+    return 1;
+  else if (lui8_BaseID_p[2] != knx.paramByte(ENO_Id4))
+    return 1;
+  else if (lui8_BaseID_p[3] != knx.paramByte(ENO_Id6))
+    return 1;
+  else
+    return 0;
+}
+
 void EnOcean::init()
 {
-
   if (isInited)
     return;
 
   m_Pkt_st.u8DataBuffer = &u8datBuf[0];
-
-  //****************** Read EnOcean Gateway Base ID  ************************************
+  //****************** Read, Check & Set EnOcean Gateway Base ID  ************************************
   // communicates via Enocean UART channel
+  // 1.) read base-ID
   readBaseId(&lui8_BaseID_p[0]);
-
+  // 2.) compare old base-ID with the new ID
+  if ((knx.paramByte(ENO_SetBaseIdFunc) >> ENO_SetBaseIdFuncShift) & 1)
+  {
+    if (checkBaseID())
+    { // old != new
 #ifdef KDEBUG
-  SERIAL_PORT.print("BASEID: ");
-
+      SERIAL_PORT.println("Base-ID OLD != NEW -> change! ");
+#endif
+      setBaseId(&lui8_BaseID_p[0]);
+      // 3.) read Base-ID again and print it out
+      readBaseId(&lui8_BaseID_p[0]);
+    }
+    else //old == new
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("Base-ID OLD == NEW -> NO change! ");
+#endif
+    }
+  }
+#ifdef KDEBUG
+  SERIAL_PORT.print("Base-ID: ");
   for (int i = 0; i < BASEID_BYTES; i++)
   {
-    //SERIAL_PORT.print("%X", lui8_BaseID_p[i]);
     SERIAL_PORT.print(lui8_BaseID_p[i], HEX);
   }
   SERIAL_PORT.println("");
@@ -168,15 +197,13 @@ void EnOcean::obtainSenderId(uint8_t *senderAdress, uint8_t channel)
   if (!isInited)
     init();
 
-  
-
-  senderAdress[0] = lui8_BaseID_p[0]; 
+  senderAdress[0] = lui8_BaseID_p[0];
   senderAdress[1] = lui8_BaseID_p[1];
   senderAdress[2] = lui8_BaseID_p[2];
-  if(lui8_BaseID_p[3] <= 125)
-  senderAdress[3] = lui8_BaseID_p[3] + channel;
+  if (lui8_BaseID_p[3] <= 125)
+    senderAdress[3] = lui8_BaseID_p[3] + channel;
   else
-  senderAdress[3] = lui8_BaseID_p[3] - channel;
+    senderAdress[3] = lui8_BaseID_p[3] - channel;
 
 #ifdef KDEBUG
   SERIAL_PORT.print("SENDER_ID: ");
@@ -197,6 +224,121 @@ uint8_t *EnOcean::getBaseId()
 uint16_t EnOcean::getNumberDevices()
 {
   return lastDevice;
+}
+
+void EnOcean::setBaseId(uint8_t *fui8_BaseID_p)
+{
+  PACKET_SERIAL_TYPE lRdBaseIDPkt_st;
+
+  uint8_t lu8SndBuf[5];
+  uint8_t loopCount = 0;
+
+  lu8SndBuf[0] = u8CO_WR_IDBASE;
+  lu8SndBuf[1] = 0xFF;
+  lu8SndBuf[2] = knx.paramByte(ENO_Id2);
+  lu8SndBuf[3] = knx.paramByte(ENO_Id4);
+  lu8SndBuf[4] = knx.paramByte(ENO_Id6);
+
+  lRdBaseIDPkt_st.u16DataLength = 0x0005;
+  lRdBaseIDPkt_st.u8OptionLength = 0x00;
+  lRdBaseIDPkt_st.u8Type = u8RORG_COMMON_COMMAND;
+  lRdBaseIDPkt_st.u8DataBuffer = &lu8SndBuf[0];
+
+#ifdef KDEBUG
+  SERIAL_PORT.println("Sending telegram (set base ID).");
+#endif
+
+  if (ENOCEAN_OK == uart_sendPacket(&lRdBaseIDPkt_st))
+  {
+    u8RetVal = ENOCEAN_NO_RX_TEL;
+#ifdef KDEBUG
+    SERIAL_PORT.println("Receiving telegram (set base ID).");
+#endif
+    while (u8RetVal == ENOCEAN_NO_RX_TEL)
+    {
+      u8RetVal = uart_getPacket(&m_Pkt_st, (uint16_t)DATBUF_SZ);
+    }
+
+    switch (u8RetVal)
+    {
+    case ENOCEAN_OK:
+    {
+#ifdef KDEBUGandra
+      SERIAL_PORT.print("Data: ");
+      for (int i = 0; i < m_Pkt_st.u16DataLength + (uint16_t)m_Pkt_st.u8OptionLength; i++)
+      {
+
+        //SERIAL_PORT.print("%X", m_Pkt_st.u8DataBuffer[i]);
+        SERIAL_PORT.print(m_Pkt_st.u8DataBuffer[i], HEX);
+        SERIAL_PORT.print(" ");
+      }
+      SERIAL_PORT.println("");
+#endif
+
+      switch (m_Pkt_st.u8Type)
+      {
+      case u8RESPONSE:
+      {
+#ifdef KDEBUG
+        SERIAL_PORT.print("Received Response: ");
+#endif
+        switch (m_Pkt_st.u8DataBuffer[0])
+        {
+        case 0x00:
+#ifdef KDEBUG
+          SERIAL_PORT.println("RET_OK");
+#endif
+          break;
+        case 0x02:
+#ifdef KDEBUG
+          SERIAL_PORT.println("RET_NOT_SUPPORTED");
+#endif
+          break;
+        case 0x82:
+#ifdef KDEBUG
+          SERIAL_PORT.println("FLASH_HW_ERROR");
+#endif
+          break;
+        case 0x90:
+#ifdef KDEBUG
+          SERIAL_PORT.println("BASEID_OUT_OF_RANGE");
+#endif
+          break;
+        case 0x91:
+#ifdef KDEBUG
+          SERIAL_PORT.println("BASEID_MAX_REACHED");
+#endif
+          break;
+
+        default:
+          break;
+        }
+      }
+      break;
+      default:
+      {
+#ifdef KDEBUG
+        SERIAL_PORT.print("Wrong packet type. Expected response. Received: ");
+        ///SERIAL_PORT.println("%X", m_Pkt_st.u8Type);
+        SERIAL_PORT.println(m_Pkt_st.u8Type);
+#endif
+      }
+      }
+    }
+    break;
+    case ENOCEAN_NO_RX_TEL:
+#ifdef KDEBUG
+      SERIAL_PORT.println("ERROR Receiving telegram (set base ID).");
+#endif
+      break;
+    default:
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("set receiving base ID");
+#endif
+    }
+    } // ENDE SWITCH
+  }
 }
 
 void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
@@ -228,7 +370,7 @@ void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
 #ifdef KDEBUG
     SERIAL_PORT.println("Receiving telegram (read base ID).");
 #endif
-    while (u8RetVal == ENOCEAN_NO_RX_TEL) 
+    while (u8RetVal == ENOCEAN_NO_RX_TEL)
     {
       u8RetVal = uart_getPacket(&m_Pkt_st, (uint16_t)DATBUF_SZ);
     }

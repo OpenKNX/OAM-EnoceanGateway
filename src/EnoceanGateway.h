@@ -35,9 +35,12 @@
 #define ENO_Id7                       15      // 4 Bits, Bit 3-0
 #define     ENO_Id7Mask 0x0F
 #define     ENO_Id7Shift 0
+#define ENO_RepeaterLevel             16      // 1 Bit, Bit 7
+#define     ENO_RepeaterLevelMask 0x80
+#define     ENO_RepeaterLevelShift 7
 
 // Parameter per channel
-#define ENO_ParamBlockOffset 16
+#define ENO_ParamBlockOffset 17
 #define ENO_ParamBlockSize 22
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
