@@ -16,7 +16,14 @@ uint32_t startupDelay = 0;
 // true solgange der Start des gesamten Moduls verzögert werden soll
 bool startupDelayfunc()
 {
-  return !delayCheck(startupDelay, knx.paramInt(ENO_StartupDelay) * 1000);
+    if (knx.paramWord(ENO_StartupDelaySelection) == 0) // manuelle Eingabe
+  {
+    return !delayCheck(startupDelay, knx.paramInt(ENO_StartupDelay) * 1000);
+  }
+  else
+  {
+    return !delayCheck(startupDelay, knx.paramWord(ENO_StartupDelaySelection) * 1000);
+  }
 }
 
 void ProcessHeartbeat()
@@ -75,7 +82,6 @@ void appSetup()
 
 void appLoop()
 {
-#ifdef KNXenable
   if (!knx.configured())
     return;
 
@@ -86,7 +92,7 @@ void appLoop()
   // at this point startup-delay is done
   // we process heartbeat
   ProcessHeartbeat();
-#endif
+
 
   enOcean.task();
 }

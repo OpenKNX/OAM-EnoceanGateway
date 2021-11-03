@@ -58,8 +58,10 @@
 
 // COMANDS
 
-#define u8CO_WR_IDBASE 0x07
-#define u8CO_RD_IDBASE 0x08
+#define u8CO_WR_IDBASE   0x07
+#define u8CO_RD_IDBASE   0x08
+#define u8CO_WR_REPEATER 0x09
+#define u8CO_RD_REPEATER 0x0A  // 10
 
 
 #define RPS_BUTTON_CHANNEL_AI 0
@@ -640,6 +642,8 @@ class EnOcean
 
     void readBaseId(uint8_t* fui8_BaseID_p);
     void setBaseId(uint8_t *fui8_BaseID_p);
+    void setRepeaterFunc();
+    void readRepeaterFunc();
     void getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE* f_Pkt_st);
     bool checkBaseID();
 

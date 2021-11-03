@@ -6,7 +6,7 @@
 #define PROG_BUTTON_PIN 8
 #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
 //#define SAVE_INTERRUPT_PIN A2 
-//#define LED_YELLOW_PIN 0
+#define LED_YELLOW_PIN 0
 
 
 /* Define Arduino Board */

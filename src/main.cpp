@@ -37,9 +37,6 @@ void setup()
     digitalWrite(LED_YELLOW_PIN, HIGH);
 #endif
 
-#ifdef KNXenable
-    // moved to checkBoard!!!
-    // Wire.begin();
     knx.readMemory();
 
     // pin or GPIO the programming led is connected to. Default is LED_BUILDIN
@@ -50,16 +47,15 @@ void setup()
     knx.buttonPin(PROG_BUTTON_PIN);
     // Is the interrup created in RISING or FALLING signal? Default is RISING
     knx.buttonPinInterruptOn(PROG_BUTTON_PIN_INTERRUPT_ON);
-#endif
+
 
     // print values of parameters if device is already configured
     appSetup();
     SERIAL_PORT.println(F("Setup DONE"));
 
-#ifdef KNXenable
     // start the framework.
     knx.start();
-#endif
+
 
     // start Enocean
     for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
@@ -75,7 +71,7 @@ void setup()
     enOcean.initSerial(Serial2);
     enOcean.init();
 
-     // start Enocean
+    // Set own BAse-ID for each Channel
     for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
     {
         enOcean.configureDeviceBaseID(device[i], i);
@@ -102,12 +98,7 @@ void loop()
     // don't delay here to much. Otherwise you might lose packages or mess up the timing with ETS
     knx.loop();
 #endif
-
-#ifdef KNXenable
     // only run the application code if the device was configured with ETS
     if (knx.configured())
         appLoop();
-#else
-    appLoop();
-#endif
 }
