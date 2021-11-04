@@ -129,7 +129,7 @@
 #define     ENO_CHWindowcloseValueShift 7
 
 // Communication objects per channel (multiple occurance)
-#define ENO_KoOffset 10
+#define ENO_KoOffset 20
 #define ENO_KoBlockSize 10
 #define ENO_KoGO_BASE__1 0
 #define ENO_KoGO_BASE__2 1

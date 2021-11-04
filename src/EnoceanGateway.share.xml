@@ -635,25 +635,25 @@
               <Parameter Id="M-00FA_A-0000-00-0000_P-3" Name="Heartbeat" ParameterType="M-00FA_A-0000-00-0000_PT-DelaySeconds" Text="'In Betrieb'-Telegramm senden alle" SuffixText="Sekunden" Value="300">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="6" BitOffset="0" />
               </Parameter>
-              <Parameter Id="M-00FA_A-0000-00-0000_P-10000" Name="RepeaterFunc" ParameterType="M-00FA_A-0000-00-0000_PT-YesNo" Text="Repeater-Function:" Value="0">
+              <Parameter Id="M-00FA_A-0000-00-0000_P-100000" Name="RepeaterFunc" ParameterType="M-00FA_A-0000-00-0000_PT-YesNo" Text="Repeater-Function:" Value="0">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="10" BitOffset="0" />
               </Parameter>
-              <Parameter Id="M-00FA_A-0000-00-0000_P-10001" Name="SetBaseIdFunc" ParameterType="M-00FA_A-0000-00-0000_PT-YesNo" Text="Base-ID anpassen?" Value="0">
+              <Parameter Id="M-00FA_A-0000-00-0000_P-100001" Name="SetBaseIdFunc" ParameterType="M-00FA_A-0000-00-0000_PT-YesNo" Text="Base-ID anpassen?" Value="0">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="11" BitOffset="0" />
               </Parameter>
               <!-- Device-Id -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="12" BitOffset="0" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10002" Name="Id0" Offset="0" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-NibbleF"  Text="" Value="15" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10003" Name="Id1" Offset="0" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-NibbleF"  Text="" Value="15" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10004" Name="Id2" Offset="1" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble8"  Text="" Value="8" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10005" Name="Id3" Offset="1" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10006" Name="Id4" Offset="2" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10007" Name="Id5" Offset="2" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10008" Name="Id6" Offset="3" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble08" Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0000-00-0000_UP-10009" Name="Id7" Offset="3" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble0"  Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100002" Name="Id0" Offset="0" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-NibbleF"  Text="" Value="15" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100003" Name="Id1" Offset="0" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-NibbleF"  Text="" Value="15" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100004" Name="Id2" Offset="1" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble8"  Text="" Value="8" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100005" Name="Id3" Offset="1" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100006" Name="Id4" Offset="2" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100007" Name="Id5" Offset="2" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100008" Name="Id6" Offset="3" BitOffset="0" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble08" Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0000-00-0000_UP-100009" Name="Id7" Offset="3" BitOffset="4" ParameterType="M-00FA_A-0000-00-0000_PT-Nibble0"  Text="" Value="0" />
               </Union>
-              <Parameter Id="M-00FA_A-0000-00-0000_P-10010" Name="RepeaterLevel" ParameterType="M-00FA_A-0000-00-0000_PT-RepeaterLevel" Text="Option:" Value="1">
+              <Parameter Id="M-00FA_A-0000-00-0000_P-100010" Name="RepeaterLevel" ParameterType="M-00FA_A-0000-00-0000_PT-RepeaterLevel" Text="Option:" Value="1">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="16" BitOffset="0" />
               </Parameter>
             </Parameters>
@@ -663,17 +663,17 @@
               <ParameterRef Id="M-00FA_A-0000-00-0000_P-1_R-1"       RefId="M-00FA_A-0000-00-0000_P-1" />
               <ParameterRef Id="M-00FA_A-0000-00-0000_P-2_R-2"       RefId="M-00FA_A-0000-00-0000_P-2" />
               <ParameterRef Id="M-00FA_A-0000-00-0000_P-3_R-3"       RefId="M-00FA_A-0000-00-0000_P-3" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_P-10000_R-10000" RefId="M-00FA_A-0000-00-0000_P-10000" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_P-10001_R-10001" RefId="M-00FA_A-0000-00-0000_P-10001" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10002_R-10002" RefId="M-00FA_A-0000-00-0000_UP-10002" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10003_R-10003" RefId="M-00FA_A-0000-00-0000_UP-10003" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10004_R-10004" RefId="M-00FA_A-0000-00-0000_UP-10004" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10005_R-10005" RefId="M-00FA_A-0000-00-0000_UP-10005" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10006_R-10006" RefId="M-00FA_A-0000-00-0000_UP-10006" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10007_R-10007" RefId="M-00FA_A-0000-00-0000_UP-10007" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10008_R-10008" RefId="M-00FA_A-0000-00-0000_UP-10008" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-10009_R-10009" RefId="M-00FA_A-0000-00-0000_UP-10009" />
-              <ParameterRef Id="M-00FA_A-0000-00-0000_P-10010_R-10010" RefId="M-00FA_A-0000-00-0000_P-10010" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_P-100000_R-100000" RefId="M-00FA_A-0000-00-0000_P-100000" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_P-100001_R-100001" RefId="M-00FA_A-0000-00-0000_P-100001" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100002_R-100002" RefId="M-00FA_A-0000-00-0000_UP-100002" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100003_R-100003" RefId="M-00FA_A-0000-00-0000_UP-100003" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100004_R-100004" RefId="M-00FA_A-0000-00-0000_UP-100004" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100005_R-100005" RefId="M-00FA_A-0000-00-0000_UP-100005" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100006_R-100006" RefId="M-00FA_A-0000-00-0000_UP-100006" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100007_R-100007" RefId="M-00FA_A-0000-00-0000_UP-100007" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100008_R-100008" RefId="M-00FA_A-0000-00-0000_UP-100008" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_UP-100009_R-100009" RefId="M-00FA_A-0000-00-0000_UP-100009" />
+              <ParameterRef Id="M-00FA_A-0000-00-0000_P-100010_R-100010" RefId="M-00FA_A-0000-00-0000_P-100010" />
             </ParameterRefs>
             <ComObjectTable>
               <!-- ComObject sending a 'still alive' signal, DPT 1 (1 bit) -->
@@ -733,10 +733,10 @@
                 </choose>
                 <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-6" Text="" UIHint="HorizontalRuler" />
                 <!-- Parameter to choose startup delay -->
-                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-10000_R-10000" /> <!-- Repeater ON/OFF -->
-                <choose ParamRefId="M-00FA_A-0000-00-0000_P-10000_R-10000">
+                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-100000_R-100000" /> <!-- Repeater ON/OFF -->
+                <choose ParamRefId="M-00FA_A-0000-00-0000_P-100000_R-100000">
                   <when test="1">
-                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-10010_R-10010" /> <!-- Repeater Level -->
+                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-100010_R-100010" /> <!-- Repeater Level -->
                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-100" Text="Level-1 = nur Nachrichten die noch nicht weitergeleitet wurden, werden 'repeated'" />
                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-101" Text="Level-2 = alle Nachrichten werden 'repeated'" />
                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-102" Text="ACHTUNG:" />
@@ -745,8 +745,8 @@
                   </when>
                 </choose>
                 <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-7" Text="" UIHint="HorizontalRuler" />
-                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-10001_R-10001" />
-                <choose ParamRefId="M-00FA_A-0000-00-0000_P-10001_R-10001">
+                <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-100001_R-100001" />
+                <choose ParamRefId="M-00FA_A-0000-00-0000_P-100001_R-100001">
                   <when test="0">
                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-99" Text="                                                                  ACHTUNG: die Base-ID kann nur 10x geändert werden!" />
                   </when>
@@ -772,14 +772,14 @@
                             </Columns>
                             <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-9" Text="Base-ID:"  Cell="1,1" />
                             <!-- <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-nnn" Text="." Cell="1,3"/> -->
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10002_R-10002" Cell="1,2" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10003_R-10003" Cell="1,3" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10004_R-10004" Cell="1,5" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10005_R-10005" Cell="1,6" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10006_R-10006" Cell="1,8" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10007_R-10007" Cell="1,9" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10008_R-10008" Cell="1,11" />
-                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-10009_R-10009" Cell="1,12" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100002_R-100002" Cell="1,2" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100003_R-100003" Cell="1,3" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100004_R-100004" Cell="1,5" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100005_R-100005" Cell="1,6" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100006_R-100006" Cell="1,8" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100007_R-100007" Cell="1,9" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100008_R-100008" Cell="1,11" />
+                            <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-100009_R-100009" Cell="1,12" />
                           </ParameterBlock>
                       <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-13" Text="Zulässiger Base-ID Bereich: 0xFF800000 to 0xFFFFFFFE" />
                   </when>
