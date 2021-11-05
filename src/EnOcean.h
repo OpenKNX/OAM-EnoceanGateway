@@ -13,7 +13,7 @@
 
 #ifndef EnOceanTEST
 // important to change this to the number of devices defined.
-#define MAX_NUMBER_OF_DEVICES     20
+#define MAX_NUMBER_OF_DEVICES     30
 #else
 #define MAX_NUMBER_OF_DEVICES     1
 #endif

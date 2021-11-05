@@ -46,7 +46,7 @@ private:
 
   union
   {
-    byte val_A5_20_06[4];
+    uint8_t val_A5_20_06[4];
   } union1;
 
 public:
@@ -69,12 +69,12 @@ public:
     lui8_SendeID_p[0] = BaseID1;
     lui8_SendeID_p[1] = BaseID2;
     lui8_SendeID_p[2] = BaseID3;
-    lui8_SendeID_p[3] = BaseID4 + (4*channel);
-    // ACHTUNG: es stehen nur 128 frei wählbare IDs zur verfügung. 
-    // Die 128 Stk können NICHT frei bestimmt werden -> Es gehen nur die 128 folgenden ID !!! 
-    // D.h. BaseID4 liegt default immer zwischen 0x00 und 0x80 
-    // Auf BaseID4 können dann maximal die 127 weiteren IDs gelegt werden. 
-    // -> 4 * Channels (20CH) = 80 --> OK 
+    lui8_SendeID_p[3] = BaseID4 + (4 * channel);
+    // ACHTUNG: es stehen nur 128 frei wählbare IDs zur verfügung.
+    // Die 128 Stk können NICHT frei bestimmt werden -> Es gehen nur die 128 folgenden ID !!!
+    // D.h. BaseID4 liegt default immer zwischen 0x00 und 0x80
+    // Auf BaseID4 können dann maximal die 127 weiteren IDs gelegt werden.
+    // -> 4 * Channels (20CH) = 80 --> OK
 
 #ifdef KDEBUG
     SERIAL_PORT.print("CH");
@@ -82,7 +82,7 @@ public:
     SERIAL_PORT.print(" SENDER_ID: ");
     for (int i = 0; i < BASEID_BYTES; i++)
     {
-      SERIAL_PORT.print(lui8_SendeID_p[i],HEX);
+      SERIAL_PORT.print(lui8_SendeID_p[i], HEX);
       SERIAL_PORT.print("");
     }
     SERIAL_PORT.println("");
@@ -121,11 +121,19 @@ public:
     //default Werte
     if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06)
     {
-      union1.val_A5_20_06[0] = 0;
-      union1.val_A5_20_06[1] = 88;
+      union1.val_A5_20_06[0] = 0;                                                 // Value Pos = 0% or Temp-Selection = 0°C
+      union1.val_A5_20_06[1] = 160;                                               // TMP Raum Temp = 40°C (value/4.0)
       union1.val_A5_20_06[2] = (knx.paramByte(ENO_CHA52006RFC + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+      union1.val_A5_20_06[3] |= 1 << 3;                                           // Set LNRB
+#ifdef KDEBUG
+      SERIAL_PORT.print(F("RFC: "));
+      SERIAL_PORT.println((union1.val_A5_20_06[2] & ENO_CHA52006RFCMask) >> ENO_CHA52006RFCShift);
+      SERIAL_PORT.print(F("SPS: "));
+      SERIAL_PORT.println((union1.val_A5_20_06[2] & ENO_CHA52006SPSMask) >> ENO_CHA52006SPSShift);
+      SERIAL_PORT.print(F("TSL: "));
+      SERIAL_PORT.println((union1.val_A5_20_06[2] & ENO_CHA52006TSLMask) >> ENO_CHA52006TSLShift);
+#endif
     }
-
     // default Startup delay Startpunkt
     gStartupDelay = millis(); // Read Request Delay startup
 
@@ -190,7 +198,7 @@ public:
       SERIAL_PORT.print(firstComObj);
       SERIAL_PORT.println(F(" Push"));
 #endif
-      send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); //BaseID_CH = 0 
+      send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); //BaseID_CH = 0
       buttonLastPushTime1 = millis();
       buttonStateSimulation1 = SIMULATE_RELEASE;
     }
@@ -203,7 +211,7 @@ public:
         SERIAL_PORT.print(firstComObj);
         SERIAL_PORT.println(F(" Release"));
 #endif
-        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); //BaseID_CH = 0 
+        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); //BaseID_CH = 0
         buttonStateSimulation1 = SIMULATE_NOTHING;
       }
     }
@@ -295,9 +303,6 @@ public:
   //*************************************************************************************************************************************************************
   void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo)
   {
-    static bool init1 = true;
-    static bool init2 = true;
-    static bool init3 = true;
     uint8_t teachinCH = 0;
 
     if (koIndex != index) // prüft ob KO zum CHannel passt
@@ -319,16 +324,6 @@ public:
       {
       case A5_20_06:
 
-        //default Werte
-        /*
-        if (init1)
-          union1.val_A5_20_06[0] = 0;
-        if (init2)
-          union1.val_A5_20_06[1] = 88;
-        if (init3)                                                                    // set Settings from ETS
-          union1.val_A5_20_06[2] = (knx.paramByte(ENO_CHA52006RFC + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
-        */
-
         switch (koNr)
         {
         case KO_Teachin: // Teach-in MSG
@@ -348,10 +343,9 @@ public:
           break;
 
         case KO_0: // SET Temp oder SET Pos
-          init1 = false;
           if ((knx.paramByte(ENO_CHA52006SPS + firstParameter) >> ENO_CHA52006SPSShift) & 1)
           {
-            union1.val_A5_20_06[0] = (float)iKo.value(getDPT(VAL_DPT_9)) * 2.0; // Set Point Temp
+            union1.val_A5_20_06[0] = (float)iKo.value(getDPT(VAL_DPT_9)) * 2.0; // Set Point Temp#
 #ifdef KDEBUG
             SERIAL_PORT.print(F("SET Temp to: "));
             SERIAL_PORT.print(union1.val_A5_20_06[0] / 2.0);
@@ -372,7 +366,6 @@ public:
         case KO_1: // Sommer Umschaltung
           if (iKo.value(getDPT(VAL_DPT_1)))
           {
-            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] | (1 << 3); // Set Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Sommer Umschaltung: aktiv"));
@@ -380,7 +373,6 @@ public:
           }
           else
           {
-            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 3); // clear Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Sommer Umschaltung: inaktiv"));
@@ -388,24 +380,18 @@ public:
           }
           break;
 
-        case KO_2: // Run Reference
-          if (iKo.value(getDPT(VAL_DPT_1)))
-          {
-            init3 = false;
-            union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] | (1 << 7); // Set Bit
+        case KO_2: // Set Communications Interval
 #ifdef KDEBUG
-            SERIAL_PORT.println(F("RUN Reference"));
+          SERIAL_PORT.print(F("Com Interval: "));
+          SERIAL_PORT.println((uint8_t)iKo.value(getDPT(VAL_DPT_5)));
 #endif
-          }
-          else
-            union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
-#ifdef KDEBUG
-          SERIAL_PORT.println(F("RUN Reference OFF"));
-#endif
+          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift);     // clear Bit4
+          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift+1);   // clear Bit5
+          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift+2);   // clear Bit6
+          union1.val_A5_20_06[2] |= ((uint8_t)iKo.value(getDPT(VAL_DPT_5)) << ENO_CHA52006RFCShift); // Set Bit
           break;
 
         case KO_3: // Raum Temperatur
-          init2 = false;
           union1.val_A5_20_06[1] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 4.0; // Raumtemperatur
 #ifdef KDEBUG
           SERIAL_PORT.print(F("Raum-Temp: "));
@@ -417,7 +403,6 @@ public:
         case KO_4: // Standby
           if (iKo.value(getDPT(VAL_DPT_1)))
           {
-            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] | (1 << 0); // Set Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Standby"));
@@ -425,7 +410,6 @@ public:
           }
           else
           {
-            init3 = false;
             union1.val_A5_20_06[2] = (uint8_t)union1.val_A5_20_06[2] & ~(1 << 0); // clear Bit
 #ifdef KDEBUG
             SERIAL_PORT.println(F("normal Mode"));
@@ -529,146 +513,10 @@ public:
     uint8_t DevicId_Arr_TEST[4] = {0xFF, 0xDC, 0xD4, 0x80};
     uint8_t MSGDef;
 
-#ifndef EnOceanTEST
     // Get rid of messages we can't handle
     if (f_Pkt_st->u8DataBuffer[0] != knx.paramByte(ENO_CHProfilSelection + firstParameter) && knx.paramByte(ENO_CHProfilSelection + firstParameter) != u8RORG_Rocker)
       return false;
-#endif
 
-    // ONLY FOR TESTING
-    /*
-#ifdef EnOceanTEST
-    SERIAL_PORT.println("ENOCEAN TEST");
-
-    profil = A5_20;
-    profil2nd = A5_20_06;
-    MSGDef = u8RORG_4BS;
-
-    switch (MSGDef)
-    {
-    case u8RORG_1BS:
-#ifdef KDEBUG
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
-#endif
-      // Get rid of messages not intended for us
-      if (f_Pkt_st->u8DataBuffer[2] != DevicId_Arr_TEST[0])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[3] != DevicId_Arr_TEST[1])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[4] != DevicId_Arr_TEST[2])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[5] != DevicId_Arr_TEST[3])
-        return false;
-
-      handle_1BS(f_Pkt_st);
-      break;
-
-    case u8RORG_RPS:
-      // Get rid of messages not intended for us
-      if (f_Pkt_st->u8DataBuffer[2] != DevicId_Arr_TEST[0])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[3] != DevicId_Arr_TEST[1])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[4] != DevicId_Arr_TEST[2])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[5] != DevicId_Arr_TEST[3])
-        return false;
-
-#ifdef KDEBUG
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
-      SERIAL_PORT.print("-");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
-      SERIAL_PORT.print("-");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
-      SERIAL_PORT.print("-");
-      SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
-#endif
-
-      handle_RPS(f_Pkt_st, profil, firstComObj, firstParameter);
-      break;
-
-    case u8RORG_4BS:
-
-      // Get rid of messages not intended for us
-      if (f_Pkt_st->u8DataBuffer[5] != DevicId_Arr_TEST[0])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[6] != DevicId_Arr_TEST[1])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[7] != DevicId_Arr_TEST[2])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[8] != DevicId_Arr_TEST[3])
-        return false;
-
-#ifdef KDEBUG
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[5], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[6], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[7], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[8], HEX);
-#endif
-
-      handle_4BS(f_Pkt_st, profil, profil2nd, firstComObj, firstParameter);
-      break;
-
-    case u8RORG_VLD:
-
-      // Get rid of messages not intended for us
-      if (f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 5] != DevicId_Arr_TEST[0])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 4] != DevicId_Arr_TEST[1])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 3] != DevicId_Arr_TEST[2])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 2] != DevicId_Arr_TEST[3])
-        return false;
-
-#ifdef KDEBUG
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 5], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 4], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 3], HEX);
-      SERIAL_PORT.print(" ");
-      SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 2], HEX);
-#endif
-
-      handle_VLD(f_Pkt_st, profil, firstComObj, firstParameter);
-      break;
-
-    case u8RORG_Rocker:
-      // Get rid of messages not intended for us
-      if (f_Pkt_st->u8DataBuffer[2] != deviceId_Arr[0])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[3] != deviceId_Arr[1])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[4] != deviceId_Arr[2])
-        return false;
-      if (f_Pkt_st->u8DataBuffer[5] != deviceId_Arr[3])
-        return false;
-
-#ifdef KDEBUG
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
-      SERIAL_PORT.print(".");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
-      SERIAL_PORT.print(".");
-      SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
-      SERIAL_PORT.print(".");
-      SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
-#endif
-
-      handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
-      break;
-    }
-#else*/
-    // Normal Funktion !!!!
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
     case u8RORG_1BS:
@@ -791,7 +639,6 @@ public:
       handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
       break;
     }
-    //#endif
     return true;
   }
 #pragma GCC diagnostic pop // I don't want a warning, just because we don't do anything here
