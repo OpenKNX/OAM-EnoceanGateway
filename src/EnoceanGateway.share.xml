@@ -584,8 +584,8 @@
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-A52006TSL" Name="A52006TSL">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Ambient Temperatur" Value="0" Id="M-00FA_A-0000-00-0000_PT-A52006TSL_EN-0" />
-                  <Enumeration Text="Feed Temperatur" Value="1" Id="M-00FA_A-0000-00-0000_PT-A52006TSL_EN-1" />
+                  <Enumeration Text="Umgebungs-Temperatur" Value="0" Id="M-00FA_A-0000-00-0000_PT-A52006TSL_EN-0" />
+                  <Enumeration Text="Vorlauf-Temperatur" Value="1" Id="M-00FA_A-0000-00-0000_PT-A52006TSL_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-A52006SBY" Name="A52006SBY">
@@ -602,14 +602,14 @@
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-A52006RFC" Name="A52006RFC">
                 <TypeRestriction Base="Value" SizeInBit="3">
-                  <Enumeration Text="Auto" Value="0" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-0" />
-                  <Enumeration Text="2min" Value="1" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-1" />
-                  <Enumeration Text="5min" Value="2" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-2" />
-                  <Enumeration Text="10min" Value="3" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-3" />
-                  <Enumeration Text="20min" Value="4" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-4" />
-                  <Enumeration Text="30min" Value="5" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-5" />
-                  <Enumeration Text="60min" Value="6" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-6" />
-                  <Enumeration Text="120min" Value="7" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-7" />
+                  <Enumeration Text="Auto     (KO_val = 0)" Value="0" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-0" />
+                  <Enumeration Text="2min     (KO_val = 1)" Value="1" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-1" />
+                  <Enumeration Text="5min     (KO_val = 2)" Value="2" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-2" />
+                  <Enumeration Text="10min    (KO_val = 3)" Value="3" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-3" />
+                  <Enumeration Text="20min    (KO_val = 4)" Value="4" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-4" />
+                  <Enumeration Text="30min    (KO_val = 5)" Value="5" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-5" />
+                  <Enumeration Text="60min    (KO_val = 6)" Value="6" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-6" />
+                  <Enumeration Text="120min   (KO_val = 7)" Value="7" Id="M-00FA_A-0000-00-0000_PT-A52006RFC_EN-7" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-RepeaterLevel" Name="RepeaterLevel">
@@ -794,7 +794,7 @@
       <Hardware>
         <Hardware Id="M-00FA_H-202-1" Name="EnoceanGateway" SerialNumber="202" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
           <Products>
-            <Product Id="M-00FA_H-202-1_P-202" Text="EnoceanGateway" OrderNumber="EnoceanGateway50CH" IsRailMounted="false" DefaultLanguage="de">
+            <Product Id="M-00FA_H-202-1_P-202" Text="EnoceanGateway" OrderNumber="MF-KnxEno-CH30" IsRailMounted="false" DefaultLanguage="de">
               <RegistrationInfo RegistrationStatus="Registered" />
             </Product>
           </Products>

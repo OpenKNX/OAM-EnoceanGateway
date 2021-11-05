@@ -247,10 +247,10 @@
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%055" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Bat Voltage" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-20" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%056" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="OUT_CH_1_DPT_19" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window Gekippt" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%057" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Hum" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-7" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />   
-              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%058" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH1 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%058" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH1 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-1-11" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
                    
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%060" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="INP_CH_1_DPT_05" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Register Bits" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
-              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%061" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Reference Run" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
+              <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K2%_R-%K2%061" RefId="M-00FA_A-0000-00-0000_O-%K2%" Name="INP_CH_5_DPT_10" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Kommunikations-Intervall" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
               <!-- Base 3 -->
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%070" RefId="M-00FA_A-0000-00-0000_O-%K3%" Name="OUT_CH_1_DPT_01" Text="Output D  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
               <ComObjectRef Id="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%071" RefId="M-00FA_A-0000-00-0000_O-%K3%" Name="INP_CH_1_DPT_01" Text="Input  D  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0000-00-0000_P-%C%053_R-%C%053" />
@@ -508,14 +508,18 @@
                                 <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%022_R-%C%022">
                                   <when test="121">
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
-                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="Energieautarker Heizkörperstellantrieb" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-3" Text="Energieautarker Heizkörperstellantrieb" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-4" Text="Default Einstellung: kann per KNX KO mit dem Wert KO_val über eine Logik angepasst werden" />
                                     <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%064_R-%C%064" /> <!-- RFC -->
-                                    <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%065_R-%C%065" /> <!-  SB -->
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-5" Text="Ein dauerhaft niedriges Sende-Intervall entlädt den internen Speicher überproportional!" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-6" Text="Definiert ob das Ventil manuell gesteuert(0.100%), oder geregelt auf eine Soll-Temp(°C) arbeitet" />
                                     <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%065_R-%C%065" /> <!-- SPS -->
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-2" Text="" UIHint="HorizontalRuler" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-7" Text="Definiert welcher Sensor im Ventil seine aktuelle Temperatur liefert:" />
                                     <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%066_R-%C%066" /> <!-- TSL -->
-                                    <!-- <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%68_R-%C%68" /> <!- SBY -->
-                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-3" Text="" UIHint="HorizontalRuler" />
+                                    <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-10" Text="" UIHint="HorizontalRuler" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-11" Text="KO Status byte:" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-12" Text="Bit1: ACO  (Ventilerkennung) = Der Stellantrieb erkennt im Rahmen der Inbetriebnahme, ob er an einem Ventil montiert ist" />
                                     <ParameterSeparator Id="M-00FA_A-0000-00-0000_PS-13" Text="Bit2: RSS  (Radio Signal Strength) = Warnung bei schwachem Radiosignal" />
@@ -834,7 +838,7 @@
       <Hardware>
         <Hardware Id="M-00FA_H-202-1" Name="EnoceanGateway" SerialNumber="202" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
           <Products>
-            <Product Id="M-00FA_H-202-1_P-202" Text="EnoceanGateway" OrderNumber="202" IsRailMounted="false" DefaultLanguage="de">
+            <Product Id="M-00FA_H-202-1_P-202" Text="EnoceanGateway" OrderNumber="MF-KnxEno-CH30" IsRailMounted="false" DefaultLanguage="de">
               <RegistrationInfo RegistrationStatus="Registered" />
             </Product>
           </Products>
