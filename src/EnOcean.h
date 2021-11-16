@@ -182,6 +182,17 @@ struct FOURBS_A5_07_03_DATA_TYPE2
   uint8_t PIR : 1; // (DB_BIT 7)   PIR
 };
 
+struct FOURBS_A5_08_DATA_TYPE
+{
+  uint8_t OCC  : 1; // (DB_BIT 0) Occupancy Button
+  uint8_t PIR  : 1; // (DB_BIT 1)   PIR
+  uint8_t NA1  : 1; // (DB_BIT 2)   Not used
+  uint8_t LRNB : 1; // (DB_BIT 3)   Teach-In Bit
+  uint8_t NA2  : 4; // (DB_BIT 4-7) Not used
+};
+
+
+
 struct FOURBS_A5_07_14_01_06_DATA_TYPE
 {
   uint8_t CT  : 1;   // (DB_BIT 0)    Contact 
@@ -496,6 +507,17 @@ struct FOURBS_A5_07_03_TYPE
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
+
+struct FOURBS_A5_08_TYPE
+{
+  uint8_t u8SupplyVoltage;
+  uint8_t Ill;
+  uint8_t TMP;
+  FOURBS_A5_08_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
 
 struct FOURBS_A5_14_01_06_TYPE
 {

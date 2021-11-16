@@ -115,6 +115,9 @@
 #define A5_07_01 36
 #define A5_07_02 37
 #define A5_07_03 38
+#define A5_08_01 39
+#define A5_08_02 40
+#define A5_08_03 41
 
 #define A5_14_01 106
 #define A5_14_02 107
