@@ -730,11 +730,11 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #endif
 
                   break; // ENDE A5-08-02
-            }
-             //**************************************************************
+            
+            //**************************************************************
             // ----------------- Profil: A5-08-03 --------------------------
             //**************************************************************
-            case A5_08_01:
+            case A5_08_03:
                   fourBsA6_08_Tlg_p = (FOURBS_A5_08_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("03"));
@@ -773,6 +773,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #endif
 
                   break; // ENDE A5-08-03
+            }      
             break; // ENDE A5-08-XX
 
       case A5_14:
