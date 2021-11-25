@@ -2,7 +2,7 @@
 #define ENOCEANDEVICE_T_H_VOC_H_
 
 #include "EnOcean.h"
-#include "hardware.h"
+#include "hardwareENO.h"
 
 // ################################################
 // ### DEBUG CONFIGURATION

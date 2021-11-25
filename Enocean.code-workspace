@@ -3,6 +3,15 @@
         {
             "path": "."
         },
+        {
+            "path": "../knx-logic"
+        },
+        {
+			"path": "../knx-common"
+		},
+		{
+			"path": "../knx"
+		}
     ],
     "settings": {
         "terminal.integrated.env.windows": {

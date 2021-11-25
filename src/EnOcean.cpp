@@ -7,7 +7,7 @@
 
 #include "EnOcean.h"
 
-#include "hardware.h"
+#include "hardwareENO.h"
 #include <knx.h>
 
 // ################################################

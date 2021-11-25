@@ -2,7 +2,7 @@
 
 #include "EnOcean.h"
 #include "EnoceanGateway.h"
-#include "hardware.h"
+#include "hardwareENO.h"
 
 void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs, uint8_t baseID_CH)
 {

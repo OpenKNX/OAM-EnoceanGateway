@@ -1,7 +1,7 @@
 #include <Arduino.h>
 
 #include <knx.h>
-#include "hardware.h"
+#include "hardwareENO.h"
 #include "KnxHelper.h"
 #include "EnoceanGateway.h"
 #include "EnoceanProfils.h"

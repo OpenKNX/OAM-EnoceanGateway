@@ -1,5 +1,5 @@
 #include "KnxHelper.h"
-#include "hardware.h"
+#include "hardwareENO.h"
 
 
 // That is not a final list. In case you need more dpt types, you can add this dpt to this Array
