@@ -1,6 +1,5 @@
 #pragma once
 
-#include "EnoceanGateway.h"
 #include "EnoceanProfils.h"
 #include "KnxHelper.h"
 

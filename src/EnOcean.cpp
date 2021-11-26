@@ -150,7 +150,7 @@ void EnOcean::init()
   // 1.) read base-ID
   readBaseId(&lui8_BaseID_p[0]);
   // 2.) compare old base-ID with the new ID
-  if ((knx.paramByte(ENO_SetBaseIdFunc) >> ENO_SetBaseIdFuncShift) & 1)
+  if ((knx.paramByte(LOG_SetBaseIdFunc) >> LOG_SetBaseIdFuncShift) & 1)
   {
     if (checkBaseID())
     { // old != new
@@ -199,11 +199,11 @@ bool EnOcean::checkBaseID()
 {
   if (lui8_BaseID_p[0] != 0xFF)
     return 1;
-  else if (lui8_BaseID_p[1] != knx.paramByte(ENO_Id2))
+  else if (lui8_BaseID_p[1] != knx.paramByte(LOG_Id2))
     return 1;
-  else if (lui8_BaseID_p[2] != knx.paramByte(ENO_Id4))
+  else if (lui8_BaseID_p[2] != knx.paramByte(LOG_Id4))
     return 1;
-  else if (lui8_BaseID_p[3] != knx.paramByte(ENO_Id6))
+  else if (lui8_BaseID_p[3] != knx.paramByte(LOG_Id6))
     return 1;
   else
     return 0;
@@ -251,8 +251,8 @@ void EnOcean::setRepeaterFunc()
   uint8_t loopCount = 0;
 
   lu8SndBuf[0] = u8CO_WR_REPEATER;
-  lu8SndBuf[1] = (knx.paramByte(ENO_RepeaterFunc) >> ENO_RepeaterFuncShift) & 1;
-  lu8SndBuf[2] = knx.paramByte(ENO_RepeaterLevel);
+  lu8SndBuf[1] = (knx.paramByte(LOG_RepeaterFunc) >> LOG_RepeaterFuncShift) & 1;
+  lu8SndBuf[2] = knx.paramByte(LOG_RepeaterLevel);
 
   lRdBaseIDPkt_st.u16DataLength = 0x0003;
   lRdBaseIDPkt_st.u8OptionLength = 0x00;
@@ -463,9 +463,9 @@ void EnOcean::setBaseId(uint8_t *fui8_BaseID_p)
 
   lu8SndBuf[0] = u8CO_WR_IDBASE;
   lu8SndBuf[1] = 0xFF;
-  lu8SndBuf[2] = knx.paramByte(ENO_Id2);
-  lu8SndBuf[3] = knx.paramByte(ENO_Id4);
-  lu8SndBuf[4] = knx.paramByte(ENO_Id6);
+  lu8SndBuf[2] = knx.paramByte(LOG_Id2);
+  lu8SndBuf[3] = knx.paramByte(LOG_Id4);
+  lu8SndBuf[4] = knx.paramByte(LOG_Id6);
 
   lRdBaseIDPkt_st.u16DataLength = 0x0005;
   lRdBaseIDPkt_st.u8OptionLength = 0x00;

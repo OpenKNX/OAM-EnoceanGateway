@@ -3,7 +3,6 @@
 #define EnOceanDevice_H_
 
 #include "EnOcean.h"
-#include "EnoceanGateway.h"
 #include "EnoceanSendFunctions.h"
 #include "RPS_Telegram.h"
 #include "4BS_Telegram.h"

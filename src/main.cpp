@@ -21,6 +21,8 @@ void appLoop();
 
 void setup()
 {
+    //Wire.begin();
+
 
     pinMode(PROG_LED_PIN, OUTPUT);
     digitalWrite(PROG_LED_PIN, HIGH);
