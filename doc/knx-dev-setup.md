@@ -63,7 +63,7 @@ In "Quick Access", choose open
 
 In the new "PIO Home" tab, click on "New Project..."
 
-In the upcoming dialog, provide the name "Test", Board "Sparkfun SAMD21 Dev Breakout", Framework "Arduino" and Location "Use default location"
+In the upcoming dialog, provide the name "Test", Board "Seeeduino Xiao", Framework "Arduino" and Location "Use default location"
 
 Click "Finish" and wait until finished. Visuals Studio Code will open the newly created project afterwards. The new project is just used to create default envoronment and can be deleted afterwards.
 
