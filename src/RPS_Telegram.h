@@ -959,8 +959,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     switch (lRpsTlg_p->u8RpsTelData.STATE)
     {
     case 0b1111: // Hebel unten
-      knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
       if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = true;
       else
@@ -971,8 +971,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
       break;
     case 0b1101: // Hebel Oben
-      knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
       if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = false;
       else
@@ -983,8 +983,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
       break;
     case 0b1100: // Hebel Mitte
-      knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
       if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = false;
       else
@@ -995,8 +995,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
       break;
     case 0b1110: // Hebel Mitte
-      knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
       if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
         bvalue = false;
       else
@@ -1024,8 +1024,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
     switch (lRpsTlg_p->u8RpsTelData.STATE)
     {
     case 0b11: // Hebel unten
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
       if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
         bvalue = true;
       else
@@ -1036,8 +1036,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
       break;
     case 0b01: // Hebel Oben
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1));
       if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
         bvalue = false;
       else
@@ -1048,8 +1048,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
       break;
     case 0b00: // Hebel Mitte
-      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
       if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
         bvalue = false;
       else
@@ -1060,8 +1060,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComOb
 #endif
       break;
     case 0b10: // Hebel Mitte
-      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1_19));
-      knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1_19));
+      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
       if (knx.paramByte(firstParameter + ENO_CHWindowcloseValue))
         bvalue = false;
       else

@@ -2,6 +2,7 @@
 
 #include <knx.h>
 #include "hardwareENO.h"
+#include "Helper.h"
 #include "KnxHelper.h"
 #include "EnoceanGateway.h"
 #include "EnoceanProfils.h"
