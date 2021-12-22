@@ -8,7 +8,7 @@
         </CatalogSection>
       </Catalog>
       <ApplicationPrograms>
-        <ApplicationProgram Id="M-00FA_A-0001-01-0000" ApplicationNumber="202" ApplicationVersion="80" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX-Enocean-Gateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" > 
+        <ApplicationProgram Id="M-00FA_A-0001-01-0000" ApplicationNumber="202" ApplicationVersion="84" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX-Enocean-Gateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ReplacesVersions="80 81 82 83" > 
           <Static>
             <Code>
               <RelativeSegment Id="M-00FA_A-0001-01-0000_RS-04-00000" Name="Parameters" Offset="0" Size="4" LoadStateMachine="4" />
@@ -60,17 +60,18 @@
             <ChannelIndependentBlock>
               <!-- ChannelIndependentBlock is a composition of different parts of different modules -->
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-1" Name="Doku" Text="Dokumenation">
-                  <mc:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Docu']/*" prefix="ENO" />
+                <mc:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Docu']/*" prefix="ENO" />
               </ParameterBlock>
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="General" Text="Allgemeine Parameter">
-                  <mc:include href="../../knx-logic/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
-                  <mc:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="ENO" />
-                  <mc:include href="../../knx-logic/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
+                <mc:include href="../../knx-logic/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
+                <mc:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="ENO" />
+                <mc:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Hardware']/*" prefix="ENO" />
+                <mc:include href="../../knx-logic/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
               </ParameterBlock>
             </ChannelIndependentBlock>
-             <!-- Erster Enocean Kanal -->
-             <Channel Id="M-00FA_A-0001-01-0000_CH-1" Name="Standard" Number="1" Text="Enocean">
-                <mc:include href="EnoceanGateway.templ.xml" xpath="//Dynamic/*" type="template" prefix="ENO" />
+            <!-- Erster Enocean Kanal -->
+            <Channel Id="M-00FA_A-0001-01-0000_CH-1" Name="Standard" Number="1" Text="Enocean">
+              <mc:include href="EnoceanGateway.templ.xml" xpath="//Dynamic/*" type="template" prefix="ENO" />
             </Channel>
             <Channel Id="M-00FA_A-0001-01-0000_CH-2" Name="Logik" Number="2" Text="Logikkanäle">
               <!-- Logic channel independent settings -->
