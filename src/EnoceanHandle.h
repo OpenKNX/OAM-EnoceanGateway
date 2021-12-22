@@ -649,10 +649,26 @@ public:
 
   void handle_1BS(PACKET_SERIAL_TYPE *f_Pkt_st)
   {
+    bool bvalue;
 
     ONEBS_TELEGRAM_TYPE *l1bsTlg_p = (ONEBS_TELEGRAM_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
 
-    knx.getGroupObject(firstComObj).value(l1bsTlg_p->u81bsTelData.State, getDPT(VAL_DPT_1));
+    // D5-00-01 Contact: 0 = open / 1 = close
+    // ETS Parameter to define state for open / Close
+    if(l1bsTlg_p->u81bsTelData.State  == 1) // CLOSE
+    {
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
+        bvalue = true;
+      else
+        bvalue = false;
+    }
+    else{ // OPEN
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue))>>ENO_CHWindowcloseValueShift) & 1)
+        bvalue = false;
+      else
+        bvalue = true;
+    }
+    knx.getGroupObject(firstComObj).value(bvalue, getDPT(VAL_DPT_1));
 
 #ifdef KDEBUG
     SERIAL_PORT.print(F("detected: 1BS State: "));
