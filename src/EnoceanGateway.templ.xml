@@ -26,7 +26,7 @@
     	          <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%007" Name="CH%C%ProfilSelection4BS" ParameterType="M-00FA_A-0000-00-0000_PT-ProfilSelection4BS" Text="EEP Profil: 4BS"  Value="2"  Offset="0" BitOffset="0"/> 
                 <Parameter Id="M-00FA_A-0000-00-0000_UP-%C%008" Name="CH%C%ProfilSelectionVLD" ParameterType="M-00FA_A-0000-00-0000_PT-ProfilSelectionVLD" Text="EEP Profil: VLD"  Value="0"  Offset="0" BitOffset="0"/>
               </Union>
-              <Parameter Id="M-00FA_A-0000-00-0000_P-%C%009" Name="CH%C%DirectionKnxEnocean" ParameterType="M-00FA_A-0000-00-0000_PT-DirKnxEnocean" Text="Auswahl:"  Value="0">
+              <Parameter Id="M-00FA_A-0000-00-0000_P-%C%009" Name="CH%C%DirectionKnxEnocean" ParameterType="M-00FA_A-0000-00-0000_PT-KnxEnocean" Text="Auswahl:"  Value="0">
                 <Memory CodeSegment="M-00FA_A-0000-00-0000_RS-04-00000" Offset="3" BitOffset="0" />
               </Parameter>
               <!-- UNION Profils 1 -->
