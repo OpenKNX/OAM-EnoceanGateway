@@ -88,6 +88,10 @@
 #define SER_HEADER_NR_BYTES 4
 
 //Rocker States
+#define ButtonStateO 0
+#define ButtonStateI 1
+
+#define RockerIdle 0x01
 #define AI_pressed 0x10
 #define AO_pressed 0x30
 #define BI_pressed 0x50
@@ -102,7 +106,13 @@
 #define CI_release 0x05
 #define CO_release 0x07
 
-
+#define ROCKER_INACTIVE 0x00
+#define ROCKER_AI 0x01
+#define ROCKER_AO 0x02
+#define ROCKER_BI 0x03
+#define ROCKER_BO 0x04
+#define ROCKER_CI 0x05
+#define ROCKER_CO 0x06
 /*
 struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE
 {
