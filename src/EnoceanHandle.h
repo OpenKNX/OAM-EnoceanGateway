@@ -409,8 +409,9 @@ public:
           break;
         } // ENDE Rocker Taste
       }   // ENDE IF Idle
-
-      if (delayCheck(union1.rocker_longpress_delay, 500) && union3.rockerNr != 0)
+      
+      
+      if (delayCheck(union3.rockerNr != 0 && union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter)*10))
       {
         switch (union3.rockerNr)
         {

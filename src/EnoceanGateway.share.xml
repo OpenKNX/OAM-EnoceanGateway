@@ -80,6 +80,18 @@
                   <Enumeration Text="KNX -> Enocean" Value="1" Id="M-00FA_A-0000-00-0000_PT-KnxEnocean_EN-1" />
                 </TypeRestriction>
               </ParameterType>
+              <!-- Parameter type for an 8 bit percent parameter -->
+              <ParameterType Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime" Name="RockerLongPressWaitTime">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="300ms" Value="30" Id="M-00FA_A-0000-00-0000_PT-KnxEnocean_EN-30" />
+                  <Enumeration Text="350ms" Value="35" Id="M-00FA_A-0000-00-0000_PT-KnxEnocean_EN-35" />
+                  <Enumeration Text="400ms" Value="40" Id="M-00FA_A-0000-00-0000_PT-KnxEnocean_EN-40" />
+                  <Enumeration Text="450ms" Value="45" Id="M-00FA_A-0000-00-0000_PT-KnxEnocean_EN-45" />
+                  <Enumeration Text="500ms" Value="50" Id="M-00FA_A-0000-00-0000_PT-KnxEnocean_EN-50" />
+                </TypeRestriction>
+              </ParameterType>
+
+              
               <!-- Parameter type for EEP Profil selection -->
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilSelection" Name="ProfilSelection">
                 <TypeRestriction Base="Value" SizeInBit="8">
