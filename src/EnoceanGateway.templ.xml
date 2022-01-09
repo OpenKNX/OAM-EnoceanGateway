@@ -349,8 +349,8 @@
                         </choose> 
                         <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%004_R-%C%004" />
                         <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%004_R-%C%004">
-                          <!-- RPS F6 (282)-->
-                          <when test="282">
+                          <!-- RPS F6 (0xF6 = 246Dez)-->
+                          <when test="246">
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%005_R-%C%005" />
                             <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%005_R-%C%005">
                               <!-- F6-05-00 & 02 -->
@@ -371,15 +371,15 @@
                               </when>
                             </choose>
                           </when>
-                          <!-- 1BS D5 (281) -->
-                          <when test="281">
+                          <!-- 1BS D5 (0xD5 = 213Dez) -->
+                          <when test="213">
                             <!-- D5-00-01 -->
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%067_R-%C%067" /> <!-- Par Wert für geschlossen -->
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%006_R-%C%006" />
                             <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%015" />
                           </when>
-                          <!-- 4BS A5 (1)-->
-                          <when test="1">
+                          <!-- 4BS A5 (0xA5 = 165Dez)-->
+                          <when test="165">
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%007_R-%C%007" />
                             <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%007_R-%C%007">
                               <!-- A5-02 -->
@@ -574,8 +574,8 @@
                               </when> 
                             </choose>  
                           </when>
-                          <!-- VLD D2 (136)-->
-                          <when test="136">
+                          <!-- VLD D2 (0xD2 = 210dez)-->
+                          <when test="210">
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%008_R-%C%008" />
                             <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%008_R-%C%008">
                               <!-- VLD D2-01 -->
@@ -685,8 +685,8 @@
                               </when>  
                             </choose> 
                           </when>
-                          <!-- Rocker (500)-->
-                          <when test="500">
+                          <!-- Rocker (0xFA = 250)-->
+                          <when test="250">
                             <ParameterRefRef RefId="M-00FA_A-0000-00-0000_P-%C%009_R-%C%009" />
                             <choose ParamRefId="M-00FA_A-0000-00-0000_P-%C%009_R-%C%009">
                                 <!-- ********** ENOCEAN -> KNX ****************************** -->

@@ -84,11 +84,11 @@
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilSelection" Name="ProfilSelection">
                 <TypeRestriction Base="Value" SizeInBit="8">
                   <Enumeration Text="nicht belegt"   Value="0"   Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-0" />
-                  <Enumeration Text="4BS - A5"       Value="1"   Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-1" />
-                  <Enumeration Text="VLD - D2"       Value="136" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-136" />
-                  <Enumeration Text="1BS - D5"       Value="281" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-281" />
-                  <Enumeration Text="RPS - F6"       Value="282" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-282" />
-                  <Enumeration Text="RPS - Schalter" Value="500" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-250" />
+                  <Enumeration Text="4BS - A5"       Value="165" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-165" />
+                  <Enumeration Text="VLD - D2"       Value="210" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-210" />
+                  <Enumeration Text="1BS - D5"       Value="213" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-213" />
+                  <Enumeration Text="RPS - F6"       Value="246" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-246" />
+                  <Enumeration Text="RPS - Schalter" Value="250" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-250" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0000-00-0000_PT-ProfilSelectionRPS" Name="ProfilSelectionRPS">

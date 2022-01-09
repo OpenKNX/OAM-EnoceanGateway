@@ -43,11 +43,11 @@
 */
 
 // Receive
-#define u8RORG_1BS 0xD5
-#define u8RORG_RPS 0xF6
-#define u8RORG_VLD 0xD2
-#define u8RORG_4BS 0xA5
-#define u8RORG_Rocker 0xFA
+#define u8RORG_1BS    0xD5 // 213
+#define u8RORG_RPS    0xF6 // 246 
+#define u8RORG_VLD    0xD2 // 210
+#define u8RORG_4BS    0xA5 // 165
+#define u8RORG_Rocker 0xFA // 250
 
 // Send
 #define u8RORG_COMMON_COMMAND 0x05
