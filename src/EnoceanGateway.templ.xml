@@ -455,17 +455,20 @@
                                 <choose ParamRefId="M-00FA_A-0000-00-0000_UP-%C%021_R-%C%021">
                                   <!-- A5-14.01 -->
                                   <when test="106">
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%067_R-%C%067" /> <!-- Par Wert für geschlossen -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
                                   </when>
                                   <!-- A5-14.02 -->
                                   <when test="107">
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%067_R-%C%067" /> <!-- Par Wert für geschlossen -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
                                   </when>
                                   <!-- A5-14.03 -->
                                   <when test="108">
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%067_R-%C%067" /> <!-- Par Wert für geschlossen -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K1%_R-%K1%035" /> <!-- LUX      -->
@@ -473,6 +476,7 @@
                                   </when>
                                   <!-- A5-14.04 -->
                                   <when test="109">
+                                    <ParameterRefRef RefId="M-00FA_A-0000-00-0000_UP-%C%067_R-%C%067" /> <!-- Par Wert für geschlossen -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K4%_R-%K4%095" /> <!-- Bat Volt -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K3%_R-%K3%077" /> <!-- contact  -->
                                     <ComObjectRefRef RefId="M-00FA_A-0000-00-0000_O-%K0%_R-%K0%021" /> <!-- Vib Det  -->

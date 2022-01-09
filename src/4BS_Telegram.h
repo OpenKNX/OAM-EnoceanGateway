@@ -669,7 +669,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(lux);
 #endif
                   // ........Temperature..............................................
-                  knx.getGroupObject(firstComObj+6).value(fourBsA6_08_Tlg_p->TMP / 5.0, getDPT(VAL_DPT_9));
+                  knx.getGroupObject(firstComObj + 6).value(fourBsA6_08_Tlg_p->TMP / 5.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("Temp: "));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->TMP / 5.0);
@@ -681,14 +681,14 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.PIR);
 #endif
                   // .......Occupancy Button .........................................
-                  knx.getGroupObject(firstComObj+5).value(fourBsA6_08_Tlg_p->u84BsTelData.OCC, getDPT(VAL_DPT_1));
+                  knx.getGroupObject(firstComObj + 5).value(fourBsA6_08_Tlg_p->u84BsTelData.OCC, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("OCC:"));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.OCC);
 #endif
 
                   break; // ENDE A5-08-01
-                   //**************************************************************
+                         //**************************************************************
             // ----------------- Profil: A5-08-02 --------------------------
             //**************************************************************
             case A5_08_02:
@@ -711,7 +711,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(lux);
 #endif
                   // ........Temperature..............................................
-                  knx.getGroupObject(firstComObj+6).value(fourBsA6_08_Tlg_p->TMP / 5.0, getDPT(VAL_DPT_9));
+                  knx.getGroupObject(firstComObj + 6).value(fourBsA6_08_Tlg_p->TMP / 5.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("Temp: "));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->TMP / 5.0);
@@ -723,14 +723,14 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.PIR);
 #endif
                   // .......Occupancy Button .........................................
-                  knx.getGroupObject(firstComObj+5).value(fourBsA6_08_Tlg_p->u84BsTelData.OCC, getDPT(VAL_DPT_1));
+                  knx.getGroupObject(firstComObj + 5).value(fourBsA6_08_Tlg_p->u84BsTelData.OCC, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("OCC:"));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.OCC);
 #endif
 
                   break; // ENDE A5-08-02
-            
+
             //**************************************************************
             // ----------------- Profil: A5-08-03 --------------------------
             //**************************************************************
@@ -754,10 +754,10 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(lux);
 #endif
                   // ........Temperature..............................................
-                  knx.getGroupObject(firstComObj+6).value((fourBsA6_08_Tlg_p->TMP/3.1875)-30, getDPT(VAL_DPT_9));
+                  knx.getGroupObject(firstComObj + 6).value((fourBsA6_08_Tlg_p->TMP / 3.1875) - 30, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("Temp: "));
-                  SERIAL_PORT.println((fourBsA6_08_Tlg_p->TMP/3.1875)-30);
+                  SERIAL_PORT.println((fourBsA6_08_Tlg_p->TMP / 3.1875) - 30);
 #endif
                   // .......PIR Status.........................................
                   knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1_18));
@@ -766,14 +766,14 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.PIR);
 #endif
                   // .......Occupancy Button .........................................
-                  knx.getGroupObject(firstComObj+5).value(fourBsA6_08_Tlg_p->u84BsTelData.OCC, getDPT(VAL_DPT_1));
+                  knx.getGroupObject(firstComObj + 5).value(fourBsA6_08_Tlg_p->u84BsTelData.OCC, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("OCC:"));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.OCC);
 #endif
 
                   break; // ENDE A5-08-03
-            }      
+            }
             break; // ENDE A5-08-XX
 
       case A5_14:
@@ -797,7 +797,21 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
 #endif
                   // ........Contact..............................................
-                  knx.getGroupObject(firstComObj + 3).value(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT, getDPT(VAL_DPT_1));
+                  if (fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT == 0) // geschlossen
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = true;
+                        else
+                              bvalue = false;
+                  }
+                  else // open
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = false;
+                        else
+                              bvalue = true;
+                  }
+                  knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("detected: State: "));
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT);
@@ -826,7 +840,21 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(lux);
 #endif
                   // ........Contact..............................................
-                  knx.getGroupObject(firstComObj + 3).value(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT, getDPT(VAL_DPT_1));
+                  if (fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT == 0) // geschlossen
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = true;
+                        else
+                              bvalue = false;
+                  }
+                  else // open
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = false;
+                        else
+                              bvalue = true;
+                  }
+                  knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("detected: State: "));
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT);
@@ -847,7 +875,21 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
 #endif
                   // ........Contact..............................................
-                  knx.getGroupObject(firstComObj + 3).value(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT, getDPT(VAL_DPT_1));
+                  if (fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT == 0) // geschlossen
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = true;
+                        else
+                              bvalue = false;
+                  }
+                  else // open
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = false;
+                        else
+                              bvalue = true;
+                  }
+                  knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("detected: State: "));
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT);
@@ -882,7 +924,21 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(lux);
 #endif
                   // ........Contact..............................................
-                  knx.getGroupObject(firstComObj + 3).value(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT, getDPT(VAL_DPT_1));
+                  if (fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT == 0) // geschlossen
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = true;
+                        else
+                              bvalue = false;
+                  }
+                  else // open
+                  {
+                        if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+                              bvalue = false;
+                        else
+                              bvalue = true;
+                  }
+                  knx.getGroupObject(firstComObj + 3).value(bvalue, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("detected: State: "));
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u84BsTelData.CT);
