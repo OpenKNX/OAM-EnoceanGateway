@@ -209,6 +209,7 @@ public:
   //*************************************************************************************************************************************************************
   void task()
   {
+    bool longPressDim = false;
 
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
@@ -364,6 +365,8 @@ public:
 
       case long_press:
         SERIAL_PORT.print(F("send_long "));
+        longPressDim = longPress(union3.rockerNr, firstParameter, firstComObj + 1);
+        SERIAL_PORT.println(longPressDim);
         unionMSG.rockerState = RockerIdle;
         state = waitLongRelease;
         break;
@@ -372,6 +375,8 @@ public:
         if (unionMSG.rockerState != RockerIdle)
         {
           SERIAL_PORT.println(F("wait release"));
+          //if(longPressDim)
+          longStop(union3.rockerNr, firstParameter, firstComObj + 1);
           unionMSG.rockerState = RockerIdle;
           state = idle;
         }
