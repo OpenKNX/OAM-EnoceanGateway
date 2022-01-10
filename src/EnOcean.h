@@ -113,6 +113,17 @@
 #define ROCKER_BO 0x04
 #define ROCKER_CI 0x05
 #define ROCKER_CO 0x06
+
+typedef enum
+{
+  idle,
+  checkShortLong,
+  short_press,
+  long_press,
+  waitLongRelease,
+} RockerStates;
+
+
 /*
 struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE
 {

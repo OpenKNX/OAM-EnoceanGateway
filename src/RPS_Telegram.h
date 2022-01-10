@@ -4,6 +4,289 @@
 #include "EnoceanProfils.h"
 #include "KnxHelper.h"
 
+/*
+uint8_t getRockerTyp(uint8_t type)
+{
+  switch (type)
+  {
+  case AI_pressed:
+    return ROCKER_AI;
+    break;
+  case AI_release:
+    return ROCKER_AI;
+    break;  
+  case AO_pressed:
+    return ROCKER_AO;
+    break;
+  case AO_release:
+    return ROCKER_AO;
+    break; 
+  case BI_pressed:
+    return ROCKER_BI;
+    break;
+  case BI_release:
+    return ROCKER_BI;
+    break;  
+  case BO_pressed:
+    return ROCKER_BO;
+    break;
+  case BO_release:
+    return ROCKER_BO;
+    break; 
+  case CI_pressed:
+    return ROCKER_CI;
+    break;
+  case CI_release:
+    return ROCKER_CI;
+    break;  
+  case CO_pressed:
+    return ROCKER_CO;
+    break;
+  case CO_release:
+    return ROCKER_CO;
+    break;       
+  default:
+    return ROCKER_INACTIVE;
+    break;
+  }
+}*/
+
+void shortSend_DPT1(bool value, uint8_t firstComObj)
+{
+#ifdef KDEBUG
+  SERIAL_PORT.print(F("Schalten: "));
+  SERIAL_PORT.println(value);
+  SERIAL_PORT.println(firstComObj);
+#endif
+  knx.getGroupObject(firstComObj).value(value, getDPT(VAL_DPT_1));
+}
+
+void shortSendDPT3_008(bool dir, uint8_t firstComObj)
+{
+  uint8_t dpt3value = 0;
+  //UP = 0
+  //down = 1
+#ifdef KDEBUG
+  SERIAL_PORT.println(F("Jalousie Step: "));
+  SERIAL_PORT.println(dir);
+  SERIAL_PORT.println(firstComObj + 1);
+#endif
+  dpt3value = 1;
+  knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 8, 1));
+  if (dir) //Down
+    dpt3value = 8;
+  else // UP
+    dpt3value = 0;
+  knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 8, 0));
+}
+
+void shortSend_Szene(uint8_t scene, uint8_t firstParameter, uint8_t firstComObj)
+{
+  uint8_t szeneNr;
+
+#ifdef KDEBUG
+  SERIAL_PORT.print(F("Szene: "));
+  SERIAL_PORT.println(knx.paramByte(firstParameter + scene));
+  SERIAL_PORT.println(firstComObj);
+#endif
+  szeneNr = (knx.paramByte(firstParameter + scene)) - 1;
+  knx.getGroupObject(firstComObj).value(szeneNr, getDPT(VAL_DPT_17));
+}
+
+void shortPress(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
+{
+  uint8_t szeneNr;
+
+#ifdef KDEBUG
+  SERIAL_PORT.print(F("Rocker: "));
+  SERIAL_PORT.println(rockerNr, HEX);
+#endif
+
+  switch (rockerNr)
+  {
+  case AO_pressed:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("A0")); // AO = normal oben
+#endif
+    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
+    {
+    case 1: // Schalten EIN (Oben/unten Wippe)
+      shortSend_DPT1(true, firstComObj);
+      break;
+    case 2: // Schalten AUS (Oben/unten Wippe)
+      shortSend_DPT1(false, firstComObj);
+      break;
+    case 3: // short: Licht AN
+      shortSend_DPT1(true, firstComObj);
+      break;
+    case 4: // short: Licht AUS
+      shortSend_DPT1(false, firstComObj);
+      break;
+    case 5: // short: step up = 0
+      shortSend_DPT1(false, firstComObj);
+      break;
+    case 6: // short: step down = 1
+      shortSend_DPT1(true, firstComObj);
+      break;
+    case 7: // Szene a/b (Oben/unten Wippe)
+      shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj);
+      break;
+    }
+    break;
+
+  case AI_pressed:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("AI")); // AI = normal unten
+#endif
+    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
+    {
+    case 1: // Schalten AUS (Oben/unten Wippe)
+      shortSend_DPT1(false, firstComObj);
+      break;
+    case 2: // Schalten AN (Oben/unten Wippe)
+      shortSend_DPT1(true, firstComObj);
+      break;
+    case 3: // short: Licht AUS
+      shortSend_DPT1(false, firstComObj);
+      break;
+    case 4: // short: Licht EIN
+      shortSend_DPT1(true, firstComObj);
+      break;
+    case 5: // short: step down = 1
+      shortSend_DPT1(true, firstComObj);
+      break;
+    case 6: // short: step up = 0
+      shortSend_DPT1(false, firstComObj);
+      break;
+    case 7: // Szene b (Oben/unten Wippe)
+      shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj);
+      break;
+    }
+    break;
+
+  case BO_pressed:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("B0")); // BO = normal oben
+#endif
+    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
+    {
+    case 1: // Schalten EIN (Oben/unten Wippe)
+      shortSend_DPT1(true, firstComObj+2);
+      break;
+    case 2: // Schalten AUS (Oben/unten Wippe)
+      shortSend_DPT1(false, firstComObj+2);
+      break;
+    case 3: // short: Licht AN
+      shortSend_DPT1(true, firstComObj+2);
+      break;
+    case 4: // short: Licht AUS
+      shortSend_DPT1(false, firstComObj+2);
+      break;
+    case 5: // short: step up = 0
+      shortSend_DPT1(false, firstComObj+2);
+      break;
+    case 6: // short: step down = 1
+      shortSend_DPT1(true, firstComObj+2);
+      break;
+    case 7: // Szene a/b (Oben/unten Wippe)
+      shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj+2);
+      break;
+    }
+    break;
+
+  case BI_pressed:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("BI")); // BI = normal unten
+#endif
+    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
+    {
+    case 1: // Schalten AUS (Oben/unten Wippe)
+      shortSend_DPT1(false, firstComObj+2);
+      break;
+    case 2: // Schalten AN (Oben/unten Wippe)
+      shortSend_DPT1(true, firstComObj+2);
+      break;
+    case 3: // short: Licht AUS
+      shortSend_DPT1(false, firstComObj+2);
+      break;
+    case 4: // short: Licht EIN
+      shortSend_DPT1(true, firstComObj+2);
+      break;
+    case 5: // short: step down = 1
+      shortSend_DPT1(true, firstComObj+2);
+      break;
+    case 6: // short: step up = 0
+      shortSend_DPT1(false, firstComObj+2);
+      break;
+    case 7: // Szene b (Oben/unten Wippe)
+      shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj+2);
+      break;
+    }
+    break;
+
+  case CO_pressed:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("C0")); // CO = normal oben
+#endif
+    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    {
+    case 1: // Schalten EIN (Oben/unten Wippe)
+      shortSend_DPT1(true, firstComObj+4);
+      break;
+    case 2: // Schalten AUS (Oben/unten Wippe)
+      shortSend_DPT1(false, firstComObj+4);
+      break;
+    case 3: // short: Licht AN
+      shortSend_DPT1(true, firstComObj+4);
+      break;
+    case 4: // short: Licht AUS
+      shortSend_DPT1(false, firstComObj+4);
+      break;
+    case 5: // short: step up = 0
+      shortSend_DPT1(false, firstComObj+4);
+      break;
+    case 6: // short: step down = 1
+      shortSend_DPT1(true, firstComObj+4);
+      break;
+    case 7: // Szene a/b (Oben/unten Wippe)
+      shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj+4);
+      break;
+    }
+    break;
+
+  case CI_pressed:
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("CI")); // CI = normal unten
+#endif
+    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    {
+    case 1: // Schalten AUS (Oben/unten Wippe)
+      shortSend_DPT1(false, firstComObj+4);
+      break;
+    case 2: // Schalten AN (Oben/unten Wippe)
+      shortSend_DPT1(true, firstComObj+4);
+      break;
+    case 3: // short: Licht AUS
+      shortSend_DPT1(false, firstComObj+4);
+      break;
+    case 4: // short: Licht EIN
+      shortSend_DPT1(true, firstComObj+4);
+      break;
+    case 5: // short: step down = 1
+      shortSend_DPT1(true, firstComObj+4);
+      break;
+    case 6: // short: step up = 0
+      shortSend_DPT1(false, firstComObj+4);
+      break;
+    case 7: // Szene b (Oben/unten Wippe)
+      shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj+4);
+      break;
+    }
+    break;
+  default:
+    break;
+  }
+}
 
 void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, uint8_t RockerFunktion, uint8_t RockerSzene, bool islong)
 {

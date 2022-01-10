@@ -17,6 +17,8 @@
 // DEBUG-MODE
 #define KDEBUG // comment this line to disable DEBUG mode
 
+RockerStates state = idle;
+
 class EnOceanDevice : public IEnOceanDevice
 {
 private:
@@ -323,11 +325,63 @@ public:
 
     case u8RORG_Rocker:
       //------------ Rocker Switch -------------------
-      if (unionMSG.rockerState != RockerIdle)
+
+      switch (state)
       {
-#ifdef KDEBUG
-        SERIAL_PORT.println(unionMSG.rockerState, HEX);
-#endif
+      case idle:
+        if (unionMSG.rockerState != RockerIdle)
+        {
+          union3.rockerNr = unionMSG.rockerState;
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          state = checkShortLong;
+          SERIAL_PORT.print(F("start "));
+        }
+        break;
+
+      case checkShortLong:
+        if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10))
+        {
+          state = long_press;
+          SERIAL_PORT.print(F("long "));
+        }
+        else
+        {
+          if (unionMSG.rockerState != RockerIdle)
+          {
+            state = short_press;
+            SERIAL_PORT.print(F("short "));
+          }
+        }
+        break;
+
+      case short_press:
+        SERIAL_PORT.println(F("send_short "));
+        shortPress(union3.rockerNr, firstParameter, firstComObj + 1);
+        unionMSG.rockerState = RockerIdle;
+        state = idle;
+        break;
+
+      case long_press:
+        SERIAL_PORT.print(F("send_long "));
+        unionMSG.rockerState = RockerIdle;
+        state = waitLongRelease;
+        break;
+
+      case waitLongRelease:
+        if (unionMSG.rockerState != RockerIdle)
+        {
+          SERIAL_PORT.println(F("wait release"));
+          unionMSG.rockerState = RockerIdle;
+          state = idle;
+        }
+        break;
+
+      default:
+        break;
+      }
+
+      /*
         switch (unionMSG.rockerState)
         {
           //-------- Rocker pressed ---------------------
@@ -468,8 +522,7 @@ public:
 
         default:
           break;
-        }
-      }
+        } */
       break; // ENDE ROCKER
 
     default:
