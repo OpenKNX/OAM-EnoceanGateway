@@ -320,11 +320,14 @@ public:
     case u8RORG_RPS:
       /* code */
       break; // ENDE RPS
-    
+
     case u8RORG_Rocker:
       //------------ Rocker Switch -------------------
       if (unionMSG.rockerState != RockerIdle)
       {
+#ifdef KDEBUG
+        SERIAL_PORT.println(unionMSG.rockerState, HEX);
+#endif
         switch (unionMSG.rockerState)
         {
           //-------- Rocker pressed ---------------------
@@ -409,10 +412,15 @@ public:
           break;
         } // ENDE Rocker Taste
       }   // ENDE IF Idle
-      
-      
-      if (delayCheck(union3.rockerNr != 0 && union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter)*10))
+
+      if (union3.rockerNr != 0 && delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10))
       {
+#ifdef KDEBUG
+        SERIAL_PORT.print(F("Rocker Nr. "));
+        SERIAL_PORT.println(union3.rockerNr);
+        SERIAL_PORT.print(F("Par: "));
+        SERIAL_PORT.println(knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10);  
+#endif
         switch (union3.rockerNr)
         {
         case ROCKER_AI:

@@ -18,14 +18,14 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
 #ifdef KDEBUG
       SERIAL_PORT.println(F("Schalten AUS"));
 #endif
-      knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
     }
     else // Button O
     {
 #ifdef KDEBUG
       SERIAL_PORT.println(F("Schalten EIN"));
 #endif
-      knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
     }
     break;
 
@@ -35,14 +35,14 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
 #ifdef KDEBUG
       SERIAL_PORT.println(F("Schalten EIN"));
 #endif
-      knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
     }
     else // Button O
     {
 #ifdef KDEBUG
       SERIAL_PORT.println(F("Schalten AUS"));
 #endif
-      knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+      knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
     }
     break;
 
@@ -55,9 +55,9 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
         SERIAL_PORT.println(F("Dimmen heller"));
 #endif
         dpt3value = 1;
-        knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 7, 1));
+        knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 7, 1));
         dpt3value = 8;
-        knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 7, 0));
+        knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 7, 0));
       }
       else
       {
@@ -65,9 +65,9 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
         SERIAL_PORT.println(F("Dimmen Dunkler"));
 #endif
         dpt3value = 1;
-        knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 7, 1));
+        knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 7, 1));
         dpt3value = 0;
-        knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 7, 0));
+        knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 7, 0));
       }
     }
     else
@@ -77,14 +77,14 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Licht  AUS"));
 #endif
-        knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
       }
       else
       {
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Licht  AN"));
 #endif
-        knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
       }
     }
     break;
@@ -98,9 +98,9 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
         SERIAL_PORT.println(F("Dimmen dunkler"));
 #endif
         dpt3value = 1;
-        knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 7, 1));
+        knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 7, 1));
         dpt3value = 0;
-        knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 7, 0));
+        knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 7, 0));
       }
       else
       {
@@ -108,9 +108,9 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
         SERIAL_PORT.println(F("Dimmen heller"));
 #endif
         dpt3value = 1;
-        knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 7, 1));
+        knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 7, 1));
         dpt3value = 8;
-        knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 7, 0));
+        knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 7, 0));
       }
     }
     else
@@ -120,14 +120,14 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Licht AN"));
 #endif
-        knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
       }
       else
       {
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Licht  AUS"));
 #endif
-        knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
       }
     }
     break;
@@ -140,14 +140,14 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Jalousie AB"));
 #endif
-        knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
       }
       else
       {
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Jalousie AUF"));
 #endif
-        knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
       }
     }
     else
@@ -183,14 +183,14 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Jalousie AB"));
 #endif
-        knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
       }
       else
       {
 #ifdef KDEBUG
         SERIAL_PORT.println(F("Jalousie AUF"));
 #endif
-        knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+        knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
       }
     }
     else
@@ -232,7 +232,7 @@ void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, u
     }
 #endif
     szeneNr = (knx.paramByte(firstParameter + RockerSzene)) - 1;
-    knx.getGroupObject(firstComObj + 3).value(szeneNr, getDPT(VAL_DPT_17));
+    knx.getGroupObject(firstComObj + 1).value(szeneNr, getDPT(VAL_DPT_17));
 
     break;
 
