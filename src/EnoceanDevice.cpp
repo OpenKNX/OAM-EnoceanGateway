@@ -39,6 +39,18 @@ void ProcessHeartbeat()
   }
 }
 
+void ProcessReadRequests()
+{
+  // this method is called after startup delay and executes read requests, which should just happen once after startup
+  static bool sCalledProcessReadRequests = false;
+  if (!sCalledProcessReadRequests)
+  {
+    // we go through all IO devices defined as outputs and check for initial read requests
+    sCalledProcessReadRequests = true;
+  }
+  gLogic.processReadRequests();
+}
+
 bool processDiagnoseCommand()
 {
   char *lBuffer = gLogic.getDiagnoseBuffer();
@@ -79,43 +91,52 @@ void ProcessDiagnoseCommand(GroupObject &iKo)
 
 void ProcessKoCallback(GroupObject &iKo)
 {
-  bool callLogic = false;
-  for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
+  // check if we evaluate own KO
+  if (iKo.asap() == LOG_KoDiagnose)
   {
-
-    if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
-    {
-      SERIAL_PORT.println("reviev KO_0");
-      enOcean.handleKnxEvents(koIndex, 0, iKo);
-    }
-    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
-    {
-      SERIAL_PORT.println("reviev KO_1");
-      enOcean.handleKnxEvents(koIndex, 1, iKo);
-    }
-    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
-    {
-      SERIAL_PORT.println("reviev KO_2");
-      enOcean.handleKnxEvents(koIndex, 2, iKo);
-    }
-    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
-    {
-      SERIAL_PORT.println("reviev KO_3");
-      enOcean.handleKnxEvents(koIndex, 3, iKo);
-    }
-    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
-    {
-      SERIAL_PORT.println("reviev KO_4");
-      enOcean.handleKnxEvents(koIndex, 4, iKo);
-    }
-    else
-    {
-      callLogic = true;
-    }
+    ProcessDiagnoseCommand(iKo);
   }
-  if (callLogic)
+  else
   {
-    gLogic.processInputKo(iKo);
+    bool callLogic = true;
+    for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
+    {
+
+      if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
+      {
+        SERIAL_PORT.println("reviev KO_0");
+        enOcean.handleKnxEvents(koIndex, 0, iKo);
+        callLogic = false;
+      }
+      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
+      {
+        SERIAL_PORT.println("reviev KO_1");
+        enOcean.handleKnxEvents(koIndex, 1, iKo);
+        callLogic = false;
+      }
+      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
+      {
+        SERIAL_PORT.println("reviev KO_2");
+        enOcean.handleKnxEvents(koIndex, 2, iKo);
+        callLogic = false;
+      }
+      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
+      {
+        SERIAL_PORT.println("reviev KO_3");
+        enOcean.handleKnxEvents(koIndex, 3, iKo);
+        callLogic = false;
+      }
+      else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
+      {
+        SERIAL_PORT.println("reviev KO_4");
+        enOcean.handleKnxEvents(koIndex, 4, iKo);
+        callLogic = false;
+      }
+    }
+    if (callLogic)
+    {
+      gLogic.processInputKo(iKo);
+    }
   }
 }
 
@@ -145,6 +166,7 @@ void appLoop()
   // at this point startup-delay is done
   // we process heartbeat
   ProcessHeartbeat();
+  ProcessReadRequests();
 
   enOcean.task();
 

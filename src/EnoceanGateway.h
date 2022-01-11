@@ -779,14 +779,14 @@
 #define LOG_fOOffFunction             86      // 8 Bits, Bit 7-0
 
 // Communication objects per channel (multiple occurance)
-#define LOG_KoOffset 325
+#define LOG_KoOffset 320
 #define LOG_KoBlockSize 3
 #define LOG_KoKOfE1 0
 #define LOG_KoKOfE2 1
 #define LOG_KoKOfO 2
 
 // Parameter per channel
-#define ENO_ParamBlockOffset 257
+#define ENO_ParamBlockOffset 5057
 #define ENO_ParamBlockSize 22
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
