@@ -63,24 +63,24 @@
                 </TypeRestriction>
               </ParameterType>
               <!-- Parameter type for an 8 bit percent parameter -->
-              <ParameterType Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime" Name="RockerLongPressWaitTime">
+              <ParameterType Id="M-00FA_A-0001-01-0000_PT-RockerLongPressWaitTime" Name="RockerLongPressWaitTime">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="300ms" Value="30" Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime_EN-30" />
-                  <Enumeration Text="350ms" Value="35" Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime_EN-35" />
-                  <Enumeration Text="400ms" Value="40" Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime_EN-40" />
-                  <Enumeration Text="450ms" Value="45" Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime_EN-45" />
-                  <Enumeration Text="500ms" Value="50" Id="M-00FA_A-0000-00-0000_PT-RockerLongPressWaitTime_EN-50" />
+                  <Enumeration Text="300ms" Value="30" Id="M-00FA_A-0001-01-0000_PT-RockerLongPressWaitTime_EN-30" />
+                  <Enumeration Text="350ms" Value="35" Id="M-00FA_A-0001-01-0000_PT-RockerLongPressWaitTime_EN-35" />
+                  <Enumeration Text="400ms" Value="40" Id="M-00FA_A-0001-01-0000_PT-RockerLongPressWaitTime_EN-40" />
+                  <Enumeration Text="450ms" Value="45" Id="M-00FA_A-0001-01-0000_PT-RockerLongPressWaitTime_EN-45" />
+                  <Enumeration Text="500ms" Value="50" Id="M-00FA_A-0001-01-0000_PT-RockerLongPressWaitTime_EN-50" />
                 </TypeRestriction>
               </ParameterType>
               <!-- Parameter type for EEP Profil selection -->
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-ProfilSelection" Name="ProfilSelection">
                 <TypeRestriction Base="Value" SizeInBit="8">
-                  <Enumeration Text="nicht belegt"   Value="0"   Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-0" />
-                  <Enumeration Text="4BS - A5"       Value="165" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-165" />
-                  <Enumeration Text="VLD - D2"       Value="210" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-210" />
-                  <Enumeration Text="1BS - D5"       Value="213" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-213" />
-                  <Enumeration Text="RPS - F6"       Value="246" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-246" />
-                  <Enumeration Text="RPS - Schalter" Value="250" Id="M-00FA_A-0000-00-0000_PT-ProfilSelection_EN-250" />
+                  <Enumeration Text="nicht belegt"   Value="0"   Id="M-00FA_A-0001-01-0000_PT-ProfilSelection_EN-0" />
+                  <Enumeration Text="4BS - A5"       Value="165" Id="M-00FA_A-0001-01-0000_PT-ProfilSelection_EN-165" />
+                  <Enumeration Text="VLD - D2"       Value="210" Id="M-00FA_A-0001-01-0000_PT-ProfilSelection_EN-210" />
+                  <Enumeration Text="1BS - D5"       Value="213" Id="M-00FA_A-0001-01-0000_PT-ProfilSelection_EN-213" />
+                  <Enumeration Text="RPS - F6"       Value="246" Id="M-00FA_A-0001-01-0000_PT-ProfilSelection_EN-246" />
+                  <Enumeration Text="RPS - Schalter" Value="250" Id="M-00FA_A-0001-01-0000_PT-ProfilSelection_EN-250" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionRPS" Name="ProfilSelectionRPS">
