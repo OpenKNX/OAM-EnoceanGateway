@@ -17,6 +17,8 @@
 // DEBUG-MODE
 #define KDEBUG // comment this line to disable DEBUG mode
 
+RockerStates state = idle;
+
 class EnOceanDevice : public IEnOceanDevice
 {
 private:
@@ -30,24 +32,41 @@ private:
   uint8_t buttonStateSimulation2 = SIMULATE_NOTHING;
   bool buttonMessage1 = false;
   bool buttonMessage2 = false;
-  uint32_t buttonLastPushTime1 = 0;
-  uint32_t buttonLastPushTime2 = 0;
-  uint8_t koIndex1;
-  uint8_t koIndex2;
 
-  float fvalue;
+  union EnoceanHandle
+  {
+    uint8_t msg_sent_after_receive;
+    uint8_t rockerState = RockerIdle;
+  } unionMSG;
 
-  uint8_t msg_sent_after_receive = 0;
-  byte val_A5_20_06_TeachIn[4];
+  union TaskHandle1
+  {
+    uint8_t val_A5_20_06[4];
+    uint32_t rocker_longpress_delay;
+    uint32_t buttonLastPushTime1;
+  } union1;
+
+  union TaskHandle2
+  {
+    byte val_A5_20_06_TeachIn[4];
+    uint32_t rocker_longpress_delay;
+    uint32_t buttonLastPushTime2;
+  } union2;
+
+  union TaskHandle3
+  {
+    uint8_t koIndex1;
+    uint8_t rockerNr;
+  } union3;
+
+  union TaskHandle4
+  {
+    uint8_t koIndex2;
+  } union4;
 
   // Task variable Read Request
   uint8_t sCalled = 1;
   uint32_t gStartupDelay = 0;
-
-  union
-  {
-    uint8_t val_A5_20_06[4];
-  } union1;
 
 public:
   EnOceanDevice()
@@ -190,107 +209,333 @@ public:
   //*************************************************************************************************************************************************************
   void task()
   {
-    //------------  Channel 1 ---------------------------------------
-    if (buttonStateSimulation1 == SIMULATE_PUSH)
+    bool longPressDim = false;
+
+    switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
+    case u8RORG_1BS:
+      /* code */
+      break;
+
+    case u8RORG_4BS:
+      // *************** Sent after receive ***********************************************************************
+      //-----------------------------------------------------------------------------------------------------------
+      //A5-20-06
+      if (unionMSG.msg_sent_after_receive == msg_A5_20_06)
+      {
+        // Set LNRB
+        union1.val_A5_20_06[3] |= 1 << 3; // Set LNRB
+        send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06, 0);
+        // löscht Ref Run Bit
+        union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
+        unionMSG.msg_sent_after_receive = 0;
+      }
+      // *************** Teachin Funktion  ***********************************************************************
+      //-----------------------------------------------------------------------------------------------------------
+      //A5-20-06
+      else if (unionMSG.msg_sent_after_receive == TEACHIN_A52006)
+      {
+        union2.val_A5_20_06_TeachIn[0] = 0x80;
+        union2.val_A5_20_06_TeachIn[1] = 0x30;
+        union2.val_A5_20_06_TeachIn[2] = 0x49;
+        union2.val_A5_20_06_TeachIn[3] = 0xF0;
+        send_4BS_Msg(enOcean.getBaseId(), index, union2.val_A5_20_06_TeachIn, 0);
 #ifdef KDEBUG
-      SERIAL_PORT.print(F("Triggered "));
-      SERIAL_PORT.print(firstComObj);
-      SERIAL_PORT.println(F(" Push"));
+        SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif
-      send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); //BaseID_CH = 0
-      buttonLastPushTime1 = millis();
-      buttonStateSimulation1 = SIMULATE_RELEASE;
-    }
-    else if (buttonStateSimulation1 == SIMULATE_RELEASE)
-    {
-      if (millis() - buttonLastPushTime1 >= SIMULATE_PAUSE_BEFORE_RELEASE)
+        unionMSG.msg_sent_after_receive = 0;
+      }
+      // *************** Read Request  ***********************************************************************
+      //-----------------------------------------------------------------------------------------------------------
+      //A5-20-06
+      if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06 && sCalled < 255)
+      {
+        if (sCalled == 1 && delayCheck(gStartupDelay, sCalled * 1000))
+        {
+          sCalled += 1;
+          knx.getGroupObject(firstComObj).requestObjectRead(); // Set Temp / Pos
+        }
+        if (sCalled == 2 && delayCheck(gStartupDelay, sCalled * 1000))
+        {
+          sCalled += 1;
+          knx.getGroupObject(firstComObj + 3).requestObjectRead(); // Raum Temp
+        }
+        if (sCalled == 3)
+        {
+          sCalled = 255;
+        }
+      }
+      break; // ENDE 4BS
+
+    case u8RORG_VLD:
+      //------------  Channel 1 ---------------------------------------
+      if (buttonStateSimulation1 == SIMULATE_PUSH)
       {
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Triggered "));
         SERIAL_PORT.print(firstComObj);
-        SERIAL_PORT.println(F(" Release"));
+        SERIAL_PORT.println(F(" Push"));
 #endif
-        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); //BaseID_CH = 0
-        buttonStateSimulation1 = SIMULATE_NOTHING;
+        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); //BaseID_CH = 0
+        union1.buttonLastPushTime1 = millis();
+        buttonStateSimulation1 = SIMULATE_RELEASE;
       }
-    }
-    //------------  Channel 2 ---------------------------------------
-    if (buttonStateSimulation2 == SIMULATE_PUSH)
-    {
+      else if (buttonStateSimulation1 == SIMULATE_RELEASE)
+      {
+        if (millis() - union1.buttonLastPushTime1 >= SIMULATE_PAUSE_BEFORE_RELEASE)
+        {
 #ifdef KDEBUG
-      SERIAL_PORT.print(F("Triggered "));
-      SERIAL_PORT.print(firstComObj + 1);
-      SERIAL_PORT.println(F(" Push"));
+          SERIAL_PORT.print(F("Triggered "));
+          SERIAL_PORT.print(firstComObj);
+          SERIAL_PORT.println(F(" Release"));
 #endif
-      send_RPS_Taster(lui8_SendeID_p, buttonMessage2, true, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
-      buttonLastPushTime2 = millis();
-      buttonStateSimulation2 = SIMULATE_RELEASE;
-    }
-    else if (buttonStateSimulation2 == SIMULATE_RELEASE)
-    {
-      if (millis() - buttonLastPushTime2 >= SIMULATE_PAUSE_BEFORE_RELEASE)
+          send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); //BaseID_CH = 0
+          buttonStateSimulation1 = SIMULATE_NOTHING;
+        }
+      }
+      //------------  Channel 2 ---------------------------------------
+      if (buttonStateSimulation2 == SIMULATE_PUSH)
       {
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Triggered "));
         SERIAL_PORT.print(firstComObj + 1);
-        SERIAL_PORT.println(F(" Release"));
+        SERIAL_PORT.println(F(" Push"));
 #endif
-        send_RPS_Taster(lui8_SendeID_p, buttonMessage2, false, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
-        buttonStateSimulation2 = SIMULATE_NOTHING;
+        send_RPS_Taster(lui8_SendeID_p, buttonMessage2, true, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+        union2.buttonLastPushTime2 = millis();
+        buttonStateSimulation2 = SIMULATE_RELEASE;
       }
-    }
-
-    // *************** Sent after receive ***********************************************************************
-    //-----------------------------------------------------------------------------------------------------------
-    //A5-20-06
-    if (msg_sent_after_receive == msg_A5_20_06)
-    {
-      // Set LNRB
-      union1.val_A5_20_06[3] |= 1 << 3; // Set LNRB
-      send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06, 0);
-      // löscht Ref Run Bit
-      union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
-      msg_sent_after_receive = 0;
-    }
-    // *************** Teachin Funktion  ***********************************************************************
-    //-----------------------------------------------------------------------------------------------------------
-    //A5-20-06
-    if (msg_sent_after_receive == TEACHIN_A52006)
-    {
-      val_A5_20_06_TeachIn[0] = 0x80;
-      val_A5_20_06_TeachIn[1] = 0x30;
-      val_A5_20_06_TeachIn[2] = 0x49;
-      val_A5_20_06_TeachIn[3] = 0xF0;
-      send_4BS_Msg(enOcean.getBaseId(), index, val_A5_20_06_TeachIn, 0);
+      else if (buttonStateSimulation2 == SIMULATE_RELEASE)
+      {
+        if (millis() - union2.buttonLastPushTime2 >= SIMULATE_PAUSE_BEFORE_RELEASE)
+        {
 #ifdef KDEBUG
-      SERIAL_PORT.println(F("TeachIn Response Sent"));
+          SERIAL_PORT.print(F("Triggered "));
+          SERIAL_PORT.print(firstComObj + 1);
+          SERIAL_PORT.println(F(" Release"));
 #endif
-      msg_sent_after_receive = 0;
-    }
-    // *************** Read Request  ***********************************************************************
-    //-----------------------------------------------------------------------------------------------------------
-    //A5-20-06
-    if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06 && sCalled < 255)
-    {
-      if (sCalled == 1 && delayCheck(gStartupDelay, sCalled * 1000))
-      {
-        sCalled += 1;
-        knx.getGroupObject(firstComObj).requestObjectRead(); // Set Temp / Pos
+          send_RPS_Taster(lui8_SendeID_p, buttonMessage2, false, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
+          buttonStateSimulation2 = SIMULATE_NOTHING;
+        }
       }
-      if (sCalled == 2 && delayCheck(gStartupDelay, sCalled * 1000))
+      break; // ENDE VLD
+
+    case u8RORG_RPS:
+      /* code */
+      break; // ENDE RPS
+
+    case u8RORG_Rocker:
+      //------------ Rocker Switch -------------------
+
+      switch (state)
       {
-        sCalled += 1;
-        knx.getGroupObject(firstComObj + 3).requestObjectRead(); // Raum Temp
+      case idle:
+        if (unionMSG.rockerState != RockerIdle)
+        {
+          union3.rockerNr = unionMSG.rockerState;
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          state = checkShortLong;
+          SERIAL_PORT.print(F("start "));
+        }
+        break;
+
+      case checkShortLong:
+        if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10))
+        {
+          state = long_press;
+          SERIAL_PORT.print(F("long "));
+        }
+        else
+        {
+          if (unionMSG.rockerState != RockerIdle)
+          {
+            state = short_press;
+            SERIAL_PORT.print(F("short "));
+          }
+        }
+        break;
+
+      case short_press:
+        SERIAL_PORT.println(F("send_short "));
+        shortPress(union3.rockerNr, firstParameter, firstComObj + 1);
+        unionMSG.rockerState = RockerIdle;
+        state = idle;
+        break;
+
+      case long_press:
+        SERIAL_PORT.print(F("send_long "));
+        longPressDim = longPress(union3.rockerNr, firstParameter, firstComObj + 1);
+        SERIAL_PORT.println(longPressDim);
+        unionMSG.rockerState = RockerIdle;
+        state = waitLongRelease;
+        break;
+
+      case waitLongRelease:
+        if (unionMSG.rockerState != RockerIdle)
+        {
+          SERIAL_PORT.println(F("wait release"));
+          //if(longPressDim)
+          longStop(union3.rockerNr, firstParameter, firstComObj + 1);
+          unionMSG.rockerState = RockerIdle;
+          state = idle;
+        }
+        break;
+
+      default:
+        break;
       }
-      if (sCalled == 3)
+
+      /*
+        switch (unionMSG.rockerState)
+        {
+          //-------- Rocker pressed ---------------------
+        case AI_pressed:
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          union3.rockerNr = ROCKER_AI;
+          break;
+        case AO_pressed:
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          union3.rockerNr = ROCKER_AO;
+          break;
+        case BI_pressed:
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          union3.rockerNr = ROCKER_BI;
+          break;
+        case BO_pressed:
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          union3.rockerNr = ROCKER_BO;
+          break;
+        case CI_pressed:
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          union3.rockerNr = ROCKER_CI;
+          break;
+        case CO_pressed:
+          union1.rocker_longpress_delay = millis();
+          unionMSG.rockerState = RockerIdle;
+          union3.rockerNr = ROCKER_CO;
+          break;
+
+        //-------- Rocker short presse release ---------------------
+        case AI_release:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("AI short: "));
+#endif
+          release_Button(ButtonStateI, firstParameter, firstComObj, ENO_CHRockerFunktionA, ENO_CHRockerASzeneB, false);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+
+        case AO_release:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("AO short: "));
+#endif
+          release_Button(ButtonStateO, firstParameter, firstComObj, ENO_CHRockerFunktionA, ENO_CHRockerASzeneA, false);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case BI_release:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("BI short: "));
+#endif
+          release_Button(ButtonStateI, firstParameter, firstComObj, ENO_CHRockerFunktionB, ENO_CHRockerBSzeneB, false);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case BO_release:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("BO short: "));
+#endif
+          release_Button(ButtonStateO, firstParameter, firstComObj, ENO_CHRockerFunktionB, ENO_CHRockerBSzeneA, false);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+
+        case CI_release:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("CI short: "));
+#endif
+          release_Button(ButtonStateI, firstParameter, firstComObj, ENO_CHRockerFunktionC, ENO_CHRockerCSzeneB, false);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+
+        case CO_release:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("CO short: "));
+#endif
+          release_Button(ButtonStateO, firstParameter, firstComObj, ENO_CHRockerFunktionC, ENO_CHRockerCSzeneA, false);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        default:
+          break;
+        } // ENDE Rocker Taste
+      }   // ENDE IF Idle
+
+      if (union3.rockerNr != 0 && delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10))
       {
-        sCalled = 255;
-      }
+#ifdef KDEBUG
+        SERIAL_PORT.print(F("Rocker Nr. "));
+        SERIAL_PORT.println(union3.rockerNr);
+        SERIAL_PORT.print(F("Par: "));
+        SERIAL_PORT.println(knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10);  
+#endif
+        switch (union3.rockerNr)
+        {
+        case ROCKER_AI:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("AI long: "));
+#endif
+          release_Button(ButtonStateI, firstParameter, firstComObj, ENO_CHRockerFunktionA, ENO_CHRockerASzeneB, true);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case ROCKER_AO:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("AO long: "));
+#endif
+          release_Button(ButtonStateO, firstParameter, firstComObj, ENO_CHRockerFunktionA, ENO_CHRockerASzeneA, true);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case ROCKER_BI:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("BI long: "));
+#endif
+          release_Button(ButtonStateI, firstParameter, firstComObj, ENO_CHRockerFunktionB, ENO_CHRockerBSzeneB, true);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case ROCKER_BO:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("BO long: "));
+#endif
+          release_Button(ButtonStateO, firstParameter, firstComObj, ENO_CHRockerFunktionB, ENO_CHRockerBSzeneA, true);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case ROCKER_CI:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("CI long: "));
+#endif
+          release_Button(ButtonStateI, firstParameter, firstComObj, ENO_CHRockerFunktionC, ENO_CHRockerCSzeneB, true);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+        case ROCKER_CO:
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("CO long: "));
+#endif
+          release_Button(ButtonStateO, firstParameter, firstComObj, ENO_CHRockerFunktionC, ENO_CHRockerBSzeneA, true);
+          union3.rockerNr = ROCKER_INACTIVE;
+          break;
+
+        default:
+          break;
+        } */
+      break; // ENDE ROCKER
+
+    default:
+      break;
     }
   }
 
-  // something happened on the bus, let's react
+// something happened on the bus, let's react
 #pragma GCC diagnostic push // If you don't want to be warned because you are not using index, include that pragma stuff
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
@@ -385,13 +630,13 @@ public:
           SERIAL_PORT.print(F("Com Interval: "));
           SERIAL_PORT.println((uint8_t)iKo.value(getDPT(VAL_DPT_5)));
 #endif
-          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift);     // clear Bit4
-          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift+1);   // clear Bit5
-          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift+2);   // clear Bit6
+          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift);                                    // clear Bit4
+          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift + 1);                                // clear Bit5
+          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift + 2);                                // clear Bit6
           union1.val_A5_20_06[2] |= ((uint8_t)iKo.value(getDPT(VAL_DPT_5)) << ENO_CHA52006RFCShift); // Set Bit
           break;
 
-        case KO_3: // Raum Temperatur
+        case KO_3:                                                              // Raum Temperatur
           union1.val_A5_20_06[1] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 4.0; // Raumtemperatur
 #ifdef KDEBUG
           SERIAL_PORT.print(F("Raum-Temp: "));
@@ -435,7 +680,7 @@ public:
           switch (koNr)
           {
           case KO_0: // chalten Aktor CH1
-            koIndex1 = index + 1;
+            union3.koIndex1 = index + 1;
             if (iKo.value(getDPT(VAL_DPT_1)))
             {
               buttonStateSimulation1 = SIMULATE_PUSH;
@@ -451,7 +696,7 @@ public:
 #endif
             break;
           case KO_1: //  Schalten Aktor CH2
-            koIndex2 = index + 2;
+            union4.koIndex2 = index + 2;
             if (iKo.value(getDPT(VAL_DPT_1)))
             {
               buttonStateSimulation2 = SIMULATE_PUSH;
@@ -497,7 +742,7 @@ public:
   }
 #pragma GCC diagnostic pop // I don't want a warning, just because we don't do anything here
 
-  // decode EnOcean message. Fail fast!
+// decode EnOcean message. Fail fast!
 #pragma GCC diagnostic push // If you don't want to be warned because you are not using index, include that pragma stuff
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 
@@ -587,7 +832,7 @@ public:
       SERIAL_PORT.print(" ");
       SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[8], HEX);
 #endif
-      msg_sent_after_receive = handle_4BS(f_Pkt_st, profil, profil2nd, firstComObj, firstParameter);
+      unionMSG.msg_sent_after_receive = handle_4BS(f_Pkt_st, profil, profil2nd, firstComObj, firstParameter);
       break;
 
     case u8RORG_VLD:
@@ -636,7 +881,7 @@ public:
       SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
 #endif
 
-      handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+      unionMSG.rockerState = handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
       break;
     }
     return true;
@@ -649,10 +894,27 @@ public:
 
   void handle_1BS(PACKET_SERIAL_TYPE *f_Pkt_st)
   {
+    bool bvalue;
 
     ONEBS_TELEGRAM_TYPE *l1bsTlg_p = (ONEBS_TELEGRAM_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
 
-    knx.getGroupObject(firstComObj).value(l1bsTlg_p->u81bsTelData.State, getDPT(VAL_DPT_1));
+    // D5-00-01 Contact: 0 = open / 1 = close
+    // ETS Parameter to define state for open / Close
+    if (l1bsTlg_p->u81bsTelData.State == 1) // CLOSE
+    {
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+        bvalue = true;
+      else
+        bvalue = false;
+    }
+    else
+    { // OPEN
+      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
+        bvalue = false;
+      else
+        bvalue = true;
+    }
+    knx.getGroupObject(firstComObj).value(bvalue, getDPT(VAL_DPT_1));
 
 #ifdef KDEBUG
     SERIAL_PORT.print(F("detected: 1BS State: "));

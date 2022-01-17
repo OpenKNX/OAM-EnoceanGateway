@@ -875,6 +875,7 @@
 #define ENO_CHWindowcloseValue        21      // 1 Bit, Bit 7
 #define     ENO_CHWindowcloseValueMask 0x80
 #define     ENO_CHWindowcloseValueShift 7
+#define ENO_CHRockerLongPressWaitTime 21      // 8 Bits, Bit 7-0
 
 // Communication objects per channel (multiple occurance)
 #define ENO_KoOffset 20

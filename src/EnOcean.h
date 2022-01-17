@@ -43,11 +43,11 @@
 */
 
 // Receive
-#define u8RORG_1BS 0xD5
-#define u8RORG_RPS 0xF6
-#define u8RORG_VLD 0xD2
-#define u8RORG_4BS 0xA5
-#define u8RORG_Rocker 0xFA
+#define u8RORG_1BS    0xD5 // 213
+#define u8RORG_RPS    0xF6 // 246 
+#define u8RORG_VLD    0xD2 // 210
+#define u8RORG_4BS    0xA5 // 165
+#define u8RORG_Rocker 0xFA // 250
 
 // Send
 #define u8RORG_COMMON_COMMAND 0x05
@@ -88,6 +88,10 @@
 #define SER_HEADER_NR_BYTES 4
 
 //Rocker States
+#define ButtonStateO 0
+#define ButtonStateI 1
+
+#define RockerIdle 0x01
 #define AI_pressed 0x10
 #define AO_pressed 0x30
 #define BI_pressed 0x50
@@ -101,6 +105,23 @@
 #define BO_release 0x60
 #define CI_release 0x05
 #define CO_release 0x07
+
+#define ROCKER_INACTIVE 0x00
+#define ROCKER_AI 0x01
+#define ROCKER_AO 0x02
+#define ROCKER_BI 0x03
+#define ROCKER_BO 0x04
+#define ROCKER_CI 0x05
+#define ROCKER_CO 0x06
+
+typedef enum
+{
+  idle,
+  checkShortLong,
+  short_press,
+  long_press,
+  waitLongRelease,
+} RockerStates;
 
 
 /*

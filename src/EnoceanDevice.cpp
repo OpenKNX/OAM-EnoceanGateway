@@ -156,13 +156,14 @@ void appSetup()
 
 void appLoop()
 {
+#ifdef KNXenable
   if (!knx.configured())
     return;
 
   // handle KNX stuff
   if (startupDelayfunc())
     return;
-
+#endif
   // at this point startup-delay is done
   // we process heartbeat
   ProcessHeartbeat();

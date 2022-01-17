@@ -371,13 +371,13 @@
                               </when>
                             </choose>
                           </when>
-                          <!-- 1BS D5 (213) -->
+                          <!-- 1BS D5 (0xD5 = 213Dez) -->
                           <when test="213">
                             <!-- D5-00-01 -->
                             <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%006_R-300%C%0061" />
                             <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%015" />
                           </when>
-                          <!-- 4BS A5 (165)-->
+                          <!-- 4BS A5 (0xA5 = 165Dez)-->
                           <when test="165">
                             <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%007_R-300%C%0071" />
                             <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%007_R-300%C%0071">
@@ -569,7 +569,7 @@
                               </when> 
                             </choose>  
                           </when>
-                          <!-- VLD D2 (210)-->
+                          <!-- VLD D2 (0xD2 = 210dez)-->
                           <when test="210">
                             <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%008_R-300%C%0081" />
                             <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%008_R-300%C%0081">
@@ -680,7 +680,7 @@
                               </when>  
                             </choose> 
                           </when>
-                          <!-- Rocker (250)-->
+                          <!-- Rocker (0xFA = 250)-->
                           <when test="250">
                             <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%009_R-300%C%0091" />
                             <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%009_R-300%C%0091">
@@ -696,15 +696,15 @@
                                         <when test = "1 2">
                                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%010" />
                                         </when>
-                                        <!-- Wippe Dimmen -->
+                                        <!-- Wippe 1 Dimming -->
                                         <when test = "3 4">
                                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%012" />
                                         </when>
-                                        <!-- Wippe Jalousie -->
+                                        <!-- Wippe 1 Jalousie -->
                                         <when test = "5 6">
                                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%013" />
                                         </when>
-                                        <!-- Wippe Szene -->
+                                        <!-- Wippe 1 Szene -->
                                         <when test="7">
                                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%045_R-300%C%0451" />
                                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%046_R-300%C%0461" />
@@ -741,11 +741,11 @@
                                         <when test = "1 2">
                                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
                                         </when>
-                                        <!-- Wippe 2 Szene -->
+                                        <!-- Wippe 2 Dimming -->
                                         <when test = "3 4">
                                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%032" />
                                         </when>
-                                        <!-- Wippe 2 Szene -->
+                                        <!-- Wippe 2 Jalousie -->
                                         <when test = "5 6">
                                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%033" />
                                         </when>

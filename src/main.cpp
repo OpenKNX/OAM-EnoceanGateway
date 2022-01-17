@@ -53,7 +53,7 @@ void setup()
 
     // print values of parameters if device is already configured
     appSetup();
-    SERIAL_PORT.println(F("Setup DONE"));
+
 
     // start the framework.
     knx.start();
@@ -101,6 +101,8 @@ void loop()
     knx.loop();
 #endif
     // only run the application code if the device was configured with ETS
+#ifdef KNXenable    
     if (knx.configured())
+#endif    
         appLoop();
 }
