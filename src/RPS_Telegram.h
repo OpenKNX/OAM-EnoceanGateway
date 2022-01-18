@@ -50,7 +50,7 @@ uint8_t getRockerTyp(uint8_t type)
   }
 }*/
 
-void shortSend_DPT1(bool value, uint8_t firstComObj)
+void shortSend_DPT1(bool value, uint16_t firstComObj)
 {
 #ifdef KDEBUG
   SERIAL_PORT.print(F("DPT1: "));
@@ -60,7 +60,7 @@ void shortSend_DPT1(bool value, uint8_t firstComObj)
   knx.getGroupObject(firstComObj).value(value, getDPT(VAL_DPT_1));
 }
 
-void SendDPT3_007(bool dir, uint8_t firstComObj)
+void SendDPT3_007(bool dir, uint16_t firstComObj)
 {
   uint8_t dpt3value = 0;
   //UP = 0
@@ -78,7 +78,7 @@ void SendDPT3_007(bool dir, uint8_t firstComObj)
   knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 7, 0));
 }
 
-void shortSend_Szene(uint8_t scene, uint8_t firstParameter, uint8_t firstComObj)
+void shortSend_Szene(uint8_t scene, uint16_t firstParameter, uint16_t firstComObj)
 {
   uint8_t szeneNr;
 
@@ -91,7 +91,7 @@ void shortSend_Szene(uint8_t scene, uint8_t firstParameter, uint8_t firstComObj)
   knx.getGroupObject(firstComObj).value(szeneNr, getDPT(VAL_DPT_17));
 }
 
-void stopDim(uint8_t firstComObj)
+void stopDim(uint16_t firstComObj)
 {
   uint8_t dpt3value = 0;
 
@@ -104,7 +104,7 @@ void stopDim(uint8_t firstComObj)
   knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 7, 0));
 }
 
-void longStop(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
+void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 {
   switch (rockerNr)
   {
@@ -202,7 +202,7 @@ void longStop(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
   }
 }
 
-bool longPress(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
+bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 {
   uint8_t szeneNr;
   switch (rockerNr)
@@ -404,7 +404,7 @@ bool longPress(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
   return false;
 }
 
-void shortPress(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
+void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 {
   uint8_t szeneNr;
   switch (rockerNr)
@@ -593,7 +593,7 @@ void shortPress(uint8_t rockerNr, uint8_t firstParameter, uint8_t firstComObj)
   }
 }
 
-void release_Button(bool stateIO, uint8_t firstParameter, uint8_t firstComObj, uint8_t RockerFunktion, uint8_t RockerSzene, bool islong)
+void release_Button(bool stateIO, uint16_t firstParameter, uint16_t firstComObj, uint8_t RockerFunktion, uint8_t RockerSzene, bool islong)
 {
   uint8_t szeneNr;
   uint8_t dpt3value = 0;
@@ -1372,7 +1372,7 @@ uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t 
   }
 }
 
-void handle_F6_05_0x(uint8_t firstComObj, uint8_t value)
+void handle_F6_05_0x(uint16_t firstComObj, uint8_t value)
 {
   switch (value)
   {
@@ -1393,7 +1393,7 @@ void handle_F6_05_0x(uint8_t firstComObj, uint8_t value)
   }
 }
 
-void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter)
+void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComObj, uint16_t firstParameter)
 {
   RPS_F6_10_00_TYPE *lRpsTlg_p;
   RPS_F6_10_01_TYPE *lRpsTlg2_p;

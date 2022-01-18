@@ -15,7 +15,7 @@
 // ### DEBUG CONFIGURATION
 // ################################################
 // DEBUG-MODE
-#define KDEBUG // comment this line to disable DEBUG mode
+//#define KDEBUG // comment this line to disable DEBUG mode
 
 RockerStates state = idle;
 
@@ -49,7 +49,6 @@ private:
   union TaskHandle2
   {
     byte val_A5_20_06_TeachIn[4];
-    uint32_t rocker_longpress_delay;
     uint32_t buttonLastPushTime2;
   } union2;
 
@@ -115,8 +114,11 @@ public:
   //
   //*************************************************************************************************************************************************************
   //*************************************************************************************************************************************************************
-  void init(uint8_t startAtComObj, uint8_t startAtParameter, uint8_t channel)
+  void init(uint16_t startAtComObj, uint16_t startAtParameter, uint8_t channel)
   {
+    //init(lastComObj, lastParam, channel);
+    //lastComObj = ENO_KoOffset + (channel * ENO_KoBlockSize);
+    //lastParam = ENO_ParamBlockOffset + (channel * ENO_ParamBlockSize);
     firstComObj = startAtComObj;
     firstParameter = startAtParameter;
     index = channel;
@@ -134,6 +136,15 @@ public:
     deviceId_Arr[1] = knx.paramByte(ENO_CHId2 + firstParameter);
     deviceId_Arr[2] = knx.paramByte(ENO_CHId4 + firstParameter);
     deviceId_Arr[3] = knx.paramByte(ENO_CHId6 + firstParameter);
+
+    SERIAL_PORT.print(deviceId_Arr[0]);
+    SERIAL_PORT.print(" ");
+    SERIAL_PORT.print(deviceId_Arr[1]);
+    SERIAL_PORT.print(" ");
+    SERIAL_PORT.print(deviceId_Arr[2]);
+    SERIAL_PORT.print(" ");
+    SERIAL_PORT.print(deviceId_Arr[3]);
+    SERIAL_PORT.println(" ");
 
     // init parameter
 
@@ -167,6 +178,8 @@ public:
         SERIAL_PORT.print(deviceId_Arr[i], HEX);
       }
       SERIAL_PORT.println(F(""));
+      SERIAL_PORT.println(ENO_CHProfilSelection);
+      SERIAL_PORT.println(firstParameter);
       SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
 
       switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
@@ -341,7 +354,7 @@ public:
         break;
 
       case checkShortLong:
-        if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 10))
+        if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 100))
         {
           state = long_press;
           SERIAL_PORT.print(F("long "));
@@ -375,6 +388,7 @@ public:
         if (unionMSG.rockerState != RockerIdle)
         {
           SERIAL_PORT.println(F("wait release"));
+          SERIAL_PORT.println(unionMSG.rockerState);
           //if(longPressDim)
           longStop(union3.rockerNr, firstParameter, firstComObj + 1);
           unionMSG.rockerState = RockerIdle;

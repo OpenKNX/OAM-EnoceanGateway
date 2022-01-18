@@ -620,8 +620,8 @@ struct PACKET_SERIAL_TYPE
 class IEnOceanDevice
 {
   protected:
-    uint8_t firstComObj = 0;
-    uint8_t firstParameter = 0;
+    uint16_t firstComObj = 0;
+    uint16_t firstParameter = 0;
     uint8_t index = 0;
 
 
@@ -633,7 +633,7 @@ class IEnOceanDevice
     virtual ~IEnOceanDevice()
     {
     }
-    virtual void init(uint8_t startAtComObj, uint8_t startAtParameter, uint8_t channel) = 0;
+    virtual void init(uint16_t startAtComObj, uint16_t startAtParameter, uint8_t channel) = 0;
     virtual void initBaseID(uint8_t channel, uint8_t BaseID1, uint8_t BaseID2, uint8_t BaseID3, uint8_t BaseID4) = 0;
     virtual void task() = 0;
     virtual bool handleEnOceanPacket(PACKET_SERIAL_TYPE* f_Pkt_st) = 0;
@@ -667,8 +667,8 @@ class EnOcean
     uint8_t u8RxByte;
     uint8_t u8RetVal;
 
-    uint8_t lastParam;
-    uint8_t lastComObj;
+    uint16_t lastParam;
+    uint16_t lastComObj;
     uint8_t lastDevice;
     uint8_t lastSenderIdOffset = 0;
 
