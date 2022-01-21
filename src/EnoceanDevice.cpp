@@ -104,31 +104,41 @@ void ProcessKoCallback(GroupObject &iKo)
 
       if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
       {
+#ifdef KDEBUG
         SERIAL_PORT.println("reviev KO_0");
+#endif
         enOcean.handleKnxEvents(koIndex, 0, iKo);
         callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
       {
+#ifdef KDEBUG
         SERIAL_PORT.println("reviev KO_1");
+#endif
         enOcean.handleKnxEvents(koIndex, 1, iKo);
         callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
       {
+#ifdef KDEBUG
         SERIAL_PORT.println("reviev KO_2");
+#endif
         enOcean.handleKnxEvents(koIndex, 2, iKo);
         callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
       {
+#ifdef KDEBUG
         SERIAL_PORT.println("reviev KO_3");
+#endif
         enOcean.handleKnxEvents(koIndex, 3, iKo);
         callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
       {
+#ifdef KDEBUG
         SERIAL_PORT.println("reviev KO_4");
+#endif
         enOcean.handleKnxEvents(koIndex, 4, iKo);
         callLogic = false;
       }

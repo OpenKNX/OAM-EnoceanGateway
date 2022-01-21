@@ -228,10 +228,10 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
       return true;
       break;
     case 5: // Long: open = 0
-      shortSend_DPT1(false, firstComObj+1);
+      shortSend_DPT1(false, firstComObj + 1);
       break;
     case 6: // Long: close = 1
-      shortSend_DPT1(true, firstComObj+1);
+      shortSend_DPT1(true, firstComObj + 1);
       break;
     case 7: // Szene a/b (Oben/unten Wippe)
       shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj);
@@ -260,10 +260,10 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
       return true;
       break;
     case 5: // Long: Close = 1
-      shortSend_DPT1(true, firstComObj+1);
+      shortSend_DPT1(true, firstComObj + 1);
       break;
     case 6: // Long: Open = 0
-      shortSend_DPT1(false, firstComObj+1);
+      shortSend_DPT1(false, firstComObj + 1);
       break;
     case 7: // Szene b (Oben/unten Wippe)
       shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj);
@@ -1530,7 +1530,9 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
   // ----------------- Profil: F6-10-01 --------------------------
   //**************************************************************
   case F6_10_01:
+#ifdef KDEBUG
     SERIAL_PORT.println(F("Profil: F6-10-01"));
+#endif
 
     lRpsTlg2_p = (RPS_F6_10_01_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
 

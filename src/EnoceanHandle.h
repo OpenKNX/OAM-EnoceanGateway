@@ -14,8 +14,6 @@
 // ################################################
 // ### DEBUG CONFIGURATION
 // ################################################
-// DEBUG-MODE
-//#define KDEBUG // comment this line to disable DEBUG mode
 
 RockerStates state = idle;
 
@@ -136,7 +134,7 @@ public:
     deviceId_Arr[1] = knx.paramByte(ENO_CHId2 + firstParameter);
     deviceId_Arr[2] = knx.paramByte(ENO_CHId4 + firstParameter);
     deviceId_Arr[3] = knx.paramByte(ENO_CHId6 + firstParameter);
-
+#ifdef KDEBUG
     SERIAL_PORT.print(deviceId_Arr[0]);
     SERIAL_PORT.print(" ");
     SERIAL_PORT.print(deviceId_Arr[1]);
@@ -145,6 +143,7 @@ public:
     SERIAL_PORT.print(" ");
     SERIAL_PORT.print(deviceId_Arr[3]);
     SERIAL_PORT.println(" ");
+#endif
 
     // init parameter
 
@@ -343,52 +342,75 @@ public:
       switch (state)
       {
       case idle:
+#ifdef KDEBUG
+        SERIAL_PORT.print(F("i"));
+#endif
         if (unionMSG.rockerState != RockerIdle)
         {
           union3.rockerNr = unionMSG.rockerState;
           union1.rocker_longpress_delay = millis();
           unionMSG.rockerState = RockerIdle;
           state = checkShortLong;
+#ifdef KDEBUG
           SERIAL_PORT.print(F("start "));
+#endif
         }
         break;
 
       case checkShortLong:
-        if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 100))
+#ifdef KDEBUG
+        SERIAL_PORT.print(F("c"));
+#endif
+        if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 20))
         {
           state = long_press;
+#ifdef KDEBUG
           SERIAL_PORT.print(F("long "));
+#endif
         }
         else
         {
           if (unionMSG.rockerState != RockerIdle)
           {
             state = short_press;
+#ifdef KDEBUG
             SERIAL_PORT.print(F("short "));
+#endif
           }
         }
         break;
 
       case short_press:
+#ifdef KDEBUG
         SERIAL_PORT.println(F("send_short "));
+#endif
         shortPress(union3.rockerNr, firstParameter, firstComObj + 1);
         unionMSG.rockerState = RockerIdle;
         state = idle;
         break;
 
       case long_press:
+#ifdef KDEBUG
         SERIAL_PORT.print(F("send_long "));
+#endif
         longPressDim = longPress(union3.rockerNr, firstParameter, firstComObj + 1);
+#ifdef KDEBUG
         SERIAL_PORT.println(longPressDim);
+#endif
         unionMSG.rockerState = RockerIdle;
         state = waitLongRelease;
         break;
 
       case waitLongRelease:
+#ifdef KDEBUG
+        SERIAL_PORT.print(F("w"));
+#endif
         if (unionMSG.rockerState != RockerIdle)
         {
+#ifdef KDEBUG
           SERIAL_PORT.println(F("wait release"));
           SERIAL_PORT.println(unionMSG.rockerState);
+#endif
           //if(longPressDim)
           longStop(union3.rockerNr, firstParameter, firstComObj + 1);
           unionMSG.rockerState = RockerIdle;
@@ -575,10 +597,10 @@ public:
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
     case u8RORG_4BS:
-
+#ifdef KDEBUG
       SERIAL_PORT.print(F("4BS "));
       SERIAL_PORT.println(knx.paramWord(ENO_CHProfil4BS20 + firstParameter));
-
+#endif
       switch (knx.paramWord(ENO_CHProfil4BS20 + firstParameter))
       {
       case A5_20_06:
@@ -587,13 +609,17 @@ public:
         {
         case KO_Teachin: // Teach-in MSG
           teachinCH = iKo.value(getDPT(VAL_DPT_5));
+#ifdef KDEBUG_min
           SERIAL_PORT.println(teachinCH);
           SERIAL_PORT.println(index + 1);
+#endif
           if (teachinCH != index + 1)
           {
             return;
           }
+#ifdef KDEBUG_min
           SERIAL_PORT.println(F("ready to send"));
+#endif
           union1.val_A5_20_06[0] = 0x80;
           union1.val_A5_20_06[1] = 0x30;
           union1.val_A5_20_06[2] = 0x49;
@@ -896,6 +922,9 @@ public:
 #endif
 
       unionMSG.rockerState = handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+#ifdef KDEBUG
+      SERIAL_PORT.println(unionMSG.rockerState, HEX);
+#endif
       break;
     }
     return true;

@@ -13,10 +13,7 @@
 // ################################################
 // ### DEBUG CONFIGURATION
 // ################################################
-// DEBUG-MODE
-#define KDEBUG // comment this line to disable DEBUG mode
-//#define KDEBUG_Repeater         // comment this line to disable DEBUG mode for Repeater
-//#define KDEBUG_BaseID           // comment this line to disable DEBUG mode for Base-ID
+
 
 // EnOcean unique instance creation
 EnOcean EnOcean::Eno;
@@ -661,7 +658,7 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
 {
   if (u8RetVal == ENOCEAN_OK)
   {
-#ifdef KDEBUG
+#ifdef KDEBUG_Received
     SERIAL_PORT.print(F("Received Data: "));
     for (int i = 0; i < f_Pkt_st->u16DataLength + (uint16_t)f_Pkt_st->u8OptionLength; i++)
     {
@@ -675,7 +672,7 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
     if (f_Pkt_st->u8Type == u8RADIO_ERP1)
     {
 
-#ifdef KDEBUG
+#ifdef KDEBUG_Received
       if (f_Pkt_st->u8DataBuffer[0] == u8RORG_RPS)
       {
         SERIAL_PORT.println(F("Received RPS telegram."));
@@ -735,14 +732,14 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
         }
       }
 
-#ifdef KDEBUG
+#ifdef KDEBUG_handled
       if (!packetWasHandled)
       {
-        SERIAL_PORT.println(F("Data was not handled!"));
+        SERIAL_PORT.println(F("Data not handled!"));
       }
       else
       {
-        SERIAL_PORT.println(F("Data was handled :-)"));
+        SERIAL_PORT.println(F("Data handled :-)"));
       }
 #endif
     }

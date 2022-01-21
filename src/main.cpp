@@ -26,7 +26,7 @@ void setup()
 
     pinMode(PROG_LED_PIN, OUTPUT);
     digitalWrite(PROG_LED_PIN, HIGH);
-    delay(6000);
+    //delay(6000);
     digitalWrite(PROG_LED_PIN, LOW);
 #ifdef KDEBUG_min
     SERIAL_PORT.begin(115200);
