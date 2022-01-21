@@ -34,7 +34,7 @@ private:
   union EnoceanHandle
   {
     uint8_t msg_sent_after_receive;
-    uint8_t rockerState = RockerIdle;
+    uint8_t rockerState_pressed = RockerIdle;
   } unionMSG;
 
   union TaskHandle1
@@ -48,6 +48,7 @@ private:
   {
     byte val_A5_20_06_TeachIn[4];
     uint32_t buttonLastPushTime2;
+    uint8_t rockerState_Release = RockerIdle;
   } union2;
 
   union TaskHandle3
@@ -342,38 +343,32 @@ public:
       switch (state)
       {
       case idle:
-#ifdef KDEBUG
-        SERIAL_PORT.print(F("i"));
-#endif
-        if (unionMSG.rockerState != RockerIdle)
+        if (unionMSG.rockerState_pressed != RockerIdle)
         {
-          union3.rockerNr = unionMSG.rockerState;
+          union3.rockerNr = unionMSG.rockerState_pressed;
           union1.rocker_longpress_delay = millis();
-          unionMSG.rockerState = RockerIdle;
           state = checkShortLong;
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
           SERIAL_PORT.print(F("start "));
 #endif
         }
         break;
 
       case checkShortLong:
-#ifdef KDEBUG
-        SERIAL_PORT.print(F("c"));
-#endif
         if (delayCheck(union1.rocker_longpress_delay, knx.paramByte(ENO_CHRockerLongPressWaitTime + firstParameter) * 20))
         {
           state = long_press;
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
           SERIAL_PORT.print(F("long "));
 #endif
         }
         else
         {
-          if (unionMSG.rockerState != RockerIdle)
+          if (union2.rockerState_Release != RockerIdle)
           {
             state = short_press;
-#ifdef KDEBUG
+            unionMSG.rockerState_pressed = RockerIdle;
+#ifdef KDEBUG_Rocker
             SERIAL_PORT.print(F("short "));
 #endif
           }
@@ -381,39 +376,32 @@ public:
         break;
 
       case short_press:
-#ifdef KDEBUG
-        SERIAL_PORT.println(F("send_short "));
+#ifdef KDEBUG_Rocker
+        SERIAL_PORT.print(F("send_short "));
 #endif
         shortPress(union3.rockerNr, firstParameter, firstComObj + 1);
-        unionMSG.rockerState = RockerIdle;
+        knx.loop();
+        union2.rockerState_Release = RockerIdle;
         state = idle;
         break;
 
       case long_press:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
         SERIAL_PORT.print(F("send_long "));
 #endif
-        longPressDim = longPress(union3.rockerNr, firstParameter, firstComObj + 1);
-#ifdef KDEBUG
-        SERIAL_PORT.println(longPressDim);
-#endif
-        unionMSG.rockerState = RockerIdle;
+        longPress(union3.rockerNr, firstParameter, firstComObj + 1);
         state = waitLongRelease;
         break;
 
       case waitLongRelease:
-#ifdef KDEBUG
-        SERIAL_PORT.print(F("w"));
-#endif
-        if (unionMSG.rockerState != RockerIdle)
+        if (union2.rockerState_Release != RockerIdle)
         {
-#ifdef KDEBUG
-          SERIAL_PORT.println(F("wait release"));
-          SERIAL_PORT.println(unionMSG.rockerState);
+#ifdef KDEBUG_Rocker
+          SERIAL_PORT.print(F("wait release "));
 #endif
-          //if(longPressDim)
           longStop(union3.rockerNr, firstParameter, firstComObj + 1);
-          unionMSG.rockerState = RockerIdle;
+          union2.rockerState_Release = RockerIdle;
+          unionMSG.rockerState_pressed = RockerIdle;
           state = idle;
         }
         break;
@@ -911,7 +899,7 @@ public:
       if (f_Pkt_st->u8DataBuffer[5] != deviceId_Arr[3])
         return false;
 
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
       SERIAL_PORT.print(".");
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
@@ -920,11 +908,53 @@ public:
       SERIAL_PORT.print(".");
       SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
 #endif
-
-      unionMSG.rockerState = handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+      //uint8_t stateRocker = handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+      uint8_t stateRocker = f_Pkt_st->u8DataBuffer[1];
 #ifdef KDEBUG
-      SERIAL_PORT.println(unionMSG.rockerState, HEX);
+      SERIAL_PORT.println(stateRocker, HEX);
 #endif
+      switch (stateRocker)
+      {
+      case AI_pressed:
+        unionMSG.rockerState_pressed = stateRocker;
+        break;
+      case AI_release:
+        union2.rockerState_Release = stateRocker;
+        break;
+      case AO_pressed:
+        unionMSG.rockerState_pressed = stateRocker;
+        break;
+      case AO_release:
+        union2.rockerState_Release = stateRocker;
+        break;
+      case BI_pressed:
+        unionMSG.rockerState_pressed = stateRocker;
+        break;
+      case BI_release:
+        union2.rockerState_Release = stateRocker;
+        break;
+      case BO_pressed:
+        unionMSG.rockerState_pressed = stateRocker;
+        break;
+      case BO_release:
+        union2.rockerState_Release = stateRocker;
+        break;
+      case CI_pressed:
+        unionMSG.rockerState_pressed = stateRocker;
+        break;
+      case CI_release:
+        union2.rockerState_Release = stateRocker;
+        break;
+      case CO_pressed:
+        unionMSG.rockerState_pressed = stateRocker;
+        break;
+      case CO_release:
+        union2.rockerState_Release = stateRocker;
+        break;
+      default:
+        union2.rockerState_Release = stateRocker; // Für Wert = 0
+        break;
+      }
       break;
     }
     return true;

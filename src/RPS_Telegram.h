@@ -52,10 +52,9 @@ uint8_t getRockerTyp(uint8_t type)
 
 void shortSend_DPT1(bool value, uint16_t firstComObj)
 {
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
   SERIAL_PORT.print(F("DPT1: "));
   SERIAL_PORT.println(value);
-  SERIAL_PORT.println(firstComObj);
 #endif
   knx.getGroupObject(firstComObj).value(value, getDPT(VAL_DPT_1));
 }
@@ -65,7 +64,7 @@ void SendDPT3_007(bool dir, uint16_t firstComObj)
   uint8_t dpt3value = 0;
   //UP = 0
   //down = 1
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
   SERIAL_PORT.println(F("DIM: "));
   SERIAL_PORT.println(dir);
 #endif
@@ -82,7 +81,7 @@ void shortSend_Szene(uint8_t scene, uint16_t firstParameter, uint16_t firstComOb
 {
   uint8_t szeneNr;
 
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
   SERIAL_PORT.print(F("Szene: "));
   SERIAL_PORT.println(knx.paramByte(firstParameter + scene));
   SERIAL_PORT.println(firstComObj);
@@ -95,7 +94,7 @@ void stopDim(uint16_t firstComObj)
 {
   uint8_t dpt3value = 0;
 
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
   SERIAL_PORT.println(F("Stop DIM"));
 #endif
   dpt3value = 0;
@@ -109,7 +108,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
   switch (rockerNr)
   {
   case AO_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("A0")); // AO = normal oben
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
@@ -124,7 +123,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case AI_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("AI")); // AI = normal unten
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
@@ -139,7 +138,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case BO_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("B0")); // BO = normal oben
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
@@ -154,7 +153,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case BI_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("BI")); // BI = normal unten
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
@@ -169,7 +168,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case CO_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("C0")); // CO = normal oben
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
@@ -184,7 +183,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case CI_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("CI")); // CI = normal unten
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
@@ -410,7 +409,7 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
   switch (rockerNr)
   {
   case AO_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("A0")); // AO = normal oben
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
@@ -440,7 +439,7 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case AI_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("AI")); // AI = normal unten
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
@@ -470,7 +469,7 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case BO_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("B0")); // BO = normal oben
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
@@ -500,7 +499,7 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case BI_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("BI")); // BI = normal unten
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
@@ -530,7 +529,7 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case CO_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("C0")); // CO = normal oben
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
@@ -560,7 +559,7 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     break;
 
   case CI_pressed:
-#ifdef KDEBUG
+#ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("CI")); // CI = normal unten
 #endif
     switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
@@ -829,446 +828,7 @@ void release_Button(bool stateIO, uint16_t firstParameter, uint16_t firstComObj,
   }
 }
 
-/*
-void release_AI(uint8_t firstParameter, uint8_t firstComObj, bool islong)
-{
-  switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
-  {
-  case 1: // Schalten EIN/AUS (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten AUS"));
-#endif
-    knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
-    break;
 
-  case 2: // Schalten AUS/EIN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten EIN"));
-#endif
-    knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 3: // LICHT AN/AUS (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AUS"));
-#endif
-    knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 4: // LICHT AUS/AN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AN"));
-#endif
-    knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 5: // Jalousie Step AUF/AB (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie Step AB"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj).valueNoSend(dpt3value, Dpt(3, 8, 1)); // schreibt die Schrittweite, ohne zu senden
-    dpt3value = 8;
-    knx.getGroupObject(firstComObj).value(dpt3value, Dpt(3, 8, 0)); // schreibt die Richtung und sendet alles (auch die Schrittweite)
-    break;
-
-  case 6: // Jalousie Step AB/AUF (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie Step AUF"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj).valueNoSend(dpt3value, Dpt(3, 8, 1)); // schreibt die Schrittweite, ohne zu senden
-    dpt3value = 0;
-    knx.getGroupObject(firstComObj).value(dpt3value, Dpt(3, 8, 0)); // schreibt die Richtung und sendet alles (auch die Schrittweite)
-    break;
-
-  case 7: // Szene a/b (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("Szene b: "));
-    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerASzeneB));
-#endif
-    szeneNr = (knx.paramByte(firstParameter + ENO_CHRockerASzeneB)) - 1;
-    knx.getGroupObject(firstComObj).value(szeneNr, getDPT(VAL_DPT_17));
-    break;
-  } // ENDE SWITCH RockerFunktionA
-}
-
-void release_AO(uint8_t firstParameter, uint8_t firstComObj, bool islong)
-{
-  switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA))
-  {
-  case 1: // Schalten EIN/AUS (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten EIN"));
-#endif
-    knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 2: // Schalten AUS/EIN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten AUS"));
-#endif
-    knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 3: // Dimmen Heller/Dunkler (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht EIN"));
-#endif
-    knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 4: // Dimmen Dunkler/Heller (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AUS"));
-#endif
-    knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 5: // Jalousie AUF/AB (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AUF"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 0;
-    knx.getGroupObject(firstComObj).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 6: // Jalousie AB/AUF (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AB"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 8;
-    knx.getGroupObject(firstComObj).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 7: // Szene a/b (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("Szene a: "));
-    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerASzeneA));
-#endif
-    szeneNr = (knx.paramByte(firstParameter + ENO_CHRockerASzeneA)) - 1;
-    knx.getGroupObject(firstComObj).value(szeneNr, getDPT(VAL_DPT_17));
-    break;
-
-  default:
-    break;
-  }
-}
-
-void release_BI(uint8_t firstParameter, uint8_t firstComObj, bool islong)
-{
-  switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
-  {
-  case 1: // Schalten EIN/AUS (Oben/unten Wippe)
-    knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten AUS"));
-#endif
-    break;
-
-  case 2: // Schalten AUS/EIN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten EIN"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 3: // Dimmen Heller/Dunkler (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AUS"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 4: // Dimmen Dunkler/Heller (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AN"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 5: // Jalousie AUF/AB (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AB"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 8;
-    knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 6: // Jalousie AB/AUF (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AUF"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 0;
-    knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 7: // Szene a/b (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("Szene b: "));
-    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerBSzeneB));
-#endif
-    szeneNr = (knx.paramByte(firstParameter + ENO_CHRockerBSzeneB)) - 1;
-    knx.getGroupObject(firstComObj + 1).value(szeneNr, getDPT(VAL_DPT_17));
-    break;
-
-  default:
-    break;
-  }
-}
-
-void release_BO(uint8_t firstParameter, uint8_t firstComObj, bool islong)
-{
-  switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionB))
-  {
-  case 1: // Schalten EIN/AUS (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten EIN"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 2: // Schalten AUS/EIN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten AUS"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 3: // Dimmen Heller/Dunkler (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AN"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 4: // Dimmen Dunkler/Heller (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AUS"));
-#endif
-    knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 5: // Jalousie AUF/AB (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AUF"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 0;
-    knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 6: // Jalousie AB/AUF (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AB"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 8;
-    knx.getGroupObject(firstComObj + 1).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 7: // Szene a (Oben Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("Szene a: "));
-    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerBSzeneA));
-#endif
-    szeneNr = (knx.paramByte(firstParameter + ENO_CHRockerBSzeneA)) - 1;
-    knx.getGroupObject(firstComObj + 1).value(szeneNr, getDPT(VAL_DPT_17));
-    break;
-
-  default:
-    break;
-  }
-}
-
-void release_CI(uint8_t firstParameter, uint8_t firstComObj, bool islong)
-{
-  switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
-  {
-  case 1: // Schalten EIN/AUS (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten AUS"));
-#endif
-    knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 2: // Schalten AUS/EIN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten EIN"));
-#endif
-    knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 3: // Dimmen Heller/Dunkler (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AUS"));
-#endif
-    knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 4: // Dimmen Dunkler/Heller (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Licht AN"));
-#endif
-    knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 5: // Jalousie AUF/AB (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AB"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 8;
-    knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 6: // Jalousie AB/AUF (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Jalousie AUF"));
-#endif
-    dpt3value = 1;
-    knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 8, 1));
-    dpt3value = 0;
-    knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    break;
-
-  case 7: // Szene a/b (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("Szene b: "));
-    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerCSzeneB));
-#endif
-    szeneNr = (knx.paramByte(firstParameter + ENO_CHRockerCSzeneB)) - 1;
-    knx.getGroupObject(firstComObj + 2).value(szeneNr, getDPT(VAL_DPT_17));
-    break;
-
-  default:
-    break;
-  }
-}
-
-void release_CO(uint8_t firstParameter, uint8_t firstComObj, bool islong)
-{
-  switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
-  {
-  case 1: // Schalten EIN/AUS (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten EIN"));
-#endif
-    knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-    break;
-
-  case 2: // Schalten AUS/EIN (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.println(F("Schalten AUS"));
-#endif
-    knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-    break;
-
-  case 3: // short: Licht AN/AUS   long: Dimmen Heller/Dunkler (Oben/unten Wippe)
-    if (islong)
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Dimmen Dunkler"));
-#endif
-      dpt3value = 1;
-      knx.getGroupObject(firstComObj).valueNoSend(dpt3value, Dpt(3, 7, 1));
-      dpt3value = 0;
-      knx.getGroupObject(firstComObj).value(dpt3value, Dpt(3, 7, 0));
-    }
-    else
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Licht  AN"));
-#endif
-      knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-    }
-    break;
-
-  case 4: // short: Licht AN/AUS   long: Dimmen Heller/Dunkler (Oben/unten Wippe)
-    if (islong)
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Dimmen heller"));
-#endif
-      dpt3value = 1;
-      knx.getGroupObject(firstComObj).valueNoSend(dpt3value, Dpt(3, 7, 1));
-      dpt3value = 8;
-      knx.getGroupObject(firstComObj).value(dpt3value, Dpt(3, 7, 0));
-    }
-    else
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Licht  AUS"));
-#endif
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-    }
-    break;
-
-  case 5: // short: step AB/AUF   long: Jalousie AUF/AB (Oben/unten Wippe)
-    if (islong)
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Jalousie AUF"));
-#endif
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-    }
-    else
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Jalousie Step AUF"));
-#endif
-      dpt3value = 1;
-      knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 8, 1));
-      dpt3value = 0;
-      knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    }
-    break;
-
-  case 6: // Jalousie AB/AUF (Oben/unten Wippe)
-    if (islong)
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Jalousie AUF"));
-#endif
-      knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-    }
-    else
-    {
-#ifdef KDEBUG
-      SERIAL_PORT.println(F("Jalousie Step AB"));
-#endif
-      dpt3value = 1;
-      knx.getGroupObject(firstComObj + 2).valueNoSend(dpt3value, Dpt(3, 8, 1));
-      dpt3value = 8;
-      knx.getGroupObject(firstComObj + 2).value(dpt3value, Dpt(3, 8, 0)); // ------------------->> VALUE ???? <--------------------------------------
-    }
-    break;
-
-  case 7: // Szene a/b (Oben/unten Wippe)
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("Szene a: "));
-    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerCSzeneA));
-#endif
-    szeneNr = (knx.paramByte(firstParameter + ENO_CHRockerCSzeneA)) - 1;
-    knx.getGroupObject(firstComObj + 2).value(szeneNr, getDPT(VAL_DPT_17));
-    break;
-
-  default:
-    break;
-  }
-}
-*/
 
 uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter, uint8_t index)
 {
@@ -1282,7 +842,7 @@ uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t 
   case AO_pressed:
     return AO_pressed;
     break; // ENDE AO_pressed
-
+ 
   case BI_pressed:
     return BI_pressed;
     break; // ENDE BI_pressed
@@ -1299,76 +859,6 @@ uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t 
     return CO_pressed;
     break; // ENDE CO_pressed
 
-    //*************************************************************************************************************************************
-    //
-    //    RELEASE
-    //
-    //*************************************************************************************************************************************
-
-    /*
-    // Release AI = 0 --> most of the Rocker Switches answer a "0" for all Buttons (AI, AO, BI, BO, CI, CO)
-  case AI_release:
-    switch (rockerNr[index])
-    {
-    case 10:
-      release_AI(firstParameter, firstComObj);
-      break;
-    case 20:
-      release_AO(firstParameter, firstComObj);
-      break;
-    case 30:
-      release_BI(firstParameter, firstComObj);
-      break;
-    case 40:
-      release_BO(firstParameter, firstComObj);
-      break;
-    case 50:
-      release_CI(firstParameter, firstComObj);
-      break;
-    case 60:
-      release_CO(firstParameter, firstComObj);
-      break;
-    default:
-      break;
-    }
-    rockerNr[index] = 0;
-    return AI_release;
-    break; // ENDE AI_release
-
-  case AO_release:
-    release_AO(firstParameter, firstComObj);
-    rockerNr[index] = 0;
-    return AO_release;
-    break; // ENDE AO_release
-
-  case BI_release:
-    release_BI(firstParameter, firstComObj);
-    rockerNr[index] = 0;
-    return BI_release;
-    break; // ENDE BI_release
-
-  case BO_release:
-    release_BO(firstParameter, firstComObj);
-    rockerNr[index] = 0;
-    return BO_release;
-    break; // ENDE BO_release
-
-  case CI_release:
-    release_CI(firstParameter, firstComObj);
-    rockerNr[index] = 0;
-    return CI_release;
-    break; // ENDE CI_release
-
-  case CO_release:
-    release_CO(firstParameter, firstComObj);
-    rockerNr[index] = 0;
-    return CO_release;
-    break; // ENDE CO_release
-
-  default:
-  
-    break;
-    */
   }
 }
 

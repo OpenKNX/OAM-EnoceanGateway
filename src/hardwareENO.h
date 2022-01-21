@@ -18,6 +18,7 @@
 //Debug Outputs
 #define KDEBUG_min
 #define KDEBUG
+#define KDEBUG_Rocker           // comment this line to disable DEBUG Rocker info
 //#define KDEBUG_handled          // comment this line to disable DEBUG info Data handled
 //#define KDEBUG_Received         // comment this line to disable DEBUG mode for Recvived Data infomration
 //#define KDEBUG_Repeater         // comment this line to disable DEBUG mode for Repeater
