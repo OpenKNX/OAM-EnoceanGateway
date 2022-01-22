@@ -160,6 +160,7 @@ void appSetup()
     if (GroupObject::classCallback() == 0)
       GroupObject::classCallback(ProcessKoCallback);
     // Setup Logik
+    Logic::addLoopCallback(EnOcean::taskCallback, &enOcean);
     gLogic.setup(false);
   }
 }

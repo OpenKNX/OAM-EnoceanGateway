@@ -651,7 +651,8 @@ class EnOcean
     void initSerial(Stream &serial);
     void init();
     void task();
-
+    static void taskCallback(void *iThis);
+   
     bool sendPacket(PACKET_SERIAL_TYPE *pPacket);
     void obtainSenderId(uint8_t* senderId, uint8_t channel);
     void handleKnxEvents(byte koIndex, byte koNr,GroupObject &iKo);

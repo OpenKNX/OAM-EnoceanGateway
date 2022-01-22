@@ -72,6 +72,14 @@ void EnOcean::handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo)
   }
 }
 
+// callback to a method of an instance (Pattern)
+// this static callback gets a pointer to the instance
+void EnOcean::taskCallback(void *iThis)
+{
+  EnOcean *self = static_cast<EnOcean *>(iThis);
+  self->task();
+}
+
 void EnOcean::task()
 {
 #ifdef KDEBUG
