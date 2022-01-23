@@ -212,95 +212,84 @@
             <ComObjectRefs>
               <!-- Enocean CH -->
               <!-- Base 0 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%010" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%011" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input  A  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%012" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_03" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%013" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_03" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Jalousie" Priority="Low" ObjectSize="4 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-3 DPST-3-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%014" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_17" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%015" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%016" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="PIR" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-18" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CO2" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%018" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH1 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%019" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Jalousie Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%020" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="schalten Aktor CH1" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Vibration Det (bool)" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-2" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%023" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_09" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Set Temperatur" Priority="Low" ObjectSize="2 Bytes" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%024" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Set Position" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%01" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%02" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input  A  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%03" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_03" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%04" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_03" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Jalousie" Priority="Low" ObjectSize="4 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-3 DPST-3-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%05" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_17" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%06" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%07" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="PIR" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-18" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CO2" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%09" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH1 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%10" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Jalousie Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%11" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="schalten Aktor CH1" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Vibration Det (bool)" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-2" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%13" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_09" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Set Temperatur" Priority="Low" ObjectSize="2 Bytes" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%14" RefId="M-00FA_A-0001-01-0000_O-300%K0%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Set Position" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base 1 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%031" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="INP_CH_1_DPT_01" Text="Input  B  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%032" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%034" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_17" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="LUX" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%036" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window Offen" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%038" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH2 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%039" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Jalousie Winkel" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%040" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="schalten Aktor CH2" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%041" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Sommer Umschaltung" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-3" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%02" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="INP_CH_1_DPT_01" Text="Input  B  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%03" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%04" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Sommer Umschaltung" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-3" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%05" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_17" Text="Output A  Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="LUX" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%07" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window Offen" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%09" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH2 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%10" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Jalousie Winkel" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%11" RefId="M-00FA_A-0001-01-0000_O-300%K1%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="schalten Aktor CH2" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base 2 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%050" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_01" Text="Output A Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%052" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_03" Text="Output A Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Bat Voltage" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-20" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%056" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_19" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window Gekippt" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%057" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Hum" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%058" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH1 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%060" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="INP_CH_1_DPT_05" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Register Bits" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%061" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="INP_CH_5_DPT_10" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Kommunikations-Intervall" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%01" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_01" Text="Output A Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%02" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_03" Text="Output A Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Bat Voltage" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-20" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%04" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_19" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Door/Window Gekippt" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%05" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Hum" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%06" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH1 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%07" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="INP_CH_1_DPT_05" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Register Bits" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%08" RefId="M-00FA_A-0001-01-0000_O-300%K2%" Name="INP_CH_5_DPT_10" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Kommunikations-Intervall" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base 3 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%070" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%072" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%074" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_17" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Day/Night" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-2" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%076" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH2 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="closed/open" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%079" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Alarm" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-5" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%080" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="INP_CH_1_DPT_09" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Raum Temperatur" Priority="Low" ObjectSize="2 Bytes" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%01" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%02" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%03" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_17" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Day/Night" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-2" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%05" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="CH2 Status" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-11" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="closed/open" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-19" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%07" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Alarm" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-5" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%08" RefId="M-00FA_A-0001-01-0000_O-300%K3%" Name="INP_CH_1_DPT_09" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Raum Temperatur" Priority="Low" ObjectSize="2 Bytes" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base 4 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Battery" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%091" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_03" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%092" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%094" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Request Status" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Bat Voltage" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-20" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%096" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Standby Schalten" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-3" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%098" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Alarm Energy Low" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-5" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Battery" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%02" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_03" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%03" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%04" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Request Status" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Bat Voltage" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-20" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%06" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Standby Schalten" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPT-1 DPST-1-3" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%07" RefId="M-00FA_A-0001-01-0000_O-300%K4%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Alarm Energy Low" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-5" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base  5 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%110" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Restlaufzeit (Monate)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%111" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Pressed/Released" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-3" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%112" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%113" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%114" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_17" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%01" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Restlaufzeit (Monate)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%02" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Pressed/Released" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-3" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%03" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%04" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-8" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%05" RefId="M-00FA_A-0001-01-0000_O-300%K5%" Name="OUT_CH_1_DPT_17" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Szene" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-17 DPST-17-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
 
               <!-- Base  6 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%130" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temperatur vom Device" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%131" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Comfort Index" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%132" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Single press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%133" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_03" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%134" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%01" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temperatur vom Device" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%02" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Comfort Index" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%03" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Single press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%04" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_03" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%05" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
 
 
               <!-- Base  7 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%150" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Ventil Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%151" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Double press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%152" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Indoor Air Quality" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%01" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Ventil Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%02" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Double press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%03" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Indoor Air Quality" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base  8 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%170" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp Offset" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%171" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%172" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Wochen seit letztem Alarm" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%01" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp Offset" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%02" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%03" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Wochen seit letztem Alarm" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base  9 -->
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%190" RefId="M-00FA_A-0001-01-0000_O-300%K9%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status (8Bits)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
-              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%191" RefId="M-00FA_A-0001-01-0000_O-300%K9%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long release" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%01" RefId="M-00FA_A-0001-01-0000_O-300%K9%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status (8Bits)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%02" RefId="M-00FA_A-0001-01-0000_O-300%K9%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long release" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
             </ComObjectRefs>
             <AddressTable MaxEntries="65535" />
             <AssociationTable MaxEntries="65535" />
@@ -365,19 +354,19 @@
                   <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%005_R-300%C%0051">
                     <!-- F6-05-00 & 02 -->
                     <when test="291 293">
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%079" />
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%098" />
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%07" />
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%07" />
                     </when>
                     <!-- F6-05-01 -->
                     <when test="292">
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%079" />
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%07" />
                     </when>
                     <!-- F6-10-00 & 01 -->
                     <when test="294 295">
                       <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- open/close-->
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%036" /> <!-- Fenster open -->
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%056" /> <!-- Fenster gekippt -->
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- open/close-->
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%07" /> <!-- Fenster open -->
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%04" /> <!-- Fenster gekippt -->
                     </when>
                   </choose>
                 </when>
@@ -386,7 +375,7 @@
                   <!-- D5-00-01 -->
                   <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
                   <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%006_R-300%C%0061" />
-                  <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%015" />
+                  <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%06" />
                 </when>
                 <!-- 4BS A5 (0xA5 = 165Dez)-->
                 <when test="165">
@@ -395,13 +384,13 @@
                     <!-- A5-02 -->
                     <when test="2">
                       <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%010_R-300%C%0101" />
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
                     </when>
                     <!-- A5-04 -->
                     <when test="4">
                       <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%011_R-300%C%0111" />
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
-                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%057" />
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
+                      <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%05" />
                     </when>
                     <!-- A5-06 -->
                     <when test="6">
@@ -409,22 +398,22 @@
                       <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%013_R-300%C%0131">
                         <when test="31">
                           <!-- A5-06-01 -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" /> <!-- Bat -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" /> <!-- Bat -->
                         </when>
                         <when test="32">
                           <!-- A5-06-02 -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" /> <!-- Bat -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" /> <!-- Bat -->
                         </when>
                         <when test="33">
                           <!-- A5-06-03 -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" /> <!-- Bat -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" /> <!-- Bat -->
                         </when>
                         <when test="296">
                           <!-- A5-06-01* -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX -->
                         </when>
                       </choose>
                     </when>
@@ -435,20 +424,20 @@
                         <when test="36">
                           <!-- A5-07-01 -->
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-10" Text="Bewegungsmelder ( PIR)" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%016" /> <!-- PIR -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%07" /> <!-- PIR -->
                         </when>
                         <when test="37">
                           <!-- A5-07-02 -->
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-10" Text="Bewegungsmelder ( PIR, Batterie Spannung)" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%016" /> <!-- PIR -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" /> <!-- Bat -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%07" /> <!-- PIR -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" /> <!-- Bat -->
                         </when>
                         <when test="38">
                           <!-- A5-07-03 -->
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-10" Text="Bewegungsmelder ( PIR, LUX, Batterie Spannung)" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%016" /> <!-- PIR -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" /> <!-- Bat -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%07" /> <!-- PIR -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" /> <!-- Bat -->
                         </when>
                       </choose>
                     </when>
@@ -459,11 +448,11 @@
                         <when test="39 40 41">
                           <!-- A5-08-01 - 03-->
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%016" /> <!-- PIR -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%055" /> <!-- Bat -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%111" /> <!-- OCC -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%130" /> <!-- Tmp -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%07" /> <!-- PIR -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%03" /> <!-- Bat -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%02" /> <!-- OCC -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%01" /> <!-- Tmp -->
                         </when>
                       </choose>
                     </when>
@@ -474,69 +463,69 @@
                         <!-- A5-14.01 -->
                         <when test="106">
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- contact  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- contact  -->
                         </when>
                         <!-- A5-14.02 -->
                         <when test="107">
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- contact  -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX      -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- contact  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX      -->
                         </when>
                         <!-- A5-14.03 -->
                         <when test="108">
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- contact  -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX      -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" /> <!-- Vib Det  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- contact  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX      -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" /> <!-- Vib Det  -->
                         </when>
                         <!-- A5-14.04 -->
                         <when test="109">
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- contact  -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" /> <!-- Vib Det  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- contact  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" /> <!-- Vib Det  -->
                         </when>
                         <!-- A5-14.05 -->
                         <when test="110">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" /> <!-- Vib Det  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" /> <!-- Vib Det  -->
                         </when>
                         <!-- A5-14.06 -->
                         <when test="111">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%035" /> <!-- LUX      -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" /> <!-- Vib Det  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%06" /> <!-- LUX      -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" /> <!-- Vib Det  -->
                         </when>
                         <!-- A5-14.07 -->
                         <when test="112">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%036" /> <!-- Door state -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- Lock state -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%07" /> <!-- Door state -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- Lock state -->
                         </when>
                         <!-- A5-14.08 -->
                         <when test="113">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%036" /> <!-- Door state -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- Lock state -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" /> <!-- Vib Det  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%07" /> <!-- Door state -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- Lock state -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" /> <!-- Vib Det  -->
                         </when>
                         <!-- A5-14.09 -->
                         <when test="114">
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%067_R-300%C%0671" /> <!-- Par Wert für geschlossen -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%036" /> <!-- Door open -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%056" /> <!-- Door Tilt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%077" /> <!-- open/close-->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%07" /> <!-- Door open -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%04" /> <!-- Door Tilt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%06" /> <!-- open/close-->
                         </when>
                         <!-- A5-14.0A -->
                         <when test="115">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%095" /> <!-- Bat Volt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%036" /> <!-- Door open -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%056" /> <!-- Door Tilt -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%021" /> <!-- Vib Det  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%05" /> <!-- Bat Volt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%07" /> <!-- Door open -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%04" /> <!-- Door Tilt -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%12" /> <!-- Vib Det  -->
                         </when>
                       </choose>
                     </when>
@@ -573,20 +562,20 @@
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-23" Text="REF (Referenzlauf) = Mit dem Setzen des REF Bits führt der Antrieb einen Referenzlauf aus, wodurch der Motor eine Nullpunktkorrektor erfährt. Anschließend startet der Antrieb neu." />
                           <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%065_R-300%C%0651">
                             <when test="0">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%024" /> <!-- Set Temp -->
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%14" /> <!-- Set Temp -->
                             </when>
                             <when test="1">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%023" /> <!-- Set Pos 0...100% -->
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%13" /> <!-- Set Pos 0...100% -->
                             </when>
                           </choose>
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%041" /> <!-- Sommer Umschaltung-->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%061" /> <!-- Refenrence RUN-->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%080" /> <!-- Raum Temperatur -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%096" /> <!-- Standby -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%130" /> <!-- Temperatur am Ventil  -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%170" /> <!-- ATemp Offset -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%150" /> <!-- Aktuelle Ventil Pos -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%190" /> <!-- Status Bits -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%04" /> <!-- Sommer Umschaltung-->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%08" /> <!-- Refenrence RUN-->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%08" /> <!-- Raum Temperatur -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%06" /> <!-- Standby -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%01" /> <!-- Temperatur am Ventil  -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%01" /> <!-- ATemp Offset -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%01" /> <!-- Aktuelle Ventil Pos -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%01" /> <!-- Status Bits -->
                         </when>
                       </choose>
                     </when>
@@ -601,11 +590,11 @@
                       <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%025_R-300%C%0251" />
                       <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%025_R-300%C%0251">
                         <when test="155">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%020" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%040" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%058" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%076" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%094" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%11" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%11" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%06" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%05" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%04" />
                         </when>
                       </choose>
                     </when>
@@ -618,11 +607,11 @@
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-2" Text="" UIHint="HorizontalRuler" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-10" Text="Button: single / double / long press" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-11" Text="Button: for long press a release KO is available" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%132" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%151" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%171" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%191" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%03" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%02" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%02" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%02" />
                         </when>
                       </choose>
                     </when>
@@ -631,46 +620,46 @@
                       <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%028_R-300%C%0281" />
                       <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%028_R-300%C%0281">
                         <when test="167 175">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%057" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%05" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" />
                         </when>
                         <when test="168 176">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%057" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%05" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" />
                         </when>
                         <when test="169 178">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" />
                         </when>
                         <when test="170 179">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" />
                         </when>
                         <when test="171 180">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
                         </when>
                         <when test="172 181">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" />
                         </when>
                         <when test="173 182">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" />
                         </when>
                         <when test="174 183">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%017" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%075" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%08" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%04" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" />
                         </when>
                       </choose>
                     </when>
@@ -687,15 +676,15 @@
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-12" Text="Bit2: Smoke Alarm Condition analysis: Humidity" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-13" Text="Bit3: Smoke Alarm Condition analysis: Maintenance" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-14" Text="Bit4: Sensor fault mode status" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%037" /> <!-- Temp -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%057" /> <!-- Hum -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%079" /> <!-- ALARM -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%090" /> <!-- Energy Storage -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%110" /> <!-- Product life time -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%131" /> <!-- Human Comfort Index -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%152" /> <!-- AIR Quality -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%172" /> <!-- Time since last Maintaince-->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%190" /> <!-- Status Bits-->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%08" /> <!-- Temp -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%05" /> <!-- Hum -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%07" /> <!-- ALARM -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%01" /> <!-- Energy Storage -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%01" /> <!-- Product life time -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%02" /> <!-- Human Comfort Index -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%03" /> <!-- AIR Quality -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%03" /> <!-- Time since last Maintaince-->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%01" /> <!-- Status Bits-->
                         </when>
                       </choose>
                     </when>
@@ -720,23 +709,23 @@
                           <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%044_R-300%C%0441">
                             <!-- Wippe 1 schalten -->
                             <when test="1 2">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" />
                             </when>
                             <!-- Wippe 1 Dimming -->
                             <when test="3 4">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%052" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%02" />
                             </when>
                             <!-- Wippe 1 Jalousie -->
                             <when test="5 6">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%032" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%050" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%03" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%01" />
                             </when>
                             <!-- Wippe 1 Szene -->
                             <when test="7">
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%045_R-300%C%0451" />
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%046_R-300%C%0461" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%034" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%05" />
                             </when>
                           </choose>
                         </when>
@@ -746,46 +735,46 @@
                           <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%044_R-300%C%0441">
                             <!-- Wippe 1 schalten -->
                             <when test="1 2">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" />
                             </when>
                             <!-- Wippe 1 Dimming -->
                             <when test="3 4">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%052" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%02" />
                             </when>
                             <!-- Wippe 1 Jalousie -->
                             <when test="5 6">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%032" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%050" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%03" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%01" />
                             </when>
                             <!-- Wippe 1 Szene -->
                             <when test="7">
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%045_R-300%C%0451" />
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%046_R-300%C%0461" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%034" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%05" />
                             </when>
                           </choose>
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%047_R-300%C%0471" />
                           <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%047_R-300%C%0471">
                             <!-- Wippe 2 schalten -->
                             <when test="1 2">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%070" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%01" />
                             </when>
                             <!-- Wippe 2 Dimming -->
                             <when test="3 4">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%070" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%091" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%01" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%02" />
                             </when>
                             <!-- Wippe 2 Jalousie -->
                             <when test="5 6">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%072" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%092" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%02" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%03" />
                             </when>
                             <!-- Wippe 2 Szene -->
                             <when test="7">
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%048_R-300%C%0481" />
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%049_R-300%C%0491" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%074" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%03" />
                             </when>
                           </choose>
                         </when>
@@ -795,69 +784,69 @@
                           <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%044_R-300%C%0441">
                             <!-- Wippe 1 schalten -->
                             <when test="1 2">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" />
                             </when>
                             <!-- Wippe 1 Dimming -->
                             <when test="3 4">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%030" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%052" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%01" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%02" />
                             </when>
                             <!-- Wippe 1 Jalousie -->
                             <when test="5 6">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%032" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%050" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%03" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%01" />
                             </when>
                             <!-- Wippe 1 Szene -->
                             <when test="7">
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%045_R-300%C%0451" />
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%046_R-300%C%0461" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%034" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%05" />
                             </when>
                           </choose>
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%047_R-300%C%0471" />
                           <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%047_R-300%C%0471">
                             <!-- Wippe 2 schalten -->
                             <when test="1 2">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%070" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%01" />
                             </when>
                             <!-- Wippe 2 Dimming -->
                             <when test="3 4">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%070" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%091" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%01" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%02" />
                             </when>
                             <!-- Wippe 2 Jalousie -->
                             <when test="5 6">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%072" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%092" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%02" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%03" />
                             </when>
                             <!-- Wippe 2 Szene -->
                             <when test="7">
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%048_R-300%C%0481" />
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%049_R-300%C%0491" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%074" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%03" />
                             </when>
                           </choose>
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%050_R-300%C%0501" />
                           <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%050_R-300%C%0501">
                             <!-- Wippe 3 Schalten -->
                             <when test="1 2">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%112" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%03" />
                             </when>
                             <!-- Wippe 3 Dimming -->
                             <when test="3 4">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%112" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%133" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%03" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%04" />
                             </when>
                             <!-- Wippe 3 Jalousie -->
                             <when test="5 6">
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%113" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%134" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%04" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%05" />
                             </when>
                             <!-- Wippe 3 Szene -->
                             <when test="7">
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%051_R-300%C%0511" />
                               <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-300%C%052_R-300%C%0521" />
-                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%114" />
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%05" />
                             </when>
                           </choose>
                         </when>
@@ -869,15 +858,15 @@
                       <choose ParamRefId="M-00FA_A-0001-01-0000_P-300%C%054_R-300%C%0541">
                         <!-- schalten -->
                         <when test="1">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%010" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%01" />
                         </when>
                         <!-- Dimmen -->
                         <when test="2">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%012" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%03" />
                         </when>
                         <!-- Jalousie -->
                         <when test="3">
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%013" />
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%04" />
                         </when>
                       </choose>
                     </when>
