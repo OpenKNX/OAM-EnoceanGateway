@@ -79,6 +79,21 @@ From now on we work in this terminal window:
 You should be now in a directory ending with ...\Documents\PlatformIO\Projects
 
     git clone https://gitlab.com/DIY-Smarthome-Projekt/knx-enocean-gateway.git
+    git clone https://github.com/mumpf/knx.git
+    git clone https://github.com/mumpf/knx-common.git
+    git clone https://github.com/mumpf/knx-logic.git
+
+    cd knx-enocean-gateway
+    git checkout release
+    cd ..\knx
+    git checkout release
+    cd ..\knx-common
+    git checkout release
+    cd ..\knx-logic
+    git checkout release
+
+    code enocean-gateway.code-workspace
+    
   
 Now a new instance of Visual Studio Code is started. You can close the other (previous) instance.
 
