@@ -133,6 +133,13 @@ struct ONEBS_TEL_DATA_TYPE
   uint8_t NA : 7;    // (DB_BIT 7-1) not used
 };
 
+struct ONEBS_TEL_DATA_TYPE_V2
+{
+  uint8_t NA  : 4;  // (DB_BIT 3-0) NA
+  uint8_t LRN : 1;  // (DB_BIT 4)   LRN Bit
+  uint8_t NA1 : 3;  // (DB_BIT 7-5) NA
+};
+
 struct RPS_TEL_DATA_TYPE
 {
   uint8_t SA : 1; // (DB_BIT 0)   No 2nd action; 1: Valid second action
@@ -565,6 +572,17 @@ struct FOURBS_A5_20_06_TYPE
 struct ONEBS_TELEGRAM_TYPE
 {
   ONEBS_TEL_DATA_TYPE u81bsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+
+struct ONEBS_TELEGRAM_TYPE_V2
+{
+  uint8_t u8EnergyVoltage;
+  uint8_t u8BatteryVoltage;
+  uint8_t free;
+  ONEBS_TEL_DATA_TYPE_V2 u84BsTelData;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };

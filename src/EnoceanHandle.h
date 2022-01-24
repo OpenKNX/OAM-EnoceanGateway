@@ -7,6 +7,7 @@
 #include "RPS_Telegram.h"
 #include "4BS_Telegram.h"
 #include "VLD_Telegram.h"
+#include "1BS_Telegram.h"
 #include "hardwareENO.h"
 #include "Helper.h"
 #include "KnxHelper.h"
@@ -14,8 +15,6 @@
 // ################################################
 // ### DEBUG CONFIGURATION
 // ################################################
-
-
 
 class EnOceanDevice : public IEnOceanDevice
 {
@@ -59,9 +58,6 @@ private:
   {
     uint8_t rockerNr; // ROCKER
   } union3;
-
-
-  
 
   // Task variable Read Request
   uint8_t sCalled = 1;
@@ -341,7 +337,7 @@ public:
     case u8RORG_Rocker:
       //------------ Rocker Switch -------------------
 
-     switch (state)
+      switch (state)
       {
       case idle:
         if (unionMSG.rockerState_pressed != RockerIdle)
@@ -664,7 +660,7 @@ public:
       if (f_Pkt_st->u8DataBuffer[5] != deviceId_Arr[3])
         return false;
 
-      handle_1BS(f_Pkt_st);
+      handle_1BS(f_Pkt_st, profil, firstComObj, firstParameter);
       break;
 
     case u8RORG_RPS:
@@ -812,40 +808,6 @@ public:
     return true;
   }
 #pragma GCC diagnostic pop // I don't want a warning, just because we don't do anything here
-
-  /*******************************************************************************************
- *  1BS
- *******************************************************************************************/
-
-  void handle_1BS(PACKET_SERIAL_TYPE *f_Pkt_st)
-  {
-    bool bvalue;
-
-    ONEBS_TELEGRAM_TYPE *l1bsTlg_p = (ONEBS_TELEGRAM_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
-
-    // D5-00-01 Contact: 0 = open / 1 = close
-    // ETS Parameter to define state for open / Close
-    if (l1bsTlg_p->u81bsTelData.State == 1) // CLOSE
-    {
-      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
-        bvalue = true;
-      else
-        bvalue = false;
-    }
-    else
-    { // OPEN
-      if (((knx.paramByte(firstParameter + ENO_CHWindowcloseValue)) >> ENO_CHWindowcloseValueShift) & 1)
-        bvalue = false;
-      else
-        bvalue = true;
-    }
-    knx.getGroupObject(firstComObj).value(bvalue, getDPT(VAL_DPT_1));
-
-#ifdef KDEBUG
-    SERIAL_PORT.print(F("detected: 1BS State: "));
-    SERIAL_PORT.println(l1bsTlg_p->u81bsTelData.State);
-#endif
-  }
 };
 
 #endif /* EnOceanDevice_EMPTY_H_ */

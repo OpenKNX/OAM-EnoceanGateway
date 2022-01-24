@@ -812,6 +812,7 @@
 #define ENO_CHProfil4BS14              4      // char*, 2 Byte
 #define ENO_CHProfil4BS20              4      // char*, 2 Byte
 #define ENO_CHProfil4BS30              4      // char*, 2 Byte
+#define ENO_CHProfil4BSAdd             4      // char*, 2 Byte
 #define ENO_CHProfilVLD00              4      // char*, 2 Byte
 #define ENO_CHProfilVLD01              4      // char*, 2 Byte
 #define ENO_CHProfilVLD02              4      // char*, 2 Byte
