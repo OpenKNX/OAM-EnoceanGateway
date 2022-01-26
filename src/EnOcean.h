@@ -94,6 +94,7 @@
 #define BO_pressed 0x70
 #define CI_pressed 0x15
 #define CO_pressed 0x37
+#define Contact_pressed 0xF0
 
 #define AI_release 0x00
 #define AO_release 0x20
@@ -101,6 +102,9 @@
 #define BO_release 0x60
 #define CI_release 0x05
 #define CO_release 0x07
+#define Contact_release 0xE0
+
+
 
 #define ROCKER_INACTIVE 0x00
 #define ROCKER_AI 0x01

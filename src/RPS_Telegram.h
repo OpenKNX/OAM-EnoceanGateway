@@ -993,34 +993,18 @@ void release_Button(bool stateIO, uint16_t firstParameter, uint16_t firstComObj,
   }
 }
 
-uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter, uint8_t index)
+void handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter, uint8_t index)
 {
 
   switch (f_Pkt_st->u8DataBuffer[1])
   {
-  case AI_pressed:
-    return AI_pressed;
-    break; // ENDE AI_pressed
+  case Contact_pressed:
+    shortSend_DPT1(true, firstComObj + 1);
+    break; // ENDE pressed
 
-  case AO_pressed:
-    return AO_pressed;
-    break; // ENDE AO_pressed
-
-  case BI_pressed:
-    return BI_pressed;
-    break; // ENDE BI_pressed
-
-  case BO_pressed:
-    return BO_pressed;
-    break; // ENDE BO_pressed
-
-  case CI_pressed:
-    return CI_pressed;
-    break; // ENDE CI_pressed
-
-  case CO_pressed:
-    return CO_pressed;
-    break; // ENDE CO_pressed
+  case Contact_release:
+    shortSend_DPT1(false, firstComObj + 1);
+    break; // ENDE released
   }
 }
 

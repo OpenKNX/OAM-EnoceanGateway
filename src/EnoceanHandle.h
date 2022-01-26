@@ -799,6 +799,14 @@ public:
       case CO_release:
         union2.rockerState_Release = stateRocker;
         break;
+      case Contact_pressed:
+        if (knx.paramByte(firstParameter + ENO_CHRockerProfil) == Wippen1)
+          handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+        break;
+      case Contact_release:
+        if (knx.paramByte(firstParameter + ENO_CHRockerProfil) == Wippen1)
+          handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+        break;
       default:
         union2.rockerState_Release = stateRocker; // Für Wert = 0
         break;
