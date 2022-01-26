@@ -641,10 +641,10 @@
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-5_R-52" RefId="M-00FA_A-0001-01-0000_UP-5" Value="0" Access="None" />
               <!-- rgb led available (invisible, false) -->
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-6_R-62" RefId="M-00FA_A-0001-01-0000_UP-6" Value="0" Access="None" />
-              <!-- eeprom available (visible, false) -->
-              <!-- <ParameterRef Id="M-00FA_A-0001-01-0000_UP-7_R-72" RefId="M-00FA_A-0001-01-0000_UP-7" Value="0" /> -->
-              <!-- hardware power off available (visible, false) -->
-              <!-- <ParameterRef Id="M-00FA_A-0001-01-0000_UP-8_R-82" RefId="M-00FA_A-0001-01-0000_UP-8" Value="0" /> -->
+              <!-- eeprom available (invisible, false) -->
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-7_R-72" RefId="M-00FA_A-0001-01-0000_UP-7" Value="0" Access="None" />
+              <!-- hardware power off available (invisible, false) -->
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-8_R-82" RefId="M-00FA_A-0001-01-0000_UP-8" Value="0" Access="None" />
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
               <!-- ParameterRef are used in the ETS UI -->
               <ParameterRef Id="M-00FA_A-0001-01-0000_P-100000_R-100000" RefId="M-00FA_A-0001-01-0000_P-100000" />
