@@ -171,28 +171,60 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 #ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("C0")); // CO = normal oben
 #endif
-    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
-    case 3: // Long: Licht Heller
-      stopDim(firstComObj + 4);
+    case Wippen1:                                                    // Rocker Profil 1 Wippe
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
+      {
+      case 3: // Long: Licht Heller
+        stopDim(firstComObj);
+        break;
+      case 4: // Long: Licht Dunkler
+        stopDim(firstComObj);
+        break;
+      }
       break;
-    case 4: // Long: Licht Dunkler
-      stopDim(firstComObj + 4);
+
+    default: // all other Rocker Profils
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+      {
+      case 3: // Long: Licht Heller
+        stopDim(firstComObj + 4);
+        break;
+      case 4: // Long: Licht Dunkler
+        stopDim(firstComObj + 4);
+        break;
+      }
       break;
     }
-    break;
 
   case CI_pressed:
 #ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("CI")); // CI = normal unten
 #endif
-    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
-    case 3: // Long: Licht Dunkler
-      stopDim(firstComObj + 4);
+    case Wippen1:                                                    // Rocker Profil 1 Wippe
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
+      {
+      case 3: // Long: Licht Heller
+        stopDim(firstComObj);
+        break;
+      case 4: // Long: Licht Dunkler
+        stopDim(firstComObj);
+        break;
+      }
       break;
-    case 4: // Long: Licht Heller
-      stopDim(firstComObj + 4);
+    default: // all other Rocker Profils
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+      {
+      case 3: // Long: Licht Dunkler
+        stopDim(firstComObj + 4);
+        break;
+      case 4: // Long: Licht Heller
+        stopDim(firstComObj + 4);
+        break;
+      }
       break;
     }
     break;
@@ -338,30 +370,63 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 #ifdef KDEBUG
     SERIAL_PORT.println(F("C0")); // CO = normal oben
 #endif
-    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
-    case 1: // Schalten EIN (Oben/unten Wippe)
-      shortSend_DPT1(true, firstComObj + 4);
+    case Wippen1:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) //FunctionA because of Wippen1
+      {
+      case 1: // Schalten EIN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 2: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 3: // Long: Licht Heller
+        SendDPT3_007(true, firstComObj);
+        return true;
+        break;
+      case 4: // Long: Licht Dunkler
+        SendDPT3_007(false, firstComObj);
+        return true;
+        break;
+      case 5: // Long: open = 0
+        shortSend_DPT1(false, firstComObj + 1);
+        break;
+      case 6: // Long: close = 1
+        shortSend_DPT1(true, firstComObj + 1);
+        break;
+      case 7: // Szene a/b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj);
+        break;
+      }
       break;
-    case 2: // Schalten AUS (Oben/unten Wippe)
-      shortSend_DPT1(false, firstComObj + 4);
-      break;
-    case 3: // Long: Licht Heller
-      SendDPT3_007(true, firstComObj + 4);
-      return true;
-      break;
-    case 4: // Long: Licht Dunkler
-      SendDPT3_007(false, firstComObj + 4);
-      return true;
-      break;
-    case 5: // Long: open = 0
-      shortSend_DPT1(false, firstComObj + 5);
-      break;
-    case 6: // Long: close = 1
-      shortSend_DPT1(true, firstComObj + 5);
-      break;
-    case 7: // Szene a/b (Oben/unten Wippe)
-      shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj + 4);
+    default:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+      {
+      case 1: // Schalten EIN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 2: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 3: // Long: Licht Heller
+        SendDPT3_007(true, firstComObj + 4);
+        return true;
+        break;
+      case 4: // Long: Licht Dunkler
+        SendDPT3_007(false, firstComObj + 4);
+        return true;
+        break;
+      case 5: // Long: open = 0
+        shortSend_DPT1(false, firstComObj + 5);
+        break;
+      case 6: // Long: close = 1
+        shortSend_DPT1(true, firstComObj + 5);
+        break;
+      case 7: // Szene a/b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj + 4);
+        break;
+      }
       break;
     }
     break;
@@ -370,32 +435,67 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 #ifdef KDEBUG
     SERIAL_PORT.println(F("CI")); // CI = normal unten
 #endif
-    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
-    case 1: // Schalten AUS (Oben/unten Wippe)
-      shortSend_DPT1(false, firstComObj + 4);
+    case Wippen1:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) //FunctionA because of Wippen1
+      {
+      case 1: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 2: // Schalten AN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 3: // Long: Licht Dunkler
+        SendDPT3_007(false, firstComObj);
+        return true;
+        break;
+      case 4: // Long: Licht Heller
+        SendDPT3_007(true, firstComObj);
+        return true;
+        break;
+      case 5: // Long: Close = 1
+        shortSend_DPT1(true, firstComObj + 1);
+        break;
+      case 6: // Long: Open = 0
+        shortSend_DPT1(false, firstComObj + 1);
+        break;
+      case 7: // Szene b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj + 1);
+        break;
+      }
       break;
-    case 2: // Schalten AN (Oben/unten Wippe)
-      shortSend_DPT1(true, firstComObj + 4);
-      break;
-    case 3: // Long: Licht Dunkler
-      SendDPT3_007(false, firstComObj + 4);
-      return true;
-      break;
-    case 4: // Long: Licht Heller
-      SendDPT3_007(true, firstComObj + 4);
-      return true;
-      break;
-    case 5: // Long: Close = 1
-      shortSend_DPT1(true, firstComObj + 5);
-      break;
-    case 6: // Long: Open = 0
-      shortSend_DPT1(false, firstComObj + 5);
-      break;
-    case 7: // Szene b (Oben/unten Wippe)
-      shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj + 4);
+
+    default:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+      {
+      case 1: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 2: // Schalten AN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 3: // Long: Licht Dunkler
+        SendDPT3_007(false, firstComObj + 4);
+        return true;
+        break;
+      case 4: // Long: Licht Heller
+        SendDPT3_007(true, firstComObj + 4);
+        return true;
+        break;
+      case 5: // Long: Close = 1
+        shortSend_DPT1(true, firstComObj + 5);
+        break;
+      case 6: // Long: Open = 0
+        shortSend_DPT1(false, firstComObj + 5);
+        break;
+      case 7: // Szene b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj + 4);
+        break;
+      }
       break;
     }
+
     break;
   default:
     break;
@@ -530,30 +630,63 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 
   case CO_pressed:
 #ifdef KDEBUG_Rocker
-    SERIAL_PORT.println(F("C0")); // CO = normal oben
+    SERIAL_PORT.println(F("C0"));                                            // CO = normal oben
+    SERIAL_PORT.println(knx.paramByte(firstParameter + ENO_CHRockerProfil)); // CO = normal oben
 #endif
-    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
-    case 1: // Schalten EIN (Oben/unten Wippe)
-      shortSend_DPT1(true, firstComObj + 4);
+    case Wippen1:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
+      {
+      case 1: // Schalten EIN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 2: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 3: // short: Licht AN
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 4: // short: Licht AUS
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 5: // short: step up = 0
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 6: // short: step down = 1
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 7: // Szene a/b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj);
+        break;
+      }
       break;
-    case 2: // Schalten AUS (Oben/unten Wippe)
-      shortSend_DPT1(false, firstComObj + 4);
-      break;
-    case 3: // short: Licht AN
-      shortSend_DPT1(true, firstComObj + 4);
-      break;
-    case 4: // short: Licht AUS
-      shortSend_DPT1(false, firstComObj + 4);
-      break;
-    case 5: // short: step up = 0
-      shortSend_DPT1(false, firstComObj + 4);
-      break;
-    case 6: // short: step down = 1
-      shortSend_DPT1(true, firstComObj + 4);
-      break;
-    case 7: // Szene a/b (Oben/unten Wippe)
-      shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj + 4);
+
+    default:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+      {
+      case 1: // Schalten EIN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 2: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 3: // short: Licht AN
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 4: // short: Licht AUS
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 5: // short: step up = 0
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 6: // short: step down = 1
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 7: // Szene a/b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneA, firstParameter, firstComObj + 4);
+        break;
+      }
       break;
     }
     break;
@@ -562,28 +695,60 @@ void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 #ifdef KDEBUG_Rocker
     SERIAL_PORT.println(F("CI")); // CI = normal unten
 #endif
-    switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionC))
+    switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
-    case 1: // Schalten AUS (Oben/unten Wippe)
-      shortSend_DPT1(false, firstComObj + 4);
+    case Wippen1:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
+      {
+      case 1: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 2: // Schalten AN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 3: // short: Licht AUS
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 4: // short: Licht EIN
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 5: // short: step down = 1
+        shortSend_DPT1(true, firstComObj);
+        break;
+      case 6: // short: step up = 0
+        shortSend_DPT1(false, firstComObj);
+        break;
+      case 7: // Szene b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj);
+        break;
+      }
       break;
-    case 2: // Schalten AN (Oben/unten Wippe)
-      shortSend_DPT1(true, firstComObj + 4);
-      break;
-    case 3: // short: Licht AUS
-      shortSend_DPT1(false, firstComObj + 4);
-      break;
-    case 4: // short: Licht EIN
-      shortSend_DPT1(true, firstComObj + 4);
-      break;
-    case 5: // short: step down = 1
-      shortSend_DPT1(true, firstComObj + 4);
-      break;
-    case 6: // short: step up = 0
-      shortSend_DPT1(false, firstComObj + 4);
-      break;
-    case 7: // Szene b (Oben/unten Wippe)
-      shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj + 4);
+
+    default:
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
+      {
+      case 1: // Schalten AUS (Oben/unten Wippe)
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 2: // Schalten AN (Oben/unten Wippe)
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 3: // short: Licht AUS
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 4: // short: Licht EIN
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 5: // short: step down = 1
+        shortSend_DPT1(true, firstComObj + 4);
+        break;
+      case 6: // short: step up = 0
+        shortSend_DPT1(false, firstComObj + 4);
+        break;
+      case 7: // Szene b (Oben/unten Wippe)
+        shortSend_Szene(ENO_CHRockerASzeneB, firstParameter, firstComObj + 4);
+        break;
+      }
       break;
     }
     break;
@@ -828,8 +993,6 @@ void release_Button(bool stateIO, uint16_t firstParameter, uint16_t firstComObj,
   }
 }
 
-
-
 uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t firstComObj, uint8_t firstParameter, uint8_t index)
 {
 
@@ -842,7 +1005,7 @@ uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t 
   case AO_pressed:
     return AO_pressed;
     break; // ENDE AO_pressed
- 
+
   case BI_pressed:
     return BI_pressed;
     break; // ENDE BI_pressed
@@ -858,7 +1021,6 @@ uint8_t handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t 
   case CO_pressed:
     return CO_pressed;
     break; // ENDE CO_pressed
-
   }
 }
 
