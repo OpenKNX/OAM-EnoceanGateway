@@ -72,7 +72,7 @@
 #define A5_37    55 
 #define A5_38    56
 #define A5_3F    63
-
+#define A5_special 255
 
 
 // 4BS Profils
@@ -107,7 +107,7 @@
 #define A5_04_04 29
 #define A5_05_01 30
 #define A5_06_01 31
-#define A5_06_01_V2 296 
+#define A5_06_01_V2 400 
 #define A5_06_02 32
 #define A5_06_03 33
 #define A5_06_04 34
@@ -131,6 +131,7 @@
 #define A5_14_0A 115
 
 #define A5_20_06 121
+
 
 // VLD Profils
 #define D2_00_01 136
@@ -184,6 +185,7 @@
 
 // 1BS Profils
 #define D5_00_01 281
+#define D5_00_01_V2 401         //spezielles 4BS Profil eines D5-00-01 Fensterkontaktes 
 
 // RPS Profils
 #define F6_01_01 282

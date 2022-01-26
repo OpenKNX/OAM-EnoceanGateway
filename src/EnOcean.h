@@ -13,63 +13,59 @@
 
 #ifndef EnOceanTEST
 // important to change this to the number of devices defined.
-#define MAX_NUMBER_OF_DEVICES     30
+#define MAX_NUMBER_OF_DEVICES 30
 #else
-#define MAX_NUMBER_OF_DEVICES     1
+#define MAX_NUMBER_OF_DEVICES 1
 #endif
 
 #define SIMULATE_NOTHING 0
-#define SIMULATE_PUSH    1
+#define SIMULATE_PUSH 1
 #define SIMULATE_RELEASE 2
 #define SIMULATE_PAUSE_BEFORE_RELEASE 100
 
-
-#define ENOCEAN_OK                 0
-#define ENOCEAN_OUT_OF_RANGE      21
-#define ENOCEAN_NOT_VALID_CHKSUM   7
-#define ENOCEAN_NO_RX_TEL          6
-#define ENOCEAN_NEW_RX_BYTE        3
-
+#define ENOCEAN_OK 0
+#define ENOCEAN_OUT_OF_RANGE 21
+#define ENOCEAN_NOT_VALID_CHKSUM 7
+#define ENOCEAN_NO_RX_TEL 6
+#define ENOCEAN_NEW_RX_BYTE 3
 
 /*
   	Packet type
 */
 
 #define u8RADIO_ERP1 0x01
-#define u8RESPONSE   0x02
+#define u8RESPONSE 0x02
 
 /*
   	EEP type
 */
 
 // Receive
-#define u8RORG_1BS    0xD5 // 213
-#define u8RORG_RPS    0xF6 // 246 
-#define u8RORG_VLD    0xD2 // 210
-#define u8RORG_4BS    0xA5 // 165
+#define u8RORG_1BS 0xD5    // 213
+#define u8RORG_RPS 0xF6    // 246
+#define u8RORG_VLD 0xD2    // 210
+#define u8RORG_4BS 0xA5    // 165
 #define u8RORG_Rocker 0xFA // 250
 
 // Send
 #define u8RORG_COMMON_COMMAND 0x05
 #define u8KNX_RORG_Rocker 1
-#define u8KNX_RORG_VLD    2
-#define u8KNX_RORG_4BS    3
-
+#define u8KNX_RORG_VLD 2
+#define u8KNX_RORG_4BS 3
 
 // COMANDS
 
-#define u8CO_WR_IDBASE   0x07
-#define u8CO_RD_IDBASE   0x08
+#define u8CO_WR_IDBASE 0x07
+#define u8CO_RD_IDBASE 0x08
 #define u8CO_WR_REPEATER 0x09
-#define u8CO_RD_REPEATER 0x0A  // 10
-
+#define u8CO_RD_REPEATER 0x0A // 10
 
 #define RPS_BUTTON_CHANNEL_AI 0
 #define RPS_BUTTON_CHANNEL_AO 1
 #define RPS_BUTTON_CHANNEL_BI 2
 #define RPS_BUTTON_CHANNEL_BO 3
 
-#define RPS_BUTTON_2NDACT_NO    0
+#define RPS_BUTTON_2NDACT_NO 0
 #define RPS_BUTTON_2NDACT_VALID 1
 
 #define VLD_CMD_ID_01 0x01
@@ -118,11 +114,9 @@ typedef enum
 {
   idle,
   checkShortLong,
-  short_press,
-  long_press,
+  waitShortRelease,
   waitLongRelease,
 } RockerStates;
-
 
 /*
 struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE
@@ -139,6 +133,13 @@ struct ONEBS_TEL_DATA_TYPE
   uint8_t NA : 7;    // (DB_BIT 7-1) not used
 };
 
+struct ONEBS_TEL_DATA_TYPE_V2
+{
+  uint8_t NA  : 4;  // (DB_BIT 3-0) NA
+  uint8_t LRN : 1;  // (DB_BIT 4)   LRN Bit
+  uint8_t NA1 : 3;  // (DB_BIT 7-5) NA
+};
+
 struct RPS_TEL_DATA_TYPE
 {
   uint8_t SA : 1; // (DB_BIT 0)   No 2nd action; 1: Valid second action
@@ -148,22 +149,21 @@ struct RPS_TEL_DATA_TYPE
 };
 
 struct RPS_F6_10_00_DATA_TYPE
-{  
+{
   uint8_t NA : 4;    // (DB_BIT 3-0) Not use XXXX
   uint8_t STATE : 4; // (DB_BIT 7-4) Status
 };
 
 struct RPS_F6_10_01_DATA_TYPE
 {
-  uint8_t NA2 : 1;      // (DB_BIT 0)   Not used
-  uint8_t HANDLE : 1;   // (DB_BIT 1)   Handle
-  uint8_t NA1 : 2;      // (DB_BIT 3-2) Not used
-  uint8_t STATE : 2;    // (DB_BIT 5-4) Status
-  uint8_t NA : 2;       // (DB_BIT 7-6) only 0x11
+  uint8_t NA2 : 1;    // (DB_BIT 0)   Not used
+  uint8_t HANDLE : 1; // (DB_BIT 1)   Handle
+  uint8_t NA1 : 2;    // (DB_BIT 3-2) Not used
+  uint8_t STATE : 2;  // (DB_BIT 5-4) Status
+  uint8_t NA : 2;     // (DB_BIT 7-6) only 0x11
 };
 
-
-struct FOURBS_A5_06_01_DATA_TYPE  // good?
+struct FOURBS_A5_06_01_DATA_TYPE // good?
 {
   uint8_t NA2 : 4; // (DB_BIT 3-0) NA
   uint8_t LRN : 1; // (DB_BIT 4)   LRN Bit
@@ -171,7 +171,7 @@ struct FOURBS_A5_06_01_DATA_TYPE  // good?
   uint8_t RS : 1;  // (DB_BIT 7)   Range Select
 };
 
-struct FOURBS_A5_06_03_DATA_TYPE  // Good
+struct FOURBS_A5_06_03_DATA_TYPE // Good
 {
   uint8_t Na : 6;  // (DB_BIT 5-0) NA
   uint8_t LUX : 2; // (DB_BIT 7-6) LUX
@@ -179,10 +179,10 @@ struct FOURBS_A5_06_03_DATA_TYPE  // Good
 
 struct FOURBS_A5_07_01_DATA_TYPE
 {
-  uint8_t AVAILABLE_BAT : 1 ; // (DB_BIT 0)   Available Bat voltage Status
-  uint8_t NA : 2;             // (DB_BIT 2-1) NA
-  uint8_t LRN : 1;            // (DB_BIT 3)   LRN Bit
-  uint8_t NA2 : 4;            // (DB_BIT 7-4) NA
+  uint8_t AVAILABLE_BAT : 1; // (DB_BIT 0)   Available Bat voltage Status
+  uint8_t NA : 2;            // (DB_BIT 2-1) NA
+  uint8_t LRN : 1;           // (DB_BIT 3)   LRN Bit
+  uint8_t NA2 : 4;           // (DB_BIT 7-4) NA
 };
 
 struct FOURBS_A5_07_02_DATA_TYPE
@@ -191,7 +191,7 @@ struct FOURBS_A5_07_02_DATA_TYPE
   uint8_t PIR : 1; // (DB_BIT 7)   PIR
 };
 
-struct FOURBS_A5_07_03_DATA_TYPE  
+struct FOURBS_A5_07_03_DATA_TYPE
 {
   uint8_t Na : 6;  // (DB_BIT 5-0) NA
   uint8_t LUX : 2; // (DB_BIT 7-6) LUX
@@ -205,45 +205,43 @@ struct FOURBS_A5_07_03_DATA_TYPE2
 
 struct FOURBS_A5_08_DATA_TYPE
 {
-  uint8_t OCC  : 1; // (DB_BIT 0) Occupancy Button
-  uint8_t PIR  : 1; // (DB_BIT 1)   PIR
-  uint8_t NA1  : 1; // (DB_BIT 2)   Not used
+  uint8_t OCC : 1;  // (DB_BIT 0) Occupancy Button
+  uint8_t PIR : 1;  // (DB_BIT 1)   PIR
+  uint8_t NA1 : 1;  // (DB_BIT 2)   Not used
   uint8_t LRNB : 1; // (DB_BIT 3)   Teach-In Bit
-  uint8_t NA2  : 4; // (DB_BIT 4-7) Not used
+  uint8_t NA2 : 4;  // (DB_BIT 4-7) Not used
 };
-
-
 
 struct FOURBS_A5_07_14_01_06_DATA_TYPE
 {
-  uint8_t CT  : 1;   // (DB_BIT 0)    Contact 
-  uint8_t VIB : 1;   // (DB_BIT 1)    Vibration Detection 
-  uint8_t Na  : 1;   // (DB_BIT 2)    Not used
-  uint8_t LR  : 1;   // (DB_BIT 3)    LR
-  uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
+  uint8_t CT : 1;  // (DB_BIT 0)    Contact
+  uint8_t VIB : 1; // (DB_BIT 1)    Vibration Detection
+  uint8_t Na : 1;  // (DB_BIT 2)    Not used
+  uint8_t LR : 1;  // (DB_BIT 3)    LR
+  uint8_t NA : 4;  // (DB_BIT 4-7)  not used
 };
 
 struct FOURBS_A5_07_14_07_08_DATA_TYPE
 {
-  uint8_t VIB : 1;   // (DB_BIT 0)    Vibration Detection 
-  uint8_t LCT : 1;   // (DB_BIT 1)    Lock contact
-  uint8_t DCT : 1;   // (DB_BIT 2)    Door contact
-  uint8_t LR  : 1;   // (DB_BIT 3)    LR
-  uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
+  uint8_t VIB : 1; // (DB_BIT 0)    Vibration Detection
+  uint8_t LCT : 1; // (DB_BIT 1)    Lock contact
+  uint8_t DCT : 1; // (DB_BIT 2)    Door contact
+  uint8_t LR : 1;  // (DB_BIT 3)    LR
+  uint8_t NA : 4;  // (DB_BIT 4-7)  not used
 };
 
 struct FOURBS_A5_07_14_09_0A_DATA_TYPE
 {
-  uint8_t VIB : 1;   // (DB_BIT 0)    Vibration Detection 
-  uint8_t CT  : 2;   // (DB_BIT 1 -2) contact
-  uint8_t LR  : 1;   // (DB_BIT 3)    LR
-  uint8_t NA  : 4;   // (DB_BIT 4-7)  not used
+  uint8_t VIB : 1; // (DB_BIT 0)    Vibration Detection
+  uint8_t CT : 2;  // (DB_BIT 1 -2) contact
+  uint8_t LR : 1;  // (DB_BIT 3)    LR
+  uint8_t NA : 4;  // (DB_BIT 4-7)  not used
 };
 
 struct FOURBS_A5_20_06_DATA_TYPE
 {
-  uint8_t Offset  : 7;   // (DB_BIT 0-6)  Offset
-  uint8_t LOM     : 1;   // (DB_BIT 7)    LOM (local offset mode)
+  uint8_t Offset : 7; // (DB_BIT 0-6)  Offset
+  uint8_t LOM : 1;    // (DB_BIT 7)    LOM (local offset mode)
 };
 
 /*
@@ -257,7 +255,7 @@ struct
 
 struct VLD_TEL_MEASUREMENT_TYPE
 {
-  uint8_t type : 3; // NOT USED
+  uint8_t type : 3;  // NOT USED
   uint8_t dummy : 5; //
 };
 
@@ -274,17 +272,17 @@ struct VLD_D2_01_TELEGRAM_CMD_04_ACTRESP_TYPE
 };
 
 struct VLD_D2_01_TELEGRAM2_CMD_04_ACTRESP_TYPE
-{  
-  uint8_t IOChannel : 5;   // (DB_BIT 4-0) I/O Channel
-  uint8_t EL : 2;          // (DB_BIT 6-5) Error Level
-  uint8_t OC : 1;          // (DB_BIT 7)   Overcurrent
+{
+  uint8_t IOChannel : 5; // (DB_BIT 4-0) I/O Channel
+  uint8_t EL : 2;        // (DB_BIT 6-5) Error Level
+  uint8_t OC : 1;        // (DB_BIT 7)   Overcurrent
 };
 
-struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE  
+struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE
 {
-  uint8_t nouse : 4;    // (DB_BIT 0-3) not use     
-  uint8_t batt : 3;     // (DB_BIT 4-6) Battery autonomy      
-  uint8_t daynight : 1; // (DB_BIT 7)   Day / Night          
+  uint8_t nouse : 4;    // (DB_BIT 0-3) not use
+  uint8_t batt : 3;     // (DB_BIT 4-6) Battery autonomy
+  uint8_t daynight : 1; // (DB_BIT 7)   Day / Night
 };
 
 struct VLD_D2_05_TELEGRAM_CMD_04_ACTRESP_TYPE
@@ -297,46 +295,42 @@ struct VLD_D2_05_TELEGRAM_CMD_04_ACTRESP_TYPE
 
 struct VLD_D2_14_30_Data_TYPE
 {
-  uint8_t VIB : 4;       // (DB_BIT 0-3)  not used 
-  uint8_t IAQTH : 3;     // (DB_BIT 4-6)  IAQTH
-  uint8_t HCI_LSB : 1;   // (DB_BIT 7)    HCI 
+  uint8_t VIB : 4;     // (DB_BIT 0-3)  not used
+  uint8_t IAQTH : 3;   // (DB_BIT 4-6)  IAQTH
+  uint8_t HCI_LSB : 1; // (DB_BIT 7)    HCI
 };
 
 struct VLD_D2_14_30_Data_TYPE1
 {
-  uint8_t HCI_MSB : 1;   // (DB_BIT 0)    HCI 
-  uint8_t HUM_LSB : 7;   // (DB_BIT 1-7)  HUM
+  uint8_t HCI_MSB : 1; // (DB_BIT 0)    HCI
+  uint8_t HUM_LSB : 7; // (DB_BIT 1-7)  HUM
 };
 
 struct VLD_D2_14_30_Data_TYPE2
 {
-  uint8_t HUM_MSB : 1;   // (DB_BIT 0)    HUM
-  uint8_t Temp_LSB : 7;   // (DB_BIT 1-7) Temp
+  uint8_t HUM_MSB : 1;  // (DB_BIT 0)    HUM
+  uint8_t Temp_LSB : 7; // (DB_BIT 1-7) Temp
 };
 
 struct VLD_D2_14_30_Data_TYPE3
 {
-  uint8_t Temp_MSB : 1;   // (DB_BIT 0)    Temp
-  uint8_t RPLT_LSB : 7;   // (DB_BIT 1-7)  RPLT
+  uint8_t Temp_MSB : 1; // (DB_BIT 0)    Temp
+  uint8_t RPLT_LSB : 7; // (DB_BIT 1-7)  RPLT
 };
 
 struct VLD_D2_14_30_Data_TYPE4
 {
-  uint8_t RPLT_MSB : 1;       // (DB_BIT 0)    EPLT
-  uint8_t ES : 2;             // (DB_BIT 1-2)  ES
-  uint8_t LastEvent_LSB : 5;  // (DB_BIT 3-7)  LastEvent Bits
+  uint8_t RPLT_MSB : 1;      // (DB_BIT 0)    EPLT
+  uint8_t ES : 2;            // (DB_BIT 1-2)  ES
+  uint8_t LastEvent_LSB : 5; // (DB_BIT 3-7)  LastEvent Bits
 };
 
 struct VLD_D2_14_30_Data_TYPE5
 {
-  uint8_t LastEvent_MSB : 3;   // (DB_BIT 0-2)  LastEvent Bits
-  uint8_t statusbits : 4;      // (DB_BIT 3-6)  Status Bits
-  uint8_t smokeAlarm : 1;      // (DB_BIT 7)    Smoke Alarm
+  uint8_t LastEvent_MSB : 3; // (DB_BIT 0-2)  LastEvent Bits
+  uint8_t statusbits : 4;    // (DB_BIT 3-6)  Status Bits
+  uint8_t smokeAlarm : 1;    // (DB_BIT 7)    Smoke Alarm
 };
-
-
-
-
 
 struct VLD_D2_01_TELEGRAM_CMD_03_TYPE
 {
@@ -400,12 +394,10 @@ struct VLD_D2_14_30_TELEGRAM
   VLD_D2_14_30_Data_TYPE3 u8VldTelSenSta3;
   VLD_D2_14_30_Data_TYPE2 u8VldTelSenSta2;
   VLD_D2_14_30_Data_TYPE1 u8VldTelSenSta1;
-  VLD_D2_14_30_Data_TYPE  u8VldTelSenSta;
+  VLD_D2_14_30_Data_TYPE u8VldTelSenSta;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
-
-
 
 struct RPS_TELEGRAM_TYPE
 {
@@ -497,8 +489,6 @@ struct FOURBS_A5_06_03_TYPE
   uint8_t u8Status;
 };
 
-
-
 struct FOURBS_A5_07_01_TYPE
 {
   uint8_t u8SupplyVoltage;
@@ -538,7 +528,6 @@ struct FOURBS_A5_08_TYPE
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
-
 
 struct FOURBS_A5_14_01_06_TYPE
 {
@@ -580,11 +569,20 @@ struct FOURBS_A5_20_06_TYPE
   uint8_t u8Status;
 };
 
-
-
 struct ONEBS_TELEGRAM_TYPE
 {
   ONEBS_TEL_DATA_TYPE u81bsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+
+struct ONEBS_TELEGRAM_TYPE_V2
+{
+  uint8_t u8EnergyVoltage;
+  uint8_t u8BatteryVoltage;
+  uint8_t free;
+  ONEBS_TEL_DATA_TYPE_V2 u84BsTelData;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
@@ -619,81 +617,81 @@ struct PACKET_SERIAL_TYPE
 
 class IEnOceanDevice
 {
-  protected:
-    uint16_t firstComObj = 0;
-    uint16_t firstParameter = 0;
-    uint8_t index = 0;
+protected:
+  uint16_t firstComObj = 0;
+  uint16_t firstParameter = 0;
+  uint8_t index = 0;
 
+public:
+  uint8_t numberOfComObjects;
+  uint8_t numberOfParameters;
 
-
-  public :
-    uint8_t numberOfComObjects;
-    uint8_t numberOfParameters;
-
-    virtual ~IEnOceanDevice()
-    {
-    }
-    virtual void init(uint16_t startAtComObj, uint16_t startAtParameter, uint8_t channel) = 0;
-    virtual void initBaseID(uint8_t channel, uint8_t BaseID1, uint8_t BaseID2, uint8_t BaseID3, uint8_t BaseID4) = 0;
-    virtual void task() = 0;
-    virtual bool handleEnOceanPacket(PACKET_SERIAL_TYPE* f_Pkt_st) = 0;
-    virtual void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo) = 0;
+  
+  virtual ~IEnOceanDevice()
+  {
+  }
+  virtual void init(uint16_t startAtComObj, uint16_t startAtParameter, uint8_t channel) = 0;
+  virtual void initBaseID(uint8_t channel, uint8_t BaseID1, uint8_t BaseID2, uint8_t BaseID3, uint8_t BaseID4) = 0;
+  virtual void task() = 0;
+  virtual bool handleEnOceanPacket(PACKET_SERIAL_TYPE *f_Pkt_st) = 0;
+  virtual void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo) = 0;
 };
 
 class EnOcean
 {
-    EnOcean();
-    virtual ~EnOcean();
+  EnOcean();
+  virtual ~EnOcean();
 
-  public:
-    static EnOcean Eno;
+public:
+  static EnOcean Eno;
 
-    void initSerial(Stream &serial);
-    void init();
-    void task();
-    static void taskCallback(void *iThis);
-   
-    bool sendPacket(PACKET_SERIAL_TYPE *pPacket);
-    void obtainSenderId(uint8_t* senderId, uint8_t channel);
-    void handleKnxEvents(byte koIndex, byte koNr,GroupObject &iKo);
-    void configureDeviceBaseID(IEnOceanDevice &device, uint8_t channel);
-    void configureDevice(IEnOceanDevice &device, uint8_t channel);
-    uint16_t getNumberDevices();
-    uint8_t* getBaseId();
-  private:
-    Stream* _serial;   
-    bool isInited;
+  void initSerial(Stream &serial);
+  void init();
+  void task();
+  static void taskCallback(void *iThis);
 
-    uint8_t u8CRC;
-    uint8_t u8RxByte;
-    uint8_t u8RetVal;
+  bool sendPacket(PACKET_SERIAL_TYPE *pPacket);
+  void obtainSenderId(uint8_t *senderId, uint8_t channel);
+  void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo);
+  void configureDeviceBaseID(IEnOceanDevice &device, uint8_t channel);
+  void configureDevice(IEnOceanDevice &device, uint8_t channel);
+  uint16_t getNumberDevices();
+  uint8_t *getBaseId();
 
-    uint16_t lastParam;
-    uint16_t lastComObj;
-    uint8_t lastDevice;
-    uint8_t lastSenderIdOffset = 0;
+private:
+  Stream *_serial;
+  bool isInited;
 
-    uint8_t u8datBuf[DATBUF_SZ];
+  uint8_t u8CRC;
+  uint8_t u8RxByte;
+  uint8_t u8RetVal;
 
-    IEnOceanDevice* deviceRegistry[MAX_NUMBER_OF_DEVICES] { NULL };
+  uint16_t lastParam;
+  uint16_t lastComObj;
+  uint8_t lastDevice;
+  uint8_t lastSenderIdOffset = 0;
 
-    STATES_GET_PACKET u8State;
-    PACKET_SERIAL_TYPE m_Pkt_st;
+  uint8_t u8datBuf[DATBUF_SZ];
 
-    static uint8_t u8CRC8Table[256];
+  IEnOceanDevice *deviceRegistry[MAX_NUMBER_OF_DEVICES]{NULL};
 
-    uint8_t lui8_BaseID_p[BASEID_BYTES];
+  STATES_GET_PACKET u8State;
+  PACKET_SERIAL_TYPE m_Pkt_st;
 
-    void readBaseId(uint8_t* fui8_BaseID_p);
-    void setBaseId(uint8_t *fui8_BaseID_p);
-    void setRepeaterFunc();
-    void readRepeaterFunc();
-    void getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE* f_Pkt_st);
-    bool checkBaseID();
+  static uint8_t u8CRC8Table[256];
 
-    uint8_t uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferLength);
-    uint8_t uart_sendPacket(PACKET_SERIAL_TYPE *pPacket);
+  uint8_t lui8_BaseID_p[BASEID_BYTES];
+
+  void readBaseId(uint8_t *fui8_BaseID_p);
+  void setBaseId(uint8_t *fui8_BaseID_p);
+  void setRepeaterFunc();
+  void readRepeaterFunc();
+  void getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st);
+  bool checkBaseID();
+
+  uint8_t uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferLength);
+  uint8_t uart_sendPacket(PACKET_SERIAL_TYPE *pPacket);
 };
-extern EnOcean& enOcean;
+extern EnOcean &enOcean;
 
 #endif /* ENOCEAN_H_ */
