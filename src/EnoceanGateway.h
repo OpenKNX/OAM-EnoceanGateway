@@ -881,6 +881,15 @@
 #define     ENO_CHWindowcloseValueMask 0x80
 #define     ENO_CHWindowcloseValueShift 7
 #define ENO_CHRockerLongPressWaitTime 21      // 8 Bits, Bit 7-0
+#define ENO_CHA52001SPS               21      // 1 Bit, Bit 4
+#define     ENO_CHA52001SPSMask 0x10
+#define     ENO_CHA52001SPSShift 4
+#define ENO_CHA52004MC                21      // 1 Bit, Bit 7
+#define     ENO_CHA52004MCMask 0x80
+#define     ENO_CHA52004MCShift 7
+#define ENO_CHA52004DSO               21      // 2 Bits, Bit 5-4
+#define     ENO_CHA52004DSOMask 0x30
+#define     ENO_CHA52004DSOShift 4
 
 // Communication objects per channel (multiple occurance)
 #define ENO_KoOffset 20

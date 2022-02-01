@@ -265,12 +265,12 @@
               </ParameterType> 
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-Profil4BS20" Name="Profil4BS20">
                 <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="A5-20-01   N.A." Value="116" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-116" />
+                  <Enumeration Text="A5-20-01   Battery Powered Actor (BI-DIR)"                                                     Value="116" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-116" />
                   <Enumeration Text="A5-20-02   N.A." Value="117" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-117" />
                   <Enumeration Text="A5-20-03   N.A." Value="118" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-118" />
-                  <Enumeration Text="A5-20-04   N.A." Value="119" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-119" />
+                  <Enumeration Text="A5-20-04   Heating Radiator with Feed and Room Temp, Local Set Point Control (BI-DIR)"         Value="119" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-119" />
                   <Enumeration Text="A5-20-05   N.A." Value="120" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-120" />
-                  <Enumeration Text="A5-20-06   Self-powered-Radiator" Value="121" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-121" />
+                  <Enumeration Text="A5-20-06   Self-powered-Radiator"                                                              Value="121" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-121" />
                   <Enumeration Text="A5-20-10   N.A." Value="122" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-122" />
                   <Enumeration Text="A5-20-11   N.A." Value="123" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-123" />
                   <Enumeration Text="A5-20-12   N.A." Value="124" Id="M-00FA_A-0001-01-0000_PT-Profil4BS20_EN-124" /> 
@@ -574,10 +574,24 @@
                   <Enumeration Text="0" Value="0" Id="M-00FA_A-0001-01-0000_PT-Nibble0_EN-0" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52004MC" Name="A52004MC">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="Vorlauf und Raumtemperatur"     Value="0" Id="M-00FA_A-0001-01-0000_PT-A52004MC_EN-0" />
+                  <Enumeration Text="Set-Point-Temp und Fehler-Code" Value="1" Id="M-00FA_A-0001-01-0000_PT-A52004MC_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52004DSO" Name="A52004DSO">
+                <TypeRestriction Base="Value" SizeInBit="2">
+                  <Enumeration Text="0 grad"   Value="0" Id="M-00FA_A-0001-01-0000_PT-A52004DSO_EN-0" />
+                  <Enumeration Text="90 grad"  Value="1" Id="M-00FA_A-0001-01-0000_PT-A52004DSO_EN-1" />
+                  <Enumeration Text="180 grad" Value="2" Id="M-00FA_A-0001-01-0000_PT-A52004DSO_EN-2" />
+                  <Enumeration Text="270 grad" Value="3" Id="M-00FA_A-0001-01-0000_PT-A52004DSO_EN-3" />
+                </TypeRestriction>
+              </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52006SPS" Name="A52006SPS">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Position (0..100%)" Value="0" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-0" />
-                  <Enumeration Text="Temperatur (0..40°C)" Value="1" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-1" />
+                  <Enumeration Text="Umgebungs-Temperatur" Value="0" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-0" />
+                  <Enumeration Text="Vorlauf-Temperatur" Value="1" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52006TSL" Name="A52006TSL">

@@ -8,7 +8,7 @@
         </CatalogSection>
       </Catalog>
       <ApplicationPrograms>
-        <ApplicationProgram Id="M-00FA_A-0001-01-0000" ApplicationNumber="203" ApplicationVersion="5" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX-Enocean-Gateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ReplacesVersions="3 4" > 
+        <ApplicationProgram Id="M-00FA_A-0001-01-0000" ApplicationNumber="203" ApplicationVersion="6" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX-Enocean-Gateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ReplacesVersions="3 4 5" > 
           <Static>
             <Code>
               <RelativeSegment Id="M-00FA_A-0001-01-0000_RS-04-00000" Name="Parameters" Offset="0" Size="4" LoadStateMachine="4" />
