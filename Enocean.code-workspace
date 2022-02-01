@@ -3,6 +3,15 @@
         {
             "path": "."
         },
+        {
+            "path": "../knx-logic"
+        },
+        {
+			"path": "../knx-common"
+		},
+		{
+			"path": "../knx"
+		}
     ],
     "settings": {
         "terminal.integrated.env.windows": {
@@ -23,7 +32,16 @@
             "cstdint": "cpp",
             "cmath": "cpp",
             "ctime": "cpp",
-            "*.tcc": "cpp"
+            "*.tcc": "cpp",
+            "chrono": "cpp",
+            "functional": "cpp",
+            "istream": "cpp",
+            "ostream": "cpp",
+            "ratio": "cpp",
+            "tuple": "cpp",
+            "type_traits": "cpp",
+            "utility": "cpp",
+            "variant": "cpp"
         }
     }
 }

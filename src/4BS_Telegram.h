@@ -2,7 +2,7 @@
 
 #include "EnoceanProfils.h"
 
-uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd, uint8_t firstComObj, uint8_t firstParameter)
+uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd, uint16_t firstComObj, uint16_t firstParameter)
 {
 
       uint16_t lux;
@@ -28,6 +28,9 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
       FOURBS_A5_14_07_08_TYPE *fourBsA5_17_07_08_Tlg_p;
       FOURBS_A5_14_09_0A_TYPE *fourBsA5_17_09_0A_Tlg_p;
       FOURBS_A5_20_06_TYPE *fourBsA5_20_06_Tlg_p;
+
+      //Special Profil for a 4BS MSG from a 1BS Device
+      ONEBS_TELEGRAM_TYPE_V2 *l1bsV2Tlg_p;
 
 #ifdef KDEBUG
       SERIAL_PORT.print("Profil: 4BS - ");
@@ -572,9 +575,9 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   fourBsTlg2_p = (FOURBS_A5_07_01_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
                   // .......PIR Status.........................................
                   if (fourBsTlg2_p->PIR < 128)
-                        knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1_18));
+                        knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
                   else
-                        knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1_18));
+                        knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("01"));
                   SERIAL_PORT.print(F("PIR: "));
@@ -590,13 +593,13 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("02"));
 #endif
                   // .......PIR Status.........................................
-                  knx.getGroupObject(firstComObj).value(fourBsTlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1_18));
+                  knx.getGroupObject(firstComObj).value(fourBsTlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("PIR: "));
                   SERIAL_PORT.println(fourBsTlg_p->u84BsTelData.PIR);
 #endif
                   // ...................  Supply Voltage ......................
-                  knx.getGroupObject(firstComObj + 2).value(fourBsTlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 2).value(fourBsTlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsTlg_p->u8SupplyVoltage / 50.0);
@@ -612,7 +615,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("03"));
 #endif
                   // .......PIR Status.........................................
-                  knx.getGroupObject(firstComObj).value(fourBsTlg3_p->u84BsTelData.PIR, getDPT(VAL_DPT_1_18));
+                  knx.getGroupObject(firstComObj).value(fourBsTlg3_p->u84BsTelData.PIR, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("PIR:"));
                   SERIAL_PORT.println(fourBsTlg3_p->u84BsTelData.PIR);
@@ -626,7 +629,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(lux);
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 2).value(fourBsTlg3_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 2).value(fourBsTlg3_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsTlg3_p->u8SupplyVoltage / 50.0);
@@ -655,7 +658,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("01"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 2).value(fourBsA6_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 2).value(fourBsA6_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u8SupplyVoltage / 50.0);
@@ -675,7 +678,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->TMP / 5.0);
 #endif
                   // .......PIR Status.........................................
-                  knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1_18));
+                  knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("PIR:"));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.PIR);
@@ -697,7 +700,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("02"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 2).value(fourBsA6_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 2).value(fourBsA6_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u8SupplyVoltage / 50.0);
@@ -717,7 +720,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->TMP / 5.0);
 #endif
                   // .......PIR Status.........................................
-                  knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1_18));
+                  knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("PIR:"));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.PIR);
@@ -740,7 +743,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("03"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 2).value(fourBsA6_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 2).value(fourBsA6_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u8SupplyVoltage / 50.0);
@@ -760,7 +763,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println((fourBsA6_08_Tlg_p->TMP / 3.1875) - 30);
 #endif
                   // .......PIR Status.........................................
-                  knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1_18));
+                  knx.getGroupObject(firstComObj).value(fourBsA6_08_Tlg_p->u84BsTelData.PIR, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("PIR:"));
                   SERIAL_PORT.println(fourBsA6_08_Tlg_p->u84BsTelData.PIR);
@@ -791,7 +794,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("01"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
@@ -826,7 +829,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("02"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
@@ -869,7 +872,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("03"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
@@ -910,7 +913,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("04"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
@@ -959,7 +962,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("05"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
@@ -980,7 +983,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("06"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u8SupplyVoltage / 50.0);
@@ -1010,7 +1013,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("07"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage / 50.0);
@@ -1037,7 +1040,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("08"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage / 50.0);
@@ -1071,7 +1074,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(firstParameter);
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage / 50.0);
@@ -1132,7 +1135,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("0A"));
 #endif
                   // ...................  Supply Voltage .......................
-                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9_20));
+                  knx.getGroupObject(firstComObj + 4).value(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage * 20.0, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.print("Supply Voltage: ");
                   SERIAL_PORT.println(fourBsA5_17_09_0A_Tlg_p->u8SupplyVoltage / 50.0);
@@ -1337,6 +1340,37 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
             }
             return msg_A5_20_06;
             break; // ENDE A5-20-XX
+
+      case A5_special:
+            switch (knx.paramWord(firstParameter + ENO_CHProfil4BSAdd))
+            {
+            case D5_00_01_V2:
+#ifdef KDEBUG
+                  SERIAL_PORT.println("D5-00-01 V2");
+#endif
+                  l1bsV2Tlg_p = (ONEBS_TELEGRAM_TYPE_V2 *)&(f_Pkt_st->u8DataBuffer[1]);
+
+                  // Energy storage
+                  knx.getGroupObject(firstComObj + 7).value(l1bsV2Tlg_p->u8EnergyVoltage * 19.608, getDPT(VAL_DPT_9)); // umgerechnet in 5V in 5000mV
+                  // Energy storage
+                  knx.getGroupObject(firstComObj + 4).value(l1bsV2Tlg_p->u8BatteryVoltage * 19.608, getDPT(VAL_DPT_9)); // umgerechnet in 5V in 5000mV
+
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Enr: "));
+                  SERIAL_PORT.println(l1bsV2Tlg_p->u8EnergyVoltage / 51.0);
+                  SERIAL_PORT.print(F("Bat: "));
+                  SERIAL_PORT.println(l1bsV2Tlg_p->u8BatteryVoltage / 51.0);
+#endif
+                  break;
+
+            default:
+#ifdef KDEBUG
+                  SERIAL_PORT.println("ERROR");
+#endif
+                  break;
+            }
+
+            break; // ENDE A5-Special
 
       //**************************************************************
       default:
