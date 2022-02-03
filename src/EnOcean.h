@@ -250,21 +250,21 @@ struct FOURBS_A5_20_06_DATA_TYPE
 
 struct FOURBS_A5_20_01_DATA_TYPE
 {
-  uint8_t Offset : 3;    // (DB_BIT 0-2)   NA
-  uint8_t LRN : 1;       // (DB_BIT 3)     Teachin
-  uint8_t LRNstatus : 1; // (DB_BIT 4)     Teachin
-  uint8_t LRN : 2;       // (DB_BIT 5-6)   NA
-  uint8_t LRNtype : 1;   // (DB_BIT 7)     Teachin
+  uint8_t NA : 3;        // (DB_BIT 0-2)    NA
+  uint8_t LRNstatus : 1; // (DB_BIT 3)     Teachin
+  uint8_t NA1 : 3;       // (DB_BIT 4-6)   NA
+  uint8_t LRNtype : 1;   // (DB_BIT 7)     LRNTYpe
 };
 
 struct FOURBS_A5_20_04_DATA_TYPE
 {
-  uint8_t Offset : 3; // (DB_BIT 0-2)   NA
-  uint8_t LRN : 1;    // (DB_BIT 3)     Teachin
-  uint8_t LRN : 1;    // (DB_BIT 4)   
-  uint8_t LRNstatus : 1;    // (DB_BIT 5)     LRN Status
-  uint8_t STR : 1;    // (DB_BIT 6)     STR
-  uint8_t MSTLRNtype : 1;    // (DB_BIT 7)     MST & Teachin
+  uint8_t FL : 1;           // (DB_BIT 0)     FL
+  uint8_t TS : 1;           // (DB_BIT 1)     TTS
+  uint8_t BLS : 1;          // (DB_BIT 2)     BLS
+  uint8_t LRNstatus : 1;    // (DB_BIT 3)     LRN Status
+  uint8_t NA : 2;           // (DB_BIT 4-5)   NA
+  uint8_t STR : 1;          // (DB_BIT 6)     STR
+  uint8_t MSTLRNtype : 1;   // (DB_BIT 7)     MST & Teachin
 };
 
 

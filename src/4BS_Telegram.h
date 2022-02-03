@@ -1222,11 +1222,11 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("01"));
 #endif
                   //check TeachIn-Bit
-                  if ((fourBsA5_20_01_Tlg_p->u84BsTelData.LRN) == 0)
+                  if ((fourBsA5_20_01_Tlg_p->u84BsTelData.LRNstatus) == 0)
                   {
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("TeachIn: "));
-                        SERIAL_PORT.print(fourBsA5_20_01_Tlg_p->u84BsTelData.LRN);
+                        SERIAL_PORT.print(fourBsA5_20_01_Tlg_p->u84BsTelData.LRNstatus);
 #endif
                         //check LRN TYP Bit (bit8) and  LRN Status (Bit4)
                         if ((fourBsA5_20_01_Tlg_p->u84BsTelData.LRNtype == 1) && (fourBsA5_20_01_Tlg_p->u84BsTelData.LRNstatus == 0))
@@ -1245,6 +1245,25 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   }
                   else
                   {
+                        // ......Current Position.........................................
+                        knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_01_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("current Pos: "));
+                        SERIAL_PORT.print(fourBsA5_20_01_Tlg_p->u8CurrentPos);
+                        SERIAL_PORT.println("%");
+#endif
+                        // ......Status Bits.........................................
+                        knx.getGroupObject(firstComObj + 9).value(fourBsA5_20_01_Tlg_p->u8StatusBits, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Status Bits (MSB-LSB): "));
+                        SERIAL_PORT.println(fourBsA5_20_01_Tlg_p->u8StatusBits, BIN);
+#endif
+                        // Temperature 
+                        knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_01_Tlg_p->u8Temp, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Temperatur: "));
+                        SERIAL_PORT.println(fourBsA5_20_01_Tlg_p->u8Temp); // UMRECHUNG auf 0 - 40 °C frhlt noch !!! ***************************
+#endif
                   }
 
                   break;
@@ -1257,11 +1276,11 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(F("04"));
 #endif
                   //check TeachIn-Bit
-                  if ((fourBsA5_20_04_Tlg_p->u84BsTelData.LRN) == 0)
+                  if ((fourBsA5_20_04_Tlg_p->u84BsTelData.LRNstatus) == 0)
                   {
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("TeachIn: "));
-                        SERIAL_PORT.print(fourBsA5_20_04_Tlg_p->u84BsTelData.LRN);
+                        SERIAL_PORT.print(fourBsA5_20_04_Tlg_p->u84BsTelData.LRNstatus);
 #endif
                         //check LRN TYP Bit (bit8) and  LRN Status (Bit4)
                         if ((fourBsA5_20_04_Tlg_p->u84BsTelData.MSTLRNtype) == 1 && (fourBsA5_20_04_Tlg_p->u84BsTelData.LRNstatus == 0))
@@ -1280,6 +1299,56 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   }
                   else
                   {
+                        // ......Current Position.........................................
+                        knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_04_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("current Pos: "));
+                        SERIAL_PORT.print(fourBsA5_20_04_Tlg_p->u8CurrentPos);
+                        SERIAL_PORT.println("%");
+#endif
+                        // ......Temperature SetPoint or FeeD Temp ......................................
+                        if (fourBsA5_20_04_Tlg_p->u84BsTelData.TS == 1)
+                        {
+                              // Temperature Setpoint
+                              knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_04_Tlg_p->u8Temp, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                              SERIAL_PORT.print(F("Temp SetPoint: "));
+                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8Temp); // UMRECHUNG auf 10 - 30 °C frhlt noch !!! ***************************
+#endif
+                        }
+                        else // FEED Temperature
+                        {
+                              knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_04_Tlg_p->u8Temp, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                              SERIAL_PORT.print(F("Feed-Temp: "));
+                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8Temp); // UMRECHUNG auf 20 - 80 °C frhlt noch !!! *****************************
+#endif
+                        }
+                        // ...... Room Temperature or Failure Code ......................................
+                        if (fourBsA5_20_04_Tlg_p->u84BsTelData.FL == 1)
+                        {
+                              // Failure Code
+                              knx.getGroupObject(firstComObj + 8).value(fourBsA5_20_04_Tlg_p->u8TempError, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                              SERIAL_PORT.print(F("Failure Code: "));
+                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8TempError); // UMRECHUNG auf 10 - 30 °C frhlt noch !!! ***************************
+#endif
+                        }
+                        else // Room Temperature
+                        {
+                              knx.getGroupObject(firstComObj + 8).value(fourBsA5_20_04_Tlg_p->u8TempError, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                              SERIAL_PORT.print(F("Room-Temp: "));
+                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8TempError); // UMRECHUNG auf 10 - 30 °C frhlt noch !!! *****************************
+#endif
+                        }
+
+                        // ......Status Bits.........................................
+                        knx.getGroupObject(firstComObj + 9).value(f_Pkt_st->u8DataBuffer[4], getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Status Bits (MSB-LSB): "));
+                        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[4], BIN);
+#endif
                   }
 
                   break;
