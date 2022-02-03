@@ -15,19 +15,19 @@ Open [https://github.com/mumpf/multiply-channels/releases](https://github.com/mu
 
 Download the newest release of multiply-channels, currently it is version 2.1.2.
 
-
-
 The executable is MultiplyChannels.exe
 
 Save it to C:\Users\\\<username>\bin (usually you have to create bin directory)
 
 If this is not your ETS-PC, install ETS5 on this PC (ETS5.7.x demo is sufficient, even any 5.6.x should do)
 
+The next step you can do first after progessed the "Installation of dev-Environment for Enocean-Gateway":
+
 Go to the Visual Studio Code instance, which is containing the knx-enocean-gateway project
 
 Press Ctrl-Shift-P, enter "run test task" and click the appearing "Tasks: Run Test Task"
 
-In the following dropdown select "**MultiplyChannels**"
+In the following dropdown select "**MultiplyChannels knx-enocean-gateway**"
 
 Wait for the success message in the terminal window
 
@@ -39,7 +39,7 @@ you will find in the release directory of the knx-enocean-gateway project
 
 You can import this knxprod in your ETS (minimum 5.6) like any other knxprod.
 
-# Installation of dev-Environment for Sensormodule
+# Installation of dev-Environment for Enocean-Gateway
 
 Only tested on Windows 10!
 
@@ -94,6 +94,22 @@ You should be now in a directory ending with ...\Documents\PlatformIO\Projects
     code Enocean.code-workspace
       
 Now a new instance of Visual Studio Code is started. You can close the other (previous) instance.
+
+**create KNXprod**
+
+Press Ctrl-Shift-P, enter "run test task" and click the appearing "Tasks: Run Test Task"
+
+In the following dropdown select "MultiplyChannels knx-enocean-gateway"
+
+Wait for the success message in the terminal window
+
+The freshly build
+
+* EnoceanGateway.knxprod
+
+you will find in the release directory of the knx-enocean-gateway project (in the SRC- Folder)
+
+**Firmware Build**
 
 Press Ctrl-Shift-B, select the **Build PlatformIO** build task and press enter.
 

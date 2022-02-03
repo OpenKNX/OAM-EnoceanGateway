@@ -43,12 +43,16 @@ private:
   union TaskHandle1
   {
     uint8_t val_A5_20_06[4];         // Für MVA-005  A5-20-06
+    uint8_t val_A5_20_04[4];         // Für MVA-005  A5-20-04
+    uint8_t val_A5_20_01[4];         // Für MVA-005  A5-20-01
     uint32_t rocker_longpress_delay; // ROCKER
     uint32_t buttonLastPushTime1;    // ROCKER Senden
   } union1;
 
   union TaskHandle2
   {
+    byte val_A5_20_01_TeachIn[4];             // Für MVA-005  A5-20-01
+    byte val_A5_20_04_TeachIn[4];             // Für MVA-005  A5-20-04
     byte val_A5_20_06_TeachIn[4];             // Für MVA-005  A5-20-06
     uint32_t buttonLastPushTime2;             // ROCKER Senden
     uint8_t rockerState_Release = RockerIdle; // ROCKER
@@ -229,9 +233,44 @@ public:
 
     case u8RORG_4BS:
       // *************** Sent after receive ***********************************************************************
+      //A5-20-01
+      if (unionMSG.msg_sent_after_receive == msg_A5_20_01)
+      {
+      }
+      // *************** Teachin Funktion  ***********************************************************************
+      else if (unionMSG.msg_sent_after_receive == TEACHIN_A52001)
+      {
+        union2.val_A5_20_01_TeachIn[0] = 0x80;
+        union2.val_A5_20_01_TeachIn[1] = 0x08;
+        union2.val_A5_20_01_TeachIn[2] = 0x49;
+        union2.val_A5_20_01_TeachIn[3] = 0xF0;
+        send_4BS_Msg(enOcean.getBaseId(), index, union2.val_A5_20_01_TeachIn, 0);
+#ifdef KDEBUG
+        SERIAL_PORT.println(F("TeachIn Response Sent"));
+#endif
+        unionMSG.msg_sent_after_receive = 0;
+      }
+      //-----------------------------------------------------------------------------------------------------------
+      //A5-20-04
+      if (unionMSG.msg_sent_after_receive == msg_A5_20_04)
+      {
+      }
+      // *************** Teachin Funktion  ***********************************************************************
+      else if (unionMSG.msg_sent_after_receive == TEACHIN_A52004)
+      {
+        union2.val_A5_20_04_TeachIn[0] = 0x80;
+        union2.val_A5_20_04_TeachIn[1] = 0x20;
+        union2.val_A5_20_04_TeachIn[2] = 0x49;
+        union2.val_A5_20_04_TeachIn[3] = 0xF0;
+        send_4BS_Msg(enOcean.getBaseId(), index, union2.val_A5_20_04_TeachIn, 0);
+#ifdef KDEBUG
+        SERIAL_PORT.println(F("TeachIn Response Sent"));
+#endif
+        unionMSG.msg_sent_after_receive = 0;
+      }
       //-----------------------------------------------------------------------------------------------------------
       //A5-20-06
-      if (unionMSG.msg_sent_after_receive == msg_A5_20_06)
+      else if (unionMSG.msg_sent_after_receive == msg_A5_20_06)
       {
         // Set LNRB
         union1.val_A5_20_06[3] |= 1 << 3; // Set LNRB
@@ -241,7 +280,6 @@ public:
         unionMSG.msg_sent_after_receive = 0;
       }
       // *************** Teachin Funktion  ***********************************************************************
-      //-----------------------------------------------------------------------------------------------------------
       //A5-20-06
       else if (unionMSG.msg_sent_after_receive == TEACHIN_A52006)
       {
@@ -256,7 +294,6 @@ public:
         unionMSG.msg_sent_after_receive = 0;
       }
       // *************** Read Request  ***********************************************************************
-      //-----------------------------------------------------------------------------------------------------------
       //A5-20-06
       if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06 && sCalled < 255)
       {

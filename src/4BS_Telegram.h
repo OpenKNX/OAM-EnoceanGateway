@@ -27,6 +27,8 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
       FOURBS_A5_14_01_06_TYPE *fourBsA5_17_01_06_Tlg_p;
       FOURBS_A5_14_07_08_TYPE *fourBsA5_17_07_08_Tlg_p;
       FOURBS_A5_14_09_0A_TYPE *fourBsA5_17_09_0A_Tlg_p;
+      FOURBS_A5_20_01_TYPE *fourBsA5_20_01_Tlg_p;
+      FOURBS_A5_20_04_TYPE *fourBsA5_20_04_Tlg_p;
       FOURBS_A5_20_06_TYPE *fourBsA5_20_06_Tlg_p;
 
       //Special Profil for a 4BS MSG from a 1BS Device
@@ -1211,6 +1213,76 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
             switch (profil2nd)
 #endif
             {
+            //**************************************************************
+            // ----------------- Profil: A5-20-01 --------------------------
+            //**************************************************************
+            case A5_20_01:
+                  fourBsA5_20_01_Tlg_p = (FOURBS_A5_20_01_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("01"));
+#endif
+                  //check TeachIn-Bit
+                  if ((fourBsA5_20_01_Tlg_p->u84BsTelData.LRN) == 0)
+                  {
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("TeachIn: "));
+                        SERIAL_PORT.print(fourBsA5_20_01_Tlg_p->u84BsTelData.LRN);
+#endif
+                        //check LRN TYP Bit (bit8) and  LRN Status (Bit4)
+                        if ((fourBsA5_20_01_Tlg_p->u84BsTelData.LRNtype == 1) && (fourBsA5_20_01_Tlg_p->u84BsTelData.LRNstatus == 0))
+                        {
+#ifdef KDEBUG
+                              SERIAL_PORT.println(F(" OK"));
+#endif
+                              return TEACHIN_A52006;
+                        }
+                        else
+                        {
+#ifdef KDEBUG
+                              SERIAL_PORT.println(F(" NOK"));
+#endif
+                        }
+                  }
+                  else
+                  {
+                  }
+
+                  break;
+            //**************************************************************
+            // ----------------- Profil: A5-20-04 --------------------------
+            //**************************************************************
+            case A5_20_04:
+                  fourBsA5_20_04_Tlg_p = (FOURBS_A5_20_04_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("04"));
+#endif
+                  //check TeachIn-Bit
+                  if ((fourBsA5_20_04_Tlg_p->u84BsTelData.LRN) == 0)
+                  {
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("TeachIn: "));
+                        SERIAL_PORT.print(fourBsA5_20_04_Tlg_p->u84BsTelData.LRN);
+#endif
+                        //check LRN TYP Bit (bit8) and  LRN Status (Bit4)
+                        if ((fourBsA5_20_04_Tlg_p->u84BsTelData.MSTLRNtype) == 1 && (fourBsA5_20_04_Tlg_p->u84BsTelData.LRNstatus == 0))
+                        {
+#ifdef KDEBUG
+                              SERIAL_PORT.println(F(" OK"));
+#endif
+                              return TEACHIN_A52004;
+                        }
+                        else
+                        {
+#ifdef KDEBUG
+                              SERIAL_PORT.println(F(" NOK"));
+#endif
+                        }
+                  }
+                  else
+                  {
+                  }
+
+                  break;
             //**************************************************************
             // ----------------- Profil: A5-20-06 --------------------------
             //**************************************************************

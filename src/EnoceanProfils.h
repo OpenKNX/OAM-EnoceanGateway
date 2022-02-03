@@ -15,8 +15,12 @@
 #define KO_Teachin  100
 
 //direct answer after msg recive & TEACHin
-#define msg_A5_20_06 1
-#define TEACHIN_A52006 10
+#define msg_A5_20_01 1
+#define msg_A5_20_04 2
+#define msg_A5_20_06 3
+#define TEACHIN_A52001 10
+#define TEACHIN_A52004 11
+#define TEACHIN_A52006 12
 
 
 
@@ -130,6 +134,9 @@
 #define A5_14_09 114
 #define A5_14_0A 115
 
+
+#define A5_20_01 116
+#define A5_20_04 119
 #define A5_20_06 121
 
 

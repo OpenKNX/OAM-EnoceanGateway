@@ -248,6 +248,26 @@ struct FOURBS_A5_20_06_DATA_TYPE
   uint8_t LOM : 1;    // (DB_BIT 7)    LOM (local offset mode)
 };
 
+struct FOURBS_A5_20_01_DATA_TYPE
+{
+  uint8_t Offset : 3;    // (DB_BIT 0-2)   NA
+  uint8_t LRN : 1;       // (DB_BIT 3)     Teachin
+  uint8_t LRNstatus : 1; // (DB_BIT 4)     Teachin
+  uint8_t LRN : 2;       // (DB_BIT 5-6)   NA
+  uint8_t LRNtype : 1;   // (DB_BIT 7)     Teachin
+};
+
+struct FOURBS_A5_20_04_DATA_TYPE
+{
+  uint8_t Offset : 3; // (DB_BIT 0-2)   NA
+  uint8_t LRN : 1;    // (DB_BIT 3)     Teachin
+  uint8_t LRN : 1;    // (DB_BIT 4)   
+  uint8_t LRNstatus : 1;    // (DB_BIT 5)     LRN Status
+  uint8_t STR : 1;    // (DB_BIT 6)     STR
+  uint8_t MSTLRNtype : 1;    // (DB_BIT 7)     MST & Teachin
+};
+
+
 /*
 struct 
 {
@@ -559,6 +579,26 @@ struct FOURBS_A5_14_09_0A_TYPE
   uint8_t u8Free;
   uint8_t u8Free2;
   FOURBS_A5_07_14_09_0A_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_20_01_TYPE
+{
+  uint8_t u8CurrentPos;
+  uint8_t u8StatusBits;
+  uint8_t u8Temp;
+  FOURBS_A5_20_01_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_20_04_TYPE
+{
+  uint8_t u8CurrentPos;
+  uint8_t u8Temp;
+  uint8_t u8TempError;
+  FOURBS_A5_20_04_DATA_TYPE u84BsTelData;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
