@@ -1259,10 +1259,11 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         SERIAL_PORT.println(fourBsA5_20_01_Tlg_p->u8StatusBits, BIN);
 #endif
                         // Temperature 
-                        knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_01_Tlg_p->u8Temp, getDPT(VAL_DPT_9));
+                        temp = (float)fourBsA5_20_01_Tlg_p->u8Temp / 6.375 ;
+                        knx.getGroupObject(firstComObj + 6).value(temp, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("Temperatur: "));
-                        SERIAL_PORT.println(fourBsA5_20_01_Tlg_p->u8Temp); // UMRECHUNG auf 0 - 40 °C frhlt noch !!! ***************************
+                        SERIAL_PORT.println(temp); 
 #endif
                   }
 
@@ -1310,36 +1311,39 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         if (fourBsA5_20_04_Tlg_p->u84BsTelData.TS == 1)
                         {
                               // Temperature Setpoint
-                              knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_04_Tlg_p->u8Temp, getDPT(VAL_DPT_9));
+                              temp = (float) fourBsA5_20_04_Tlg_p->u8Temp / 12.75 + 10.0;
+                              knx.getGroupObject(firstComObj + 6).value(temp, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                               SERIAL_PORT.print(F("Temp SetPoint: "));
-                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8Temp); // UMRECHUNG auf 10 - 30 °C frhlt noch !!! ***************************
+                              SERIAL_PORT.println(temp); // 10 - 30 °C 
 #endif
                         }
                         else // FEED Temperature
                         {
+                              temp = (float) fourBsA5_20_04_Tlg_p->u8Temp / 4.25 + 20.0;
                               knx.getGroupObject(firstComObj + 6).value(fourBsA5_20_04_Tlg_p->u8Temp, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                               SERIAL_PORT.print(F("Feed-Temp: "));
-                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8Temp); // UMRECHUNG auf 20 - 80 °C frhlt noch !!! *****************************
+                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8Temp); //  20 - 80 °C 
 #endif
                         }
                         // ...... Room Temperature or Failure Code ......................................
                         if (fourBsA5_20_04_Tlg_p->u84BsTelData.FL == 1)
                         {
                               // Failure Code
-                              knx.getGroupObject(firstComObj + 8).value(fourBsA5_20_04_Tlg_p->u8TempError, getDPT(VAL_DPT_5));
+                              knx.getGroupObject(firstComObj + 5).value(fourBsA5_20_04_Tlg_p->u8TempError, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                               SERIAL_PORT.print(F("Failure Code: "));
-                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8TempError); // UMRECHUNG auf 10 - 30 °C frhlt noch !!! ***************************
+                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8TempError); 
 #endif
                         }
                         else // Room Temperature
                         {
-                              knx.getGroupObject(firstComObj + 8).value(fourBsA5_20_04_Tlg_p->u8TempError, getDPT(VAL_DPT_9));
+                              temp = (float) fourBsA5_20_04_Tlg_p->u8TempError / 12.75 + 10.0;
+                              knx.getGroupObject(firstComObj + 8).value(temp, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                               SERIAL_PORT.print(F("Room-Temp: "));
-                              SERIAL_PORT.println(fourBsA5_20_04_Tlg_p->u8TempError); // UMRECHUNG auf 10 - 30 °C frhlt noch !!! *****************************
+                              SERIAL_PORT.println(temp); // 10 - 30 °C 
 #endif
                         }
 
@@ -1350,6 +1354,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[4], BIN);
 #endif
                   }
+                  
 
                   break;
             //**************************************************************

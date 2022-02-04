@@ -590,8 +590,8 @@
               </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52006SPS" Name="A52006SPS">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Umgebungs-Temperatur" Value="0" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-0" />
-                  <Enumeration Text="Vorlauf-Temperatur" Value="1" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-1" />
+                  <Enumeration Text="Ventil Pos (%)" Value="0" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-0" />
+                  <Enumeration Text="Soll-Temperatur (°C)" Value="1" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52006TSL" Name="A52006TSL">
