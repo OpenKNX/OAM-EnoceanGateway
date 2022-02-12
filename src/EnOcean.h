@@ -250,7 +250,7 @@ struct FOURBS_A5_20_06_DATA_TYPE
 
 struct FOURBS_A5_20_01_DATA_TYPE
 {
-  uint8_t NA : 3;        // (DB_BIT 0-2)    NA
+  uint8_t NA : 3;        // (DB_BIT 0-2)   NA
   uint8_t LRNstatus : 1; // (DB_BIT 3)     Teachin
   uint8_t NA1 : 3;       // (DB_BIT 4-6)   NA
   uint8_t LRNtype : 1;   // (DB_BIT 7)     LRNTYpe
@@ -701,6 +701,7 @@ public:
   void configureDevice(IEnOceanDevice &device, uint8_t channel);
   uint16_t getNumberDevices();
   uint8_t *getBaseId();
+  uint8_t getBaseId_Byte4();
 
 private:
   Stream *_serial;

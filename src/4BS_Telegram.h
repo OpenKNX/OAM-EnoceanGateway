@@ -1266,7 +1266,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         SERIAL_PORT.println(temp); 
 #endif
                   }
-
+                  return msg_A5_20_01;
                   break;
             //**************************************************************
             // ----------------- Profil: A5-20-04 --------------------------
@@ -1355,7 +1355,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #endif
                   }
                   
-
+                  return msg_A5_20_04;
                   break;
             //**************************************************************
             // ----------------- Profil: A5-20-06 --------------------------

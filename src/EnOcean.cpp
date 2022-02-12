@@ -243,6 +243,11 @@ uint8_t *EnOcean::getBaseId()
   return &lui8_BaseID_p[0];
 }
 
+uint8_t EnOcean::getBaseId_Byte4()
+{
+  return lui8_BaseID_p[2];
+}
+
 uint16_t EnOcean::getNumberDevices()
 {
   return lastDevice;

@@ -27,6 +27,11 @@ void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs, uint8_
     if (baseID_CH <= 4) // anpassen der Sende ID -> baseID_CH max 4 !!!
         l_TestBuf_p[8] = l_TestBuf_p[8] + baseID_CH;
 
+#ifdef KDEBUG
+    SERIAL_PORT.print(F("ID: "));
+    SERIAL_PORT.println(l_TestBuf_p[8]);
+#endif
+
     enOcean.sendPacket(&l_TestPacket_st);
 }
 

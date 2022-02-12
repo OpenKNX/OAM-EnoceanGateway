@@ -32,7 +32,7 @@ private:
 
   RockerStates state = idle;
 
-  //uint32_t rocker_longpress_delay2;
+  // uint32_t rocker_longpress_delay2;
 
   union EnoceanHandle
   {
@@ -61,6 +61,8 @@ private:
   union TaskHandle3
   {
     uint8_t rockerNr; // ROCKER
+    uint8_t A52001_CMD;
+    uint8_t A52004;
   } union3;
 
   // Task variable Read Request
@@ -116,9 +118,9 @@ public:
   //*************************************************************************************************************************************************************
   void init(uint16_t startAtComObj, uint16_t startAtParameter, uint8_t channel)
   {
-    //init(lastComObj, lastParam, channel);
-    //lastComObj = ENO_KoOffset + (channel * ENO_KoBlockSize);
-    //lastParam = ENO_ParamBlockOffset + (channel * ENO_ParamBlockSize);
+    // init(lastComObj, lastParam, channel);
+    // lastComObj = ENO_KoOffset + (channel * ENO_KoBlockSize);
+    // lastParam = ENO_ParamBlockOffset + (channel * ENO_ParamBlockSize);
     firstComObj = startAtComObj;
     firstParameter = startAtParameter;
     index = channel;
@@ -136,21 +138,56 @@ public:
     deviceId_Arr[1] = knx.paramByte(ENO_CHId2 + firstParameter);
     deviceId_Arr[2] = knx.paramByte(ENO_CHId4 + firstParameter);
     deviceId_Arr[3] = knx.paramByte(ENO_CHId6 + firstParameter);
-#ifdef KDEBUG
-    SERIAL_PORT.print(deviceId_Arr[0]);
-    SERIAL_PORT.print(" ");
-    SERIAL_PORT.print(deviceId_Arr[1]);
-    SERIAL_PORT.print(" ");
-    SERIAL_PORT.print(deviceId_Arr[2]);
-    SERIAL_PORT.print(" ");
-    SERIAL_PORT.print(deviceId_Arr[3]);
-    SERIAL_PORT.println(" ");
-#endif
+
 
     // init parameter
 
-    //default Werte
-    if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06)
+    // default Werte
+    // ************** A5-20-01 **************************************************************************************
+    if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_01)
+    {
+      union1.val_A5_20_01[0] = 0;                                                 // Value Pos = 0% or Temp-Selection = 0°C
+      union1.val_A5_20_01[1] = 100;                                               // TMP Raum Temp = 40°C (value/2.5)
+      union1.val_A5_20_01[2] = (knx.paramByte(ENO_CHA52001SPS + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+      union1.val_A5_20_01[2] &= ~(1 << 0);                                        // SET RCU to "0"
+      union1.val_A5_20_01[2] &= ~(1 << 1);                                        // SET SPN to "0"
+      union1.val_A5_20_01[2] &= ~(1 << 3);                                        // SET SB  to "0"
+      union1.val_A5_20_01[2] &= ~(1 << 4);                                        // SET CMD to "0"
+      union1.val_A5_20_01[2] &= ~(1 << 5);                                        // SET CMD to "0"
+      union1.val_A5_20_01[2] &= ~(1 << 6);                                        // SET CMD to "0"
+      union1.val_A5_20_01[3] |= 1 << 3;                                           // Set LNRB
+#ifdef KDEBUG
+      SERIAL_PORT.print(F("SPS: "));
+      SERIAL_PORT.println((union1.val_A5_20_01[2] & ENO_CHA52001SPSMask) >> ENO_CHA52001SPSShift);
+      SERIAL_PORT.print(F("DB1: "));
+      SERIAL_PORT.println(union1.val_A5_20_01[2], BIN);
+#endif
+    }
+    // ************** A5-20-04 **************************************************************************************
+    else if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_04)
+    {
+      union1.val_A5_20_04[0] = 0;                                                 // Value Pos = 0%
+      union1.val_A5_20_04[1] = 255;                                               // TMP Raum Temp = 30°C (value/12.750 + 10)
+      union1.val_A5_20_04[2] = (knx.paramByte(ENO_CHA52004MC + firstParameter));  // Ein Parameter reicht, da alles im UNION gespeichert wird.
+      union1.val_A5_20_04[2] |=  (1 << 5);                                        // Set WUC to "1" -> Default WCU = 270sek
+      union1.val_A5_20_04[2] &= ~(1 << 4);                                        // Set WUC to "0"
+      union1.val_A5_20_04[2] &= ~(1 << 3);                                        // Set WUC to "0"
+      union1.val_A5_20_04[2] &= ~(1 << 2);                                        // Set WUC to "0"
+      union1.val_A5_20_04[2] &= ~(1 << 1);                                        // Set WUC to "0"
+      union1.val_A5_20_04[3] = (knx.paramByte(ENO_CHA52004DSO + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
+      union1.val_A5_20_04[3] |= 1 << 3;                                           // Set LNRB
+      union1.val_A5_20_04[3] &= ~(1 << 2);                                        // Set BLC to "0"
+      union1.val_A5_20_04[3] &= ~(1 << 1);                                        // Set SER to "0"
+      union1.val_A5_20_04[3] &= ~(1 << 0);                                        // Set SER to "0"
+#ifdef KDEBUG
+      SERIAL_PORT.print(F("MC: "));
+      SERIAL_PORT.println((union1.val_A5_20_04[2] & ENO_CHA52004MCMask) >> ENO_CHA52004MCShift);
+      SERIAL_PORT.print(F("DSO: "));
+      SERIAL_PORT.println((union1.val_A5_20_04[3] & ENO_CHA52004DSOMask) >> ENO_CHA52004DSOShift);
+#endif
+    }
+    // ************** A5-20-06 **************************************************************************************
+    else if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06)
     {
       union1.val_A5_20_06[0] = 0;                                                 // Value Pos = 0% or Temp-Selection = 0°C
       union1.val_A5_20_06[1] = 160;                                               // TMP Raum Temp = 40°C (value/4.0)
@@ -168,7 +205,7 @@ public:
     // default Startup delay Startpunkt
     gStartupDelay = millis(); // Read Request Delay startup
 
-    //profil = 45; // nur zum Testen <<<<----------------------------------------------------
+    // profil = 45; // nur zum Testen <<<<----------------------------------------------------
 
 #ifdef KDEBUG
     if (knx.configured())
@@ -184,7 +221,7 @@ public:
       SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
 
       switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
-      //switch (u8RORG_Rocker)                                 // nur zum Testen <<<<----------------------------------------------------
+      // switch (u8RORG_Rocker)                                 // nur zum Testen <<<<----------------------------------------------------
       {
       case u8RORG_1BS:
         SERIAL_PORT.print(F("Profil: 1BS "));
@@ -233,9 +270,20 @@ public:
 
     case u8RORG_4BS:
       // *************** Sent after receive ***********************************************************************
-      //A5-20-01
+      // A5-20-01
       if (unionMSG.msg_sent_after_receive == msg_A5_20_01)
       {
+        // Set LNRB
+        union1.val_A5_20_01[3] |= 1 << 3; // Set LNRB
+        send_4BS_Msg(lui8_SendeID_p, index, union1.val_A5_20_01, 0);
+        // löscht Ref Run Bit
+        union1.val_A5_20_01[2] &= ~(1 << 7); // clear Bit Ref RUN
+        union1.val_A5_20_01[2] &= ~(1 << 6); // clear Bit Service CMD
+        union1.val_A5_20_01[2] &= ~(1 << 5); // clear Bit Service CMD
+        union1.val_A5_20_01[2] &= ~(1 << 4); // clear Bit Service CMD
+        union1.val_A5_20_01[2] &= ~(1 << 3); // clear Bit SB
+        union1.val_A5_20_01[2] &= ~(1 << 1); // clear Bit SPN
+        unionMSG.msg_sent_after_receive = 0;
       }
       // *************** Teachin Funktion  ***********************************************************************
       else if (unionMSG.msg_sent_after_receive == TEACHIN_A52001)
@@ -244,16 +292,22 @@ public:
         union2.val_A5_20_01_TeachIn[1] = 0x08;
         union2.val_A5_20_01_TeachIn[2] = 0x49;
         union2.val_A5_20_01_TeachIn[3] = 0xF0;
-        send_4BS_Msg(enOcean.getBaseId(), index, union2.val_A5_20_01_TeachIn, 0);
+        send_4BS_Msg(lui8_SendeID_p, index, union2.val_A5_20_01_TeachIn, 0);
 #ifdef KDEBUG
         SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif
         unionMSG.msg_sent_after_receive = 0;
       }
       //-----------------------------------------------------------------------------------------------------------
-      //A5-20-04
-      if (unionMSG.msg_sent_after_receive == msg_A5_20_04)
+      // A5-20-04
+      else if (unionMSG.msg_sent_after_receive == msg_A5_20_04)
       {
+        // Set LNRB
+        union1.val_A5_20_04[3] |= 1 << 3; // Set LNRB
+        send_4BS_Msg(lui8_SendeID_p, index, union1.val_A5_20_04, 0);
+        union1.val_A5_20_01[3] &= ~(1 << 0); // clear Bit Service CMD
+        union1.val_A5_20_01[3] &= ~(1 << 1); // clear Bit Service CMD
+        unionMSG.msg_sent_after_receive = 0;
       }
       // *************** Teachin Funktion  ***********************************************************************
       else if (unionMSG.msg_sent_after_receive == TEACHIN_A52004)
@@ -262,39 +316,39 @@ public:
         union2.val_A5_20_04_TeachIn[1] = 0x20;
         union2.val_A5_20_04_TeachIn[2] = 0x49;
         union2.val_A5_20_04_TeachIn[3] = 0xF0;
-        send_4BS_Msg(enOcean.getBaseId(), index, union2.val_A5_20_04_TeachIn, 0);
+        send_4BS_Msg(lui8_SendeID_p, index, union2.val_A5_20_04_TeachIn, 0);
 #ifdef KDEBUG
         SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif
         unionMSG.msg_sent_after_receive = 0;
       }
       //-----------------------------------------------------------------------------------------------------------
-      //A5-20-06
+      // A5-20-06
       else if (unionMSG.msg_sent_after_receive == msg_A5_20_06)
       {
         // Set LNRB
         union1.val_A5_20_06[3] |= 1 << 3; // Set LNRB
-        send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06, 0);
+        send_4BS_Msg(lui8_SendeID_p, index, union1.val_A5_20_06, 0);
         // löscht Ref Run Bit
-        union1.val_A5_20_06[2] & ~(1 << 7); // clear Bit
+        union1.val_A5_20_06[2] &= ~(1 << 7); // clear Bit
         unionMSG.msg_sent_after_receive = 0;
       }
       // *************** Teachin Funktion  ***********************************************************************
-      //A5-20-06
+      // A5-20-06
       else if (unionMSG.msg_sent_after_receive == TEACHIN_A52006)
       {
         union2.val_A5_20_06_TeachIn[0] = 0x80;
         union2.val_A5_20_06_TeachIn[1] = 0x30;
         union2.val_A5_20_06_TeachIn[2] = 0x49;
         union2.val_A5_20_06_TeachIn[3] = 0xF0;
-        send_4BS_Msg(enOcean.getBaseId(), index, union2.val_A5_20_06_TeachIn, 0);
+        send_4BS_Msg(lui8_SendeID_p, index, union2.val_A5_20_06_TeachIn, 0);
 #ifdef KDEBUG
         SERIAL_PORT.println(F("TeachIn Response Sent"));
 #endif
         unionMSG.msg_sent_after_receive = 0;
       }
       // *************** Read Request  ***********************************************************************
-      //A5-20-06
+      // A5-20-06
       if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_06 && sCalled < 255)
       {
         if (sCalled == 1 && delayCheck(gStartupDelay, sCalled * 1000))
@@ -323,7 +377,7 @@ public:
         SERIAL_PORT.print(firstComObj);
         SERIAL_PORT.println(F(" Push"));
 #endif
-        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); //BaseID_CH = 0
+        send_RPS_Taster(lui8_SendeID_p, buttonMessage1, true, 0); // BaseID_CH = 0
         union1.buttonLastPushTime1 = millis();
         buttonStateSimulation1 = SIMULATE_RELEASE;
       }
@@ -336,7 +390,7 @@ public:
           SERIAL_PORT.print(firstComObj);
           SERIAL_PORT.println(F(" Release"));
 #endif
-          send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); //BaseID_CH = 0
+          send_RPS_Taster(lui8_SendeID_p, buttonMessage1, false, 0); // BaseID_CH = 0
           buttonStateSimulation1 = SIMULATE_NOTHING;
         }
       }
@@ -440,7 +494,7 @@ public:
       break; // ENDE ROCKER
 
     default:
-      break; //ENDE 4BS, VLD, 1BS, RPS, ROCKER
+      break; // ENDE 4BS, VLD, 1BS, RPS, ROCKER
     }
   }
 
@@ -464,8 +518,8 @@ public:
       return;
     }
 
-    //SERIAL_PORT.print(F("Profil: "));
-    //SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
+    // SERIAL_PORT.print(F("Profil: "));
+    // SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
 
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
@@ -476,6 +530,205 @@ public:
 #endif
       switch (knx.paramWord(ENO_CHProfil4BS20 + firstParameter))
       {
+      // *************** A5-20-01 ***********************************************************
+      case A5_20_01:
+        switch (koNr)
+        {
+        case KO_0: // SET Temp / SET Pos
+          if ((knx.paramByte(ENO_CHA52001SPS + firstParameter) >> ENO_CHA52001SPSShift) & 1)
+          {
+            union1.val_A5_20_01[0] = (float)iKo.value(getDPT(VAL_DPT_9)) * 2.5; // Set Point Temp#
+#ifdef KDEBUG
+            SERIAL_PORT.print(F("SET Temp to: "));
+            SERIAL_PORT.print(union1.val_A5_20_01[0] / 2.5);
+            SERIAL_PORT.println(F("°C"));
+#endif
+          }
+          else
+          {
+            union1.val_A5_20_01[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
+#ifdef KDEBUG #
+            SERIAL_PORT.print(F("SET Pos to: "));
+            SERIAL_PORT.print(union1.val_A5_20_01[0]);
+            SERIAL_PORT.println(F("%"));
+#endif
+          }
+          break;
+        case KO_1: // Summer Bit
+          if (iKo.value(getDPT(VAL_DPT_1)))
+          {
+            union1.val_A5_20_01[2] = (uint8_t)union1.val_A5_20_01[2] | (1 << 3); // Set Bit
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("Sommer Umschaltung: aktiv"));
+#endif
+          }
+          else
+          {
+            union1.val_A5_20_01[2] = (uint8_t)union1.val_A5_20_01[2] & ~(1 << 3); // clear Bit
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("Sommer Umschaltung: inaktiv"));
+#endif
+          }
+          break;
+        case KO_2: // Run Init
+          if (iKo.value(getDPT(VAL_DPT_1)))
+          {
+            union1.val_A5_20_01[2] = (uint8_t)union1.val_A5_20_01[2] | (1 << 7); // Set Bit
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("Run Init"));
+#endif
+          }
+          else
+          {
+            union1.val_A5_20_01[2] = (uint8_t)union1.val_A5_20_01[2] & ~(1 << 7); // clear Bit
+          }
+
+          break;
+        case KO_3: // Raum Temp
+          union1.val_A5_20_01[1] = (uint8_t)iKo.value(getDPT(VAL_DPT_9)) * 6.375;
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("Raum-Temp: "));
+          SERIAL_PORT.print(union1.val_A5_20_01[1] / 6.375);
+          SERIAL_PORT.println(F("°C"));
+#endif
+          break;
+        case KO_4: // Service CMD
+
+          union3.A52001_CMD = iKo.value(getDPT(VAL_DPT_5));
+          if (union3.A52001_CMD < 8)
+          {
+            if (union3.A52001_CMD == 0)
+            {
+              union1.val_A5_20_01[2] &= ~(1 << 4); // clear Bit4
+              union1.val_A5_20_01[2] &= ~(1 << 5); // clear Bit5
+              union1.val_A5_20_01[2] &= ~(1 << 6); // clear Bit6
+            }
+            else if (union3.A52001_CMD == 1)
+            {
+              union1.val_A5_20_01[2] |= (1 << 4);  // Set   Bit4
+              union1.val_A5_20_01[2] &= ~(1 << 5); // clear Bit5
+              union1.val_A5_20_01[2] &= ~(1 << 6); // clear Bit6
+            }
+            else if (union3.A52001_CMD == 2)
+            {
+              union1.val_A5_20_01[2] &= ~(1 << 4); // clear Bit4
+              union1.val_A5_20_01[2] |= (1 << 5);  // set   Bit5
+              union1.val_A5_20_01[2] &= ~(1 << 6); // clear Bit6
+            }
+            else if (union3.A52001_CMD == 3)
+            {
+              union1.val_A5_20_01[2] &= ~(1 << 4); // clear Bit4
+              union1.val_A5_20_01[2] &= ~(1 << 5); // clear Bit5
+              union1.val_A5_20_01[2] |= (1 << 6);  // set   Bit6
+            }
+#ifdef KDEBUG
+            SERIAL_PORT.print(F("Service CMD: "));
+            SERIAL_PORT.println(union3.A52001_CMD);
+#endif
+          }
+          else
+          {
+            union1.val_A5_20_01[2] &= ~(1 << 4); // clear Bit4
+            union1.val_A5_20_01[2] &= ~(1 << 5); // clear Bit5
+            union1.val_A5_20_01[2] &= ~(1 << 6); // clear Bit6
+#ifdef KDEBUG
+            SERIAL_PORT.print(F("Service CMD: Wrong Value"));
+#endif
+          }
+          break;
+        }
+        break;
+      // *************** A5-20-04 ***********************************************************
+      case A5_20_04:
+        switch (koNr)
+        {
+        case KO_0: //  SET Pos
+          union1.val_A5_20_04[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5));
+#ifdef KDEBUG #
+          SERIAL_PORT.print(F("SET Pos to: "));
+          SERIAL_PORT.print(union1.val_A5_20_04[0]);
+          SERIAL_PORT.println(F("%"));
+#endif
+          break;
+        case KO_1: //  SET Temp
+          union1.val_A5_20_04[0] = (float)iKo.value(getDPT(VAL_DPT_9)) * 12.75 + 10;
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("SET Temp to: "));
+          SERIAL_PORT.print(union1.val_A5_20_04[0] / 12.75 + 10);
+          SERIAL_PORT.println(F("°C"));
+#endif
+          break;
+        case KO_2: // Wake UP cycle
+          union3.A52004 = iKo.value(getDPT(VAL_DPT_5));
+          if (union3.A52004 <= 63)
+          {
+            union1.val_A5_20_04[2] = ((uint8_t)union3.A52004); // Set WCU
+#ifdef KDEBUG
+            SERIAL_PORT.print(F("WCU: "));
+            SERIAL_PORT.println(union3.A52004);
+            SERIAL_PORT.print(F("DB1: "));
+            SERIAL_PORT.println(union1.val_A5_20_04[2]);
+#endif
+          }
+          else
+          {
+#ifdef KDEBUG
+            SERIAL_PORT.print(F("WCU: wrong Value"));
+#endif
+          }
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("MC: "));
+          SERIAL_PORT.println((knx.paramByte(ENO_CHA52004MC + firstParameter) >> ENO_CHA52004MCShift) & 1);
+#endif
+          break;
+        case KO_3: // Button Lock
+          if (iKo.value(getDPT(VAL_DPT_1)))
+          {
+            union1.val_A5_20_04[3] |= (1 << 2); // set   Bit2
+          }
+          else
+          {
+            union1.val_A5_20_04[3] &= ~(1 << 2); // clear Bit2
+          }
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("BLC: "));
+          SERIAL_PORT.println((bool)iKo.value(getDPT(VAL_DPT_1)));
+#endif
+          break;
+        case KO_4: // Service CMD
+          union3.A52004 = iKo.value(getDPT(VAL_DPT_5));
+
+          switch (union3.A52004)
+          {
+          case 0:                                // No Change
+            union1.val_A5_20_04[3] &= ~(1 << 0); // clear Bit0
+            union1.val_A5_20_04[3] &= ~(1 << 1); // clear Bit1
+            break;
+          case 1:                                // open Value
+            union1.val_A5_20_04[3] |= (1 << 0);  // set   Bit0
+            union1.val_A5_20_04[3] &= ~(1 << 1); // clear Bit1
+            break;
+          case 2:                                // RUN initilistation
+            union1.val_A5_20_04[3] &= ~(1 << 0); // clear Bit0
+            union1.val_A5_20_04[3] |= (1 << 1);  // set   Bit1
+            break;
+          case 3:                               // RUN initilistation
+            union1.val_A5_20_04[3] |= (1 << 0); // set   Bit0
+            union1.val_A5_20_04[3] |= (1 << 1); // set   Bit1
+            break;
+          default:
+            union1.val_A5_20_04[3] &= ~(1 << 0); // clear Bit0
+            union1.val_A5_20_04[3] &= ~(1 << 1); // clear Bit1
+            break;
+          }
+#ifdef KDEBUG
+          SERIAL_PORT.print(F("Service : "));
+          SERIAL_PORT.println(union3.A52004);
+#endif
+          break;
+        }
+        break;
+      // *************** A5-20-06 ***********************************************************
       case A5_20_06:
 
         switch (koNr)
@@ -497,7 +750,7 @@ public:
           union1.val_A5_20_06[1] = 0x30;
           union1.val_A5_20_06[2] = 0x49;
           union1.val_A5_20_06[3] = 0x80;
-          send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06, 0);
+          send_4BS_Msg(lui8_SendeID_p, index, union1.val_A5_20_06, 0);
           break;
 
         case KO_0: // SET Temp oder SET Pos
@@ -579,7 +832,7 @@ public:
           break;
         }
         // gesendet wird in der TASK() da das Device nur nachrichten Empfangen kann, 1sek nachdem es eine Nachrticht geschickt hat
-        //send_4BS_Msg(enOcean.getBaseId(), index, union1.val_A5_20_06);
+        // send_4BS_Msg(lui8_SendeID_p, index, union1.val_A5_20_06);
         break;
       } // ENDE 2BS
       break;
@@ -593,7 +846,7 @@ public:
           switch (koNr)
           {
           case KO_0: // schalten Aktor CH1
-            //union3.koIndex1 = index + 1;
+            // union3.koIndex1 = index + 1;
             if (iKo.value(getDPT(VAL_DPT_1)))
             {
               buttonStateSimulation1 = SIMULATE_PUSH;
@@ -609,7 +862,7 @@ public:
 #endif
             break;
           case KO_1: //  Schalten Aktor CH2
-            //union4.koIndex2 = index + 2;
+            // union4.koIndex2 = index + 2;
             if (iKo.value(getDPT(VAL_DPT_1)))
             {
               buttonStateSimulation2 = SIMULATE_PUSH;
@@ -628,7 +881,7 @@ public:
 #ifdef KDEBUG
             SERIAL_PORT.println(F("KNX KO_4 handled"));
 #endif
-            getStatusActors(enOcean.getBaseId(), index); // Request Aktor Status
+            getStatusActors(lui8_SendeID_p, index); // Request Aktor Status
             break;
           default:
             break;
@@ -793,10 +1046,10 @@ public:
       SERIAL_PORT.print(".");
       SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
 #endif
-      //uint8_t stateRocker = handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
+      // uint8_t stateRocker = handle_RPS_Rocker(f_Pkt_st, profil, firstComObj, firstParameter, index);
       uint8_t stateRocker = f_Pkt_st->u8DataBuffer[1];
 #ifdef KDEBUG
-      //SERIAL_PORT.println(stateRocker, HEX);
+      // SERIAL_PORT.println(stateRocker, HEX);
 #endif
       switch (stateRocker)
       {
