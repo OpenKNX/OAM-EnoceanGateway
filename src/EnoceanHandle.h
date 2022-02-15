@@ -139,8 +139,8 @@ public:
     deviceId_Arr[2] = knx.paramByte(ENO_CHId4 + firstParameter);
     deviceId_Arr[3] = knx.paramByte(ENO_CHId6 + firstParameter);
 
-
     // init parameter
+    unionMSG.msg_sent_after_receive = 0;
 
     // default Werte
     // ************** A5-20-01 **************************************************************************************
@@ -166,14 +166,14 @@ public:
     // ************** A5-20-04 **************************************************************************************
     else if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_04)
     {
-      union1.val_A5_20_04[0] = 0;                                                 // Value Pos = 0%
-      union1.val_A5_20_04[1] = 255;                                               // TMP Raum Temp = 30°C (value/12.750 + 10)
-      union1.val_A5_20_04[2] = (knx.paramByte(ENO_CHA52004MC + firstParameter));  // Ein Parameter reicht, da alles im UNION gespeichert wird.
-      union1.val_A5_20_04[2] |=  (1 << 5);                                        // Set WUC to "1" -> Default WCU = 270sek
-      union1.val_A5_20_04[2] &= ~(1 << 4);                                        // Set WUC to "0"
-      union1.val_A5_20_04[2] &= ~(1 << 3);                                        // Set WUC to "0"
-      union1.val_A5_20_04[2] &= ~(1 << 2);                                        // Set WUC to "0"
-      union1.val_A5_20_04[2] &= ~(1 << 1);                                        // Set WUC to "0"
+      union1.val_A5_20_04[0] = 0;   // Value Pos = 0%
+      union1.val_A5_20_04[1] = 255; // TMP Raum Temp = 30°C (value/12.750 + 10)
+      union1.val_A5_20_04[2] = 0;
+      union1.val_A5_20_04[2] = (knx.paramByte(ENO_CHA52004WCU + firstParameter)) << 1; // Ein Parameter reicht, da alles im UNION gespeichert wird.
+      if ((knx.paramByte(ENO_CHA52004MC + firstParameter) >> ENO_CHA52004MCShift) & 1) // MC = 1 -> DISABLE
+        union1.val_A5_20_04[2] |= 1 << 6;
+      else // MC = 0 -> ENABLE
+        union1.val_A5_20_04[2] &= ~(1 << 6);
       union1.val_A5_20_04[3] = (knx.paramByte(ENO_CHA52004DSO + firstParameter)); // Ein Parameter reicht, da alles im UNION gespeichert wird.
       union1.val_A5_20_04[3] |= 1 << 3;                                           // Set LNRB
       union1.val_A5_20_04[3] &= ~(1 << 2);                                        // Set BLC to "0"
@@ -184,6 +184,9 @@ public:
       SERIAL_PORT.println((union1.val_A5_20_04[2] & ENO_CHA52004MCMask) >> ENO_CHA52004MCShift);
       SERIAL_PORT.print(F("DSO: "));
       SERIAL_PORT.println((union1.val_A5_20_04[3] & ENO_CHA52004DSOMask) >> ENO_CHA52004DSOShift);
+      SERIAL_PORT.print(F("WUC: "));
+      SERIAL_PORT.println((union1.val_A5_20_04[2] & 0x7E) >> 1);
+      SERIAL_PORT.println(union1.val_A5_20_04[2], BIN);
 #endif
     }
     // ************** A5-20-06 **************************************************************************************

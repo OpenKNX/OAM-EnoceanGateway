@@ -588,6 +588,74 @@
                   <Enumeration Text="270 grad" Value="3" Id="M-00FA_A-0001-01-0000_PT-A52004DSO_EN-3" />
                 </TypeRestriction>
               </ParameterType>
+              <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52004WUC" Name="A52004WUC">
+                <TypeRestriction Base="Value" SizeInBit="8">
+                  <Enumeration Text="10sec"     Value="0" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-0" />
+                  <Enumeration Text="60sec"     Value="1" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-1" />
+                  <Enumeration Text="90sec"     Value="2" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-2" />
+                  <Enumeration Text="120sec"     Value="3" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-3" />
+                  <Enumeration Text="150sec"     Value="4" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-4" />
+                  <Enumeration Text="180sec"     Value="5" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-5" />
+                  <Enumeration Text="210sec"     Value="6" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-6" />
+                  <Enumeration Text="240sec"     Value="7" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-7" />
+                  <Enumeration Text="270sec"     Value="8" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-8" />
+                  <Enumeration Text="300sec (5min)"     Value="9" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-9" />
+                  <Enumeration Text="330sec"     Value="10" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-10" />
+                  <Enumeration Text="360sec"     Value="11" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-11" />
+                  <Enumeration Text="390sec"     Value="12" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-12" />
+                  <Enumeration Text="420sec"     Value="13" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-13" />
+                  <Enumeration Text="450sec"     Value="14" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-14" />
+                  <Enumeration Text="480sec"     Value="15" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-15" />
+                  <Enumeration Text="510sec"     Value="16" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-16" />
+                  <Enumeration Text="540sec"     Value="17" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-17" />
+                  <Enumeration Text="570sec"     Value="18" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-18" />
+                  <Enumeration Text="600sec (10min)"     Value="19" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-19" />
+                  <Enumeration Text="630sec"     Value="20" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-20" />
+                  <Enumeration Text="660sec"     Value="21" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-21" />
+                  <Enumeration Text="690sec"     Value="22" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-22" />
+                  <Enumeration Text="720sec"     Value="23" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-23" />
+                  <Enumeration Text="750sec"     Value="24" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-24" />
+                  <Enumeration Text="780sec"     Value="25" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-25" />
+                  <Enumeration Text="810sec"     Value="26" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-26" />
+                  <Enumeration Text="840sec"     Value="27" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-27" />
+                  <Enumeration Text="870sec"     Value="28" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-28" />
+                  <Enumeration Text="900sec (15min)"     Value="29" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-29" />
+                  <Enumeration Text="930sec"     Value="30" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-30" />
+                  <Enumeration Text="960sec"     Value="31" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-31" />
+                  <Enumeration Text="990sec"     Value="32" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-32" />
+                  <Enumeration Text="1020sec"     Value="33" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-33" />
+                  <Enumeration Text="1050sec"     Value="34" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-34" />
+                  <Enumeration Text="1080sec"     Value="35" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-35" />
+                  <Enumeration Text="1110sec"     Value="36" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-36" />
+                  <Enumeration Text="1140sec"     Value="37" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-37" />
+                  <Enumeration Text="1170sec"     Value="38" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-38" />
+                  <Enumeration Text="1200sec (20min)"     Value="39" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-39" />
+                  <Enumeration Text="1230sec"     Value="40" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-40" />
+                  <Enumeration Text="1260sec"     Value="41" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-41" />
+                  <Enumeration Text="1290sec"     Value="42" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-42" />
+                  <Enumeration Text="1320sec"     Value="43" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-43" />
+                  <Enumeration Text="1350sec"     Value="44" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-44" />
+                  <Enumeration Text="1380sec"     Value="45" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-45" />
+                  <Enumeration Text="1410sec"     Value="46" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-46" />
+                  <Enumeration Text="1440sec"     Value="47" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-47" />
+                  <Enumeration Text="1470sec"     Value="48" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-48" />
+                  <Enumeration Text="1500sec (25min)"     Value="49" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-49" />
+                  <Enumeration Text="3 hrs"     Value="50" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-50" />
+                  <Enumeration Text="6 hrs"     Value="51" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-51" />
+                  <Enumeration Text="9 hrs"     Value="52" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-52" />
+                  <Enumeration Text="12 hrs"     Value="53" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-53" />
+                  <Enumeration Text="15 hrs"     Value="54" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-54" />
+                  <Enumeration Text="18 hrs"     Value="55" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-55" />
+                  <Enumeration Text="21 hrs"     Value="56" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-56" />
+                  <Enumeration Text="24 hrs"     Value="57" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-57" />
+                  <Enumeration Text="27 hrs"     Value="58" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-58" />
+                  <Enumeration Text="30 hrs"     Value="59" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-59" />
+                  <Enumeration Text="33 hrs"     Value="60" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-60" />
+                  <Enumeration Text="36 hrs"     Value="61" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-61" />
+                  <Enumeration Text="39 hrs"     Value="62" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-62" />
+                  <Enumeration Text="42 hrs"     Value="63" Id="M-00FA_A-0001-01-0000_PT-A52004WUC_EN-63" />
+                </TypeRestriction>
+              </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-A52006SPS" Name="A52006SPS">
                 <TypeRestriction Base="Value" SizeInBit="1">
                   <Enumeration Text="Ventil Pos (%)" Value="0" Id="M-00FA_A-0001-01-0000_PT-A52006SPS_EN-0" />

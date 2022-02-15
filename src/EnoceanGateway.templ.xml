@@ -130,10 +130,16 @@
                 <!-- A5-20-01 -->
                 <Parameter Id="M-00FA_A-0001-01-0000_UP-300%C%070" Name="CH%C%A52001SPS" Offset="0" BitOffset="3" ParameterType="M-00FA_A-0001-01-0000_PT-A52006SPS" Text="Set Point Selection" Value="1" />
                 <!-- A5-20-01 ENDE -->
-                <!-- A5-20-04 -->
+                <!-- A5-20-04 (1)-->
                 <Parameter Id="M-00FA_A-0001-01-0000_UP-300%C%071" Name="CH%C%A52004MC"  Offset="0" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-A52004MC"  Text="Auswahl KO:" Value="0" />
                 <Parameter Id="M-00FA_A-0001-01-0000_UP-300%C%072" Name="CH%C%A52004DSO" Offset="0" BitOffset="1" ParameterType="M-00FA_A-0001-01-0000_PT-A52004DSO" Text="Orientierung Display" Value="0" />
-                <!-- A5-20-04 ENDE -->
+                <!-- A5-20-04 (1) ENDE -->
+              </Union>
+              <Union SizeInBit="8">
+                <Memory CodeSegment="M-00FA_A-0001-01-0000_RS-04-00000" Offset="22" BitOffset="0" />
+                <!-- A5-20-04 (2)-->
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-300%C%073" Name="CH%C%A52004WCU" Offset="0" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-A52004WUC" Text="Sende Zyklus" Value="19" />
+                <!-- A5-20-04 (2) ENDE -->
               </Union>
             </Parameters>
             <ParameterRefs>
@@ -209,6 +215,7 @@
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-300%C%070_R-300%C%0701" RefId="M-00FA_A-0001-01-0000_UP-300%C%070" />
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-300%C%071_R-300%C%0711" RefId="M-00FA_A-0001-01-0000_UP-300%C%071" />
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-300%C%072_R-300%C%0721" RefId="M-00FA_A-0001-01-0000_UP-300%C%072" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-300%C%073_R-300%C%0731" RefId="M-00FA_A-0001-01-0000_UP-300%C%073" />
             </ParameterRefs>
             <ComObjectTable>
               <!-- ComOject Kanal 1 -->
@@ -296,6 +303,7 @@
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%04" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_03" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-3 DPST-3-7" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%05" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-9" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%06" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Info Set Point Temperatur" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%07" RefId="M-00FA_A-0001-01-0000_O-300%K6%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Vorlauf-Temperatur" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base  7 -->
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%01" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Ventil Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-4" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%02" RefId="M-00FA_A-0001-01-0000_O-300%K7%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Double press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
@@ -305,6 +313,7 @@
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%01" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp Offset" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%02" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%03" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Wochen seit letztem Alarm" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
+              <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%04" RefId="M-00FA_A-0001-01-0000_O-300%K8%" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Raumtemperatur" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-9 DPST-9-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <!-- Base  9 -->
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%01" RefId="M-00FA_A-0001-01-0000_O-300%K9%" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status (8Bits)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-5 DPST-5-10" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
               <ComObjectRef Id="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%02" RefId="M-00FA_A-0001-01-0000_O-300%K9%" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long release" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPT-1 DPST-1-1" TextParameterRefId="M-00FA_A-0001-01-0000_P-300%C%053_R-300%C%0531" />
@@ -599,6 +608,9 @@
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-7" Text="Definert die Display Orientierung" />
                           <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%072_R-300%C%0721" /> <!-- DSO -->
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-10" Text="" UIHint="HorizontalRuler" />
+                          <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-20" Text="Definiert die Zeit alle wieviel sec/hrs das Stellventil daten an das Gateway schickt (default 10min)"  />
+                          <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-300%C%073_R-300%C%0731" /> <!-- WCU -->
+                          <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-21" Text="" UIHint="HorizontalRuler" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-11" Text="KO Status byte:" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-12" Text="Bit1: FL   (Failure) 1 = Fehler erkannt" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-13" Text="Bit2: TS   (Temp Sel) 0 = Feed Temp  /  1 = Temp Set-Point" />
@@ -613,11 +625,18 @@
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%08" /> <!-- Com Interval-->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%09" /> <!-- Button Lock -->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K4%_R-300%K4%08" /> <!-- Servcie CMD -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%06" /> <!-- Failure Code -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%01" /> <!-- Temperatur am Ventil  -->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K7%_R-300%K7%01" /> <!-- Aktuelle Ventil Pos -->
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%01" /> <!-- Raum Temp -->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K9%_R-300%K9%01" /> <!-- Status Bits -->
+                          <choose ParamRefId="M-00FA_A-0001-01-0000_UP-300%C%071_R-300%C%0711">
+                            <when test="0">
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%07" /> <!-- Feed Temperatur -->
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K8%_R-300%K8%04" /> <!-- Raum Temp -->
+                            </when>
+                            <when test="1">
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K5%_R-300%K5%06" /> <!-- Failure Code -->
+                              <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K6%_R-300%K6%06" /> <!-- Info SetPoint Temp -->
+                            </when>
+                          </choose>  
                         </when>
                         <!-- A5-20-06 -->
                         <when test="121">

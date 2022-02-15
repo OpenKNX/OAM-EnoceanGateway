@@ -791,7 +791,7 @@
 
 // Parameter per channel
 #define ENO_ParamBlockOffset 5057
-#define ENO_ParamBlockSize 22
+#define ENO_ParamBlockSize 23
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
 #define ENO_CHProfilSelection1BS       1      // char*, 2 Byte
@@ -890,6 +890,7 @@
 #define ENO_CHA52004DSO               21      // 2 Bits, Bit 6-5
 #define     ENO_CHA52004DSOMask 0x60
 #define     ENO_CHA52004DSOShift 5
+#define ENO_CHA52004WCU               22      // 8 Bits, Bit 7-0
 
 // Communication objects per channel (multiple occurance)
 #define ENO_KoOffset 20
