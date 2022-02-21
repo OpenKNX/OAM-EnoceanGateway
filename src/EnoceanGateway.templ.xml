@@ -620,7 +620,7 @@
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-17" Text="Bit6: NA" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-18" Text="Bit7: STR  (Status Request)" />
                           <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-19" Text="Bit8: MST  (Measurement Status) zeigt ob Temp Messung ist aktiv: 0 = Active" />
-                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%13" /> <!-- Set Pos 0...100% -->
+                          <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K0%_R-300%K0%14" /> <!-- Set Pos 0...100% -->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K1%_R-300%K1%12" /> <!-- Set Temp -->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K2%_R-300%K2%08" /> <!-- Com Interval-->
                           <ComObjectRefRef RefId="M-00FA_A-0001-01-0000_O-300%K3%_R-300%K3%09" /> <!-- Button Lock -->

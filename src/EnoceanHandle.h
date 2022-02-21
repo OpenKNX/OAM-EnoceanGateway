@@ -167,7 +167,7 @@ public:
     else if (knx.paramWord(ENO_CHProfil4BS20 + firstParameter) == A5_20_04)
     {
       union1.val_A5_20_04[0] = 0;   // Value Pos = 0%
-      union1.val_A5_20_04[1] = 255; // TMP Raum Temp = 30°C (value/12.750 + 10)
+      union1.val_A5_20_04[1] = 153; // TMP Raum Temp = 22°C (value-10)/0.078)
       union1.val_A5_20_04[2] = 0;
       union1.val_A5_20_04[2] = (knx.paramByte(ENO_CHA52004WCU + firstParameter)) << 1; // Ein Parameter reicht, da alles im UNION gespeichert wird.
       if ((knx.paramByte(ENO_CHA52004MC + firstParameter) >> ENO_CHA52004MCShift) & 1) // MC = 1 -> DISABLE
@@ -654,10 +654,10 @@ public:
 #endif
           break;
         case KO_1: //  SET Temp
-          union1.val_A5_20_04[0] = (float)iKo.value(getDPT(VAL_DPT_9)) * 12.75 + 10;
+          union1.val_A5_20_04[1] = ((float)iKo.value(getDPT(VAL_DPT_9)) - 10.0) / 0.078;
 #ifdef KDEBUG
           SERIAL_PORT.print(F("SET Temp to: "));
-          SERIAL_PORT.print(union1.val_A5_20_04[0] / 12.75 + 10);
+          SERIAL_PORT.print(union1.val_A5_20_04[1]*0.078 + 10.0);
           SERIAL_PORT.println(F("°C"));
 #endif
           break;
