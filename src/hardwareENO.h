@@ -24,6 +24,7 @@
 //#define KDEBUG_Received         // comment this line to disable DEBUG mode for Recvived Data infomration
 //#define KDEBUG_Repeater         // comment this line to disable DEBUG mode for Repeater
 //#define KDEBUG_BaseID           // comment this line to disable DEBUG mode for Base-ID
+//#define KDEBUG_Sender_ID        // comment this line to disable DEBUG mode for Sender-ID
 
 // Defines for Testing
 //#define EnOceanTEST

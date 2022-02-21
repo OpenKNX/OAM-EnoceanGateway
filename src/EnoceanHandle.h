@@ -96,7 +96,7 @@ public:
     // Auf BaseID4 können dann maximal die 127 weiteren IDs gelegt werden.
     // -> 4 * Channels (20CH) = 80 --> OK
 
-#ifdef KDEBUG
+#ifdef KDEBUG_Sender_ID
     SERIAL_PORT.print("CH");
     SERIAL_PORT.print(channel);
     SERIAL_PORT.print(" SENDER_ID: ");
@@ -219,9 +219,9 @@ public:
         SERIAL_PORT.print(deviceId_Arr[i], HEX);
       }
       SERIAL_PORT.println(F(""));
-      SERIAL_PORT.println(ENO_CHProfilSelection);
-      SERIAL_PORT.println(firstParameter);
-      SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
+      //SERIAL_PORT.println(ENO_CHProfilSelection);
+      //SERIAL_PORT.println(firstParameter);
+      //SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
 
       switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
       // switch (u8RORG_Rocker)                                 // nur zum Testen <<<<----------------------------------------------------

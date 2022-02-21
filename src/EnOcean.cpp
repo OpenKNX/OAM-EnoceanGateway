@@ -14,7 +14,6 @@
 // ### DEBUG CONFIGURATION
 // ################################################
 
-
 // EnOcean unique instance creation
 EnOcean EnOcean::Eno;
 EnOcean &enOcean = EnOcean::Eno;
@@ -64,7 +63,7 @@ void EnOcean::handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo)
   for (int i = 0; i < lastDevice; ++i)
   {
 #ifdef KDEBUG_1
-    //SERIAL_PORT.println(F("trying Device %u"), i);
+    // SERIAL_PORT.println(F("trying Device %u"), i);
     SERIAL_PORT.print("trying Device ");
     SERIAL_PORT.println(i);
 #endif
@@ -86,7 +85,7 @@ void EnOcean::task()
   static uint32_t lastTime = 0;
   if (millis() - lastTime > 5000)
   {
-    //SERIAL_PORT.println(F("Alive, %u devices, runtime: %u"), lastDevice, lastTime);
+    // SERIAL_PORT.println(F("Alive, %u devices, runtime: %u"), lastDevice, lastTime);
     SERIAL_PORT.print("Alive, ");
     SERIAL_PORT.print(lastDevice);
     SERIAL_PORT.print(" devices, runtime:");
@@ -166,7 +165,7 @@ void EnOcean::init()
       // 3.) read Base-ID again and print it out
       readBaseId(&lui8_BaseID_p[0]);
     }
-    else //old == new
+    else // old == new
     {
 #ifdef KDEBUG
       SERIAL_PORT.println("Base-ID: OLD == NEW -> NO change! ");
@@ -187,15 +186,12 @@ void EnOcean::init()
   SERIAL_PORT.println("----------------------");
 #endif
   setRepeaterFunc();
-  //prüft ob Änderungen umgesetzt wurden
+  // prüft ob Änderungen umgesetzt wurden
   readRepeaterFunc();
-
-
 
 #ifdef KDEBUG
   SERIAL_PORT.println("----------------------");
 #endif
-
 
   isInited = true;
 }
@@ -231,7 +227,7 @@ void EnOcean::obtainSenderId(uint8_t *senderAdress, uint8_t channel)
   SERIAL_PORT.print("SENDER_ID: ");
   for (int i = 0; i < BASEID_BYTES; i++)
   {
-    //SERIAL_PORT.print("%X", senderAdress[i]);
+    // SERIAL_PORT.print("%X", senderAdress[i]);
     SERIAL_PORT.print(senderAdress[i]);
   }
   SERIAL_PORT.println("");
@@ -506,7 +502,7 @@ void EnOcean::setBaseId(uint8_t *fui8_BaseID_p)
       for (int i = 0; i < m_Pkt_st.u16DataLength + (uint16_t)m_Pkt_st.u8OptionLength; i++)
       {
 
-        //SERIAL_PORT.print("%X", m_Pkt_st.u8DataBuffer[i]);
+        // SERIAL_PORT.print("%X", m_Pkt_st.u8DataBuffer[i]);
         SERIAL_PORT.print(m_Pkt_st.u8DataBuffer[i], HEX);
         SERIAL_PORT.print(" ");
       }
@@ -557,7 +553,7 @@ void EnOcean::setBaseId(uint8_t *fui8_BaseID_p)
       {
 #ifdef KDEBUG
         SERIAL_PORT.print("Wrong packet type. Expected response. Received: ");
-        ///SERIAL_PORT.println("%X", m_Pkt_st.u8Type);
+        /// SERIAL_PORT.println("%X", m_Pkt_st.u8Type);
         SERIAL_PORT.println(m_Pkt_st.u8Type);
 #endif
       }
@@ -622,7 +618,7 @@ void EnOcean::readBaseId(uint8_t *fui8_BaseID_p)
       for (int i = 0; i < m_Pkt_st.u16DataLength + (uint16_t)m_Pkt_st.u8OptionLength; i++)
       {
 
-        //SERIAL_PORT.print("%X", m_Pkt_st.u8DataBuffer[i]);
+        // SERIAL_PORT.print("%X", m_Pkt_st.u8DataBuffer[i]);
         SERIAL_PORT.print(m_Pkt_st.u8DataBuffer[i], HEX);
         SERIAL_PORT.print(" ");
       }
@@ -675,7 +671,7 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
     SERIAL_PORT.print(F("Received Data: "));
     for (int i = 0; i < f_Pkt_st->u16DataLength + (uint16_t)f_Pkt_st->u8OptionLength; i++)
     {
-      //SERIAL_PORT.print(F("%X"), f_Pkt_st->u8DataBuffer[i]);
+      // SERIAL_PORT.print(F("%X"), f_Pkt_st->u8DataBuffer[i]);
       SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[i], HEX);
       SERIAL_PORT.print(F(" "));
     }
@@ -685,11 +681,12 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
     if (f_Pkt_st->u8Type == u8RADIO_ERP1)
     {
 
-#ifdef KDEBUG_Received
+#ifdef KDEBUG_min
       if (f_Pkt_st->u8DataBuffer[0] == u8RORG_RPS)
       {
-        SERIAL_PORT.println(F("Received RPS telegram."));
-        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.println(F("-----"));
+        SERIAL_PORT.println(F("Typ:    RPS"));
+        SERIAL_PORT.print(F("Eno-ID: "));
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
         SERIAL_PORT.print("-");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
@@ -697,42 +694,68 @@ void EnOcean::getEnOceanMSG(uint8_t u8RetVal, PACKET_SERIAL_TYPE *f_Pkt_st)
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
         SERIAL_PORT.print("-");
         SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
+        SERIAL_PORT.print(F("Data:   "));
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[1], HEX);
+        SERIAL_PORT.println(F("-----"));
       }
       else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_VLD)
       {
-        SERIAL_PORT.println(F("Received VLD telegram."));
-        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.println(F("-----"));
+        SERIAL_PORT.println(F("Typ:    VLD"));
+        SERIAL_PORT.print(F("Eno-ID: "));
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 5], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 4], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 3], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[f_Pkt_st->u16DataLength - 2], HEX);
+        SERIAL_PORT.print(F("Data:  "));
+        for (int i = 0; i < f_Pkt_st->u16DataLength - 6; i++)
+        {
+          SERIAL_PORT.print(" ");
+          SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[i + 1], HEX);
+        }
+        SERIAL_PORT.println(F(" "));
+        SERIAL_PORT.println(F("-----"));
       }
       else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_4BS)
       {
-        SERIAL_PORT.println(F("Received 4BS telegram."));
-        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.println(F("-----"));
+        SERIAL_PORT.println(F("Typ:    4BS"));
+        SERIAL_PORT.print(F("Eno-ID: "));
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[5], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[6], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[7], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[8], HEX);
-      }
-      else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_1BS)
-      {
-        SERIAL_PORT.println(F("Received 1BS telegram."));
-        SERIAL_PORT.print(F("EnOcean-ID: "));
+        SERIAL_PORT.print(F("Data:   "));
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[1], HEX);
+        SERIAL_PORT.print(" ");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
         SERIAL_PORT.print(" ");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
         SERIAL_PORT.print(" ");
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[4], HEX);
+        SERIAL_PORT.println(F("-----"));
+      }
+      else if (f_Pkt_st->u8DataBuffer[0] == u8RORG_1BS)
+      {
+        SERIAL_PORT.println(F("-----"));
+        SERIAL_PORT.println(F("Typ:    1BS"));
+        SERIAL_PORT.print  (F("Eno-ID: "));
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[2], HEX);
+        SERIAL_PORT.print("-");
+        SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[3], HEX);
+        SERIAL_PORT.print("-");
         SERIAL_PORT.print(f_Pkt_st->u8DataBuffer[4], HEX);
-        SERIAL_PORT.print(" ");
+        SERIAL_PORT.print("-");
         SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[5], HEX);
+        SERIAL_PORT.print   (F("Data:   "));
+        SERIAL_PORT.println(f_Pkt_st->u8DataBuffer[1], HEX);
+        SERIAL_PORT.println(F("-----"));
       }
 #endif
 
@@ -771,7 +794,7 @@ uint8_t EnOcean::uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferL
   //! Nr. of bytes received
   static uint16_t u16Count = 0;
   //! State machine counter
-  //static STATES_GET_PACKET u8State = GET_SYNC_STATE;
+  // static STATES_GET_PACKET u8State = GET_SYNC_STATE;
   //! Timeout measurement
   static uint8_t u8TickCount = 0;
   // Byte buffer pointing at the paquet address
@@ -780,10 +803,10 @@ uint8_t EnOcean::uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferL
   uint8_t i;
   // Check for timeout between two bytes
   // TODO
-  //if (((uint8)ug32SystemTimer) - u8TickCount > SER_INTERBYTE_TIME_OUT)
+  // if (((uint8)ug32SystemTimer) - u8TickCount > SER_INTERBYTE_TIME_OUT)
   //{
   // Reset state machine to init state
-  //u8State = GET_SYNC_STATE;
+  // u8State = GET_SYNC_STATE;
   //}
   // State machine goes on when a new byte is received
 
@@ -793,11 +816,11 @@ uint8_t EnOcean::uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferL
     while (_serial->readBytes(&u8RxByte, 1) == 1)
     {
       // Comment out for debugging
-      //SERIAL_PORT.println(u8RxByte, HEX);
+      // SERIAL_PORT.println(u8RxByte, HEX);
 
       // Tick count of last received byte
       // TODO
-      //u8TickCount = (uint8)ug32SystemTimer;
+      // u8TickCount = (uint8)ug32SystemTimer;
       // State machine to load incoming packet bytes
       switch (u8State)
       {
@@ -894,10 +917,10 @@ uint8_t EnOcean::uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferL
         // CRC8H correct. Length fields values valid?
         if ((pPacket->u16DataLength + pPacket->u8OptionLength) == 0)
         {
-          //No. Sync byte received?
+          // No. Sync byte received?
           if ((u8RxByte == SER_SYNCH_CODE))
           {
-            //yes
+            // yes
             u8State = GET_HEADER_STATE;
             u16Count = 0;
             u8CRC = 0;
@@ -926,8 +949,8 @@ uint8_t EnOcean::uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferL
           u8State = CHECK_CRC8D_STATE;
         }
 
-        //SERIAL_PORT.print(u16Count);
-        //SERIAL_PORT.println(u16Count, DEC);
+        // SERIAL_PORT.print(u16Count);
+        // SERIAL_PORT.println(u16Count, DEC);
 
         break;
       // Check the data CRC8
