@@ -4,12 +4,15 @@
             "path": "."
         },
         {
-            "path": "../knx-logic"
+            "path": "../OAM-LogicModule"
         },
         {
-			"path": "../knx-common"
+            "path": "../OGM-SensorDevices"
+        },
+        {
+			"path": "../OGM-Common"
 		},
-		{
+        {
 			"path": "../knx"
 		}
     ],

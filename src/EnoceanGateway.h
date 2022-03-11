@@ -173,7 +173,7 @@
 
 // Parameter per channel
 #define LOG_ParamBlockOffset 57
-#define LOG_ParamBlockSize 100
+#define LOG_ParamBlockSize 104
 #define LOG_fChannelDelay              0      // int32_t
 #define LOG_fLogic                     4      // 8 Bits, Bit 7-0
 #define LOG_fCalculate                 5      // 2 Bits, Bit 1-0
@@ -781,6 +781,14 @@
 #define     LOG_fOOffPALineShift 0
 #define LOG_fOOffPADevice             87      // uint8_t
 #define LOG_fOOffFunction             86      // 8 Bits, Bit 7-0
+#define LOG_fE1UseOtherKO             100      // 1 Bit, Bit 7
+#define     LOG_fE1UseOtherKOMask 0x80
+#define     LOG_fE1UseOtherKOShift 7
+#define LOG_fE1OtherKO                100      // uint12_t
+#define LOG_fE2UseOtherKO             102      // 1 Bit, Bit 7
+#define     LOG_fE2UseOtherKOMask 0x80
+#define     LOG_fE2UseOtherKOShift 7
+#define LOG_fE2OtherKO                102      // uint12_t
 
 // Communication objects per channel (multiple occurance)
 #define LOG_KoOffset 320
@@ -790,7 +798,7 @@
 #define LOG_KoKOfO 2
 
 // Parameter per channel
-#define ENO_ParamBlockOffset 5057
+#define ENO_ParamBlockOffset 5257
 #define ENO_ParamBlockSize 23
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
