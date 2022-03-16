@@ -188,6 +188,8 @@
 #define D2_04_1E 183
 #define D2_04_1F 184
 
+#define D2_06_01 191
+
 #define D2_14_30 241
 
 // 1BS Profils

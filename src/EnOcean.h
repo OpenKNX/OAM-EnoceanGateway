@@ -317,6 +317,36 @@ struct VLD_D2_05_TELEGRAM_CMD_04_ACTRESP_TYPE
   uint16_t NA : 5;        // (DB_BIT 7-3) NOT USED
 };
 
+struct VLD_D2_06_Date_TYPE_Alarm
+{
+  uint8_t PPAL  : 4;      // (DB_BIT 3-0) Protection Plus Alarm
+  uint8_t BAL   : 4;      // (DB_BIT 7-4) Burglary Alarm
+};
+
+struct VLD_D2_06_Date_TYPE_Window
+{
+  uint8_t WS  : 4;      // (DB_BIT 3-0) Window State
+  uint8_t HP  : 4;      // (DB_BIT 7-4) Position Handle
+};
+
+struct VLD_D2_06_Date_TYPE_Buttons
+{
+  uint8_t BL  : 4;      // (DB_BIT 3-0) Button Left
+  uint8_t BR  : 4;      // (DB_BIT 7-4) Button Right
+};
+
+struct VLD_D2_06_Date_TYPE_Motion_Mode
+{
+  uint8_t V  : 4;      // (DB_BIT 3-0) Vacation-Mode
+  uint8_t M  : 4;      // (DB_BIT 7-4) Motion
+};
+
+struct VLD_D2_06_Date_TYPE_Battery
+{
+  uint8_t NA : 3;      // (DB_BIT 2-0) not used
+  uint8_t BS : 5;      // (DB_BIT 7-3) Battery State
+};
+
 struct VLD_D2_14_30_Data_TYPE
 {
   uint8_t VIB : 4;     // (DB_BIT 0-3)  not used
@@ -396,6 +426,22 @@ struct VLD_D2_05_00_TELEGRAM_CMD_04_TYPE
   uint8_t pos;
   uint8_t angle;
   VLD_D2_05_TELEGRAM_CMD_04_ACTRESP_TYPE u8VldTelSenSta;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_06_01_TELEGRAM
+{
+  uint8_t u8MT;             // Message Type
+  VLD_D2_06_Date_TYPE_Alarm u8VldTelAlarm;
+  VLD_D2_06_Date_TYPE_Window u8VldTelWindow;            
+  VLD_D2_06_Date_TYPE_Buttons u8VldTelButton;
+  VLD_D2_06_Date_TYPE_Motion_Mode u8VldTelMotionMode;
+  uint8_t u8Temp;    
+  uint8_t u8Hum;  
+  uint8_t u8LuxMSB;    
+  uint8_t u8LuxLSB;     
+  VLD_D2_06_Date_TYPE_Battery u8VldTelBat;   
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };

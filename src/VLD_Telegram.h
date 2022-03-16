@@ -6,7 +6,9 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
 {
 
       uint8_t mem;
+      uint8_t mem2;
       uint8_t valueBat;
+      uint16_t value;
       float temp_s;
       float hum_s;
       float voc1_s;
@@ -18,6 +20,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
       VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
       VLD_D2_14_30_TELEGRAM *SenStat_D2_14_30;
+      VLD_D2_06_01_TELEGRAM *SenVal_D2_06_01;
 
       switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionVLD))
       {
@@ -88,16 +91,16 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   // Buttons
                   switch (SenVal_D2_03_0A->value)
                   {
-                  case 1: //single click
+                  case 1: // single click
                         knx.getGroupObject(firstComObj + 6).value(true, getDPT(VAL_DPT_1));
                         break;
-                  case 2: //double click
+                  case 2: // double click
                         knx.getGroupObject(firstComObj + 7).value(true, getDPT(VAL_DPT_1));
                         break;
-                  case 3: //long click
+                  case 3: // long click
                         knx.getGroupObject(firstComObj + 8).value(true, getDPT(VAL_DPT_1));
                         break;
-                  case 4: //long click release
+                  case 4: // long click release
                         knx.getGroupObject(firstComObj + 9).value(true, getDPT(VAL_DPT_1));
                         break;
 
@@ -136,7 +139,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             case D2_04_01:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
@@ -147,7 +150,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_02:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
@@ -157,7 +160,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_03:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(SenVal_D2_04, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj+2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj+2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-03"));
@@ -166,7 +169,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_04:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj+2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj+2).value(hum_s, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-04"));
 #endif
@@ -174,7 +177,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_05:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-05"));
@@ -182,8 +185,8 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             case D2_04_06:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-06"));
@@ -191,8 +194,8 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             case D2_04_07:
                   knx.getGroupObject(firstComObj).value(voc1_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
@@ -210,7 +213,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             case D2_04_09:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
@@ -221,7 +224,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_10:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
@@ -231,7 +234,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_1A:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-1A"));
@@ -248,7 +251,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_04_1C:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-1C"));
@@ -256,8 +259,8 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             case D2_04_1D:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-04-1D"));
@@ -265,8 +268,8 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             case D2_04_1E:
                   knx.getGroupObject(firstComObj).value(voc2_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
-                  //knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+                  // knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 3).value(SenVal_D2_04->u8VldTelSenSta.daynight, getDPT(VAL_DPT_1));
                   knx.getGroupObject(firstComObj + 4).value(SenVal_D2_04->u8VldTelSenSta.batt, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
@@ -334,6 +337,138 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   break;
             }
             break; // ENDE D2-05
+
+      case D2_06:
+            //**************************************************************
+            // ----------------- Profil: D2-06-xx --------------------------
+            //**************************************************************
+            switch (knx.paramWord(firstParameter + ENO_CHProfilVLD06))
+            {
+            case D2_06_01:
+                  SenVal_D2_06_01 = (VLD_D2_06_01_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
+                  if (SenVal_D2_06_01->u8MT == 0x00)
+                  {
+#ifdef KDEBUG
+                        SERIAL_PORT.println(F("Profil: D2-06-01"));
+#endif
+                        // Burglary Alarm
+                        knx.getGroupObject(firstComObj + 3).value(SenVal_D2_06_01->u8VldTelAlarm.BAL, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Alarm: "));
+                        SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelAlarm.BAL);
+#endif
+                        // Position of Handle
+                        if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x1) // Handle up = open
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
+                        }
+                        else if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x2) // Handle down = close
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
+                        }
+                        else if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x3) // Handle left = open
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
+                        }
+                        else if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x4) // Handle right = open
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
+                        }
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("handle Pos: "));
+                        SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelWindow.HP);
+#endif
+                        // state of Window
+                        if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x1) // Window not Tilted = close
+                        {
+                              knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
+                        }
+                        if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x2) // Window  Tilted = open
+                        {
+                              knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
+                        }
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Window tilted: "));
+                        SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelWindow.WS - 1);
+#endif
+                        // Button Right
+                        if (SenVal_D2_06_01->u8VldTelButton.BR == 0x1)
+                        {
+                              mem = true;
+                              knx.getGroupObject(firstComObj + 8).value(mem, getDPT(VAL_DPT_1));
+                        }
+                        if (SenVal_D2_06_01->u8VldTelButton.BR == 0x2)
+                        {
+                              mem = false;
+                              knx.getGroupObject(firstComObj + 8).value(mem, getDPT(VAL_DPT_1));
+                        }
+                        if (SenVal_D2_06_01->u8VldTelButton.BR == 0x0)
+                        {
+                              knx.getGroupObject(firstComObj + 8).value(mem, getDPT(VAL_DPT_1));
+                        }
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("But R: "));
+                        SERIAL_PORT.println(mem);
+#endif
+                        // Button Left
+                        if (SenVal_D2_06_01->u8VldTelButton.BL == 0x1)
+                        {
+                              mem2 = true;
+                              knx.getGroupObject(firstComObj + 9).value(mem2, getDPT(VAL_DPT_1));
+                        }
+                        if (SenVal_D2_06_01->u8VldTelButton.BL == 0x2)
+                        {
+                              mem2 = false;
+                              knx.getGroupObject(firstComObj + 9).value(mem2, getDPT(VAL_DPT_1));
+                        }
+                        if (SenVal_D2_06_01->u8VldTelButton.BL == 0x0)
+                        {
+                              knx.getGroupObject(firstComObj + 9).value(mem2, getDPT(VAL_DPT_1));
+                        }
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("But L: "));
+                        SERIAL_PORT.println(mem2);
+#endif
+                        // Motion
+                        knx.getGroupObject(firstComObj).value(SenVal_D2_06_01->u8VldTelMotionMode.M, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Motion Det: "));
+                        SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelMotionMode.M);
+#endif
+                        // Temp
+                        temp_s = SenVal_D2_06_01->u8Temp / 0.320 - 20.0;
+                        knx.getGroupObject(firstComObj + 6).value(temp_s, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Temp: "));
+                        SERIAL_PORT.println(temp_s);
+#endif
+                        // Hum
+                        hum_s = SenVal_D2_06_01->u8Hum / 0.5;
+                        knx.getGroupObject(firstComObj + 7).value(hum_s, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Hum: "));
+                        SERIAL_PORT.println(hum_s);
+#endif
+                        // Lux
+                        value = (((uint16_t)SenVal_D2_06_01->u8LuxMSB) << 8 | SenVal_D2_06_01->u8LuxLSB);
+                        knx.getGroupObject(firstComObj + 5).value(value, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Lux: "));
+                        SERIAL_PORT.println(value);
+#endif
+                        // Bat
+                        valueBat = SenVal_D2_06_01->u8VldTelBat.BS * 5;
+                        knx.getGroupObject(firstComObj + 5).value(valueBat, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Bat(%): "));
+                        SERIAL_PORT.println(valueBat);
+#endif
+                  }
+                  break;
+            default:
+                  break;
+            }
+            break; // ENDE D2-06
 
       case D2_14:
             //**************************************************************
