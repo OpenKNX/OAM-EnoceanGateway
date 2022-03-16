@@ -22,10 +22,10 @@
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="General" Text="Allgemeine Parameter">
                 <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-6" Text="" UIHint="HorizontalRuler" />
                 <!-- Parameter to choose startup delay -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-100000_R-100000" /> <!-- Repeater ON/OFF -->
-                <choose ParamRefId="M-00FA_A-0001-01-0000_P-100000_R-100000">
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-%T%000000_R-%T%00000001" /> <!-- Repeater ON/OFF -->
+                <choose ParamRefId="M-00FA_A-0001-01-0000_P-%T%000000_R-%T%00000001">
                   <when test="1">
-                    <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-100010_R-100010" /> <!-- Repeater Level -->
+                    <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-%T%000010_R-%T%00001001" /> <!-- Repeater Level -->
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-100" Text="Level-1 = nur Nachrichten die noch nicht weitergeleitet wurden, werden 'repeated'" />
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-101" Text="Level-2 = alle Nachrichten werden 'repeated'" />
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-102" Text="ACHTUNG:" />
@@ -34,8 +34,8 @@
                   </when>
                 </choose>
                 <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-7" Text="" UIHint="HorizontalRuler" />
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-100001_R-100001" />
-                <choose ParamRefId="M-00FA_A-0001-01-0000_P-100001_R-100001">
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-%T%000001_R-%T%00000101" />
+                <choose ParamRefId="M-00FA_A-0001-01-0000_P-%T%000001_R-%T%00000101">
                   <when test="0">
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-99" Text="                                                                  ACHTUNG: die Base-ID kann nur 10x geändert werden!" />
                   </when>
@@ -61,14 +61,14 @@
                             </Columns>
                             <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-9" Text="Base-ID:"  Cell="1,1" />
                             <!-- <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-nnn" Text="." Cell="1,3"/> -->
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100002_R-100002" Cell="1,2" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100003_R-100003" Cell="1,3" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100004_R-100004" Cell="1,5" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100005_R-100005" Cell="1,6" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100006_R-100006" Cell="1,8" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100007_R-100007" Cell="1,9" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100008_R-100008" Cell="1,11" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-100009_R-100009" Cell="1,12" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000002_R-%T%00000201" Cell="1,2" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000003_R-%T%00000301" Cell="1,3" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000004_R-%T%00000401" Cell="1,5" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000005_R-%T%00000501" Cell="1,6" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000006_R-%T%00000601" Cell="1,8" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000007_R-%T%00000701" Cell="1,9" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000008_R-%T%00000801" Cell="1,11" />
+                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000009_R-%T%00000901" Cell="1,12" />
                           </ParameterBlock>
                       <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-13" Text="Zulässiger Base-ID Bereich: 0xFF800000 to 0xFFFFFFFE" />
                   </when>
@@ -77,19 +77,19 @@
               </ParameterBlock>
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="Hardware" Text="EnoceanGateway: Hardware (vorbelegt)">
                 <!-- buzzer available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-5_R-52" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000005_R-100000502" />
                 <!-- rgb led available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-6_R-62" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000006_R-100000602" />
                 <!-- eeprom available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-7_R-72" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000007_R-100000702" />
                 <!-- ncn5130 available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-8_R-82" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000008_R-100000802" />
                 <!-- move locally set values to global parameters -->
                 <!-- this is used for decoupling specific applications from global behaviour -->
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-5_R-51" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-5_R-52" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-6_R-61" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-6_R-62" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-7_R-71" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-7_R-72" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-8_R-81" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-8_R-82" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000005_R-100000501" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000005_R-100000502" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000006_R-100000601" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000006_R-100000602" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000007_R-100000701" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000007_R-100000702" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000008_R-100000801" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000008_R-100000802" />
               </ParameterBlock>
             </ChannelIndependentBlock>
           </Dynamic>

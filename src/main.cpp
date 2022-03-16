@@ -3,7 +3,8 @@
 #include "hardwareENO.h"
 #include "wiring_private.h" // pinPeripheral() function
 #include "Enocean.h"
-
+#include "EnoceanGateway.h"
+#include <OpenKNX.h>
 #include "EnOceanHandle.h"
 
 // XIAO PINS   RX = D3  TX = D2
@@ -39,7 +40,8 @@ void setup()
     digitalWrite(LED_YELLOW_PIN, HIGH);
 #endif
 
-    knx.readMemory();
+    // knx.readMemory();
+    OpenKNX::knxRead(MAIN_OpenKnxId, MAIN_ApplicationNumber, MAIN_ApplicationVersion, 0);
 
     // pin or GPIO the programming led is connected to. Default is LED_BUILDIN
     knx.ledPin(PROG_LED_PIN);

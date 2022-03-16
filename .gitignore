@@ -4,6 +4,6 @@
 .vscode/extensions.json
 .vscode/launch.json
 .vscode/ipch
-src/EnoceanGateway.knxprod
-src/EnoceanGateway.debug.xml
+**/*.knxprod
+**/*.debug.xml
 

@@ -263,7 +263,7 @@ public:
   //*************************************************************************************************************************************************************
   void task()
   {
-    bool longPressDim = false;
+    // bool longPressDim = false;
 
     switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
     {
@@ -550,7 +550,7 @@ public:
           else
           {
             union1.val_A5_20_01[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
-#ifdef KDEBUG #
+#ifdef KDEBUG
             SERIAL_PORT.print(F("SET Pos to: "));
             SERIAL_PORT.print(union1.val_A5_20_01[0]);
             SERIAL_PORT.println(F("%"));
@@ -647,7 +647,7 @@ public:
         {
         case KO_0: //  SET Pos
           union1.val_A5_20_04[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5));
-#ifdef KDEBUG #
+#ifdef KDEBUG
           SERIAL_PORT.print(F("SET Pos to: "));
           SERIAL_PORT.print(union1.val_A5_20_04[0]);
           SERIAL_PORT.println(F("%"));
@@ -769,7 +769,7 @@ public:
           else
           {
             union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
-#ifdef KDEBUG #
+#ifdef KDEBUG
             SERIAL_PORT.print(F("SET Pos to: "));
             SERIAL_PORT.print(union1.val_A5_20_06[0]);
             SERIAL_PORT.println(F("%"));
@@ -924,8 +924,8 @@ public:
   //*************************************************************************************************************************************************************
   bool handleEnOceanPacket(PACKET_SERIAL_TYPE *f_Pkt_st)
   {
-    uint8_t DevicId_Arr_TEST[4] = {0xFF, 0xDC, 0xD4, 0x80};
-    uint8_t MSGDef;
+    // uint8_t DevicId_Arr_TEST[4] = {0xFF, 0xDC, 0xD4, 0x80};
+    // uint8_t MSGDef;
 
     // Get rid of messages we can't handle
     if (f_Pkt_st->u8DataBuffer[0] != knx.paramByte(ENO_CHProfilSelection + firstParameter) && knx.paramByte(ENO_CHProfilSelection + firstParameter) != u8RORG_Rocker)

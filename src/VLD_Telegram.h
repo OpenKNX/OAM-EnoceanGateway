@@ -18,7 +18,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       VLD_D2_04_00_TELEGRAM *SenVal_D2_04;
       VLD_D2_03_0A_TELEGRAM *SenVal_D2_03_0A;
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
-      VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
+      // VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
       VLD_D2_14_30_TELEGRAM *SenStat_D2_14_30;
       VLD_D2_06_01_TELEGRAM *SenVal_D2_06_01;
 

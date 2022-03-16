@@ -235,7 +235,7 @@ void longStop(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 
 bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 {
-  uint8_t szeneNr;
+  // uint8_t szeneNr;
   switch (rockerNr)
   {
   case AO_pressed:
@@ -505,7 +505,7 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 
 void shortPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
 {
-  uint8_t szeneNr;
+  // uint8_t szeneNr;
   switch (rockerNr)
   {
   case AO_pressed:

@@ -701,51 +701,51 @@
             </ParameterTypes>
             <Parameters>
               <!-- the follwoing 3 parameters represent a productive example -->
-              <Parameter Id="M-00FA_A-0001-01-0000_P-100000" Name="RepeaterFunc" ParameterType="M-00FA_A-0001-01-0000_PT-YesNo" Text="Repeater-Function:" Value="0">
+              <Parameter Id="M-00FA_A-0001-01-0000_P-%T%000000" Name="RepeaterFunc" ParameterType="M-00FA_A-0001-01-0000_PT-YesNo" Text="Repeater-Function:" Value="0">
                 <Memory CodeSegment="M-00FA_A-0001-01-0000_RS-04-00000" Offset="50" BitOffset="0" />
               </Parameter>
-              <Parameter Id="M-00FA_A-0001-01-0000_P-100001" Name="SetBaseIdFunc" ParameterType="M-00FA_A-0001-01-0000_PT-YesNo" Text="Base-ID anpassen?" Value="0">
+              <Parameter Id="M-00FA_A-0001-01-0000_P-%T%000001" Name="SetBaseIdFunc" ParameterType="M-00FA_A-0001-01-0000_PT-YesNo" Text="Base-ID anpassen?" Value="0">
                 <Memory CodeSegment="M-00FA_A-0001-01-0000_RS-04-00000" Offset="51" BitOffset="0" />
               </Parameter>
               <!-- Device-Id -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="M-00FA_A-0001-01-0000_RS-04-00000" Offset="52" BitOffset="0" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100002" Name="Id0" Offset="0" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-NibbleF"  Text="" Value="15" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100003" Name="Id1" Offset="0" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-NibbleF"  Text="" Value="15" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100004" Name="Id2" Offset="1" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble8"  Text="" Value="8" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100005" Name="Id3" Offset="1" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100006" Name="Id4" Offset="2" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100007" Name="Id5" Offset="2" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100008" Name="Id6" Offset="3" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble08" Text="" Value="0" />
-                <Parameter Id="M-00FA_A-0001-01-0000_UP-100009" Name="Id7" Offset="3" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble0"  Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000002" Name="Id0" Offset="0" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-NibbleF"  Text="" Value="15" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000003" Name="Id1" Offset="0" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-NibbleF"  Text="" Value="15" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000004" Name="Id2" Offset="1" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble8"  Text="" Value="8" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000005" Name="Id3" Offset="1" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000006" Name="Id4" Offset="2" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000007" Name="Id5" Offset="2" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000008" Name="Id6" Offset="3" BitOffset="0" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble08" Text="" Value="0" />
+                <Parameter Id="M-00FA_A-0001-01-0000_UP-%T%000009" Name="Id7" Offset="3" BitOffset="4" ParameterType="M-00FA_A-0001-01-0000_PT-Nibble0"  Text="" Value="0" />
               </Union>
-              <Parameter Id="M-00FA_A-0001-01-0000_P-100010" Name="RepeaterLevel" ParameterType="M-00FA_A-0001-01-0000_PT-RepeaterLevel" Text="Option:" Value="1">
+              <Parameter Id="M-00FA_A-0001-01-0000_P-%T%000010" Name="RepeaterLevel" ParameterType="M-00FA_A-0001-01-0000_PT-RepeaterLevel" Text="Option:" Value="1">
                 <Memory CodeSegment="M-00FA_A-0001-01-0000_RS-04-00000" Offset="56" BitOffset="0" />
               </Parameter>
             </Parameters>
             <ParameterRefs>
               <!-- Predefined parameters for hardware selection, influences logic module application -->
               <!-- buzzer available (invisible, false) -->
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-5_R-52" RefId="M-00FA_A-0001-01-0000_UP-5" Value="0" Access="None" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000005_R-100000502" RefId="M-00FA_A-0001-01-0000_UP-1000005" Value="0" Access="None" />
               <!-- rgb led available (invisible, false) -->
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-6_R-62" RefId="M-00FA_A-0001-01-0000_UP-6" Value="0" Access="None" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000006_R-100000602" RefId="M-00FA_A-0001-01-0000_UP-1000006" Value="0" Access="None" />
               <!-- eeprom available (invisible, false) -->
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-7_R-72" RefId="M-00FA_A-0001-01-0000_UP-7" Value="0" Access="None" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000007_R-100000702" RefId="M-00FA_A-0001-01-0000_UP-1000007" Value="0" Access="None" />
               <!-- hardware power off available (invisible, false) -->
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-8_R-82" RefId="M-00FA_A-0001-01-0000_UP-8" Value="0" Access="None" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000008_R-100000802" RefId="M-00FA_A-0001-01-0000_UP-1000008" Value="0" Access="None" />
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
               <!-- ParameterRef are used in the ETS UI -->
-              <ParameterRef Id="M-00FA_A-0001-01-0000_P-100000_R-100000" RefId="M-00FA_A-0001-01-0000_P-100000" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_P-100001_R-100001" RefId="M-00FA_A-0001-01-0000_P-100001" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100002_R-100002" RefId="M-00FA_A-0001-01-0000_UP-100002" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100003_R-100003" RefId="M-00FA_A-0001-01-0000_UP-100003" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100004_R-100004" RefId="M-00FA_A-0001-01-0000_UP-100004" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100005_R-100005" RefId="M-00FA_A-0001-01-0000_UP-100005" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100006_R-100006" RefId="M-00FA_A-0001-01-0000_UP-100006" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100007_R-100007" RefId="M-00FA_A-0001-01-0000_UP-100007" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100008_R-100008" RefId="M-00FA_A-0001-01-0000_UP-100008" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-100009_R-100009" RefId="M-00FA_A-0001-01-0000_UP-100009" />
-              <ParameterRef Id="M-00FA_A-0001-01-0000_P-100010_R-100010" RefId="M-00FA_A-0001-01-0000_P-100010" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_P-%T%000000_R-%T%00000001" RefId="M-00FA_A-0001-01-0000_P-%T%000000" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_P-%T%000001_R-%T%00000101" RefId="M-00FA_A-0001-01-0000_P-%T%000001" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000002_R-%T%00000201" RefId="M-00FA_A-0001-01-0000_UP-%T%000002" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000003_R-%T%00000301" RefId="M-00FA_A-0001-01-0000_UP-%T%000003" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000004_R-%T%00000401" RefId="M-00FA_A-0001-01-0000_UP-%T%000004" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000005_R-%T%00000501" RefId="M-00FA_A-0001-01-0000_UP-%T%000005" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000006_R-%T%00000601" RefId="M-00FA_A-0001-01-0000_UP-%T%000006" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000007_R-%T%00000701" RefId="M-00FA_A-0001-01-0000_UP-%T%000007" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000008_R-%T%00000801" RefId="M-00FA_A-0001-01-0000_UP-%T%000008" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-%T%000009_R-%T%00000901" RefId="M-00FA_A-0001-01-0000_UP-%T%000009" />
+              <ParameterRef Id="M-00FA_A-0001-01-0000_P-%T%000010_R-%T%00001001" RefId="M-00FA_A-0001-01-0000_P-%T%000010" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>

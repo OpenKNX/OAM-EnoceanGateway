@@ -2,6 +2,7 @@
 #include <knx.h>
 
 // Parameter with single occurance
+
 #define LOG_NumChannels                0      // uint8_t
 #define LOG_StartupDelay               1      // int32_t
 #define LOG_Heartbeat                  5      // int32_t
@@ -139,37 +140,50 @@
 #define LOG_LedMapping                29      // 3 Bits, Bit 7-5
 #define     LOG_LedMappingMask 0xE0
 #define     LOG_LedMappingShift 5
-#define LOG_RepeaterFunc              50      // 1 Bit, Bit 7
-#define     LOG_RepeaterFuncMask 0x80
-#define     LOG_RepeaterFuncShift 7
-#define LOG_SetBaseIdFunc             51      // 1 Bit, Bit 7
-#define     LOG_SetBaseIdFuncMask 0x80
-#define     LOG_SetBaseIdFuncShift 7
-#define LOG_Id0                       52      // 4 Bits, Bit 7-4
-#define     LOG_Id0Mask 0xF0
-#define     LOG_Id0Shift 4
-#define LOG_Id1                       52      // 4 Bits, Bit 3-0
-#define     LOG_Id1Mask 0x0F
-#define     LOG_Id1Shift 0
-#define LOG_Id2                       53      // 4 Bits, Bit 7-4
-#define     LOG_Id2Mask 0xF0
-#define     LOG_Id2Shift 4
-#define LOG_Id3                       53      // 4 Bits, Bit 3-0
-#define     LOG_Id3Mask 0x0F
-#define     LOG_Id3Shift 0
-#define LOG_Id4                       54      // 4 Bits, Bit 7-4
-#define     LOG_Id4Mask 0xF0
-#define     LOG_Id4Shift 4
-#define LOG_Id5                       54      // 4 Bits, Bit 3-0
-#define     LOG_Id5Mask 0x0F
-#define     LOG_Id5Shift 0
-#define LOG_Id6                       55      // 4 Bits, Bit 7-4
-#define     LOG_Id6Mask 0xF0
-#define     LOG_Id6Shift 4
-#define LOG_Id7                       55      // 4 Bits, Bit 3-0
-#define     LOG_Id7Mask 0x0F
-#define     LOG_Id7Shift 0
-#define LOG_RepeaterLevel             56      // 8 Bits, Bit 7-0
+
+#define LOG_KoHeartbeat 1
+#define LOG_KoTime 2
+#define LOG_KoDate 3
+#define LOG_KoVacation 4
+#define LOG_KoHoliday1 5
+#define LOG_KoHoliday2 6
+#define LOG_KoDiagnose 7
+#define LOG_KoLedLock 8
+#define LOG_KoBuzzerLock 9
+
+#define ENO_RepeaterFunc              50      // 1 Bit, Bit 7
+#define     ENO_RepeaterFuncMask 0x80
+#define     ENO_RepeaterFuncShift 7
+#define ENO_SetBaseIdFunc             51      // 1 Bit, Bit 7
+#define     ENO_SetBaseIdFuncMask 0x80
+#define     ENO_SetBaseIdFuncShift 7
+#define ENO_Id0                       52      // 4 Bits, Bit 7-4
+#define     ENO_Id0Mask 0xF0
+#define     ENO_Id0Shift 4
+#define ENO_Id1                       52      // 4 Bits, Bit 3-0
+#define     ENO_Id1Mask 0x0F
+#define     ENO_Id1Shift 0
+#define ENO_Id2                       53      // 4 Bits, Bit 7-4
+#define     ENO_Id2Mask 0xF0
+#define     ENO_Id2Shift 4
+#define ENO_Id3                       53      // 4 Bits, Bit 3-0
+#define     ENO_Id3Mask 0x0F
+#define     ENO_Id3Shift 0
+#define ENO_Id4                       54      // 4 Bits, Bit 7-4
+#define     ENO_Id4Mask 0xF0
+#define     ENO_Id4Shift 4
+#define ENO_Id5                       54      // 4 Bits, Bit 3-0
+#define     ENO_Id5Mask 0x0F
+#define     ENO_Id5Shift 0
+#define ENO_Id6                       55      // 4 Bits, Bit 7-4
+#define     ENO_Id6Mask 0xF0
+#define     ENO_Id6Shift 4
+#define ENO_Id7                       55      // 4 Bits, Bit 3-0
+#define     ENO_Id7Mask 0x0F
+#define     ENO_Id7Shift 0
+#define ENO_RepeaterLevel             56      // 8 Bits, Bit 7-0
+
+#define LOG_ChannelCount 50
 
 // Parameter per channel
 #define LOG_ParamBlockOffset 57
@@ -797,6 +811,8 @@
 #define LOG_KoKOfE2 1
 #define LOG_KoKOfO 2
 
+#define ENO_ChannelCount 30
+
 // Parameter per channel
 #define ENO_ParamBlockOffset 5257
 #define ENO_ParamBlockSize 23
@@ -914,14 +930,6 @@
 #define ENO_KoGO_BASE__9 8
 #define ENO_KoGO_BASE__10 9
 
-// Communication objects with single occurance
-#define LOG_KoHeartbeat 1
-#define LOG_KoTime 2
-#define LOG_KoDate 3
-#define LOG_KoVacation 4
-#define LOG_KoHoliday1 5
-#define LOG_KoHoliday2 6
-#define LOG_KoDiagnose 7
-#define LOG_KoLedLock 8
-#define LOG_KoBuzzerLock 9
-
+#define MAIN_OpenKnxId 0xA2
+#define MAIN_ApplicationNumber 1
+#define MAIN_ApplicationVersion 0
