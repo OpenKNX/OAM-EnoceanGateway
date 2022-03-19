@@ -99,7 +99,7 @@
         </ApplicationProgram>
       </ApplicationPrograms>
       <Hardware>
-        <Hardware Id="M-00FA_H-MF203-1" Name="EnoceanGateway" SerialNumber="MF203" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
+        <Hardware Id="M-00FA_H-MF203-1" Name="Enocean-Gateway" SerialNumber="MF203" VersionNumber="1" BusCurrent="10" HasIndividualAddress="true" HasApplicationProgram="true">
           <Products>
             <Product Id="M-00FA_H-MF203-1_P-MFKnxEno" Text="KNX-Enocean-Gateway CH30" OrderNumber="MFKnxEno" IsRailMounted="false" DefaultLanguage="de">
               <RegistrationInfo RegistrationStatus="Registered" />
