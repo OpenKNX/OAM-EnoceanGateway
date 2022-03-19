@@ -56,9 +56,9 @@
             "problemMatcher": []
         },
 		{
-            "label": "MultiplyChannels",
+            "label": "OpenKNXproducer",
             "type": "shell",
-            "command": "${env:USERPROFILE}\\bin\\MultiplyChannels.exe",
+            "command": "${env:USERPROFILE}\\bin\\OpenKNXproducer.exe",
             "args": [
                 "create",
                 "--Debug",
