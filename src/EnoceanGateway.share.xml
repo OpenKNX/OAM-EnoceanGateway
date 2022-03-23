@@ -127,7 +127,7 @@
                   <Enumeration Text="D2-03  switches and mechanic handle"           Value="3" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-3" />
                   <Enumeration Text="D2-04  Co2, Hum, Temp, Day/Night and Autonomy" Value="4" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-4" />
                   <Enumeration Text="D2-05  Blinds Control for Position an Angle"   Value="5" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-5" />
-                  <Enumeration Text="D2-06  N.A."                                   Value="6" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-6" />
+                  <Enumeration Text="D2-06  Multisensor Window / Door Handle anf Sensor" Value="6" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-6" />
                   <Enumeration Text="D2-10  N.A."                                   Value="16" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-16" />
                   <Enumeration Text="D2-11  N.A."                                   Value="17" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-17" />
                   <Enumeration Text="D2-14  Sensors"                                Value="20" Id="M-00FA_A-0001-01-0000_PT-ProfilSelectionVLD_EN-20" />
@@ -356,7 +356,11 @@
               </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06" Name="ProfilVLD06">
                 <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="D2-06-00   Type 0x00" Value="191" Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06_EN-191" />
+                  <Enumeration Text="D2-06-01   Alarm, Position Sensor, Vacation Mode, Optical Snesors" Value="191" Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06_EN-191" />
+                  <Enumeration Text="D2-06-10   N.A." Value="192" Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06_EN-192" />
+                  <Enumeration Text="D2-06-20   N.A." Value="193" Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06_EN-193" />
+                  <Enumeration Text="D2-06-40   N.A." Value="194" Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06_EN-194" />
+                  <Enumeration Text="D2-06-50   Window Sash and HW Position Sensor" Value="195" Id="M-00FA_A-0001-01-0000_PT-ProfilVLD06_EN-195" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="M-00FA_A-0001-01-0000_PT-ProfilVLD10" Name="ProfilVLD10">

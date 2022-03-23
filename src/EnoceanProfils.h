@@ -189,6 +189,7 @@
 #define D2_04_1F 184
 
 #define D2_06_01 191
+#define D2_06_50 195
 
 #define D2_14_30 241
 

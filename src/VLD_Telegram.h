@@ -9,6 +9,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       uint8_t mem2;
       uint8_t valueBat;
       uint16_t value;
+      uint32_t counter;
       float temp_s;
       float hum_s;
       float voc1_s;
@@ -21,6 +22,8 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       // VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
       VLD_D2_14_30_TELEGRAM *SenStat_D2_14_30;
       VLD_D2_06_01_TELEGRAM *SenVal_D2_06_01;
+      VLD_D2_06_50_Window_Status_0x01 *SenVal_D2_06_50_0x01;
+      VLD_D2_06_50_Alarm_Status_0x02 *SenVal_D2_06_50_0x02;
 
       switch (knx.paramWord(firstParameter + ENO_CHProfilSelectionVLD))
       {
@@ -344,6 +347,9 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             //**************************************************************
             switch (knx.paramWord(firstParameter + ENO_CHProfilVLD06))
             {
+            //**************************************************************
+            // ----------------- Profil: D2-06-01 --------------------------
+            //**************************************************************
             case D2_06_01:
                   SenVal_D2_06_01 = (VLD_D2_06_01_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
                   if (SenVal_D2_06_01->u8MT == 0x00)
@@ -351,43 +357,48 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
 #ifdef KDEBUG
                         SERIAL_PORT.println(F("Profil: D2-06-01"));
 #endif
-                        // Burglary Alarm
-                        knx.getGroupObject(firstComObj + 3).value(SenVal_D2_06_01->u8VldTelAlarm.BAL, getDPT(VAL_DPT_1));
+                        // Alarm
+                        if (SenVal_D2_06_01->u8VldTelAlarm.BAL || SenVal_D2_06_01->u8VldTelAlarm.PPAL)
+                        {
+                              knx.getGroupObject(firstComObj + 3).value(true, getDPT(VAL_DPT_1));
+                        }
+                        else
+                        {
+                              knx.getGroupObject(firstComObj + 3).value(false, getDPT(VAL_DPT_1));
+                        }
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("Alarm: "));
                         SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelAlarm.BAL);
 #endif
+                        // Window State
+                        // closed = State1 = 0 & State2 = 0
+                        if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x1 && SenVal_D2_06_01->u8VldTelWindow.HP == 0x2) // Window not Tilted = close & Handle down = close
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1)); // KO Fenster Status 1
+                              knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1)); // KO Fenster Status 2
+                        }
+                        else if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x2) // Window  Tilted = open
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));  // KO Fenster Status 1
+                              knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1)); // KO Fenster Status 2
+                        }
+                        else
+                        {
+                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1)); // KO Fenster Status 1
+                              knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1)); // KO Fenster Status 2
+                        }
+
                         // Position of Handle
-                        if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x1) // Handle up = open
-                        {
-                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-                        }
-                        else if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x2) // Handle down = close
-                        {
-                              knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
-                        }
-                        else if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x3) // Handle left = open
-                        {
-                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-                        }
-                        else if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x4) // Handle right = open
-                        {
-                              knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
-                        }
+                        // if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x1) // Handle up = open
+                        // if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x2) // Handle down = close
+                        // if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x3) // Handle left = open
+                        // if (SenVal_D2_06_01->u8VldTelWindow.HP == 0x4) // Handle right = open
+                        // state of Window
+                        // if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x1) // Window not Tilted = close
+                        // if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x2) // Window  Tilted = open
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("handle Pos: "));
                         SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelWindow.HP);
-#endif
-                        // state of Window
-                        if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x1) // Window not Tilted = close
-                        {
-                              knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));
-                        }
-                        if (SenVal_D2_06_01->u8VldTelWindow.WS == 0x2) // Window  Tilted = open
-                        {
-                              knx.getGroupObject(firstComObj + 2).value(true, getDPT(VAL_DPT_1));
-                        }
-#ifdef KDEBUG
                         SERIAL_PORT.print(F("Window tilted: "));
                         SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelWindow.WS - 1);
 #endif
@@ -408,7 +419,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                         }
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("But R: "));
-                        SERIAL_PORT.println(mem);
+                        SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelButton.BR);
 #endif
                         // Button Left
                         if (SenVal_D2_06_01->u8VldTelButton.BL == 0x1)
@@ -427,7 +438,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                         }
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("But L: "));
-                        SERIAL_PORT.println(mem2);
+                        SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelButton.BL);
 #endif
                         // Motion
                         knx.getGroupObject(firstComObj).value(SenVal_D2_06_01->u8VldTelMotionMode.M, getDPT(VAL_DPT_1));
@@ -436,14 +447,14 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                         SERIAL_PORT.println(SenVal_D2_06_01->u8VldTelMotionMode.M);
 #endif
                         // Temp
-                        temp_s = SenVal_D2_06_01->u8Temp / 0.320 - 20.0;
+                        temp_s = SenVal_D2_06_01->u8Temp * 0.320 - 20.0;
                         knx.getGroupObject(firstComObj + 6).value(temp_s, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("Temp: "));
                         SERIAL_PORT.println(temp_s);
 #endif
                         // Hum
-                        hum_s = SenVal_D2_06_01->u8Hum / 0.5;
+                        hum_s = SenVal_D2_06_01->u8Hum / 2;
                         knx.getGroupObject(firstComObj + 7).value(hum_s, getDPT(VAL_DPT_9));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("Hum: "));
@@ -458,13 +469,70 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
 #endif
                         // Bat
                         valueBat = SenVal_D2_06_01->u8VldTelBat.BS * 5;
-                        knx.getGroupObject(firstComObj + 5).value(valueBat, getDPT(VAL_DPT_5));
+                        knx.getGroupObject(firstComObj + 4).value(valueBat, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("Bat(%): "));
                         SERIAL_PORT.println(valueBat);
 #endif
                   }
                   break;
+            //**************************************************************
+            // ----------------- Profil: D2-06-50 --------------------------
+            //**************************************************************
+            case D2_06_50:
+
+                  SenVal_D2_06_50_0x01 = (VLD_D2_06_50_Window_Status_0x01 *)&(f_Pkt_st->u8DataBuffer[1]);
+                  
+                  
+                  if (SenVal_D2_06_50_0x01->u8MT == 0x01)
+                  {
+#ifdef KDEBUG
+                        SERIAL_PORT.println(F("Profil: D2-06-50 (0x01)"));
+#endif
+                        // Window State
+                        knx.getGroupObject(firstComObj + 1).value(SenVal_D2_06_50_0x01->u8VldTelWindow.WDS, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Window State: "));
+                        SERIAL_PORT.println(SenVal_D2_06_50_0x01->u8VldTelWindow.WDS);
+#endif
+                        // Counter Status
+                        counter = (SenVal_D2_06_50_0x01->u8CT_4 << 24) | (SenVal_D2_06_50_0x01->u8CT_3 << 16) | (SenVal_D2_06_50_0x01->u8CT_2 << 8) | SenVal_D2_06_50_0x01->u8CT_1;
+                        knx.getGroupObject(firstComObj + 5).value(counter, getDPT(VAL_DPT_12));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("State Counter: "));
+                        SERIAL_PORT.println(counter);
+#endif
+                        // Change Battery
+                        knx.getGroupObject(firstComObj + 4).value(SenVal_D2_06_50_0x01->u8VldTelBattery.CB, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("change Bat: "));
+                        SERIAL_PORT.println(SenVal_D2_06_50_0x01->u8VldTelBattery.CB);
+#endif
+                        // Battery State %
+                        knx.getGroupObject(firstComObj).value(SenVal_D2_06_50_0x01->u8VldTelBattery.BS, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Bat(%): "));
+                        SERIAL_PORT.println(SenVal_D2_06_50_0x01->u8VldTelBattery.BS);
+#endif
+                        // Status Bits
+                        knx.getGroupObject(firstComObj + 9).value(SenVal_D2_06_50_0x01->u8StatusBits, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Status Byte: "));
+                        SERIAL_PORT.println(SenVal_D2_06_50_0x01->u8StatusBits, BIN);
+#endif
+                  }
+                  if (SenVal_D2_06_50_0x01->u8MT == 0x02)
+                  {
+                        SenVal_D2_06_50_0x02 = (VLD_D2_06_50_Alarm_Status_0x02 *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                        SERIAL_PORT.println(F("Profil: D2-06-50 (0x02)"));
+                        SERIAL_PORT.print(F("Alarm: "));
+                        SERIAL_PORT.println(SenVal_D2_06_50_0x02->u8VldTelAlarm.BA);
+#endif
+                        knx.getGroupObject(firstComObj + 3).value(SenVal_D2_06_50_0x02->u8VldTelAlarm.BA, getDPT(VAL_DPT_1));
+                  }
+                  break;
+
             default:
                   break;
             }

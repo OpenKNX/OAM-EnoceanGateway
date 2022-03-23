@@ -347,6 +347,25 @@ struct VLD_D2_06_Date_TYPE_Battery
   uint8_t BS : 5;      // (DB_BIT 7-3) Battery State
 };
 
+
+struct VLD_D2_06_50_TYPE_Window
+{
+  uint8_t WDS : 7;      // (DB_BIT 0-6) WDS
+  uint8_t AM  : 1;      // (DB_BIT 7)   AM
+};
+
+struct VLD_D2_06_50_TYPE_Battery
+{
+  uint8_t BS  : 7;      // (DB_BIT 0-6)  BS
+  uint8_t CB  : 1;      // (DB_BIT 7)   CB
+};
+
+struct VLD_D2_06_50_TYPE_Alarm
+{
+  uint8_t BA  : 7;      // (DB_BIT 0-3)  BA
+  uint8_t NA  : 1;      // (DB_BIT 7-4)  Not used
+};
+
 struct VLD_D2_14_30_Data_TYPE
 {
   uint8_t VIB : 4;     // (DB_BIT 0-3)  not used
@@ -442,6 +461,28 @@ struct VLD_D2_06_01_TELEGRAM
   uint8_t u8LuxMSB;    
   uint8_t u8LuxLSB;     
   VLD_D2_06_Date_TYPE_Battery u8VldTelBat;   
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_06_50_Window_Status_0x01
+{
+  uint8_t u8MT;             // Message Type
+  VLD_D2_06_50_TYPE_Window u8VldTelWindow;  
+  uint8_t u8CT_4;
+  uint8_t u8CT_3;
+  uint8_t u8CT_2;
+  uint8_t u8CT_1;
+  VLD_D2_06_50_TYPE_Battery u8VldTelBattery;  
+  uint8_t u8StatusBits; 
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_06_50_Alarm_Status_0x02
+{
+  uint8_t u8MT;             // Message Type
+  VLD_D2_06_50_TYPE_Alarm u8VldTelAlarm;  
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
