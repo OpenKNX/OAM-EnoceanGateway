@@ -8,12 +8,13 @@
 //#define SAVE_INTERRUPT_PIN A2 
 #define LED_YELLOW_PIN 0
 
-
+#ifndef ARDUINO_ARCH_RP2040
 /* Define Arduino Board */
 /* ******************** */
 //#define ArduinoZero
 //#define ItsyBitsyM0
 #define Xiao
+#endif
 
 //Debug Outputs
 #define KDEBUG_min
@@ -42,6 +43,9 @@
 #endif
 #ifdef Xiao
 #define SERIAL_PORT SerialUSB      // Serial port for ItsyBitsy
+#endif
+#ifdef ARDUINO_ARCH_RP2040
+#define SERIAL_PORT Serial
 #endif
 #endif
 

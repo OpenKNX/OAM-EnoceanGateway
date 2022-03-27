@@ -7,6 +7,7 @@
 #include <OpenKNX.h>
 #include "EnOceanHandle.h"
 
+#ifdef SEEED_XIAO_M0
 // XIAO PINS   RX = D3  TX = D2
 Uart Serial2(&sercom2, 3, 2, SERCOM_RX_PAD_3, UART_TX_PAD_2);
 
@@ -14,6 +15,7 @@ void SERCOM2_Handler()
 {
     Serial2.IrqHandler();
 }
+#endif
 
 EnOceanDevice device[MAX_NUMBER_OF_DEVICES] = {EnOceanDevice()};
 
@@ -23,7 +25,13 @@ void appLoop();
 void setup()
 {
     //Wire.begin();
-
+#ifdef ARDUINO_ARCH_RP2040
+    // die defines musst du dann noch setzen
+    Serial1.setRX(KNX_UART_RX_PIN);
+    Serial1.setTX(KNX_UART_TX_PIN);
+    Serial2.setRX(ENO_UART_RX_PIN);
+    Serial2.setTX(ENO_UART_TX_PIN);
+#endif
 
     pinMode(PROG_LED_PIN, OUTPUT);
     digitalWrite(PROG_LED_PIN, HIGH);
@@ -69,9 +77,10 @@ void setup()
 
     Serial2.begin(57600); // Change to Serial wenn original Platine
                           // Assign pins 2 & 3 SERCOM functionality
+#ifndef ARDUINO_ARCH_RP2040
     pinPeripheral(2, PIO_SERCOM_ALT);
     pinPeripheral(3, PIO_SERCOM_ALT);
-
+#endif
     enOcean.initSerial(Serial2);
     enOcean.init();
 
