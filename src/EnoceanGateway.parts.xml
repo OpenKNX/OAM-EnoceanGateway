@@ -9,7 +9,7 @@
               <!-- A parameter block represents a tab on the left side, showing a page full of parameters -->
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-1" Name="Docu" Text="Dokumentation">
                 <!-- In this example the first Tab shows some documentation -->
-                <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-1" Text="Kurze Einführung:" />
+                <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-1" Text="Kurze Einführung" UIHint="Headline" />
                 <!-- A parameter seperator shows just some text -->
                 <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-2" Text="Das Gerät kann ein 'In Betrieb'-Telegramm in einstellbarer Zeit senden." />
                 <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-3" Text="Die Zeit, bis das Gerät nach einem Neustart erstmals meldet, ist einstellbar." />
@@ -21,6 +21,7 @@
               <!-- A tab page with general settings -->
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="General" Text="Allgemeine Parameter">
                 <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-6" Text="" UIHint="HorizontalRuler" />
+                <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-nnn" Text="Gateway-Optionen" UIHint="Headline" />
                 <!-- Parameter to choose startup delay -->
                 <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-%T%000000_R-%T%00000001" /> <!-- Repeater ON/OFF -->
                 <choose ParamRefId="M-00FA_A-0001-01-0000_P-%T%000000_R-%T%00000001">
@@ -73,23 +74,22 @@
                       <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-13" Text="Zulässiger Base-ID Bereich: 0xFF800000 to 0xFFFFFFFE" />
                   </when>
                 </choose>
-                <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-15" Text="" UIHint="HorizontalRuler" />
               </ParameterBlock>
               <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="Hardware" Text="EnoceanGateway: Hardware (vorbelegt)">
                 <!-- buzzer available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000005_R-100000502" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000035_R-100003502" />
                 <!-- rgb led available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000006_R-100000602" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000036_R-100003602" />
                 <!-- eeprom available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000007_R-100000702" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000037_R-100003702" />
                 <!-- ncn5130 available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000008_R-100000802" />
+                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000038_R-100003802" />
                 <!-- move locally set values to global parameters -->
                 <!-- this is used for decoupling specific applications from global behaviour -->
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000005_R-100000501" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000005_R-100000502" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000006_R-100000601" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000006_R-100000602" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000007_R-100000701" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000007_R-100000702" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000008_R-100000801" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000008_R-100000802" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000035_R-100003501" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000035_R-100003502" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000036_R-100003601" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000036_R-100003602" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000037_R-100003701" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000037_R-100003702" />
+                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000038_R-100003801" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000038_R-100003802" />
               </ParameterBlock>
             </ChannelIndependentBlock>
           </Dynamic>
