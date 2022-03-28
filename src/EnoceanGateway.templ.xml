@@ -346,12 +346,14 @@
             <!-- The following block is always there -->
             <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-3" Name="EnoceanKanal" Text="Kanal %C% {{0:---}}" TextParameterRefId="M-00FA_A-0001-01-0000_P-%T%%CCC%053_R-%T%%CCC%05301">
               <Channel Id="M-00FA_A-0001-01-0000_CH-ENO%C%" Number="ENO%C%" Name="EnoceanKanal%C%" Text="Kanal %C% {{0:---}}" TextParameterRefId="M-00FA_A-0001-01-0000_P-%T%%CCC%053_R-%T%%CCC%05301">
+                <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-1" Text="Kanaldefinition" UIHint="Headline" />
                 <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-%T%%CCC%053_R-%T%%CCC%05301" />
                 <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-1" Text="" UIHint="HorizontalRuler" />
                 <!-- Profil Selection -->
                 <choose ParamRefId="M-00FA_A-0001-01-0000_P-%T%%CCC%004_R-%T%%CCC%00401">
                   <!-- Anzeige Enocean ID -->
                   <when test="!=0">
+                    <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-1" Text="Device-Id" UIHint="Headline" />
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-6" Text="Hier die ID des Enocean Device eingeben:" />
                     <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="Id1" Text="Id" Inline="true" Layout="Grid">
                       <Rows>
@@ -385,6 +387,7 @@
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-4" Text="" UIHint="HorizontalRuler" />
                   </when>
                 </choose>
+                <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-1" Text="Profildefinition" UIHint="Headline" />
                 <ParameterRefRef RefId="M-00FA_A-0001-01-0000_P-%T%%CCC%004_R-%T%%CCC%00401" />
                 <choose ParamRefId="M-00FA_A-0001-01-0000_P-%T%%CCC%004_R-%T%%CCC%00401">
                   <!-- RPS F6 (0xF6 = 246Dez)-->

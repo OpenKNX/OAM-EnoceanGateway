@@ -964,4 +964,4 @@
 
 #define MAIN_OpenKnxId 0xA2
 #define MAIN_ApplicationNumber 1
-#define MAIN_ApplicationVersion 2
+#define MAIN_ApplicationVersion 5
