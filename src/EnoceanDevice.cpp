@@ -154,9 +154,6 @@ void appSetup()
 {
   if (knx.configured())
   {
-    // set Firmware Version in ETS
-    knx.bau().deviceObject().version(cFirmwareMajor << 11 | cFirmwareMinor << 6 | cFirmwareRevision);
-
     if (GroupObject::classCallback() == 0)
       GroupObject::classCallback(ProcessKoCallback);
     // Setup Logik
