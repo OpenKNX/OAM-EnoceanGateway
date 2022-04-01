@@ -735,8 +735,6 @@
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000036_R-100003602" RefId="M-00FA_A-0001-01-0000_UP-1000036" Value="0" Access="None" />
               <!-- eeprom available (invisible, false) -->
               <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000037_R-100003702" RefId="M-00FA_A-0001-01-0000_UP-1000037" Value="0" Access="None" />
-              <!-- hardware power off available (invisible, false) -->
-              <ParameterRef Id="M-00FA_A-0001-01-0000_UP-1000038_R-100003802" RefId="M-00FA_A-0001-01-0000_UP-1000038" Value="0" Access="None" />
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
               <!-- ParameterRef are used in the ETS UI -->
               <ParameterRef Id="M-00FA_A-0001-01-0000_P-%T%000000_R-%T%00000001" RefId="M-00FA_A-0001-01-0000_P-%T%000000" />

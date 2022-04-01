@@ -143,10 +143,8 @@ void ProcessKoCallback(GroupObject &iKo)
         callLogic = false;
       }
     }
-    if (callLogic)
-    {
-      gLogic.processInputKo(iKo);
-    }
+    // for handling external inputs, logik always to be called
+    gLogic.processInputKo(iKo);
   }
 }
 

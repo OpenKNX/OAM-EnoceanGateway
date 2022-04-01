@@ -800,8 +800,8 @@ public:
           SERIAL_PORT.println((uint8_t)iKo.value(getDPT(VAL_DPT_5)));
 #endif
           union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift);                                    // clear Bit4
-          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift + 1);                                // clear Bit5
-          union1.val_A5_20_06[2] &= ~(1 << ENO_CHA52006RFCShift + 2);                                // clear Bit6
+          union1.val_A5_20_06[2] &= ~(1 << (ENO_CHA52006RFCShift + 1));                              // clear Bit5
+          union1.val_A5_20_06[2] &= ~(1 << (ENO_CHA52006RFCShift + 2));                              // clear Bit6
           union1.val_A5_20_06[2] |= ((uint8_t)iKo.value(getDPT(VAL_DPT_5)) << ENO_CHA52006RFCShift); // Set Bit
           break;
 
