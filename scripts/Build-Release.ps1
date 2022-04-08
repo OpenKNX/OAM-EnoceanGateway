@@ -28,4 +28,4 @@ Remove-Item release/EnoceanGateway.knxprod
 # create package 
 Compress-Archive -Path release/* -DestinationPath Release.zip
 Remove-Item -Recurse release/*
-Move-Item Release.zip release/
+Move-Item Release.zip release/EnoceanGateway.zip
