@@ -1172,7 +1172,7 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
 
     lRpsTlg2_p = (RPS_F6_10_01_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
 
-    switch (lRpsTlg_p->u8RpsTelData.STATE)
+    switch (lRpsTlg2_p->u8RpsTelData.STATE)
     {
     case 0b11: // Hebel unten
       knx.getGroupObject(firstComObj + 2).value(false, getDPT(VAL_DPT_1));

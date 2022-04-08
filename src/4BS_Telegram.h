@@ -525,6 +525,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         luxfloat = (float)(fourBsA5_06_02_Tlg_p->u8Illumination2 / 0.5);
                         break;
                   default:
+                        luxfloat = 0;
                         break;
                   }
                   knx.getGroupObject(firstComObj + 1).value(luxfloat, getDPT(VAL_DPT_9));
@@ -1048,10 +1049,10 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   SERIAL_PORT.println(fourBsA5_17_07_08_Tlg_p->u8SupplyVoltage / 50.0);
 #endif
                   // ........Vibration Det.........................................
-                  knx.getGroupObject(firstComObj).value(fourBsA5_17_01_06_Tlg_p->u84BsTelData.VIB, getDPT(VAL_DPT_1));
+                  knx.getGroupObject(firstComObj).value(fourBsA5_17_07_08_Tlg_p->u84BsTelData.VIB, getDPT(VAL_DPT_1));
 #ifdef KDEBUG
                   SERIAL_PORT.print(F("Vibration det: "));
-                  SERIAL_PORT.println(fourBsA5_17_01_06_Tlg_p->u84BsTelData.VIB);
+                  SERIAL_PORT.println(fourBsA5_17_07_08_Tlg_p->u84BsTelData.VIB);
 #endif
                   // ........DOOR Contact..............................................
                   knx.getGroupObject(firstComObj + 1).value(fourBsA5_17_07_08_Tlg_p->u84BsTelData.DCT, getDPT(VAL_DPT_1));
@@ -1451,6 +1452,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                                     break;
 
                               default:
+                                    value = 0;
                                     break;
                               }
 #ifndef EnOceanTEST
