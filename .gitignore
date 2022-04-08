@@ -6,4 +6,4 @@
 .vscode/ipch
 **/*.knxprod
 **/*.debug.xml
-
+release/*
