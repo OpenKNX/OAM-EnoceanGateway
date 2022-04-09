@@ -465,6 +465,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                         luxfloat = (float)(fourBsA5_06_01_Tlg_p->u8Illumination2 * 116.470588) + 300.0;
                         break;
                   default:
+                        luxfloat = 0;
                         break;
                   }
                   knx.getGroupObject(firstComObj + 1).value(luxfloat, getDPT(VAL_DPT_9));
@@ -500,6 +501,10 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                               // Range 300 ... 30000 lux
                               luxfloat = (float)(fourBsA5_06_01_V2_Tlg_p->u8Illumbyte2 * 116.470588) + 300.0;
                         }
+                  }
+                  else
+                  {
+                        luxfloat = 0;
                   }
                   knx.getGroupObject(firstComObj + 1).value(luxfloat, getDPT(VAL_DPT_9));
 

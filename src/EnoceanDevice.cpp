@@ -98,7 +98,6 @@ void ProcessKoCallback(GroupObject &iKo)
   }
   else
   {
-    bool callLogic = true;
     for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
     {
 
@@ -108,7 +107,6 @@ void ProcessKoCallback(GroupObject &iKo)
         SERIAL_PORT.println("reviev KO_0");
 #endif
         enOcean.handleKnxEvents(koIndex, 0, iKo);
-        callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
       {
@@ -116,7 +114,6 @@ void ProcessKoCallback(GroupObject &iKo)
         SERIAL_PORT.println("reviev KO_1");
 #endif
         enOcean.handleKnxEvents(koIndex, 1, iKo);
-        callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
       {
@@ -124,7 +121,6 @@ void ProcessKoCallback(GroupObject &iKo)
         SERIAL_PORT.println("reviev KO_2");
 #endif
         enOcean.handleKnxEvents(koIndex, 2, iKo);
-        callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
       {
@@ -132,7 +128,6 @@ void ProcessKoCallback(GroupObject &iKo)
         SERIAL_PORT.println("reviev KO_3");
 #endif
         enOcean.handleKnxEvents(koIndex, 3, iKo);
-        callLogic = false;
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
       {
@@ -140,7 +135,6 @@ void ProcessKoCallback(GroupObject &iKo)
         SERIAL_PORT.println("reviev KO_4");
 #endif
         enOcean.handleKnxEvents(koIndex, 4, iKo);
-        callLogic = false;
       }
     }
     // for handling external inputs, logik always to be called
