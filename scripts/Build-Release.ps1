@@ -7,19 +7,22 @@ if (Test-Path -Path release) {
 }
 
 # create required directories
-New-Item -Path release/tools -ItemType Directory | Out-Null
 New-Item -Path release/data -ItemType Directory | Out-Null
-
-# add necessary executables - will be moved to an extra package in future
-Copy-Item ~/bin/OpenKNXproducer.exe release/tools/
-Copy-Item ~/bin/bossac.exe release/tools/
 
 # get xml for kxnprod
 ~/bin/OpenKNXproducer.exe create --Debug --Output=release/EnoceanGateway.knxprod --HeaderFileName=src/EnoceanGateway.h src/EnoceanGateway.xml
+if (!$?) {
+    Write-Host "Error in knxprod, Release was not built!"
+    exit 1
+}
 Move-Item src/EnoceanGateway.debug.xml release/data/EnoceanGateway.xml
 
 # build firmware based on generated headerfile for SAMD
 ~/.platformio/penv/Scripts/pio.exe run -e build
+if (!$?) {
+    Write-Host "SAMD build failed, Release was not built!"
+    exit 1
+}
 Copy-Item .pio/build/build/firmware.bin release/data/
 
 # add necessary scripts
@@ -34,3 +37,5 @@ Remove-Item release/EnoceanGateway.knxprod
 Compress-Archive -Path release/* -DestinationPath Release.zip
 Remove-Item -Recurse release/*
 Move-Item Release.zip release/EnoceanGateway.zip
+
+Write-Host "Release successfully created!"
