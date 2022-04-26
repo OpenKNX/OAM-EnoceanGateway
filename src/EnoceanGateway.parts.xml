@@ -42,51 +42,38 @@
                   </when>
                   <when test="1">
                     <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-8" Text="Hier die neue Base-ID eingeben:" />
-                          <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-3" Name="Id1" Text="Id" Inline="true" Layout="Grid">
-                            <Rows>
-                              <Row Id="M-00FA_A-0001-01-0000_PB-3_R-1" Name="Row1" />
-                            </Rows>
-                            <Columns>
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-1" Name="Col1" Width="25%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-2" Name="Col2" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-3" Name="Col3" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-4" Name="Col4" Width="2%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-5" Name="Col5" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-6" Name="Col6" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-7" Name="Col7" Width="2%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-8" Name="Col8" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-9" Name="Col9" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-10" Name="Col10" Width="2%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-11" Name="Col11" Width="9%" />
-                              <Column Id="M-00FA_A-0001-01-0000_PB-3_C-12" Name="Col12" Width="9%" />
-                            </Columns>
-                            <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-9" Text="Base-ID:"  Cell="1,1" />
-                            <!-- <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-nnn" Text="." Cell="1,3"/> -->
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000002_R-%T%00000201" Cell="1,2" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000003_R-%T%00000301" Cell="1,3" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000004_R-%T%00000401" Cell="1,5" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000005_R-%T%00000501" Cell="1,6" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000006_R-%T%00000601" Cell="1,8" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000007_R-%T%00000701" Cell="1,9" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000008_R-%T%00000801" Cell="1,11" />
-                            <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000009_R-%T%00000901" Cell="1,12" />
-                          </ParameterBlock>
-                      <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-13" Text="Zulässiger Base-ID Bereich: 0xFF800000 to 0xFFFFFFFE" />
+                    <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-3" Name="Id1" Text="Id" Inline="true" Layout="Grid">
+                      <Rows>
+                        <Row Id="M-00FA_A-0001-01-0000_PB-3_R-1" Name="Row1" />
+                      </Rows>
+                      <Columns>
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-1" Name="Col1" Width="25%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-2" Name="Col2" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-3" Name="Col3" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-4" Name="Col4" Width="2%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-5" Name="Col5" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-6" Name="Col6" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-7" Name="Col7" Width="2%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-8" Name="Col8" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-9" Name="Col9" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-10" Name="Col10" Width="2%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-11" Name="Col11" Width="9%" />
+                        <Column Id="M-00FA_A-0001-01-0000_PB-3_C-12" Name="Col12" Width="9%" />
+                      </Columns>
+                      <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-9" Text="Base-ID:"  Cell="1,1" />
+                      <!-- <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-nnn" Text="." Cell="1,3"/> -->
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000002_R-%T%00000201" Cell="1,2" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000003_R-%T%00000301" Cell="1,3" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000004_R-%T%00000401" Cell="1,5" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000005_R-%T%00000501" Cell="1,6" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000006_R-%T%00000601" Cell="1,8" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000007_R-%T%00000701" Cell="1,9" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000008_R-%T%00000801" Cell="1,11" />
+                      <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-%T%000009_R-%T%00000901" Cell="1,12" />
+                    </ParameterBlock>
+                    <ParameterSeparator Id="M-00FA_A-0001-01-0000_PS-13" Text="Zulässiger Base-ID Bereich: 0xFF800000 to 0xFFFFFFFE" />
                   </when>
                 </choose>
-              </ParameterBlock>
-              <ParameterBlock Id="M-00FA_A-0001-01-0000_PB-2" Name="Hardware" Text="EnoceanGateway: Hardware (vorbelegt)">
-                <!-- buzzer available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000035_R-100003502" />
-                <!-- rgb led available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000036_R-100003602" />
-                <!-- eeprom available (invisible, false) -->
-                <ParameterRefRef RefId="M-00FA_A-0001-01-0000_UP-1000037_R-100003702" />
-                <!-- move locally set values to global parameters -->
-                <!-- this is used for decoupling specific applications from global behaviour -->
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000035_R-100003501" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000035_R-100003502" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000036_R-100003601" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000036_R-100003602" />
-                <Assign TargetParamRefRef="M-00FA_A-0001-01-0000_UP-1000037_R-100003701" SourceParamRefRef="M-00FA_A-0001-01-0000_UP-1000037_R-100003702" />
               </ParameterBlock>
             </ChannelIndependentBlock>
           </Dynamic>

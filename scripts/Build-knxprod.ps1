@@ -9,9 +9,14 @@ if ($toolsExist) {
 if (!$toolsExist) {
     Write-Host "
         Fuer das Setup fehlen die notwendigen OpenKNX-Tools oder sie sind veraltet..
-        Bitte das neuste Paket herunterladen 
+        Bitte das neuste Paket herunterladen
+
             https://github.com/OpenKNX/OpenKNXproducer/releases
-        entpacken und das Readme befolgen.
+        
+        entpacken und das Readme befolgen. Weitere Informationen hierzu gibt es im OpenKNX-Wiki
+
+            https://github.com/OpenKNX/OpenKNX/wiki/Installation-of-OpenKNX-tools
+
         Danach bitte dieses Script erneut starten.
 
         ACHTUNG: Heutige Browser warnen vor dem Inhalt des OpenKNX-Tools Pakets, 
