@@ -12,8 +12,8 @@ if ($toolsExist) {
                 $isCom = $device.Name -match "COM(\d{1,3})"
                 if($isCom)
                 {
-                    Write-Host Gefunden $port
                     $port = $Matches[0]
+                    Write-Host Gefunden $port
                     break
                 }
             }
