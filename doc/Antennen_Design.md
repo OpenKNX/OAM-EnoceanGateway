@@ -1,6 +1,6 @@
 # Antennen Design
 
-**Varinate 1: Whip antenna** 
+## **Variante 1: Whip antenna**
 
 I used the KNX cable for that
 
@@ -12,11 +12,8 @@ Solder point for antenna cable (red arrow)
 
 ----------------------------------------------------------
 
-**Varinate 2: SMA 868 MHz Antenna** 
+## **Variante 2: SMA 868 MHz Antenna**
 
-_Important: SMA with Pin (red arrow)_
+_Important: SMA with Pin (red arrow)
 
 ![Antenna2-Icon](pic/AntenneSMA.png)
-
-
-
