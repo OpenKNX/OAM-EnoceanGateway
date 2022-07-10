@@ -44,11 +44,14 @@
 		{
             "label": "OpenKNXproducer",
             "type": "shell",
+            "options": {
+                "cwd": "${workspaceFolder}/src"
+            },
             "command": "${env:USERPROFILE}\\bin\\OpenKNXproducer.exe",
             "args": [
                 "create",
                 "--Debug",
-                "src/EnoceanGateway"
+                "EnoceanGateway"
             ],
             "problemMatcher": [],
             "group": "test"

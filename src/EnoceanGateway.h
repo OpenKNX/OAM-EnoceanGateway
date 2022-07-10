@@ -1,7 +1,6 @@
 #pragma once
-#include <knx.h>
 
-// Parameter with single occurance
+// Parameter with single occurrence
 
 #define LOG_NumChannels                0      // uint8_t
 #define LOG_StartupDelayBase           1      // 2 Bits, Bit 7-6
@@ -90,9 +89,9 @@
 #define LOG_Pfingstmontag              8      // 1 Bit, Bit 1
 #define     LOG_PfingstmontagMask 0x02
 #define     LOG_PfingstmontagShift 1
-#define LOG_Frohleichnam               8      // 1 Bit, Bit 0
-#define     LOG_FrohleichnamMask 0x01
-#define     LOG_FrohleichnamShift 0
+#define LOG_Fronleichnam               8      // 1 Bit, Bit 0
+#define     LOG_FronleichnamMask 0x01
+#define     LOG_FronleichnamShift 0
 #define LOG_Friedensfest               9      // 1 Bit, Bit 7
 #define     LOG_FriedensfestMask 0x80
 #define     LOG_FriedensfestShift 7
@@ -840,13 +839,13 @@
 #define LOG_fE1UseOtherKO             82      // 1 Bit, Bit 7
 #define     LOG_fE1UseOtherKOMask 0x80
 #define     LOG_fE1UseOtherKOShift 7
-#define LOG_fE1OtherKO                82      // uint12_t
+#define LOG_fE1OtherKO                82      // uint15_t
 #define LOG_fE2UseOtherKO             84      // 1 Bit, Bit 7
 #define     LOG_fE2UseOtherKOMask 0x80
 #define     LOG_fE2UseOtherKOShift 7
-#define LOG_fE2OtherKO                84      // uint12_t
+#define LOG_fE2OtherKO                84      // uint15_t
 
-// Communication objects per channel (multiple occurance)
+// Communication objects per channel (multiple occurrence)
 #define LOG_KoOffset 320
 #define LOG_KoBlockSize 3
 #define LOG_KoKOfE1 0
@@ -958,7 +957,7 @@
 #define     ENO_CHA52004DSOShift 5
 #define ENO_CHA52004WCU               22      // 8 Bits, Bit 7-0
 
-// Communication objects per channel (multiple occurance)
+// Communication objects per channel (multiple occurrence)
 #define ENO_KoOffset 20
 #define ENO_KoBlockSize 10
 #define ENO_KoGO_BASE__1 0
@@ -975,3 +974,4 @@
 #define MAIN_OpenKnxId 0xA2
 #define MAIN_ApplicationNumber 0
 #define MAIN_ApplicationVersion 8
+#define MAIN_OrderNumber "MFKnxEno"
