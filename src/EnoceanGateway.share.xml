@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <?xml-model href="../../Organization/knxprod-support/knx_project_14/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
-<KNX xmlns:op="http://github.com/OpenKNX/OpenKNXproducer" xmlns="http://knx.org/xml/project/14" CreatedBy="KNX MT" ToolVersion="5.1.255.16695">
+<KNX xmlns="http://knx.org/xml/project/14" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
   <ManufacturerData>
     <Manufacturer RefId="M-00FA">
       <ApplicationPrograms>
         <ApplicationProgram Id="%AID%" ApplicationNumber="0" ApplicationVersion="0" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="EnoceanGateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
           <Static>
-            <Code>
-              <RelativeSegment Id="%AID%_RS-04-00000" Name="Parameters" Offset="0" Size="4" LoadStateMachine="4" />
-            </Code>
             <ParameterTypes>
               <!-- enumeration with 16-bit (word) values -->
               <ParameterType Id="%AID%_PT-DelaySelection" Name="DelaySelection">
@@ -742,17 +739,6 @@
             </ComObjectTable>
             <ComObjectRefs>
             </ComObjectRefs>
-            <AddressTable MaxEntries="65535" />
-            <AssociationTable MaxEntries="65535" />
-            <LoadProcedures>
-              <LoadProcedure MergeId="2">
-                <LdCtrlRelSegment LsmIdx="4" Size="4" Mode="0" Fill="0" AppliesTo="full" />
-              </LoadProcedure>
-              <LoadProcedure MergeId="4">
-                <LdCtrlWriteRelMem ObjIdx="4" Offset="0" Size="4" Verify="true" />
-              </LoadProcedure>
-            </LoadProcedures>
-            <Options />
           </Static>
           <!-- Here statrs the UI definition -->
           <Dynamic>
