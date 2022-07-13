@@ -1,3 +1,7 @@
+$sourceName = "EnoceanGateway"
+$targetName = $sourceName
+$appRelease = "Release"
+
 # check for working dir
 if (Test-Path -Path release) {
     # clean working dir
@@ -33,9 +37,22 @@ Copy-Item scripts/Upload-Firmware*.ps1 release/
 # cleanup
 Remove-Item release/EnoceanGateway.knxprod
 
+# calculate version string
+$appVersion=Select-String -Path src/$sourceName.h -Pattern MAIN_ApplicationVersion
+$appVersion=$appVersion.ToString().Split()[-1]
+$appMajor=[math]::Floor($appVersion/16)
+$appMinor=$appVersion%16
+$appRev=Select-String -Path src/main.cpp -Pattern "const uint8_t firmwareRevision"
+$appRev=$appRev.ToString().Split()[-1].Replace(";","")
+$appVersion="$appMajor.$appMinor"
+if ($appRev -gt 0) {
+    $appVersion="$appVersion.$appRev"
+}
+
+
 # create package 
 Compress-Archive -Path release/* -DestinationPath Release.zip
 Remove-Item -Recurse release/*
-Move-Item Release.zip release/EnoceanGateway.zip
+Move-Item Release.zip "release/$targetName-$appRelease-$appVersion.zip"
 
-Write-Host "Release successfully created!"
+Write-Host "Release $targetName-$appRelease-$appVersion successfully created!"
