@@ -973,5 +973,5 @@
 
 #define MAIN_OpenKnxId 0xA2
 #define MAIN_ApplicationNumber 0
-#define MAIN_ApplicationVersion 9
+#define MAIN_ApplicationVersion 16
 #define MAIN_OrderNumber "MFKnxEno"
