@@ -153,42 +153,42 @@
 #define LOG_KoLedLock 8
 #define LOG_KoBuzzerLock 9
 
-#define ENO_RepeaterFunc              50      // 1 Bit, Bit 7
+#define ENO_RepeaterFunc              26      // 1 Bit, Bit 7
 #define     ENO_RepeaterFuncMask 0x80
 #define     ENO_RepeaterFuncShift 7
-#define ENO_SetBaseIdFunc             51      // 1 Bit, Bit 7
+#define ENO_SetBaseIdFunc             27      // 1 Bit, Bit 7
 #define     ENO_SetBaseIdFuncMask 0x80
 #define     ENO_SetBaseIdFuncShift 7
-#define ENO_Id0                       52      // 4 Bits, Bit 7-4
+#define ENO_Id0                       28      // 4 Bits, Bit 7-4
 #define     ENO_Id0Mask 0xF0
 #define     ENO_Id0Shift 4
-#define ENO_Id1                       52      // 4 Bits, Bit 3-0
+#define ENO_Id1                       28      // 4 Bits, Bit 3-0
 #define     ENO_Id1Mask 0x0F
 #define     ENO_Id1Shift 0
-#define ENO_Id2                       53      // 4 Bits, Bit 7-4
+#define ENO_Id2                       29      // 4 Bits, Bit 7-4
 #define     ENO_Id2Mask 0xF0
 #define     ENO_Id2Shift 4
-#define ENO_Id3                       53      // 4 Bits, Bit 3-0
+#define ENO_Id3                       29      // 4 Bits, Bit 3-0
 #define     ENO_Id3Mask 0x0F
 #define     ENO_Id3Shift 0
-#define ENO_Id4                       54      // 4 Bits, Bit 7-4
+#define ENO_Id4                       30      // 4 Bits, Bit 7-4
 #define     ENO_Id4Mask 0xF0
 #define     ENO_Id4Shift 4
-#define ENO_Id5                       54      // 4 Bits, Bit 3-0
+#define ENO_Id5                       30      // 4 Bits, Bit 3-0
 #define     ENO_Id5Mask 0x0F
 #define     ENO_Id5Shift 0
-#define ENO_Id6                       55      // 4 Bits, Bit 7-4
+#define ENO_Id6                       31      // 4 Bits, Bit 7-4
 #define     ENO_Id6Mask 0xF0
 #define     ENO_Id6Shift 4
-#define ENO_Id7                       55      // 4 Bits, Bit 3-0
+#define ENO_Id7                       31      // 4 Bits, Bit 3-0
 #define     ENO_Id7Mask 0x0F
 #define     ENO_Id7Shift 0
-#define ENO_RepeaterLevel             56      // 8 Bits, Bit 7-0
+#define ENO_RepeaterLevel             32      // 8 Bits, Bit 7-0
 
 #define LOG_ChannelCount 50
 
 // Parameter per channel
-#define LOG_ParamBlockOffset 57
+#define LOG_ParamBlockOffset 33
 #define LOG_ParamBlockSize 86
 #define LOG_fChannelDelayBase          0      // 2 Bits, Bit 7-6
 #define     LOG_fChannelDelayBaseMask 0xC0
@@ -855,7 +855,7 @@
 #define ENO_ChannelCount 30
 
 // Parameter per channel
-#define ENO_ParamBlockOffset 4357
+#define ENO_ParamBlockOffset 4333
 #define ENO_ParamBlockSize 23
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
@@ -973,5 +973,5 @@
 
 #define MAIN_OpenKnxId 0xA2
 #define MAIN_ApplicationNumber 0
-#define MAIN_ApplicationVersion 16
+#define MAIN_ApplicationVersion 17
 #define MAIN_OrderNumber "MFKnxEno"
