@@ -856,7 +856,7 @@
 
 // Parameter per channel
 #define ENO_ParamBlockOffset 4333
-#define ENO_ParamBlockSize 23
+#define ENO_ParamBlockSize 24
 #define ENO_CHProfilSelection          0      // 8 Bits, Bit 7-0
 #define ENO_CHProfilSelectionRPS       1      // char*, 2 Byte
 #define ENO_CHProfilSelection1BS       1      // char*, 2 Byte
@@ -955,7 +955,21 @@
 #define ENO_CHA52004DSO               21      // 2 Bits, Bit 6-5
 #define     ENO_CHA52004DSOMask 0x60
 #define     ENO_CHA52004DSOShift 5
+#define ENO_CHD2010EMIT               21      // uint8_t
 #define ENO_CHA52004WCU               22      // 8 Bits, Bit 7-0
+#define ENO_CHD2010EEP                22      // 1 Bit, Bit 7
+#define     ENO_CHD2010EEPMask 0x80
+#define     ENO_CHD2010EEPShift 7
+#define ENO_CHD2010ERM                22      // 1 Bit, Bit 6
+#define     ENO_CHD2010ERMMask 0x40
+#define     ENO_CHD2010ERMShift 6
+#define ENO_CHD2010EUNE               22      // 1 Bit, Bit 5
+#define     ENO_CHD2010EUNEMask 0x20
+#define     ENO_CHD2010EUNEShift 5
+#define ENO_CHD2010EUNP               22      // 1 Bit, Bit 5
+#define     ENO_CHD2010EUNPMask 0x20
+#define     ENO_CHD2010EUNPShift 5
+#define ENO_CHD2010EMAT               23      // uint8_t
 
 // Communication objects per channel (multiple occurrence)
 #define ENO_KoOffset 20
@@ -973,5 +987,5 @@
 
 #define MAIN_OpenKnxId 0xA2
 #define MAIN_ApplicationNumber 0
-#define MAIN_ApplicationVersion 17
+#define MAIN_ApplicationVersion 18
 #define MAIN_OrderNumber "MFKnxEno"

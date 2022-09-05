@@ -296,7 +296,7 @@
                   <Enumeration Text="D2-01-0B N.A." Value="148" Id="%AID%_PT-ProfilVLD01_EN-11" />
                   <Enumeration Text="D2-01-0C N.A." Value="149" Id="%AID%_PT-ProfilVLD01_EN-12" />
                   <Enumeration Text="D2-01-0D N.A." Value="150" Id="%AID%_PT-ProfilVLD01_EN-13" />
-                  <Enumeration Text="D2-01-0E N.A." Value="151" Id="%AID%_PT-ProfilVLD01_EN-14" />
+                  <Enumeration Text="D2-01-0E Type 0x0E" Value="151" Id="%AID%_PT-ProfilVLD01_EN-14" />
                   <Enumeration Text="D2-01-0F N.A." Value="152" Id="%AID%_PT-ProfilVLD01_EN-15" />
                   <Enumeration Text="D2-01-10 N.A." Value="153" Id="%AID%_PT-ProfilVLD01_EN-16" />
                   <Enumeration Text="D2-01-11 N.A." Value="154" Id="%AID%_PT-ProfilVLD01_EN-17" />
@@ -694,6 +694,33 @@
                   <Enumeration Text="Level-1" Value="1" Id="%AID%_PT-RepeaterLevel_EN-1" />
                   <Enumeration Text="Level-2" Value="2" Id="%AID%_PT-RepeaterLevel_EN-2" />
                 </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-D2010EEP" Name="MeasurementMode">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="Energy Measurement" Value="0" Id="%AID%_PT-D2010EEP_EN-0" />
+                  <Enumeration Text="Power Measurement"  Value="1" Id="%AID%_PT-D2010EEP_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-D2010ERM" Name="ReportMeasurement">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="manuelle Abfrage"      Value="0" Id="%AID%_PT-D2010ERM_EN-0" />
+                  <Enumeration Text="man. + auto. Abfrage"  Value="1" Id="%AID%_PT-D2010ERM_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-D2010EUNE" Name="MeasurementUnitEnergy">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="Wh"   Value="0" Id="%AID%_PT-D2010EUNE_EN-0" />
+                  <Enumeration Text="KWh"  Value="1" Id="%AID%_PT-D2010EUNE_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-D2010EUNP" Name="MeasurementUnitPower">
+                <TypeRestriction Base="Value" SizeInBit="1">
+                  <Enumeration Text="W"   Value="0" Id="%AID%_PT-D2010EUNP_EN-0" />
+                  <Enumeration Text="KW"  Value="1" Id="%AID%_PT-D2010EUNP_EN-1" />
+                </TypeRestriction>
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-D2010EMT" Name="TimeMeasurement">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="255" />
               </ParameterType>
             </ParameterTypes>
             <Parameters>
