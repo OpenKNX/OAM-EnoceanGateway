@@ -47,6 +47,7 @@ private:
     uint8_t val_A5_20_01[4];         // Für MVA-005  A5-20-01
     uint32_t rocker_longpress_delay; // ROCKER
     uint32_t buttonLastPushTime1;    // ROCKER Senden
+    uint8_t val_D2_01_0E_Energy[5];  // Für D2-01-0E parameter Energy
   } union1;
 
   union TaskHandle2
@@ -56,6 +57,7 @@ private:
     byte val_A5_20_06_TeachIn[4];             // Für MVA-005  A5-20-06
     uint32_t buttonLastPushTime2;             // ROCKER Senden
     uint8_t rockerState_Release = RockerIdle; // ROCKER
+    uint8_t val_D2_01_0E_Power[5];            // Für D2-01-0E parameter Power
   } union2;
 
   union TaskHandle3
@@ -63,6 +65,7 @@ private:
     uint8_t rockerNr; // ROCKER
     uint8_t A52001_CMD;
     uint8_t A52004;
+    uint8_t D2_01_0E_SetActor; // D2-01-0E setup Actor settings for measurments
   } union3;
 
   // Task variable Read Request
@@ -205,6 +208,85 @@ public:
       SERIAL_PORT.println((union1.val_A5_20_06[2] & ENO_CHA52006TSLMask) >> ENO_CHA52006TSLShift);
 #endif
     }
+    else if (knx.paramWord(ENO_CHProfilVLD01 + firstParameter) == D2_01_0E)
+    {
+      union3.D2_01_0E_SetActor = 2; // set for Task() function. Each run unionMSG.D2_01_0E_SetActor -1, after two runs unionMSG.D2_01_0E_SetActor = 0
+
+      bool RM = (knx.paramByte(ENO_CHD2010ERM + firstParameter) >> ENO_CHD2010ERMShift) & 1;
+      bool UN = (knx.paramByte(ENO_CHD2010EUN + firstParameter) >> ENO_CHD2010EUNShift) & 1;
+
+      union1.val_D2_01_0E_Energy[0] = 0x1E;
+      union2.val_D2_01_0E_Power[0] = 0x1E;
+      union1.val_D2_01_0E_Energy[0] ^= (-RM ^ union1.val_D2_01_0E_Energy[0]) & (1 << 7);
+      union2.val_D2_01_0E_Power[0] ^= (-RM ^ union2.val_D2_01_0E_Power[0]) & (1 << 7);
+
+      // Energy
+      union1.val_D2_01_0E_Energy[0] &= ~(1 << 5);
+      // Power
+      union2.val_D2_01_0E_Power[0] |= (1 << 5);
+
+      // delta value + UNIT
+      if (UN == 0) // Wh / W
+      {
+        union1.val_D2_01_0E_Energy[1] = (knx.paramWord(ENO_CHD2010EdeltaEwh + firstParameter) >> 8);   // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
+        union1.val_D2_01_0E_Energy[1] = (union1.val_D2_01_0E_Energy[1] << 4);                          // verschiebt den LSB-Wert auf die richtige Position
+        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 1;                             // Eränzt noch die passende Unit
+        union1.val_D2_01_0E_Energy[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaEwh + firstParameter); // speichert den MSB Wert
+        union2.val_D2_01_0E_Power[1] = (knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter) >> 8);     // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
+        union2.val_D2_01_0E_Power[1] = (union2.val_D2_01_0E_Power[1] << 4);                            // verschiebt den LSB-Wert auf die richtige Position
+        union2.val_D2_01_0E_Power[1] = union2.val_D2_01_0E_Power[1] + 3;                               // Eränzt noch die passende Unitv
+        union2.val_D2_01_0E_Power[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter);   // speichert den MSB Wert
+      }
+      if (UN == 1) // KWh / KW
+      {
+        union1.val_D2_01_0E_Energy[1] = (knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter) >> 8);   // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
+        union1.val_D2_01_0E_Energy[1] = (union1.val_D2_01_0E_Energy[1] << 4);                           // verschiebt den LSB-Wert auf die richtige Position
+        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 2;                              // Eränzt noch die passende Unit
+        union1.val_D2_01_0E_Energy[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter); // speichert den MSB Wert
+        union2.val_D2_01_0E_Power[1] = (knx.paramWord(ENO_CHD2010EdeltaPkw + firstParameter) >> 8);     // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
+        union2.val_D2_01_0E_Power[1] = (union2.val_D2_01_0E_Power[1] << 4);                             // verschiebt den LSB-Wert auf die richtige Position
+        union2.val_D2_01_0E_Power[1] = union2.val_D2_01_0E_Power[1] + 4;                                // Eränzt noch die passende Unit
+        union2.val_D2_01_0E_Power[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaPkw + firstParameter);   // speichert den MSB Wert
+      }
+
+      if(knx.paramByte(ENO_CHD2010EMAT + firstParameter) >= knx.paramByte(ENO_CHD2010EMIT + firstParameter)) // Check if Max >= MIN
+      {
+      union1.val_D2_01_0E_Energy[3] = knx.paramByte(ENO_CHD2010EMAT + firstParameter);
+      union1.val_D2_01_0E_Energy[4] = knx.paramByte(ENO_CHD2010EMIT + firstParameter);
+      union2.val_D2_01_0E_Power[3] = knx.paramByte(ENO_CHD2010EMAT + firstParameter);
+      union2.val_D2_01_0E_Power[4] = knx.paramByte(ENO_CHD2010EMIT + firstParameter);
+      }
+      else{
+        union1.val_D2_01_0E_Energy[4] = union1.val_D2_01_0E_Energy[3];  // When Max not >= Min -> set Min to max
+        union2.val_D2_01_0E_Power[4] = union2.val_D2_01_0E_Power[3];  // When Max not >= Min -> set Min to max
+      }
+
+      // setActorsMeasurment(lui8_SendeID_p, index, union1.val_D2_01_0E_Energy);
+      // setActorsMeasurment(lui8_SendeID_p, index, union2.val_D2_01_0E_Power);
+#ifdef KDEBUG
+      SERIAL_PORT.println(knx.paramWord(ENO_CHD2010EdeltaEwh + firstParameter));
+      SERIAL_PORT.println(knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter));
+      SERIAL_PORT.println(F("D2-01-0E"));
+      SERIAL_PORT.print(F("RM: "));
+      SERIAL_PORT.println(RM);
+      SERIAL_PORT.print(F("UN_e: "));
+      SERIAL_PORT.println((union1.val_D2_01_0E_Energy[1]) & 0x07);
+      SERIAL_PORT.print(F("UN_p: "));
+      SERIAL_PORT.println((union2.val_D2_01_0E_Power[1]) & 0x07);
+      SERIAL_PORT.println(F("---"));
+      SERIAL_PORT.println(union2.val_D2_01_0E_Power[0], HEX);
+      SERIAL_PORT.println(union2.val_D2_01_0E_Power[1], HEX);
+      SERIAL_PORT.println(union2.val_D2_01_0E_Power[2], HEX);
+      SERIAL_PORT.println(union2.val_D2_01_0E_Power[3], HEX);
+      SERIAL_PORT.println(union2.val_D2_01_0E_Power[4], HEX);
+      SERIAL_PORT.println(F("---"));
+      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[0], HEX);
+      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[1], HEX);
+      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[2], HEX);
+      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[3], HEX);
+      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[4], HEX);
+#endif
+    }
     // default Startup delay Startpunkt
     gStartupDelay = millis(); // Read Request Delay startup
 
@@ -219,9 +301,9 @@ public:
         SERIAL_PORT.print(deviceId_Arr[i], HEX);
       }
       SERIAL_PORT.println(F(""));
-      //SERIAL_PORT.println(ENO_CHProfilSelection);
-      //SERIAL_PORT.println(firstParameter);
-      //SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
+      // SERIAL_PORT.println(ENO_CHProfilSelection);
+      // SERIAL_PORT.println(firstParameter);
+      // SERIAL_PORT.println(knx.paramByte(ENO_CHProfilSelection + firstParameter));
 
       switch (knx.paramByte(ENO_CHProfilSelection + firstParameter))
       // switch (u8RORG_Rocker)                                 // nur zum Testen <<<<----------------------------------------------------
@@ -421,6 +503,16 @@ public:
           send_RPS_Taster(lui8_SendeID_p, buttonMessage2, false, 1); // BaseID_CH = 1  zum Anpassen der BaseID damit jeder CH seine eigene ID hat
           buttonStateSimulation2 = SIMULATE_NOTHING;
         }
+      }
+      else if (union3.D2_01_0E_SetActor == 2) // init value union3.D2_01_0E_SetActor = 2
+      {
+        setActorsMeasurment(lui8_SendeID_p, index, union1.val_D2_01_0E_Energy);
+        union3.D2_01_0E_SetActor = union3.D2_01_0E_SetActor - 1; //  union3.D2_01_0E_SetActor -1 = 1
+      }
+      else if (union3.D2_01_0E_SetActor == 1)
+      {
+        setActorsMeasurment(lui8_SendeID_p, index, union2.val_D2_01_0E_Power);
+        union3.D2_01_0E_SetActor = union3.D2_01_0E_SetActor - 1; // after that union3.D2_01_0E_SetActor = 0 and no additional MSG will send
       }
       break; // ENDE VLD
 
@@ -657,7 +749,7 @@ public:
           union1.val_A5_20_04[1] = ((float)iKo.value(getDPT(VAL_DPT_9)) - 10.0) / 0.078;
 #ifdef KDEBUG
           SERIAL_PORT.print(F("SET Temp to: "));
-          SERIAL_PORT.print(union1.val_A5_20_04[1]*0.078 + 10.0);
+          SERIAL_PORT.print(union1.val_A5_20_04[1] * 0.078 + 10.0);
           SERIAL_PORT.println(F("°C"));
 #endif
           break;
@@ -845,11 +937,10 @@ public:
       case D2_01:
         switch (knx.paramWord(ENO_CHProfilVLD01 + firstParameter))
         {
-        case D2_01_12:
+        case D2_01_0E:
           switch (koNr)
           {
-          case KO_0: // schalten Aktor CH1
-            // union3.koIndex1 = index + 1;
+          case KO_0: // schalten Aktor
             if (iKo.value(getDPT(VAL_DPT_1)))
             {
               buttonStateSimulation1 = SIMULATE_PUSH;
@@ -859,6 +950,49 @@ public:
             {
               buttonStateSimulation1 = SIMULATE_PUSH;
               buttonMessage1 = false;
+            }
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("KNX KO_0 handled"));
+#endif
+            break;
+          case KO_1: // Anfrage Messwerte
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("KNX KO_1 handled"));
+#endif
+            getActorsMeasurmentValue(lui8_SendeID_p, index, union1.val_D2_01_0E_Energy, iKo.value(getDPT(VAL_DPT_1))); // Energy = 0  / Power = 1
+            break;
+          case KO_2: // Anfrage Statuswerte SWITCH
+#ifdef KDEBUG
+            SERIAL_PORT.println(F("KNX KO_2 handled"));
+#endif
+            getStatusActors(lui8_SendeID_p, index); // Request Aktor Status
+            break;
+          }
+        default:
+          break; // ENDE VLD D2_01_0E
+        case D2_01_12:
+          switch (koNr)
+          {
+          case KO_0: // schalten Aktor CH1
+            setStatusActors(lui8_SendeID_p, index, iKo.value(getDPT(VAL_DPT_1)));
+
+
+            if (iKo.value(getDPT(VAL_DPT_1)))
+            {
+
+              /*buttonStateSimulation1 = SIMULATE_PUSH;
+              buttonMessage1 = true;*/
+#ifdef KDEBUG
+              SERIAL_PORT.println(F("KO value = HIGH"));
+#endif
+            }
+            else
+            {
+              /*buttonStateSimulation1 = SIMULATE_PUSH;
+              buttonMessage1 = false;*/
+#ifdef KDEBUG
+              SERIAL_PORT.println(F("KO value = LOW"));
+#endif
             }
 #ifdef KDEBUG
             SERIAL_PORT.println(F("KNX KO_0 handled"));

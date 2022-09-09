@@ -95,6 +95,52 @@ void send_RPS_Taster(uint8_t *fui8_BaseID_p, boolean state, boolean pressed, uin
     enOcean.sendPacket(&l_TestPacket_st);
 }
 
+void setStatusActors(uint8_t *mySenderId, uint8_t idExtra, bool state)
+{
+    PACKET_SERIAL_TYPE lRdBaseIDPkt_st;
+
+    uint8_t lu8SndBuf[16];
+
+    lRdBaseIDPkt_st.u16DataLength = 0x0009;
+    lRdBaseIDPkt_st.u8OptionLength = 0x07;
+    lRdBaseIDPkt_st.u8Type = u8RADIO_ERP1;
+    lRdBaseIDPkt_st.u8DataBuffer = &lu8SndBuf[0];
+
+    lu8SndBuf[0] = u8RORG_VLD;
+    lu8SndBuf[1] = VLD_CMD_ID_01;
+    lu8SndBuf[2] = 0x1E; // Channel
+    if (state == true)
+        lu8SndBuf[3] = 0x01;
+    else
+        lu8SndBuf[3] = 0x00;
+    lu8SndBuf[4] = mySenderId[0];
+    lu8SndBuf[5] = mySenderId[1];
+    lu8SndBuf[6] = mySenderId[2];
+    lu8SndBuf[7] = mySenderId[3] + idExtra;
+    lu8SndBuf[8] = 0x00;
+    // optional data
+    lu8SndBuf[9] = 0x03;
+    lu8SndBuf[10] = 0xFF;
+    lu8SndBuf[11] = 0xFF;
+    lu8SndBuf[12] = 0xFF;
+    lu8SndBuf[13] = 0xFF;
+    lu8SndBuf[14] = 0x00;
+    lu8SndBuf[15] = 0x00;
+
+    if (!enOcean.sendPacket(&lRdBaseIDPkt_st))
+    {
+#ifdef KDEBUG
+        SERIAL_PORT.println("Sending telegram failed.");
+#endif
+    }
+    else
+    {
+#ifdef KDEBUG
+        SERIAL_PORT.print(F("Requested status"));
+#endif
+    }
+}
+
 void getStatusActors(uint8_t *mySenderId, uint8_t idExtra)
 {
     PACKET_SERIAL_TYPE lRdBaseIDPkt_st;
@@ -134,6 +180,97 @@ void getStatusActors(uint8_t *mySenderId, uint8_t idExtra)
     {
 #ifdef KDEBUG
         SERIAL_PORT.print(F("Requested status"));
+#endif
+    }
+}
+
+void setActorsMeasurment(uint8_t *mySenderId, uint8_t idExtra, uint8_t *inputs)
+{
+    PACKET_SERIAL_TYPE lRdBaseIDPkt_st;
+
+    uint8_t lu8SndBuf[19];
+
+    lRdBaseIDPkt_st.u16DataLength = 0x000C;
+    lRdBaseIDPkt_st.u8OptionLength = 0x07;
+    lRdBaseIDPkt_st.u8Type = u8RADIO_ERP1;
+    lRdBaseIDPkt_st.u8DataBuffer = &lu8SndBuf[0];
+
+    lu8SndBuf[0] = u8RORG_VLD;
+    lu8SndBuf[1] = VLD_CMD_ID_05;
+    lu8SndBuf[2] = inputs[0];
+    lu8SndBuf[3] = inputs[1];
+    lu8SndBuf[4] = inputs[2];
+    lu8SndBuf[5] = inputs[3];
+    lu8SndBuf[6] = inputs[4];
+    lu8SndBuf[7] = mySenderId[0];
+    lu8SndBuf[8] = mySenderId[1];
+    lu8SndBuf[9] = mySenderId[2];
+    lu8SndBuf[10] = mySenderId[3] + idExtra;
+    lu8SndBuf[11] = 0x00;
+    // optional data
+    lu8SndBuf[12] = 0x03;
+    lu8SndBuf[13] = 0xFF;
+    lu8SndBuf[14] = 0xFF;
+    lu8SndBuf[15] = 0xFF;
+    lu8SndBuf[16] = 0xFF;
+    lu8SndBuf[17] = 0x00;
+    lu8SndBuf[18] = 0x00;
+
+    if (!enOcean.sendPacket(&lRdBaseIDPkt_st))
+    {
+#ifdef KDEBUG
+        SERIAL_PORT.println("Sending telegram failed.");
+#endif
+    }
+    else
+    {
+#ifdef KDEBUG
+        SERIAL_PORT.println(F("Requested Meas Setup"));
+#endif
+    }
+}
+
+void getActorsMeasurmentValue(uint8_t *mySenderId, uint8_t idExtra, uint8_t *inputs, bool unit)
+{
+    PACKET_SERIAL_TYPE lRdBaseIDPkt_st;
+
+    uint8_t lu8SndBuf[15];
+
+    lRdBaseIDPkt_st.u16DataLength = 0x0008;
+    lRdBaseIDPkt_st.u8OptionLength = 0x07;
+    lRdBaseIDPkt_st.u8Type = u8RADIO_ERP1;
+    lRdBaseIDPkt_st.u8DataBuffer = &lu8SndBuf[0];
+
+    lu8SndBuf[0] = u8RORG_VLD;
+    lu8SndBuf[1] = VLD_CMD_ID_06;
+    lu8SndBuf[2] = 0x00; // 0x00 = Energy
+    if (unit == 1)
+        lu8SndBuf[2] = 0x20; // 0x20 = Power
+    lu8SndBuf[2] = lu8SndBuf[2] + 0x1E;
+    lu8SndBuf[3] = mySenderId[0];
+    lu8SndBuf[4] = mySenderId[1];
+    lu8SndBuf[5] = mySenderId[2];
+    lu8SndBuf[6] = mySenderId[3] + idExtra;
+    lu8SndBuf[7] = 0x00;
+    // optional data
+    lu8SndBuf[8] = 0x03;
+    lu8SndBuf[9] = 0xFF;
+    lu8SndBuf[10] = 0xFF;
+    lu8SndBuf[11] = 0xFF;
+    lu8SndBuf[12] = 0xFF;
+    lu8SndBuf[13] = 0x00;
+    lu8SndBuf[14] = 0x00;
+
+    if (!enOcean.sendPacket(&lRdBaseIDPkt_st))
+    {
+#ifdef KDEBUG
+        SERIAL_PORT.println("Sending telegram failed.");
+#endif
+    }
+    else
+    {
+#ifdef KDEBUG
+        SERIAL_PORT.println(F("Requested Meas Value"));
 #endif
     }
 }

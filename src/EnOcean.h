@@ -302,6 +302,12 @@ struct VLD_D2_01_TELEGRAM2_CMD_04_ACTRESP_TYPE
   uint8_t OC : 1;        // (DB_BIT 7)   Overcurrent
 };
 
+struct VLD_D2_01_TELEGRAM_DB_4_CMD_07_ACTRESP_TYPE
+{
+  uint8_t IO_Channel : 5;    // (DB_BIT 4-0) IO-Channel
+  uint8_t UNIT : 3;          // (DB_BIT 5-7) UNIT
+};
+
 struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE
 {
   uint8_t nouse : 4;    // (DB_BIT 0-3) not use
@@ -418,6 +424,14 @@ struct VLD_D2_01_TELEGRAM_CMD_04_TYPE
 {
   VLD_D2_01_TELEGRAM_CMD_04_ACTRESP_TYPE u8VldTelActResp;
   VLD_D2_01_TELEGRAM2_CMD_04_ACTRESP_TYPE u8VldTelActResp2;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_01_TELEGRAM_CMD_07_TYPE
+{
+  VLD_D2_01_TELEGRAM_DB_4_CMD_07_ACTRESP_TYPE u8VldTelActResp;
+  uint32_t u32MeasurementValue;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };

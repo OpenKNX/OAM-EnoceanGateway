@@ -707,20 +707,17 @@
                   <Enumeration Text="man. + auto. Abfrage"  Value="1" Id="%AID%_PT-D2010ERM_EN-1" />
                 </TypeRestriction>
               </ParameterType>
-              <ParameterType Id="%AID%_PT-D2010EUNE" Name="MeasurementUnitEnergy">
+              <ParameterType Id="%AID%_PT-D2010EUN" Name="MeasurementUnit">
                 <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="Wh"   Value="0" Id="%AID%_PT-D2010EUNE_EN-0" />
-                  <Enumeration Text="KWh"  Value="1" Id="%AID%_PT-D2010EUNE_EN-1" />
-                </TypeRestriction>
-              </ParameterType>
-              <ParameterType Id="%AID%_PT-D2010EUNP" Name="MeasurementUnitPower">
-                <TypeRestriction Base="Value" SizeInBit="1">
-                  <Enumeration Text="W"   Value="0" Id="%AID%_PT-D2010EUNP_EN-0" />
-                  <Enumeration Text="KW"  Value="1" Id="%AID%_PT-D2010EUNP_EN-1" />
+                  <Enumeration Text="Wh/W"    Value="0" Id="%AID%_PT-D2010EUN_EN-0" />
+                  <Enumeration Text="KWh/KW"  Value="1" Id="%AID%_PT-D2010EUN_EN-1" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-D2010EMT" Name="TimeMeasurement">
                 <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="255" />
+              </ParameterType>
+              <ParameterType Id="%AID%_PT-D2010delta" Name="TimeMeasurement">
+                <TypeNumber SizeInBit="16" Type="unsignedInt" minInclusive="0" maxInclusive="4095" />
               </ParameterType>
             </ParameterTypes>
             <Parameters>
