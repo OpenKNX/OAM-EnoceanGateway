@@ -960,9 +960,12 @@
 #define ENO_CHD2010ERM                22      // 1 Bit, Bit 6
 #define     ENO_CHD2010ERMMask 0x40
 #define     ENO_CHD2010ERMShift 6
-#define ENO_CHD2010EUN                22      // 1 Bit, Bit 5
-#define     ENO_CHD2010EUNMask 0x20
-#define     ENO_CHD2010EUNShift 5
+#define ENO_CHD2010EUNE               22      // 1 Bit, Bit 5
+#define     ENO_CHD2010EUNEMask 0x20
+#define     ENO_CHD2010EUNEShift 5
+#define ENO_CHD2010EUNP               22      // 1 Bit, Bit 4
+#define     ENO_CHD2010EUNPMask 0x10
+#define     ENO_CHD2010EUNPShift 4
 #define ENO_CHD2010EMAT               23      // uint8_t
 #define ENO_CHD2010EdeltaEwh          24      // uint16_t
 #define ENO_CHD2010EdeltaEkwh         24      // uint16_t

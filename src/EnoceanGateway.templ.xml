@@ -109,7 +109,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%060" Name="CH%C%Id5" Offset="2" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%061" Name="CH%C%Id6" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%062" Name="CH%C%Id7" Offset="3" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-              </Union>
+              </Union> <!-- Union 1 -->
               <!-- Parameter UP63 schon belegt in UNION oben !!!! -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="21" BitOffset="0" />
@@ -128,24 +128,25 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%072" Name="CH%C%A52004DSO" Offset="0" BitOffset="1" ParameterType="%AID%_PT-A52004DSO" Text="Orientierung Display" Value="0" />
                 <!-- A5-20-04 (1) ENDE -->
                 <Parameter Id="%AID%_UP-%T%%CCC%078" Name="CH%C%D2010EMIT" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010EMT"  Text="Sende-Interval (min):" Value="1" />
-              </Union>
+              </Union> <!-- Union 2 -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="22" BitOffset="0" />
                 <!-- A5-20-04 (2)-->
                 <Parameter Id="%AID%_UP-%T%%CCC%073" Name="CH%C%A52004WCU" Offset="0" BitOffset="0" ParameterType="%AID%_PT-A52004WUC" Text="Sende Zyklus" Value="19" />
                 <!-- A5-20-04 (2) ENDE -->
-                <Parameter Id="%AID%_UP-%T%%CCC%075" Name="CH%C%D2010ERM" Offset="0" BitOffset="1" ParameterType="%AID%_PT-D2010ERM"  Text="Sende-Modus:" Value="0" />
-                <Parameter Id="%AID%_UP-%T%%CCC%076" Name="CH%C%D2010EUN" Offset="0" BitOffset="2" ParameterType="%AID%_PT-D2010EUN"  Text="Einheit:" Value="0" />
-              </Union>
+                <Parameter Id="%AID%_UP-%T%%CCC%075" Name="CH%C%D2010ERM"  Offset="0" BitOffset="1" ParameterType="%AID%_PT-D2010ERM"  Text="Sende-Modus:" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%076" Name="CH%C%D2010EUNE" Offset="0" BitOffset="2" ParameterType="%AID%_PT-D2010EUNE"  Text="Einheit:" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%077" Name="CH%C%D2010EUNP" Offset="0" BitOffset="3" ParameterType="%AID%_PT-D2010EUNP"  Text="Einheit:" Value="0" />
+              </Union> <!-- Union 3 -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="23" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%079" Name="CH%C%D2010EMAT" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010EMT"  Text="Sende-Interval (max):" Value="1" />
-              </Union>
+              </Union> <!-- Union 4 -->
               <Union SizeInBit="16">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="24" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%080" Name="CH%C%D2010EdeltaEwh"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%081" Name="CH%C%D2010EdeltaEkwh" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
-              </Union>
+              </Union> <!-- Union 5 -->
               <Union SizeInBit="16">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="26" BitOffset="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%082" Name="CH%C%D2010EdeltaPw"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
@@ -230,7 +231,7 @@
               
               <ParameterRef Id="%AID%_UP-%T%%CCC%075_R-%T%%CCC%07501" RefId="%AID%_UP-%T%%CCC%075" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%076_R-%T%%CCC%07601" RefId="%AID%_UP-%T%%CCC%076" />
-              
+              <ParameterRef Id="%AID%_UP-%T%%CCC%077_R-%T%%CCC%07701" RefId="%AID%_UP-%T%%CCC%077" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%078_R-%T%%CCC%07801" RefId="%AID%_UP-%T%%CCC%078" SuffixText="sek"/>
               <ParameterRef Id="%AID%_UP-%T%%CCC%079_R-%T%%CCC%07901" RefId="%AID%_UP-%T%%CCC%079" SuffixText="*10 sek"/>
               <ParameterRef Id="%AID%_UP-%T%%CCC%080_R-%T%%CCC%08001" RefId="%AID%_UP-%T%%CCC%080" SuffixText="Wh"/>
@@ -753,19 +754,26 @@
                                 <ParameterSeparator Id="%AID%_PS-4" Text="Wähle die passende Einheit:" />
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%076_R-%T%%CCC%07601" /> <!--Einheit Energy --> 
                                   <choose ParamRefId="%AID%_UP-%T%%CCC%076_R-%T%%CCC%07601">
-                                    <when test="0"> <!-- Wh/W -->
+                                    <when test="0"> <!-- Wh -->
                                       <ComObjectRefRef RefId="%AID%_O-%T%%CCC%005_R-%T%%CCC%00509" /> <!-- KO Wh -->
-                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%007_R-%T%%CCC%00706" /> <!-- KO W -->
                                       <ParameterRefRef RefId="%AID%_UP-%T%%CCC%080_R-%T%%CCC%08001" /> <!--Delta Value Wh --> 
-                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%082_R-%T%%CCC%08201" /> <!--Delta Value W --> 
                                     </when>
-                                    <when test="1"> <!-- KWh/KW -->
-                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%008_R-%T%%CCC%00806" /> <!-- KO KW -->
+                                    <when test="1"> <!-- KWh -->
                                       <ComObjectRefRef RefId="%AID%_O-%T%%CCC%006_R-%T%%CCC%00608" /> <!-- KO KWh-->
                                       <ParameterRefRef RefId="%AID%_UP-%T%%CCC%081_R-%T%%CCC%08101" /> <!--Delta Value KWh --> 
-                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%083_R-%T%%CCC%08301" /> <!--Delta Value KW --> 
                                     </when>    
                                   </choose>
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CCC%077_R-%T%%CCC%07701" /> <!--Einheit Power --> 
+                                  <choose ParamRefId="%AID%_UP-%T%%CCC%077_R-%T%%CCC%07701">
+                                    <when test="0"> <!-- W -->
+                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%007_R-%T%%CCC%00706" /> <!-- KO W -->
+                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%082_R-%T%%CCC%08201" /> <!--Delta Value W --> 
+                                    </when>
+                                    <when test="1"> <!-- KW -->
+                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%008_R-%T%%CCC%00806" /> <!-- KO KW -->
+                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%083_R-%T%%CCC%08301" /> <!--Delta Value KW --> 
+                                    </when>    
+                                  </choose>  
                                 <ParameterSeparator Id="%AID%_PS-5" Text="delta Value: Delta-Wert (absolut) wenn automatisch ein neuer Wert gesendet werden soll. Dazu muss der Sende-Modus auf automatisch stehen. Sollen alle neuen Werte gesendet werden dann das delta Value = 0 setzen" />  
                                 <ParameterSeparator Id="%AID%_PS-6" Text="" UIHint="HorizontalRuler" />
                                 <ParameterRefRef RefId="%AID%_UP-%T%%CCC%075_R-%T%%CCC%07501" /> <!-- man/auto Senden -->  

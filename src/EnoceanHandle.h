@@ -213,7 +213,8 @@ public:
       union3.D2_01_0E_SetActor = 2; // set for Task() function. Each run unionMSG.D2_01_0E_SetActor -1, after two runs unionMSG.D2_01_0E_SetActor = 0
 
       bool RM = (knx.paramByte(ENO_CHD2010ERM + firstParameter) >> ENO_CHD2010ERMShift) & 1;
-      bool UN = (knx.paramByte(ENO_CHD2010EUN + firstParameter) >> ENO_CHD2010EUNShift) & 1;
+      bool UNE = (knx.paramByte(ENO_CHD2010EUNE + firstParameter) >> ENO_CHD2010EUNEShift) & 1;
+      bool UNP = (knx.paramByte(ENO_CHD2010EUNP + firstParameter) >> ENO_CHD2010EUNPShift) & 1;
 
       union1.val_D2_01_0E_Energy[0] = 0x1E;
       union2.val_D2_01_0E_Power[0] = 0x1E;
@@ -225,44 +226,37 @@ public:
       // Power
       union2.val_D2_01_0E_Power[0] |= (1 << 5);
 
-      // delta value + UNIT
-      if (UN == 0) // Wh / W
+      // Power
+      union2.val_D2_01_0E_Power[1] = (knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter) >> 8); // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
+      union2.val_D2_01_0E_Power[1] = (union2.val_D2_01_0E_Power[1] << 4);                        // verschiebt den LSB-Wert auf die richtige Position
+      if (UNP == 1)
+        union2.val_D2_01_0E_Power[1] = union2.val_D2_01_0E_Power[1] + 4; // Eränzt noch die passende Unit (KW)
+      else
+        union2.val_D2_01_0E_Power[1] = union2.val_D2_01_0E_Power[1] + 3;                           // Eränzt noch die passende Unit (W)
+      union2.val_D2_01_0E_Power[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter); // speichert den MSB Wert
+
+      // Energy
+      union1.val_D2_01_0E_Energy[1] = (knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter) >> 8); // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
+      union1.val_D2_01_0E_Energy[1] = (union1.val_D2_01_0E_Energy[1] << 4);                         // verschiebt den LSB-Wert auf die richtige Position
+      if (UNE == 1)
+        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 2;                            // Eränzt noch die passende Unit (KWH)
+      else
+        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 1;                            // Eränzt noch die passende Unit (WH)
+      union1.val_D2_01_0E_Energy[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter); // speichert den MSB Wert
+
+      if ((knx.paramByte(ENO_CHD2010EMAT + firstParameter)) * 10 >= knx.paramByte(ENO_CHD2010EMIT + firstParameter)) // Check if Max >= MIN
       {
-        union1.val_D2_01_0E_Energy[1] = (knx.paramWord(ENO_CHD2010EdeltaEwh + firstParameter) >> 8);   // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
-        union1.val_D2_01_0E_Energy[1] = (union1.val_D2_01_0E_Energy[1] << 4);                          // verschiebt den LSB-Wert auf die richtige Position
-        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 1;                             // Eränzt noch die passende Unit
-        union1.val_D2_01_0E_Energy[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaEwh + firstParameter); // speichert den MSB Wert
-        union2.val_D2_01_0E_Power[1] = (knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter) >> 8);     // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
-        union2.val_D2_01_0E_Power[1] = (union2.val_D2_01_0E_Power[1] << 4);                            // verschiebt den LSB-Wert auf die richtige Position
-        union2.val_D2_01_0E_Power[1] = union2.val_D2_01_0E_Power[1] + 3;                               // Eränzt noch die passende Unitv
-        union2.val_D2_01_0E_Power[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter);   // speichert den MSB Wert
+        union1.val_D2_01_0E_Energy[3] = knx.paramByte(ENO_CHD2010EMAT + firstParameter);
+        union1.val_D2_01_0E_Energy[4] = knx.paramByte(ENO_CHD2010EMIT + firstParameter);
+        union2.val_D2_01_0E_Power[3] = knx.paramByte(ENO_CHD2010EMAT + firstParameter);
+        union2.val_D2_01_0E_Power[4] = knx.paramByte(ENO_CHD2010EMIT + firstParameter);
       }
-      if (UN == 1) // KWh / KW
+      else
       {
-        union1.val_D2_01_0E_Energy[1] = (knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter) >> 8);   // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
-        union1.val_D2_01_0E_Energy[1] = (union1.val_D2_01_0E_Energy[1] << 4);                           // verschiebt den LSB-Wert auf die richtige Position
-        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 2;                              // Eränzt noch die passende Unit
-        union1.val_D2_01_0E_Energy[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter); // speichert den MSB Wert
-        union2.val_D2_01_0E_Power[1] = (knx.paramWord(ENO_CHD2010EdeltaPkw + firstParameter) >> 8);     // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
-        union2.val_D2_01_0E_Power[1] = (union2.val_D2_01_0E_Power[1] << 4);                             // verschiebt den LSB-Wert auf die richtige Position
-        union2.val_D2_01_0E_Power[1] = union2.val_D2_01_0E_Power[1] + 4;                                // Eränzt noch die passende Unit
-        union2.val_D2_01_0E_Power[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaPkw + firstParameter);   // speichert den MSB Wert
+        union1.val_D2_01_0E_Energy[4] = union1.val_D2_01_0E_Energy[3]; // When Max not >= Min -> set Min to max
+        union2.val_D2_01_0E_Power[4] = union2.val_D2_01_0E_Power[3];   // When Max not >= Min -> set Min to max
       }
 
-      if(knx.paramByte(ENO_CHD2010EMAT + firstParameter) >= knx.paramByte(ENO_CHD2010EMIT + firstParameter)) // Check if Max >= MIN
-      {
-      union1.val_D2_01_0E_Energy[3] = knx.paramByte(ENO_CHD2010EMAT + firstParameter);
-      union1.val_D2_01_0E_Energy[4] = knx.paramByte(ENO_CHD2010EMIT + firstParameter);
-      union2.val_D2_01_0E_Power[3] = knx.paramByte(ENO_CHD2010EMAT + firstParameter);
-      union2.val_D2_01_0E_Power[4] = knx.paramByte(ENO_CHD2010EMIT + firstParameter);
-      }
-      else{
-        union1.val_D2_01_0E_Energy[4] = union1.val_D2_01_0E_Energy[3];  // When Max not >= Min -> set Min to max
-        union2.val_D2_01_0E_Power[4] = union2.val_D2_01_0E_Power[3];  // When Max not >= Min -> set Min to max
-      }
-
-      // setActorsMeasurment(lui8_SendeID_p, index, union1.val_D2_01_0E_Energy);
-      // setActorsMeasurment(lui8_SendeID_p, index, union2.val_D2_01_0E_Power);
 #ifdef KDEBUG
       SERIAL_PORT.println(knx.paramWord(ENO_CHD2010EdeltaEwh + firstParameter));
       SERIAL_PORT.println(knx.paramWord(ENO_CHD2010EdeltaPw + firstParameter));
@@ -273,18 +267,6 @@ public:
       SERIAL_PORT.println((union1.val_D2_01_0E_Energy[1]) & 0x07);
       SERIAL_PORT.print(F("UN_p: "));
       SERIAL_PORT.println((union2.val_D2_01_0E_Power[1]) & 0x07);
-      SERIAL_PORT.println(F("---"));
-      SERIAL_PORT.println(union2.val_D2_01_0E_Power[0], HEX);
-      SERIAL_PORT.println(union2.val_D2_01_0E_Power[1], HEX);
-      SERIAL_PORT.println(union2.val_D2_01_0E_Power[2], HEX);
-      SERIAL_PORT.println(union2.val_D2_01_0E_Power[3], HEX);
-      SERIAL_PORT.println(union2.val_D2_01_0E_Power[4], HEX);
-      SERIAL_PORT.println(F("---"));
-      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[0], HEX);
-      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[1], HEX);
-      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[2], HEX);
-      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[3], HEX);
-      SERIAL_PORT.println(union1.val_D2_01_0E_Energy[4], HEX);
 #endif
     }
     // default Startup delay Startpunkt
@@ -975,7 +957,6 @@ public:
           {
           case KO_0: // schalten Aktor CH1
             setStatusActors(lui8_SendeID_p, index, iKo.value(getDPT(VAL_DPT_1)));
-
 
             if (iKo.value(getDPT(VAL_DPT_1)))
             {
