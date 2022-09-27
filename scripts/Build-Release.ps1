@@ -1,8 +1,43 @@
+# This script is just a template and has to be copied and modified per project
+# This script should be called from .vscode/tasks.json with
+#
+#   scripts/Build-Release.ps1            - for Beta builds
+#   scripts/Build-Release.ps1 Release    - for Release builds
+#
+# {
+#     "label": "Build-Release",
+#     "type": "shell",
+#     "command": "scripts/Build-Release.ps1 Release",
+#     "args": [],
+#     "problemMatcher": [],
+#     "group": "test"
+# },
+# {
+#     "label": "Build-Beta",
+#     "type": "shell",
+#     "command": "scripts/Build-Release.ps1 ",
+#     "args": [],
+#     "problemMatcher": [],
+#     "group": "test"
+# }
+
+
+
+# set product names, allows mapping of (devel) name in Project to a more consistent name in release
 $sourceName = "EnoceanGateway"
 $targetName = $sourceName
-$appRelease = "Release"
 
-# check for working dir
+# Release indication, set according names for Release or Beta
+$releaseIndication = $args[0]
+if ($releaseIndication) {
+    $releaseName="$sourceName-$releaseIndication"
+    $appRelease=$releaseIndication
+} else {
+    $releaseName="$sourceName"
+    $appRelease = "Release"
+}
+
+# check and cleanup working dir
 if (Test-Path -Path release) {
     # clean working dir
     Remove-Item -Recurse release\*
@@ -11,31 +46,32 @@ if (Test-Path -Path release) {
 }
 
 # create required directories
-New-Item -Path release/data -ItemType Directory | Out-Null
+Copy-Item -Recurse ../OGM-Common/setup-scripts/reusable/data release
 
-# get xml for kxnprod
-~/bin/OpenKNXproducer.exe create --Debug --Output=release/EnoceanGateway.knxprod --HeaderFileName=src/EnoceanGateway.h src/EnoceanGateway.xml
+# get xml for kxnprod, always first step which also generates headerfile for release
+~/bin/OpenKNXproducer.exe create --Debug --Output="release/$targetName.knxprod" --HeaderFileName="src/$sourceName.h" "src/$releaseName.xml"
 if (!$?) {
     Write-Host "Error in knxprod, Release was not built!"
     exit 1
 }
-Move-Item src/EnoceanGateway.debug.xml release/data/EnoceanGateway.xml
+Move-Item "src/$releaseName.debug.xml" "release/data/$targetName.xml"
 
 # build firmware based on generated headerfile for SAMD
-~/.platformio/penv/Scripts/pio.exe run -e build
-if (!$?) {
-    Write-Host "SAMD build failed, Release was not built!"
-    exit 1
-}
-Copy-Item .pio/build/build/firmware.bin release/data/
+../OGM-Common/setup-scripts/reusable/Build-Step.ps1 build firmware bin
+if (!$?) { exit 1 }
 
 # add necessary scripts
-Copy-Item scripts/Readme-Release.txt release/
-Copy-Item scripts/Build-knxprod.ps1 release/
+Copy-Item ../OGM-Common/setup-scripts/reusable/Readme-Release.txt release/
+Copy-Item ../OGM-Common/setup-scripts/reusable/Build-knxprod.ps1 release/
 Copy-Item scripts/Upload-Firmware*.ps1 release/
 
+# add optional files
+if (Test-Path -Path scripts/Readme-Hardware.html -PathType Leaf) {
+    Copy-Item scripts/Readme-Hardware.html release/
+}
+
 # cleanup
-Remove-Item release/EnoceanGateway.knxprod
+Remove-Item "release/$targetName.knxprod"
 
 # calculate version string
 $appVersion=Select-String -Path src/$sourceName.h -Pattern MAIN_ApplicationVersion
@@ -48,7 +84,6 @@ $appVersion="$appMajor.$appMinor"
 if ($appRev -gt 0) {
     $appVersion="$appVersion.$appRev"
 }
-
 
 # create package 
 Compress-Archive -Path release/* -DestinationPath Release.zip
