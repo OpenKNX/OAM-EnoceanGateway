@@ -1,10 +1,10 @@
 #include <Arduino.h>
 
 #include <knx.h>
-#include "hardwareENO.h"
+#include "hardware.h"
 #include "Helper.h"
 #include "KnxHelper.h"
-#include "EnoceanGateway.h"
+#include "knxprod.h"
 #include "EnoceanProfils.h"
 
 #include "Enocean.h"

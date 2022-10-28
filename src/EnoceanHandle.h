@@ -8,7 +8,7 @@
 #include "4BS_Telegram.h"
 #include "VLD_Telegram.h"
 #include "1BS_Telegram.h"
-#include "hardwareENO.h"
+#include "hardware.h"
 #include "Helper.h"
 #include "KnxHelper.h"
 

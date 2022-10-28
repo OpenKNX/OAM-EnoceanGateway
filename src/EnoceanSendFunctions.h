@@ -1,8 +1,8 @@
 #pragma once
 
 #include "EnOcean.h"
-#include "EnoceanGateway.h"
-#include "hardwareENO.h"
+#include "knxprod.h"
+#include "hardware.h"
 
 void send_4BS_Msg(uint8_t *fui8_BaseID_p, uint8_t Index, uint8_t *inputs, uint8_t baseID_CH)
 {

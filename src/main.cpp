@@ -1,9 +1,9 @@
 #include <knx.h>
 #include <Wire.h>
-#include "hardwareENO.h"
+#include "hardware.h"
 #include "wiring_private.h" // pinPeripheral() function
-#include "Enocean.h"
-#include "EnoceanGateway.h"
+// #include "Enocean.h"
+#include "knxprod.h"
 #include <OpenKNX.h>
 #include "EnOceanHandle.h"
 #include <Logic.h>
@@ -25,7 +25,7 @@ void appLoop();
 
 void setup()
 {
-    //Wire.begin();
+    // Wire.begin();
 #ifdef ARDUINO_ARCH_RP2040
     // die defines musst du dann noch setzen
     Serial1.setRX(KNX_UART_RX_PIN);
