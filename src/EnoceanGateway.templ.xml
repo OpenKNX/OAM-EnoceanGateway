@@ -357,6 +357,7 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00901" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status (8Bits)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00902" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long release" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00903" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Taster 2" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-11" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00904" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Tarif" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
             </ComObjectRefs>
           </Static>
           <!-- Here statrs the UI definition -->
@@ -522,8 +523,21 @@
                               </when>
                             </choose>
                           </when>
+                          <!-- A5-12 -->
+                          <when test="18">  <!-- 0x12 = 18dez-->
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%019_R-%T%%CCC%01901" />
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%019_R-%T%%CCC%01901">
+                              <when test="91">
+                                <!-- A5-12-01-->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%006_R-%T%%CCC%00608" /> <!-- KWh -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%007_R-%T%%CCC%00706" /> <!-- Watt -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%009_R-%T%%CCC%00904" /> <!-- Watt -->
+                              </when>
+                            </choose>
+                          </when>
                           <!-- A5-14 -->
-                          <when test="20">
+                          <when test="20"> <!-- 0x14 = 20dez-->
                             <ParameterRefRef RefId="%AID%_UP-%T%%CCC%021_R-%T%%CCC%02101" />
                             <choose ParamRefId="%AID%_UP-%T%%CCC%021_R-%T%%CCC%02101">
                               <!-- A5-14.01 -->

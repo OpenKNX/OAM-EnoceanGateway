@@ -101,7 +101,7 @@
                   <Enumeration Text="A5-09  N.A."                                     Value="9" Id="%AID%_PT-ProfilSelection4BS_EN-9" />
                   <Enumeration Text="A5-10  N.A."                                     Value="16" Id="%AID%_PT-ProfilSelection4BS_EN-16" />
                   <Enumeration Text="A5-11  N.A."                                     Value="17" Id="%AID%_PT-ProfilSelection4BS_EN-17" />
-                  <Enumeration Text="A5-12  N.A."                                     Value="18" Id="%AID%_PT-ProfilSelection4BS_EN-18" />
+                  <Enumeration Text="A5-12  Automated Meter Reading (AMR)"            Value="18" Id="%AID%_PT-ProfilSelection4BS_EN-18" />
                   <Enumeration Text="A5-13  N.A."                                     Value="19" Id="%AID%_PT-ProfilSelection4BS_EN-19" />
                   <Enumeration Text="A5-14  Multi-Func Sensor"                        Value="20" Id="%AID%_PT-ProfilSelection4BS_EN-20" />
                   <Enumeration Text="A5-20  Self Powered Heating Actors"              Value="32" Id="%AID%_PT-ProfilSelection4BS_EN-32" />
@@ -235,6 +235,12 @@
               <ParameterType Id="%AID%_PT-Profil4BS12" Name="Profil4BS12">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="A5-12-00   N.A." Value="90" Id="%AID%_PT-Profil4BS12_EN-90" />
+                  <Enumeration Text="A5-12-01   Electricity" Value="91" Id="%AID%_PT-Profil4BS12_EN-91" />
+                  <Enumeration Text="A5-12-02   N.A." Value="92" Id="%AID%_PT-Profil4BS12_EN-92" />
+                  <Enumeration Text="A5-12-03   N.A." Value="93" Id="%AID%_PT-Profil4BS12_EN-93" />
+                  <Enumeration Text="A5-12-04   N.A." Value="94" Id="%AID%_PT-Profil4BS12_EN-94" />
+                  <Enumeration Text="A5-12-05   N.A." Value="95" Id="%AID%_PT-Profil4BS12_EN-95" />
+                  <Enumeration Text="A5-12-10   N.A." Value="96" Id="%AID%_PT-Profil4BS12_EN-96" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-Profil4BS13" Name="Profil4BS13">

@@ -216,6 +216,14 @@ struct FOURBS_A5_08_DATA_TYPE
   uint8_t NA2 : 4;  // (DB_BIT 4-7) Not used
 };
 
+struct FOURBS_A5_12_01_DATA_TYPE
+{
+  uint8_t DIV : 2;  // (DB_BIT 0-1) Divisor
+  uint8_t DT : 1;   // (DB_BIT 2)   Unit
+  uint8_t LRNB : 1; // (DB_BIT 3)   Teach-In Bit
+  uint8_t TI : 4;  // (DB_BIT 4-7)  Tarif
+};
+
 struct FOURBS_A5_07_14_01_06_DATA_TYPE
 {
   uint8_t CT : 1;  // (DB_BIT 0)    Contact
@@ -650,6 +658,16 @@ struct FOURBS_A5_08_TYPE
   uint8_t Ill;
   uint8_t TMP;
   FOURBS_A5_08_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_12_01_TYPE
+{
+  uint8_t Meterreading_MSB;
+  uint8_t Meterreading_MID;
+  uint8_t Meterreading_LSB;
+  FOURBS_A5_12_01_DATA_TYPE u84BsTelData;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
