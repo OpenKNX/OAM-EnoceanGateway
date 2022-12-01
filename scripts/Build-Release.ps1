@@ -25,13 +25,13 @@
 # $settings = scripts/OpenKNX-Build-Settings.ps1
 
 # execute generic pre-build steps
-../OGM-Common/setup-scripts/reusable/Build-Release-Preprocess.ps1 $args[0]
+../OGM-Common/scripts/setup/reusable/Build-Release-Preprocess.ps1 $args[0]
 if (!$?) { exit 1 }
 
 # build firmware based on generated headerfile for SAMD
-../OGM-Common/setup-scripts/reusable/Build-Step.ps1 build firmware bin
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 build firmware bin
 if (!$?) { exit 1 }
 
 # execute generic post-build steps
-../OGM-Common/setup-scripts/reusable/Build-Release-Postprocess.ps1 $args[0]
+../OGM-Common/scripts/setup/reusable/Build-Release-Postprocess.ps1 $args[0]
 if (!$?) { exit 1 }
