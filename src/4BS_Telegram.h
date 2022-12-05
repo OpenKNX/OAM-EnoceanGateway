@@ -393,7 +393,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
             //**************************************************************
             case A5_04_01:
                   fourBsA5_04_Tlg_p = (FOURBS_A5_04_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
-                  temp = (float)(fourBsA5_04_Tlg_p->Temp / -6.25) + 40.0;
+                  temp = (float)(fourBsA5_04_Tlg_p->Temp / 6.25);
                   hum = (float)(fourBsA5_04_Tlg_p->Hum / 2.5);
                   knx.getGroupObject(firstComObj + 1).value(temp, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 2).value(hum, getDPT(VAL_DPT_9));
@@ -410,7 +410,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
             //**************************************************************
             case A5_04_02:
                   fourBsA5_04_Tlg_p = (FOURBS_A5_04_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
-                  temp = (float)(fourBsA5_04_Tlg_p->Temp / -3.125) + 60.0;
+                  temp = (float)(fourBsA5_04_Tlg_p->Temp / 3.125) - 20.0;
                   hum = (float)(fourBsA5_04_Tlg_p->Hum / 2.5);
                   knx.getGroupObject(firstComObj + 1).value(temp, getDPT(VAL_DPT_9));
                   knx.getGroupObject(firstComObj + 2).value(hum, getDPT(VAL_DPT_9));
