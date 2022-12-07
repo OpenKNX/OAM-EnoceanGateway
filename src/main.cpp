@@ -1,5 +1,5 @@
 #include <knx.h>
-#include <Wire.h>
+// #include <Wire.h>
 #include "hardware.h"
 #include "wiring_private.h" // pinPeripheral() function
 // #include "Enocean.h"
