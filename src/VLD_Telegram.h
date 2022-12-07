@@ -16,6 +16,8 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       float voc2_s;
 
       VLD_D2_01_TELEGRAM_CMD_04_TYPE *ActStatResp;
+      VLD_D2_01_TELEGRAM_CMD_04_TYPE *ActStatResp_4_D2_01_0E;
+      VLD_D2_01_TELEGRAM_CMD_07_TYPE *ActStatResp_7_D2_01_0E;
       VLD_D2_04_00_TELEGRAM *SenVal_D2_04;
       VLD_D2_03_0A_TELEGRAM *SenVal_D2_03_0A;
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
@@ -33,6 +35,69 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             //**************************************************************
             switch (knx.paramWord(firstParameter + ENO_CHProfilVLD04))
             {
+            case D2_01_0E:
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("Profil: D2-01-0E"));
+#endif
+                  switch (f_Pkt_st->u8DataBuffer[1])
+                  {
+                  case 4: // CMD = 4   -->  Status AKTOR Channels
+#ifdef KDEBUG
+                        SERIAL_PORT.println(F("CMD = 0x04"));
+#endif
+                        mem = f_Pkt_st->u8DataBuffer[2];
+                        f_Pkt_st->u8DataBuffer[2] = f_Pkt_st->u8DataBuffer[3];
+                        f_Pkt_st->u8DataBuffer[3] = mem;
+
+                        ActStatResp_4_D2_01_0E = (VLD_D2_01_TELEGRAM_CMD_04_TYPE *)&(f_Pkt_st->u8DataBuffer[2]);
+
+                        if (ActStatResp_4_D2_01_0E->u8VldTelActResp2.IOChannel == 0) // Abfrage ob CH1
+                        {
+                              if (ActStatResp_4_D2_01_0E->u8VldTelActResp.outputValue == 0)
+                                    knx.getGroupObject(firstComObj + 4).value(false, getDPT(VAL_DPT_1));
+                              else
+                                    knx.getGroupObject(firstComObj + 4).value(true, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+                              SERIAL_PORT.print(F("State: "));
+                              SERIAL_PORT.println(ActStatResp_4_D2_01_0E->u8VldTelActResp.outputValue);
+#endif
+                        }
+                        break;
+                  case 7:
+#ifdef KDEBUG
+                        SERIAL_PORT.println(F("CMD = 0x07"));
+#endif
+                        ActStatResp_7_D2_01_0E = (VLD_D2_01_TELEGRAM_CMD_07_TYPE *)&(f_Pkt_st->u8DataBuffer[2]);
+                        uint32_t value = (f_Pkt_st->u8DataBuffer[3] << 24) | f_Pkt_st->u8DataBuffer[4] << 16 | f_Pkt_st->u8DataBuffer[5] << 8 | f_Pkt_st->u8DataBuffer[6];
+                        switch (ActStatResp_7_D2_01_0E->u8VldTelActResp.UNIT)
+                        {
+                        case 0x00: // WS
+                              /* code */
+                              break;
+                        case 0x01: // Wh
+                              knx.getGroupObject(firstComObj + 5).value(value, Dpt(13, 1));
+                              break;
+                        case 0x02: // KWh
+                              knx.getGroupObject(firstComObj + 6).value(value, Dpt(13, 1));
+                              break;
+                        case 0x03: // W
+                              knx.getGroupObject(firstComObj + 7).value(value, Dpt(14, 1));
+                              break;
+                        case 0x04: // KW
+                              knx.getGroupObject(firstComObj + 8).value(value, Dpt(9, 1));
+                              break;
+                        default:
+                              break;
+                        }
+#ifdef KDEBUG
+                        SERIAL_PORT.print(F("Unit: "));
+                        SERIAL_PORT.println(ActStatResp_7_D2_01_0E->u8VldTelActResp.UNIT);
+                        SERIAL_PORT.print(F("Value: "));
+                        SERIAL_PORT.println(value);
+#endif
+                        break;
+                  } // Ende SWITCH (f_Pkt_st->u8DataBuffer[1])
+                  break;
             case D2_01_12:
 #ifdef KDEBUG
                   SERIAL_PORT.println(F("Profil: D2-01-12"));
@@ -482,8 +547,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
             case D2_06_50:
 
                   SenVal_D2_06_50_0x01 = (VLD_D2_06_50_Window_Status_0x01 *)&(f_Pkt_st->u8DataBuffer[1]);
-                  
-                  
+
                   if (SenVal_D2_06_50_0x01->u8MT == 0x01)
                   {
 #ifdef KDEBUG

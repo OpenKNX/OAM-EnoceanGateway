@@ -109,7 +109,7 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%060" Name="CH%C%Id5" Offset="2" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%061" Name="CH%C%Id6" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%062" Name="CH%C%Id7" Offset="3" BitOffset="4" ParameterType="%AID%_PT-Nibble" Text="" Value="0" />
-              </Union>
+              </Union> <!-- Union 1 -->
               <!-- Parameter UP63 schon belegt in UNION oben !!!! -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="21" BitOffset="0" />
@@ -127,13 +127,32 @@
                 <Parameter Id="%AID%_UP-%T%%CCC%071" Name="CH%C%A52004MC"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-A52004MC"  Text="Auswahl KO:" Value="0" />
                 <Parameter Id="%AID%_UP-%T%%CCC%072" Name="CH%C%A52004DSO" Offset="0" BitOffset="1" ParameterType="%AID%_PT-A52004DSO" Text="Orientierung Display" Value="0" />
                 <!-- A5-20-04 (1) ENDE -->
-              </Union>
+                <Parameter Id="%AID%_UP-%T%%CCC%078" Name="CH%C%D2010EMIT" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010EMT"  Text="Sende-Interval (min):" Value="1" />
+              </Union> <!-- Union 2 -->
               <Union SizeInBit="8">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="22" BitOffset="0" />
                 <!-- A5-20-04 (2)-->
                 <Parameter Id="%AID%_UP-%T%%CCC%073" Name="CH%C%A52004WCU" Offset="0" BitOffset="0" ParameterType="%AID%_PT-A52004WUC" Text="Sende Zyklus" Value="19" />
                 <!-- A5-20-04 (2) ENDE -->
+                <Parameter Id="%AID%_UP-%T%%CCC%075" Name="CH%C%D2010ERM"  Offset="0" BitOffset="1" ParameterType="%AID%_PT-D2010ERM"  Text="Sende-Modus:" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%076" Name="CH%C%D2010EUNE" Offset="0" BitOffset="2" ParameterType="%AID%_PT-D2010EUNE"  Text="Einheit:" Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%077" Name="CH%C%D2010EUNP" Offset="0" BitOffset="3" ParameterType="%AID%_PT-D2010EUNP"  Text="Einheit:" Value="0" />
+              </Union> <!-- Union 3 -->
+              <Union SizeInBit="8">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="23" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%079" Name="CH%C%D2010EMAT" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010EMT"  Text="Sende-Interval (max):" Value="1" />
+              </Union> <!-- Union 4 -->
+              <Union SizeInBit="16">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="24" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%080" Name="CH%C%D2010EdeltaEwh"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%081" Name="CH%C%D2010EdeltaEkwh" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
+              </Union> <!-- Union 5 -->
+              <Union SizeInBit="16">
+                <Memory CodeSegment="%AID%_RS-04-00000" Offset="26" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%082" Name="CH%C%D2010EdeltaPw"  Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
+                <Parameter Id="%AID%_UP-%T%%CCC%083" Name="CH%C%D2010EdeltaPkw" Offset="0" BitOffset="0" ParameterType="%AID%_PT-D2010delta"  Text="delta Value:"  Value="0" />
               </Union>
+              <!-- next is offset 28 !!! -->
             </Parameters>
             <ParameterRefs>
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
@@ -209,6 +228,16 @@
               <ParameterRef Id="%AID%_UP-%T%%CCC%071_R-%T%%CCC%07101" RefId="%AID%_UP-%T%%CCC%071" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%072_R-%T%%CCC%07201" RefId="%AID%_UP-%T%%CCC%072" />
               <ParameterRef Id="%AID%_UP-%T%%CCC%073_R-%T%%CCC%07301" RefId="%AID%_UP-%T%%CCC%073" />
+              
+              <ParameterRef Id="%AID%_UP-%T%%CCC%075_R-%T%%CCC%07501" RefId="%AID%_UP-%T%%CCC%075" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%076_R-%T%%CCC%07601" RefId="%AID%_UP-%T%%CCC%076" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%077_R-%T%%CCC%07701" RefId="%AID%_UP-%T%%CCC%077" />
+              <ParameterRef Id="%AID%_UP-%T%%CCC%078_R-%T%%CCC%07801" RefId="%AID%_UP-%T%%CCC%078" SuffixText="sek"/>
+              <ParameterRef Id="%AID%_UP-%T%%CCC%079_R-%T%%CCC%07901" RefId="%AID%_UP-%T%%CCC%079" SuffixText="*10 sek"/>
+              <ParameterRef Id="%AID%_UP-%T%%CCC%080_R-%T%%CCC%08001" RefId="%AID%_UP-%T%%CCC%080" SuffixText="Wh"/>
+              <ParameterRef Id="%AID%_UP-%T%%CCC%081_R-%T%%CCC%08101" RefId="%AID%_UP-%T%%CCC%081" SuffixText="KWh"/>
+              <ParameterRef Id="%AID%_UP-%T%%CCC%082_R-%T%%CCC%08201" RefId="%AID%_UP-%T%%CCC%082" SuffixText="W"/>
+              <ParameterRef Id="%AID%_UP-%T%%CCC%083_R-%T%%CCC%08301" RefId="%AID%_UP-%T%%CCC%083" SuffixText="KW"/>
             </ParameterRefs>
             <ComObjectTable>
               <!-- ComOject Kanal 1 -->
@@ -256,6 +285,7 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%001_R-%T%%CCC%00112" RefId="%AID%_O-%T%%CCC%001" Name="INP_CH_1_DPT_09" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Set Temperatur" Priority="Low" ObjectSize="2 Bytes" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-9-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%001_R-%T%%CCC%00113" RefId="%AID%_O-%T%%CCC%001" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Fenster Status 1" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-19" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%001_R-%T%%CCC%00114" RefId="%AID%_O-%T%%CCC%001" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Fenster Status" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%001_R-%T%%CCC%00115" RefId="%AID%_O-%T%%CCC%001" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Abfrage Messwerte (0=Energy / 1=Power)" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-1-17" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <!-- Base 2 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00201" RefId="%AID%_O-%T%%CCC%002" Name="OUT_CH_1_DPT_01" Text="Output A Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-9" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00202" RefId="%AID%_O-%T%%CCC%002" Name="OUT_CH_1_DPT_03" Text="Output A Kanal %C%: {{0:-}}" FunctionText="Dimming" Priority="Low" ObjectSize="4 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-3-7" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
@@ -267,6 +297,7 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00208" RefId="%AID%_O-%T%%CCC%002" Name="INP_CH_1_DPT_05" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Kommunikations-Intervall" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00209" RefId="%AID%_O-%T%%CCC%002" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Reference Run" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00210" RefId="%AID%_O-%T%%CCC%002" Name="OUT_CH_1_DPT_19" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Fenster Status 2" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-19" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%002_R-%T%%CCC%00211" RefId="%AID%_O-%T%%CCC%002" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Abfrage Switch Status" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-1-17" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <!-- Base 3 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%003_R-%T%%CCC%00301" RefId="%AID%_O-%T%%CCC%003" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%003_R-%T%%CCC%00302" RefId="%AID%_O-%T%%CCC%003" Name="OUT_CH_1_DPT_01" Text="Output B  Kanal %C%: {{0:-}}" FunctionText="AUF / AB" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-8" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
@@ -286,8 +317,9 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00406" RefId="%AID%_O-%T%%CCC%004" Name="INP_CH_1_DPT_01" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Standby Schalten" Priority="Low" ObjectSize="1 Bit" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-1-3" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00407" RefId="%AID%_O-%T%%CCC%004" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Alarm Energy Low" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-5" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00408" RefId="%AID%_O-%T%%CCC%004" Name="INP_CH_1_DPT_05" Text="Input     Kanal %C%: {{0:-}}" FunctionText="Servcie Commands" Priority="Low" ObjectSize="1 Byte" WriteFlag="Enabled" CommunicationFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00409" RefId="%AID%_O-%T%%CCC%004" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status Switch" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               
-              <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00411" RefId="%AID%_O-%T%%CCC%004" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Battery (%)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-4" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%004_R-%T%%CCC%00411" RefId="%AID%_O-%T%%CCC%004" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Battery (%)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-4" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" /> 
               <!-- Base  5 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00501" RefId="%AID%_O-%T%%CCC%005" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Restlaufzeit (Monate)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00502" RefId="%AID%_O-%T%%CCC%005" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Pressed/Released" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-3" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
@@ -297,6 +329,7 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00506" RefId="%AID%_O-%T%%CCC%005" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Failure Code" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00507" RefId="%AID%_O-%T%%CCC%005" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="LUX" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-4" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00508" RefId="%AID%_O-%T%%CCC%005" Name="OUT_CH_1_DPT_12" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Counter State" Priority="Low" ObjectSize="4 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-12-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%005_R-%T%%CCC%00509" RefId="%AID%_O-%T%%CCC%005" Name="OUT_CH_1_DPT_13" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Messwert (Wh)" Priority="Low" ObjectSize="4 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-13-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <!-- Base  6 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00601" RefId="%AID%_O-%T%%CCC%006" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temperatur vom Device" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00602" RefId="%AID%_O-%T%%CCC%006" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Comfort Index" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
@@ -305,22 +338,26 @@
               <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00605" RefId="%AID%_O-%T%%CCC%006" Name="OUT_CH_1_DPT_01" Text="Output AB Kanal %C%: {{0:-}}" FunctionText="Lamelle/Stopp" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-9" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00606" RefId="%AID%_O-%T%%CCC%006" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Info Set Point Temperatur" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00607" RefId="%AID%_O-%T%%CCC%006" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Vorlauf-Temperatur" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%006_R-%T%%CCC%00608" RefId="%AID%_O-%T%%CCC%006" Name="OUT_CH_1_DPT_13" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Messwert (KWh)" Priority="Low" ObjectSize="4 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-13-13" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <!-- Base  7 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00701" RefId="%AID%_O-%T%%CCC%007" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Ventil Position" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-4" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00702" RefId="%AID%_O-%T%%CCC%007" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Double press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00703" RefId="%AID%_O-%T%%CCC%007" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Indoor Air Quality" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00704" RefId="%AID%_O-%T%%CCC%007" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Energy Storage" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-20" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00705" RefId="%AID%_O-%T%%CCC%007" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Hum" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-7" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%007_R-%T%%CCC%00706" RefId="%AID%_O-%T%%CCC%007" Name="OUT_CH_1_DPT_14" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Messwert (W)" Priority="Low" ObjectSize="4 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-14-56" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <!-- Base  8 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00801" RefId="%AID%_O-%T%%CCC%008" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Temp Offset" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00802" RefId="%AID%_O-%T%%CCC%008" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long press" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00803" RefId="%AID%_O-%T%%CCC%008" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Wochen seit letztem Alarm" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00804" RefId="%AID%_O-%T%%CCC%008" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Raumtemperatur" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00805" RefId="%AID%_O-%T%%CCC%008" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Taster 1" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-11" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%008_R-%T%%CCC%00806" RefId="%AID%_O-%T%%CCC%008" Name="OUT_CH_1_DPT_09" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Messwert (KW)" Priority="Low" ObjectSize="2 Bytes" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-9-24" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <!-- Base  9 -->
               <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00901" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Status (8Bits)" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00902" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Long release" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-1" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
               <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00903" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_01" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Taster 2" Priority="Low" ObjectSize="1 Bit" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-1-11" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
+              <ComObjectRef Id="%AID%_O-%T%%CCC%009_R-%T%%CCC%00904" RefId="%AID%_O-%T%%CCC%009" Name="OUT_CH_1_DPT_05" Text="Output    Kanal %C%: {{0:-}}" FunctionText="Tarif" Priority="Low" ObjectSize="1 Byte" ReadFlag="Enabled" CommunicationFlag="Enabled" TransmitFlag="Enabled" DatapointType="DPST-5-10" TextParameterRefId="%AID%_P-%T%%CCC%053_R-%T%%CCC%05301" />
             </ComObjectRefs>
           </Static>
           <!-- Here statrs the UI definition -->
@@ -486,8 +523,21 @@
                               </when>
                             </choose>
                           </when>
+                          <!-- A5-12 -->
+                          <when test="18">  <!-- 0x12 = 18dez-->
+                            <ParameterRefRef RefId="%AID%_UP-%T%%CCC%019_R-%T%%CCC%01901" />
+                            <choose ParamRefId="%AID%_UP-%T%%CCC%019_R-%T%%CCC%01901">
+                              <when test="91">
+                                <!-- A5-12-01-->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%006_R-%T%%CCC%00608" /> <!-- KWh -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%007_R-%T%%CCC%00706" /> <!-- Watt -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%009_R-%T%%CCC%00904" /> <!-- Watt -->
+                              </when>
+                            </choose>
+                          </when>
                           <!-- A5-14 -->
-                          <when test="20">
+                          <when test="20"> <!-- 0x14 = 20dez-->
                             <ParameterRefRef RefId="%AID%_UP-%T%%CCC%021_R-%T%%CCC%02101" />
                             <choose ParamRefId="%AID%_UP-%T%%CCC%021_R-%T%%CCC%02101">
                               <!-- A5-14.01 -->
@@ -707,6 +757,51 @@
                           <when test="1">
                             <ParameterRefRef RefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501" />
                             <choose ParamRefId="%AID%_UP-%T%%CCC%025_R-%T%%CCC%02501">
+                              <!-- VLD D2-01-0E -->
+                              <when test="151">
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00001" /> <!-- Input schalten -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00115" /> <!-- input Abfrage Messung -->
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%002_R-%T%%CCC%00211" /> <!-- input Abfrage Status schalten -->     
+                                <ComObjectRefRef RefId="%AID%_O-%T%%CCC%004_R-%T%%CCC%00409" /> <!-- OUtput Status schalten -->
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="Schaltaktor mit Messfunktion" UIHint="Headline" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="Wähle die passende Einheit:" />
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%076_R-%T%%CCC%07601" /> <!--Einheit Energy --> 
+                                  <choose ParamRefId="%AID%_UP-%T%%CCC%076_R-%T%%CCC%07601">
+                                    <when test="0"> <!-- Wh -->
+                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%005_R-%T%%CCC%00509" /> <!-- KO Wh -->
+                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%080_R-%T%%CCC%08001" /> <!--Delta Value Wh --> 
+                                    </when>
+                                    <when test="1"> <!-- KWh -->
+                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%006_R-%T%%CCC%00608" /> <!-- KO KWh-->
+                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%081_R-%T%%CCC%08101" /> <!--Delta Value KWh --> 
+                                    </when>    
+                                  </choose>
+                                  <ParameterRefRef RefId="%AID%_UP-%T%%CCC%077_R-%T%%CCC%07701" /> <!--Einheit Power --> 
+                                  <choose ParamRefId="%AID%_UP-%T%%CCC%077_R-%T%%CCC%07701">
+                                    <when test="0"> <!-- W -->
+                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%007_R-%T%%CCC%00706" /> <!-- KO W -->
+                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%082_R-%T%%CCC%08201" /> <!--Delta Value W --> 
+                                    </when>
+                                    <when test="1"> <!-- KW -->
+                                      <ComObjectRefRef RefId="%AID%_O-%T%%CCC%008_R-%T%%CCC%00806" /> <!-- KO KW -->
+                                      <ParameterRefRef RefId="%AID%_UP-%T%%CCC%083_R-%T%%CCC%08301" /> <!--Delta Value KW --> 
+                                    </when>    
+                                  </choose>  
+                                <ParameterSeparator Id="%AID%_PS-5" Text="delta Value: Delta-Wert (absolut) wenn automatisch ein neuer Wert gesendet werden soll. Dazu muss der Sende-Modus auf automatisch stehen. Sollen alle neuen Werte gesendet werden dann das delta Value = 0 setzen" />  
+                                <ParameterSeparator Id="%AID%_PS-6" Text="" UIHint="HorizontalRuler" />
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%075_R-%T%%CCC%07501" /> <!-- man/auto Senden -->  
+                                <ParameterSeparator Id="%AID%_PS-7" Text="nur manuelle Abfrage über KO, oder automatisches und manuellen Senden über KO"  />
+                                <ParameterSeparator Id="%AID%_PS-9" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-10" Text="minimale Zeit zwischen zwei aufeinanderfolgenden Aktormeldungen"  />
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%078_R-%T%%CCC%07801" /> <!-- min Sendezyklus -->  
+                                <ParameterSeparator Id="%AID%_PS-11" Text="maximale Zeit zwischen zwei aufeinanderfolgenden Aktormeldungen"  />
+                                <ParameterRefRef RefId="%AID%_UP-%T%%CCC%079_R-%T%%CCC%07901" /> <!-- max Sendezyklus -->  
+                                <ParameterSeparator Id="%AID%_PS-12" Text="Achtung:"  />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="- min muss >0 sein"  />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="- max >= min"  />
+                              </when>
+                              <!-- VLD D2-01-12 -->
                               <when test="155">
                                 <ComObjectRefRef RefId="%AID%_O-%T%%CCC%000_R-%T%%CCC%00011" />
                                 <ComObjectRefRef RefId="%AID%_O-%T%%CCC%001_R-%T%%CCC%00111" />

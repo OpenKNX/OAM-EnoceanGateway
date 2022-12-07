@@ -123,6 +123,14 @@
 #define A5_08_02 40
 #define A5_08_03 41
 
+#define A5_12_00 90
+#define A5_12_01 91
+#define A5_12_02 92
+#define A5_12_03 93
+#define A5_12_04 94
+#define A5_12_05 95
+#define A5_12_10 96
+
 #define A5_14_01 106
 #define A5_14_02 107
 #define A5_14_03 108

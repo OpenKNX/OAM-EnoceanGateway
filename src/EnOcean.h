@@ -216,6 +216,14 @@ struct FOURBS_A5_08_DATA_TYPE
   uint8_t NA2 : 4;  // (DB_BIT 4-7) Not used
 };
 
+struct FOURBS_A5_12_01_DATA_TYPE
+{
+  uint8_t DIV : 2;  // (DB_BIT 0-1) Divisor
+  uint8_t DT : 1;   // (DB_BIT 2)   Unit
+  uint8_t LRNB : 1; // (DB_BIT 3)   Teach-In Bit
+  uint8_t TI : 4;  // (DB_BIT 4-7)  Tarif
+};
+
 struct FOURBS_A5_07_14_01_06_DATA_TYPE
 {
   uint8_t CT : 1;  // (DB_BIT 0)    Contact
@@ -300,6 +308,12 @@ struct VLD_D2_01_TELEGRAM2_CMD_04_ACTRESP_TYPE
   uint8_t IOChannel : 5; // (DB_BIT 4-0) I/O Channel
   uint8_t EL : 2;        // (DB_BIT 6-5) Error Level
   uint8_t OC : 1;        // (DB_BIT 7)   Overcurrent
+};
+
+struct VLD_D2_01_TELEGRAM_DB_4_CMD_07_ACTRESP_TYPE
+{
+  uint8_t IO_Channel : 5;    // (DB_BIT 4-0) IO-Channel
+  uint8_t UNIT : 3;          // (DB_BIT 5-7) UNIT
 };
 
 struct VLD_D2_04_00_TELEGRAM_CMD_SENRESP_TYPE
@@ -418,6 +432,14 @@ struct VLD_D2_01_TELEGRAM_CMD_04_TYPE
 {
   VLD_D2_01_TELEGRAM_CMD_04_ACTRESP_TYPE u8VldTelActResp;
   VLD_D2_01_TELEGRAM2_CMD_04_ACTRESP_TYPE u8VldTelActResp2;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_01_TELEGRAM_CMD_07_TYPE
+{
+  VLD_D2_01_TELEGRAM_DB_4_CMD_07_ACTRESP_TYPE u8VldTelActResp;
+  uint32_t u32MeasurementValue;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
@@ -636,6 +658,16 @@ struct FOURBS_A5_08_TYPE
   uint8_t Ill;
   uint8_t TMP;
   FOURBS_A5_08_DATA_TYPE u84BsTelData;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct FOURBS_A5_12_01_TYPE
+{
+  uint8_t Meterreading_MSB;
+  uint8_t Meterreading_MID;
+  uint8_t Meterreading_LSB;
+  FOURBS_A5_12_01_DATA_TYPE u84BsTelData;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
