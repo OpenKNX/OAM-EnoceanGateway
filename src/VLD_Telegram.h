@@ -9,11 +9,17 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       uint8_t mem2;
       uint8_t valueBat;
       uint16_t value;
-      uint32_t counter;
+      
       float temp_s;
       float hum_s;
       float voc1_s;
       float voc2_s;
+
+      union u32t_value
+      {
+            uint32_t counter;
+            uint32_t lux;
+      }valueU32;
 
       VLD_D2_01_TELEGRAM_CMD_04_TYPE *ActStatResp;
       VLD_D2_01_TELEGRAM_CMD_04_TYPE *ActStatResp_4_D2_01_0E;
@@ -23,6 +29,7 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
       VLD_D2_05_00_TELEGRAM_CMD_04_TYPE *ActStatResp_D2_05;
       // VLD_D2_14_00_TELEGRAM *SenVal_D2_14;
       VLD_D2_14_30_TELEGRAM *SenStat_D2_14_30;
+      VLD_D2_14_41_TELEGRAM *SenStat_D2_14_41;
       VLD_D2_06_01_TELEGRAM *SenVal_D2_06_01;
       VLD_D2_06_50_Window_Status_0x01 *SenVal_D2_06_50_0x01;
       VLD_D2_06_50_Alarm_Status_0x02 *SenVal_D2_06_50_0x02;
@@ -560,11 +567,11 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                         SERIAL_PORT.println(SenVal_D2_06_50_0x01->u8VldTelWindow.WDS);
 #endif
                         // Counter Status
-                        counter = (SenVal_D2_06_50_0x01->u8CT_4 << 24) | (SenVal_D2_06_50_0x01->u8CT_3 << 16) | (SenVal_D2_06_50_0x01->u8CT_2 << 8) | SenVal_D2_06_50_0x01->u8CT_1;
-                        knx.getGroupObject(firstComObj + 5).value(counter, getDPT(VAL_DPT_12));
+                        valueU32.counter = (SenVal_D2_06_50_0x01->u8CT_4 << 24) | (SenVal_D2_06_50_0x01->u8CT_3 << 16) | (SenVal_D2_06_50_0x01->u8CT_2 << 8) | SenVal_D2_06_50_0x01->u8CT_1;
+                        knx.getGroupObject(firstComObj + 5).value(valueU32.counter, getDPT(VAL_DPT_12));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("State Counter: "));
-                        SERIAL_PORT.println(counter);
+                        SERIAL_PORT.println(valueU32.counter);
 #endif
                         // Change Battery
                         knx.getGroupObject(firstComObj + 4).value(SenVal_D2_06_50_0x01->u8VldTelBattery.CB, getDPT(VAL_DPT_1));
@@ -677,13 +684,65 @@ void handle_VLD(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
                   SERIAL_PORT.print(F("Time last Event: "));
                   SERIAL_PORT.println(mem);
 #endif
-
                   break;
+
+            //**************************************************************
+            // ----------------- Profil: D2-14-41 --------------------------
+            //**************************************************************
+            case D2_14_41:
+                  SenStat_D2_14_41 = (VLD_D2_14_41_TELEGRAM *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("Profil: D2-14-41"));
+#endif
+                  // Temp-Sensor  
+                  value = (SenStat_D2_14_41->u8VldTelSenSta7.Temp_MSB<<8) | SenStat_D2_14_41->Temp_LSB;
+                  temp_s = (float)(value / 10.230) - 40;
+                  knx.getGroupObject(firstComObj + 1).value(temp_s, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Temp: "));
+                  SERIAL_PORT.println(temp_s);
+#endif
+                  // Hum-Sensor  
+                  mem = SenStat_D2_14_41->u8VldTelSenSta7.Hum_LSB>>2 ;
+                  mem2 = (SenStat_D2_14_41->u8VldTelSenSta7.Temp_MSB<<6) | mem;
+                  hum_s = (float)mem2/2;
+                  knx.getGroupObject(firstComObj + 2).value(hum_s, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Hum: "));
+                  SERIAL_PORT.println(hum_s);
+#endif
+                  // LUX-Sensor  
+                  mem = SenStat_D2_14_41->u8VldTelSenSta6.LUX_LSB>>2 ;
+                  valueU32.lux = (SenStat_D2_14_41->u8VldTelSenSta4.LUX_MSB<<18) | (SenStat_D2_14_41->LUX<<6) | mem;
+                  knx.getGroupObject(firstComObj + 5).value(valueU32.lux, getDPT(VAL_DPT_9));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("LUX: "));
+                  SERIAL_PORT.println(valueU32.lux);
+#endif
+                  // Sensor Status
+                  knx.getGroupObject(firstComObj + 5).value(SenStat_D2_14_41->u8VldTelSenSta4.SensorStatus, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Sensor Status: "));
+                  SERIAL_PORT.println(SenStat_D2_14_41->u8VldTelSenSta4.SensorStatus);
+#endif
+                  // ACC_X
+
+                  // ACC_Y
+
+                  // ACC_Z
+
+                  // Contact
+                  knx.getGroupObject(firstComObj + 3).value(SenStat_D2_14_41->u8VldTelSenSta.contact, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Contact: "));
+                  SERIAL_PORT.println(SenStat_D2_14_41->u8VldTelSenSta.contact);
+#endif
+                  break;
+
             default:
                   break;
             }
             break; // ENDE D2-14
-
       default:
 #ifdef KDEBUG
             SERIAL_PORT.println(F("Profil: ERROR"));

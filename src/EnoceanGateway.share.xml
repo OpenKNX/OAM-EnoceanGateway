@@ -375,6 +375,7 @@
               <ParameterType Id="%AID%_PT-ProfilVLD14" Name="ProfilVLD14">
                 <TypeRestriction Base="Value" SizeInBit="16">
                   <Enumeration Text="D2-14-30   Sensor for Smoke, Air quality, Hygrothermal comfort, Temperature and Humidity" Value="241" Id="%AID%_PT-ProfilVLD14_EN-241" />
+                  <Enumeration Text="D2-14-41   Indoor -Temperature, Humidity XYZ Acceleration, Illumination Sensor" Value="244" Id="%AID%_PT-ProfilVLD14_EN-244" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ProfilVLD20" Name="ProfilVLD20">

@@ -798,22 +798,56 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
             //**************************************************************
             case A5_12_01:
                   fourBsA5_12_01_Tlg_p = (FOURBS_A5_12_01_TYPE *)&(f_Pkt_st->u8DataBuffer[1]);
+#ifdef KDEBUG
+                  SERIAL_PORT.println(F("01"));
+#endif
 
-                  value_4Byte = ((uint32_t)fourBsA5_12_01_Tlg_p->Meterreading_MID) << 16 | fourBsA5_12_01_Tlg_p->Meterreading_MID << 8 | fourBsA5_12_01_Tlg_p->Meterreading_LSB;
+                  value_4Byte = ((uint32_t)fourBsA5_12_01_Tlg_p->Meterreading_MSB) << 16 | fourBsA5_12_01_Tlg_p->Meterreading_MID << 8 | fourBsA5_12_01_Tlg_p->Meterreading_LSB;
 
+                  switch (fourBsA5_12_01_Tlg_p->u84BsTelData.DIV)
+                  {
+                  case 0:
+                        value_4Byte = value_4Byte / 1;
+                        break;
+                  case 1:
+                        value_4Byte = value_4Byte / 10;
+                        break;
+                  case 2:
+                        value_4Byte = value_4Byte / 100;
+                        break;
+                  case 3:
+                        value_4Byte = value_4Byte / 1000;
+                        break;
+
+                  default:
+                        break;
+                  }
                   // check unit
                   if (fourBsA5_12_01_Tlg_p->u84BsTelData.DT == 1) // WATT
                   {
-                        knx.getGroupObject(firstComObj + 7).value(value_4Byte / fourBsA5_12_01_Tlg_p->u84BsTelData.DIV, getDPT(VAL_DPT_14));
+                        knx.getGroupObject(firstComObj + 7).value(value_4Byte, getDPT(VAL_DPT_14));
                   }
                   else // KWh
                   {
-                        knx.getGroupObject(firstComObj + 6).value(value_4Byte / fourBsA5_12_01_Tlg_p->u84BsTelData.DIV, getDPT(VAL_DPT_14));
+                        knx.getGroupObject(firstComObj + 6).value(value_4Byte, getDPT(VAL_DPT_14));
                   }
-                  break;
 
-                  //Tarif
+                  // Tarif
                   knx.getGroupObject(firstComObj + 9).value(fourBsA5_12_01_Tlg_p->u84BsTelData.TI, getDPT(VAL_DPT_5));
+#ifdef KDEBUG
+                  SERIAL_PORT.print(F("Energy: "));
+                  SERIAL_PORT.println(value_4Byte);
+                  SERIAL_PORT.print(F("DT: "));
+                  SERIAL_PORT.println(fourBsA5_12_01_Tlg_p->u84BsTelData.DT);
+                  SERIAL_PORT.print(F("DIV: "));
+                  SERIAL_PORT.println(fourBsA5_12_01_Tlg_p->u84BsTelData.DIV);
+                  SERIAL_PORT.print(F("Tarif: "));
+                  SERIAL_PORT.println(fourBsA5_12_01_Tlg_p->u84BsTelData.TI);
+                  SERIAL_PORT.println(fourBsA5_12_01_Tlg_p->Meterreading_MSB);
+                  SERIAL_PORT.println(fourBsA5_12_01_Tlg_p->Meterreading_MID);
+                  SERIAL_PORT.println(fourBsA5_12_01_Tlg_p->Meterreading_LSB);
+#endif
+                  break;
             }
             break; // ENDE A5-12-XX
 

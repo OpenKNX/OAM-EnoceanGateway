@@ -419,6 +419,59 @@ struct VLD_D2_14_30_Data_TYPE5
   uint8_t smokeAlarm : 1;    // (DB_BIT 7)    Smoke Alarm
 };
 
+
+struct VLD_D2_14_41_Data_TYPE8
+{
+  uint8_t Temp_LSB : 8;  // (DB_BIT 0-7)    Temp_LSB
+};
+
+struct VLD_D2_14_41_Data_TYPE7
+{
+  uint8_t Hum_LSB : 6;  // (DB_BIT 0-5)   HUM LSB
+  uint8_t Temp_MSB : 2;  // (DB_BIT 6-7)  Temp_MSB
+};
+
+struct VLD_D2_14_41_Data_TYPE6
+{
+  uint8_t LUX_LSB : 6;  // (DB_BIT 0-5)   LUX LSB
+  uint8_t Hum_MSB : 2;  // (DB_BIT 6-7)   Hum_MSB
+};
+
+struct VLD_D2_14_41_Data_TYPE5
+{
+  uint8_t Lux : 8;  // (DB_BIT 0-7)    Lux
+};
+
+struct VLD_D2_14_41_Data_TYPE4
+{
+  uint8_t ACCY_LSB : 2;      // (DB_BIT 0-1)  not ACCY_LSB
+  uint8_t SensorStatus : 2;  // (DB_BIT 2-3)  SensorStatus
+  uint8_t LUX_MSB : 4;       // (DB_BIT 4-7)  LUX_MSB
+};
+
+struct VLD_D2_14_41_Data_TYPE3
+{
+  uint8_t ACCY_MSB : 8;  // (DB_BIT 0-7)    ACC_X MSB
+};
+
+struct VLD_D2_14_41_Data_TYPE2
+{
+  uint8_t ACCY_LSB : 8;  // (DB_BIT 0-7)    ACC_Y LSB
+};
+
+struct VLD_D2_14_41_Data_TYPE1
+{
+  uint8_t ACCZ_LSB : 6;  // (DB_BIT 0-5)    ACC_Z LSB
+  uint8_t ACCY_MSB : 2;   // (DB_BIT 6-7)   ACCY_MSB
+};
+
+struct VLD_D2_14_41_Data_TYPE
+{
+  uint8_t NA : 4;       // (DB_BIT 0-3)  not used
+  uint8_t contact : 1;  // (DB_BIT 4)    Contcat
+  uint8_t ACCZ_MSB : 3; // (DB_BIT 5-7)  ACC_Z MSB
+};
+
 struct VLD_D2_01_TELEGRAM_CMD_03_TYPE
 {
   VLD_D2_01_TELEGRAM_CMD_03_ACTS_TYPE u8VldTelActSta;
@@ -528,6 +581,21 @@ struct VLD_D2_14_30_TELEGRAM
   VLD_D2_14_30_Data_TYPE2 u8VldTelSenSta2;
   VLD_D2_14_30_Data_TYPE1 u8VldTelSenSta1;
   VLD_D2_14_30_Data_TYPE u8VldTelSenSta;
+  uint8_t u8SenderId_p[4];
+  uint8_t u8Status;
+};
+
+struct VLD_D2_14_41_TELEGRAM
+{
+  uint8_t Temp_LSB;
+  VLD_D2_14_41_Data_TYPE7 u8VldTelSenSta7;
+  VLD_D2_14_41_Data_TYPE6 u8VldTelSenSta6;
+  uint8_t LUX;
+  VLD_D2_14_41_Data_TYPE4 u8VldTelSenSta4;
+  uint8_t ACCX_MSB;
+  VLD_D2_14_41_Data_TYPE2 u8VldTelSenSta2;
+  VLD_D2_14_41_Data_TYPE1 u8VldTelSenSta1;
+  VLD_D2_14_41_Data_TYPE u8VldTelSenSta;
   uint8_t u8SenderId_p[4];
   uint8_t u8Status;
 };
