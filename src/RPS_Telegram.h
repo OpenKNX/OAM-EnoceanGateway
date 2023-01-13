@@ -13,37 +13,37 @@ uint8_t getRockerTyp(uint8_t type)
     break;
   case AI_release:
     return ROCKER_AI;
-    break;  
+    break;
   case AO_pressed:
     return ROCKER_AO;
     break;
   case AO_release:
     return ROCKER_AO;
-    break; 
+    break;
   case BI_pressed:
     return ROCKER_BI;
     break;
   case BI_release:
     return ROCKER_BI;
-    break;  
+    break;
   case BO_pressed:
     return ROCKER_BO;
     break;
   case BO_release:
     return ROCKER_BO;
-    break; 
+    break;
   case CI_pressed:
     return ROCKER_CI;
     break;
   case CI_release:
     return ROCKER_CI;
-    break;  
+    break;
   case CO_pressed:
     return ROCKER_CO;
     break;
   case CO_release:
     return ROCKER_CO;
-    break;       
+    break;
   default:
     return ROCKER_INACTIVE;
     break;
@@ -62,15 +62,15 @@ void shortSend_DPT1(bool value, uint16_t firstComObj)
 void SendDPT3_007(bool dir, uint16_t firstComObj)
 {
   uint8_t dpt3value = 0;
-  //UP = 0
-  //down = 1
+  // UP = 0
+  // down = 1
 #ifdef KDEBUG_Rocker
   SERIAL_PORT.println(F("DIM: "));
   SERIAL_PORT.println(dir);
 #endif
   dpt3value = 1;
   knx.getGroupObject(firstComObj + 1).valueNoSend(dpt3value, Dpt(3, 7, 1));
-  if (dir) //Increase
+  if (dir) // Increase
     dpt3value = 8;
   else // decrease
     dpt3value = 0;
@@ -373,7 +373,7 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
     case Wippen1:
-      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) //FunctionA because of Wippen1
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
       {
       case 1: // Schalten EIN (Oben/unten Wippe)
         shortSend_DPT1(true, firstComObj);
@@ -438,7 +438,7 @@ bool longPress(uint8_t rockerNr, uint16_t firstParameter, uint16_t firstComObj)
     switch (knx.paramByte(firstParameter + ENO_CHRockerProfil))
     {
     case Wippen1:
-      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) //FunctionA because of Wippen1
+      switch (knx.paramByte(firstParameter + ENO_CHRockerFunktionA)) // FunctionA because of Wippen1
       {
       case 1: // Schalten AUS (Oben/unten Wippe)
         shortSend_DPT1(false, firstComObj);
@@ -1008,6 +1008,42 @@ void handle_RPS_Rocker(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t fir
   }
 }
 
+void handle_F6_02_03(uint16_t firstComObj, uint8_t value)
+{
+#ifdef KDEBUG
+  SERIAL_PORT.println(F("Profil: F6-02-03"));
+#endif
+  switch (value)
+  {
+  case 0x30: // A0 Set
+    knx.getGroupObject(firstComObj).value(true, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("A0 (0x30)"));
+#endif
+    break;
+  case 0x10: // A0 release
+    knx.getGroupObject(firstComObj).value(false, getDPT(VAL_DPT_1));
+#ifdef KDEBUG
+    SERIAL_PORT.println(F("A1 (0x10)"));
+#endif
+    break;
+  case 0x70: // B0 Set
+    knx.getGroupObject(firstComObj + 1).value(true, getDPT(VAL_DPT_1));
+    #ifdef KDEBUG
+    SERIAL_PORT.println(F("B0 (0x70)"));
+#endif
+    break;
+  case 0x50: // B0 relesae
+    knx.getGroupObject(firstComObj + 1).value(false, getDPT(VAL_DPT_1));
+    #ifdef KDEBUG
+    SERIAL_PORT.println(F("B1 (0x50)"));
+#endif
+    break;
+  default:
+    break;
+  }
+}
+
 void handle_F6_05_0x(uint16_t firstComObj, uint8_t value)
 {
   switch (value)
@@ -1051,6 +1087,8 @@ void handle_RPS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint16_t firstComO
 #ifdef KDEBUG
     SERIAL_PORT.println(F("Profil: F6-02-02"));
 #endif
+  case F6_02_03:
+    handle_F6_02_03(firstComObj, f_Pkt_st->u8DataBuffer[1]);
     break;
   case F6_03_01:
 #ifdef KDEBUG

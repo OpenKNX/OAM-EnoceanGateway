@@ -78,11 +78,12 @@
               </ParameterType>
               <ParameterType Id="%AID%_PT-ProfilSelectionRPS" Name="ProfilSelectionRPS">
                 <TypeRestriction Base="Value" SizeInBit="16">
-                  <Enumeration Text="F6-05-00   Wind Speed Detector"   Value="291"  Id="%AID%_PT-ProfilSelectionRPS_EN-291" />
-                  <Enumeration Text="F6-05-01   Liquid Leakage Sensor" Value="292"  Id="%AID%_PT-ProfilSelectionRPS_EN-292" />
-                  <Enumeration Text="F6-05-02   Smoke Detector"        Value="293"  Id="%AID%_PT-ProfilSelectionRPS_EN-293" />
-                  <Enumeration Text="F6-10-00   Window Handle"         Value="294"  Id="%AID%_PT-ProfilSelectionRPS_EN-294" />
-                  <Enumeration Text="F6-10-01   Window Handle ERP2"    Value="295"  Id="%AID%_PT-ProfilSelectionRPS_EN-295" />
+                  <Enumeration Text="F6-02-03   Light Control - Application Style 1"   Value="285"  Id="%AID%_PT-ProfilSelectionRPS_EN-285" />
+                  <Enumeration Text="F6-05-00   Wind Speed Detector"                   Value="291"  Id="%AID%_PT-ProfilSelectionRPS_EN-291" />
+                  <Enumeration Text="F6-05-01   Liquid Leakage Sensor"                 Value="292"  Id="%AID%_PT-ProfilSelectionRPS_EN-292" />
+                  <Enumeration Text="F6-05-02   Smoke Detector"                        Value="293"  Id="%AID%_PT-ProfilSelectionRPS_EN-293" />
+                  <Enumeration Text="F6-10-00   Window Handle"                         Value="294"  Id="%AID%_PT-ProfilSelectionRPS_EN-294" />
+                  <Enumeration Text="F6-10-01   Window Handle ERP2"                    Value="295"  Id="%AID%_PT-ProfilSelectionRPS_EN-295" />
                 </TypeRestriction>
               </ParameterType>
               <ParameterType Id="%AID%_PT-ProfilSelection1BS" Name="ProfilSelection1BS">
