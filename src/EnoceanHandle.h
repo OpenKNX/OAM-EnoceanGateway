@@ -239,7 +239,7 @@ public:
       union1.val_D2_01_0E_Energy[1] = (knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter) >> 8); // maskiere LSB part of the 16bit value und schiebe ihn in ein 1Byte speicher
       union1.val_D2_01_0E_Energy[1] = (union1.val_D2_01_0E_Energy[1] << 4);                         // verschiebt den LSB-Wert auf die richtige Position
       if (UNE == 1)
-        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 2;                            // Eränzt noch die passende Unit (KWH)
+        union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 2; // Eränzt noch die passende Unit (KWH)
       else
         union1.val_D2_01_0E_Energy[1] = union1.val_D2_01_0E_Energy[1] + 1;                            // Eränzt noch die passende Unit (WH)
       union1.val_D2_01_0E_Energy[2] = (uint8_t)knx.paramWord(ENO_CHD2010EdeltaEkwh + firstParameter); // speichert den MSB Wert
@@ -1014,7 +1014,17 @@ public:
       switch (knx.paramByte(ENO_CHDirectionKnxEnocean + firstParameter))
       {
       case 1:
-        // funktion zum senden Sknx.paramByte(ENO_CHProfilSelection + firstParameter
+#ifdef KDEBUG
+        SERIAL_PORT.println(F("send Rocker MSG"));
+#endif
+        if (iKo.value(getDPT(VAL_DPT_1)))
+        {
+          send_RPS_Taster(lui8_SendeID_p, false, true, 0); // BaseID_CH = 0
+        }
+        else
+        {
+          send_RPS_Taster(lui8_SendeID_p, true, true, 0); // BaseID_CH = 0
+        }
         break;
       }
       break;

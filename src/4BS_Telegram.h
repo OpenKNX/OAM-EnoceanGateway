@@ -825,11 +825,11 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   // check unit
                   if (fourBsA5_12_01_Tlg_p->u84BsTelData.DT == 1) // WATT
                   {
-                        knx.getGroupObject(firstComObj + 7).value(value_4Byte, getDPT(VAL_DPT_14));
+                        knx.getGroupObject(firstComObj + 7).value(value_4Byte, getDPT(VAL_DPT_14)); //WATT
                   }
                   else // KWh
                   {
-                        knx.getGroupObject(firstComObj + 6).value(value_4Byte, getDPT(VAL_DPT_14));
+                        knx.getGroupObject(firstComObj + 6).value(value_4Byte, getDPT(VAL_DPT_13)); //KWH
                   }
 
                   // Tarif
