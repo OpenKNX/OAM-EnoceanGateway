@@ -12,6 +12,8 @@
 #include "Helper.h"
 #include "KnxHelper.h"
 
+#define round(x)    ((unsigned) ((x) + .5))
+
 // ################################################
 // ### DEBUG CONFIGURATION
 // ################################################
@@ -624,6 +626,7 @@ public:
           else
           {
             union1.val_A5_20_01[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
+            round(union1.val_A5_20_01[0] = union1.val_A5_20_01[0] / 2.55);
 #ifdef KDEBUG
             SERIAL_PORT.print(F("SET Pos to: "));
             SERIAL_PORT.print(union1.val_A5_20_01[0]);
@@ -721,6 +724,7 @@ public:
         {
         case KO_0: //  SET Pos
           union1.val_A5_20_04[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5));
+          round(union1.val_A5_20_04[0] = union1.val_A5_20_04[0] / 2.55);
 #ifdef KDEBUG
           SERIAL_PORT.print(F("SET Pos to: "));
           SERIAL_PORT.print(union1.val_A5_20_04[0]);
@@ -843,6 +847,7 @@ public:
           else
           {
             union1.val_A5_20_06[0] = (uint8_t)iKo.value(getDPT(VAL_DPT_5)); // Set Point Pos
+            round(union1.val_A5_20_06[0] = union1.val_A5_20_06[0] / 2.55);
 #ifdef KDEBUG
             SERIAL_PORT.print(F("SET Pos to: "));
             SERIAL_PORT.print(union1.val_A5_20_06[0]);

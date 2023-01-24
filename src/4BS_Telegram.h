@@ -4,6 +4,11 @@
 
 uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2nd, uint16_t firstComObj, uint16_t firstParameter)
 {
+      union intParts
+      {
+            uint8_t uint8;
+      } _value;
+
       uint32_t value_4Byte;
       uint16_t lux;
       float luxfloat;
@@ -825,11 +830,11 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   // check unit
                   if (fourBsA5_12_01_Tlg_p->u84BsTelData.DT == 1) // WATT
                   {
-                        knx.getGroupObject(firstComObj + 7).value(value_4Byte, getDPT(VAL_DPT_14)); //WATT
+                        knx.getGroupObject(firstComObj + 7).value(value_4Byte, getDPT(VAL_DPT_14)); // WATT
                   }
                   else // KWh
                   {
-                        knx.getGroupObject(firstComObj + 6).value(value_4Byte, getDPT(VAL_DPT_13)); //KWH
+                        knx.getGroupObject(firstComObj + 6).value(value_4Byte, getDPT(VAL_DPT_13)); // KWH
                   }
 
                   // Tarif
@@ -1304,7 +1309,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
 #ifdef KDEBUG
                               SERIAL_PORT.println(F(" OK"));
 #endif
-                              return TEACHIN_A52006;
+                              return TEACHIN_A52001;
                         }
                         else
                         {
@@ -1316,7 +1321,8 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   else
                   {
                         // ......Current Position.........................................
-                        knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_01_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
+                        _value.uint8 = fourBsA5_20_01_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
+                        knx.getGroupObject(firstComObj + 7).value(_value.uint8, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("current Pos: "));
                         SERIAL_PORT.print(fourBsA5_20_01_Tlg_p->u8CurrentPos);
@@ -1371,7 +1377,8 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   else
                   {
                         // ......Current Position.........................................
-                        knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_04_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
+                        _value.uint8 = fourBsA5_20_01_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
+                        knx.getGroupObject(firstComObj + 7).value(_value.uint8, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("current Pos: "));
                         SERIAL_PORT.print(fourBsA5_20_04_Tlg_p->u8CurrentPos);
@@ -1462,7 +1469,8 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   {
                         // ......Current Position.........................................
 #ifndef EnOceanTEST
-                        knx.getGroupObject(firstComObj + 7).value(fourBsA5_20_06_Tlg_p->u8CurrentPos, getDPT(VAL_DPT_5));
+                        _value.uint8 = fourBsA5_20_01_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
+                        knx.getGroupObject(firstComObj + 7).value(_value.uint8, getDPT(VAL_DPT_5));
 #endif
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("current Pos: "));
