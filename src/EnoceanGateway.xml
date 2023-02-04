@@ -12,7 +12,7 @@
         <!-- Each increase of AppliationVersion FORCES the Enduser to update according firmware, too -->
         <!-- If you just want to have a BUGFIX-Update of the ETS-Appliation (without firmware), increase ApplicationVersion AND ApplicationRevision simultaneously -->
         <!-- To sync ETS-Application and firmware again, increase ApplicationVersion AND set ApplicationRevision to 0 -->
-        <op:version OpenKnxId="0xA2" ApplicationNumber="0" ApplicationVersion="21" ReplacesVersions="1 2 4 5 6 7 8 9 16 17 18 19 20" ApplicationRevision="0" />
+        <op:version OpenKnxId="0xA2" ApplicationNumber="0" ApplicationVersion="22" ReplacesVersions="1 2 4 5 6 7 8 9 16 17 18 19 20 21" ApplicationRevision="0" />
         <ApplicationProgram Id="%AID%" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="KNX-Enocean-Gateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0" ApplicationNumber="0" ApplicationVersion="0" ReplacesVersions="0">
           <Static>
             <Code>
@@ -21,31 +21,31 @@
             <op:define prefix="LOG" header="EnoceanGateway.h" NumChannels="50" KoOffset="320" ModuleType="1" />
             <op:define prefix="ENO" header="EnoceanGateway.h" NumChannels="30" KoOffset="20" ModuleType="2" />
             <ParameterTypes>
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterTypes/ParameterType" prefix="LOG" />
               <op:include href="EnoceanGateway.share.xml" xpath="//ParameterTypes/ParameterType" prefix="ENO" />
             </ParameterTypes>
             <Parameters>
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="LOG" />
               <op:include href="EnoceanGateway.share.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="parameter" prefix="ENO" />
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="LOG" />
               <op:include href="EnoceanGateway.templ.xml" xpath="//Parameters/Parameter|//Parameters/Union" type="template" prefix="ENO" />
             </Parameters>
             <ParameterRefs>
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="LOG" />
               <op:include href="EnoceanGateway.share.xml" xpath="//ParameterRefs/ParameterRef" prefix="ENO" />
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="LOG" />
               <op:include href="EnoceanGateway.templ.xml" xpath="//ParameterRefs/ParameterRef" type="template" prefix="ENO" />
             </ParameterRefs>
             <ComObjectTable>
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectTable/ComObject" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectTable/ComObject" prefix="LOG" />
               <op:include href="EnoceanGateway.share.xml" xpath="//ComObjectTable/ComObject" prefix="ENO" />
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="LOG" />
               <op:include href="EnoceanGateway.templ.xml" xpath="//ComObjectTable/ComObject" type="template" prefix="ENO" />
             </ComObjectTable>
             <ComObjectRefs>
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="LOG" />
               <op:include href="EnoceanGateway.share.xml" xpath="//ComObjectRefs/ComObjectRef" prefix="ENO" />
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="LOG" />
               <op:include href="EnoceanGateway.templ.xml" xpath="//ComObjectRefs/ComObjectRef" type="template" prefix="ENO" />
             </ComObjectRefs>
             <AddressTable MaxEntries="2047" />
@@ -83,9 +83,9 @@
                 <op:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Docu']/*" prefix="ENO" />
               </ParameterBlock>
               <ParameterBlock Id="%AID%_PB-2" Name="General" Text="Allgemeine Parameter">
-                <op:include href="../../OAM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
+                <op:include href="../lib/OAM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="LOG" />
                 <op:include href="EnoceanGateway.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='General']/*" prefix="ENO" />
-                <op:include href="../../OAM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
+                <op:include href="../lib/OAM-LogicModule/src/Logikmodul.parts.xml" xpath="//Dynamic/ChannelIndependentBlock/ParameterBlock[@Name='Diagnose']/*" prefix="LOG" />
               </ParameterBlock>
             </ChannelIndependentBlock>
             <!-- Erster Enocean Kanal -->
@@ -94,9 +94,9 @@
             </Channel>
             <Channel Id="%AID%_CH-2" Name="Logik" Number="2" Text="Logikkanäle">
               <!-- Logic channel independent settings -->
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.share.xml" xpath="//Dynamic/Channel/*" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.share.xml" xpath="//Dynamic/Channel/*" prefix="LOG" />
               <!-- Logic channel settings -->
-              <op:include href="../../OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="LOG" />
+              <op:include href="../lib/OAM-LogicModule/src/Logikmodul.templ.xml" xpath="//Dynamic/ChannelIndependentBlock/*" type="template" prefix="LOG" />
             </Channel>
           </Dynamic>
         </ApplicationProgram>

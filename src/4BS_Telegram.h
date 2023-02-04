@@ -1377,7 +1377,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   else
                   {
                         // ......Current Position.........................................
-                        _value.uint8 = fourBsA5_20_01_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
+                        _value.uint8 = fourBsA5_20_04_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
                         knx.getGroupObject(firstComObj + 7).value(_value.uint8, getDPT(VAL_DPT_5));
 #ifdef KDEBUG
                         SERIAL_PORT.print(F("current Pos: "));
@@ -1469,7 +1469,7 @@ uint8_t handle_4BS(PACKET_SERIAL_TYPE *f_Pkt_st, uint8_t profil, uint8_t profil2
                   {
                         // ......Current Position.........................................
 #ifndef EnOceanTEST
-                        _value.uint8 = fourBsA5_20_01_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
+                        _value.uint8 = fourBsA5_20_06_Tlg_p->u8CurrentPos * 2.55; // Value 0...100 = 0...100%  --> Value 0...255 = 0...100%
                         knx.getGroupObject(firstComObj + 7).value(_value.uint8, getDPT(VAL_DPT_5));
 #endif
 #ifdef KDEBUG

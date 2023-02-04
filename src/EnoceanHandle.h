@@ -12,8 +12,6 @@
 #include "Helper.h"
 #include "KnxHelper.h"
 
-#define round(x)    ((uint8_t) ((x) + .5))
-
 // ################################################
 // ### DEBUG CONFIGURATION
 // ################################################

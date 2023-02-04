@@ -21,7 +21,7 @@ Logic gLogic;
 uint32_t heartbeatDelay = 0;
 uint32_t startupDelay = 0;
 
-// true solgange der Start des gesamten Moduls verzögert werden soll
+// true solange der Start des gesamten Moduls verzögert werden soll
 bool startupDelayfunc()
 {
   return !delayCheck(startupDelay, getDelayPattern(LOG_StartupDelayBase));
@@ -57,7 +57,7 @@ bool processDiagnoseCommand()
   bool lOutput = false;
   if (lBuffer[0] == 'v')
   {
-    // Command v: retrun fimware version, do not forward this to logic,
+    // Command v: return filmware version, do not forward this to logic,
     // because it means firmware version of the outermost module
     sprintf(lBuffer, "VER [%d] %d.%d", cFirmwareMajor, cFirmwareMinor, cFirmwareRevision);
     lOutput = true;
@@ -104,35 +104,35 @@ void ProcessKoCallback(GroupObject &iKo)
       if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
       {
 #ifdef KDEBUG
-        SERIAL_PORT.println("reviev KO_0");
+        SERIAL_PORT.println("review KO_0");
 #endif
         enOcean.handleKnxEvents(koIndex, 0, iKo);
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
       {
 #ifdef KDEBUG
-        SERIAL_PORT.println("reviev KO_1");
+        SERIAL_PORT.println("review KO_1");
 #endif
         enOcean.handleKnxEvents(koIndex, 1, iKo);
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
       {
 #ifdef KDEBUG
-        SERIAL_PORT.println("reviev KO_2");
+        SERIAL_PORT.println("review KO_2");
 #endif
         enOcean.handleKnxEvents(koIndex, 2, iKo);
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
       {
 #ifdef KDEBUG
-        SERIAL_PORT.println("reviev KO_3");
+        SERIAL_PORT.println("review KO_3");
 #endif
         enOcean.handleKnxEvents(koIndex, 3, iKo);
       }
       else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
       {
 #ifdef KDEBUG
-        SERIAL_PORT.println("reviev KO_4");
+        SERIAL_PORT.println("review KO_4");
 #endif
         enOcean.handleKnxEvents(koIndex, 4, iKo);
       }
@@ -150,7 +150,8 @@ void appSetup()
       GroupObject::classCallback(ProcessKoCallback);
     // Setup Logik
     Logic::addLoopCallback(EnOcean::taskCallback, &enOcean);
-    gLogic.setup(false);
+    gLogic.setup(true);
+    openknx.flashUserData()->readFlash();
   }
 }
 
