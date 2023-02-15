@@ -1961,7 +1961,7 @@
 #define LOG_KoBlockSize 3
 
 #define LOG_KoCalcNumber(index) (index + LOG_KoBlockOffset + _channelIndex * LOG_KoBlockSize)
-#define LOG_KoCalcIndex(number) (((number - LOG_KoBlockOffset) >= 0) ? (number - LOG_KoOffset) % LOG_KoBlockSize : -1)
+#define LOG_KoCalcIndex(number) ((number >= LOG_KoCalcNumber(0) && number < LOG_KoCalcNumber(LOG_KoBlockSize)) ? (number - LOG_KoOffset) % LOG_KoBlockSize : -1)
 
 #define LOG_KoKOfE1 0
 #define LOG_KoKOfE2 1
@@ -2261,7 +2261,7 @@
 #define ENO_KoBlockSize 10
 
 #define ENO_KoCalcNumber(index) (index + ENO_KoBlockOffset + _channelIndex * ENO_KoBlockSize)
-#define ENO_KoCalcIndex(number) (((number - ENO_KoBlockOffset) >= 0) ? (number - ENO_KoOffset) % ENO_KoBlockSize : -1)
+#define ENO_KoCalcIndex(number) ((number >= ENO_KoCalcNumber(0) && number < ENO_KoCalcNumber(ENO_KoBlockSize)) ? (number - ENO_KoOffset) % ENO_KoBlockSize : -1)
 
 #define ENO_KoGO_BASE__1 0
 #define ENO_KoGO_BASE__2 1

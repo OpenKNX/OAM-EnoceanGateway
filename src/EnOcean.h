@@ -422,19 +422,19 @@ struct VLD_D2_14_30_Data_TYPE5
 
 struct VLD_D2_14_41_Data_TYPE8
 {
-  uint8_t Temp_LSB : 8;  // (DB_BIT 0-7)    Temp_LSB
+  uint8_t Temp_MSB : 8;  // (DB_BIT 0-7)    Temp_MSB
 };
 
 struct VLD_D2_14_41_Data_TYPE7
 {
-  uint8_t Hum_LSB : 6;  // (DB_BIT 0-5)   HUM LSB
-  uint8_t Temp_MSB : 2;  // (DB_BIT 6-7)  Temp_MSB
+  uint8_t Hum_MSB : 6;  // (DB_BIT 0-5)   HUM MSB
+  uint8_t Temp_LSB : 2;  // (DB_BIT 6-7)  Temp_LSB
 };
 
 struct VLD_D2_14_41_Data_TYPE6
 {
-  uint8_t LUX_LSB : 6;  // (DB_BIT 0-5)   LUX LSB
-  uint8_t Hum_MSB : 2;  // (DB_BIT 6-7)   Hum_MSB
+  uint8_t LUX_MSB : 6;  // (DB_BIT 0-5)   LUX MSB
+  uint8_t Hum_LSB : 2;  // (DB_BIT 6-7)   Hum_LSB
 };
 
 struct VLD_D2_14_41_Data_TYPE5
@@ -444,32 +444,33 @@ struct VLD_D2_14_41_Data_TYPE5
 
 struct VLD_D2_14_41_Data_TYPE4
 {
-  uint8_t ACCY_LSB : 2;      // (DB_BIT 0-1)  not ACCY_LSB
+  uint8_t ACCX_MSB : 3;      // (DB_BIT 0-1)  not ACCY_LSB
   uint8_t SensorStatus : 2;  // (DB_BIT 2-3)  SensorStatus
-  uint8_t LUX_MSB : 4;       // (DB_BIT 4-7)  LUX_MSB
+  uint8_t LUX_LSB : 3;       // (DB_BIT 4-7)  LUX_LSB
 };
 
 struct VLD_D2_14_41_Data_TYPE3
 {
-  uint8_t ACCY_MSB : 8;  // (DB_BIT 0-7)    ACC_X MSB
+  uint8_t ACCY_MSB : 1;  // (DB_BIT 0)    ACC_X MSB
+  uint8_t ACCX_LSB : 7;  // (DB_BIT 1-7)    ACC_X LSB
 };
 
 struct VLD_D2_14_41_Data_TYPE2
 {
-  uint8_t ACCY_LSB : 8;  // (DB_BIT 0-7)    ACC_Y LSB
+  uint8_t ACCY_MID : 8;  // (DB_BIT 0-7)    ACC_Y MID
 };
 
 struct VLD_D2_14_41_Data_TYPE1
 {
-  uint8_t ACCZ_LSB : 6;  // (DB_BIT 0-5)    ACC_Z LSB
-  uint8_t ACCY_MSB : 2;   // (DB_BIT 6-7)   ACCY_MSB
+  uint8_t ACCZ_MSB : 7;  // (DB_BIT 0-6)    ACC_Z MSB
+  uint8_t ACCY_LSB : 1;   // (DB_BIT 7)   ACCY_LSB
 };
 
 struct VLD_D2_14_41_Data_TYPE
 {
   uint8_t NA : 4;       // (DB_BIT 0-3)  not used
   uint8_t contact : 1;  // (DB_BIT 4)    Contcat
-  uint8_t ACCZ_MSB : 3; // (DB_BIT 5-7)  ACC_Z MSB
+  uint8_t ACCZ_LSB : 3; // (DB_BIT 5-7)  ACC_Z LSB
 };
 
 struct VLD_D2_01_TELEGRAM_CMD_03_TYPE
@@ -587,12 +588,12 @@ struct VLD_D2_14_30_TELEGRAM
 
 struct VLD_D2_14_41_TELEGRAM
 {
-  uint8_t Temp_LSB;
+  uint8_t Temp_MSB;
   VLD_D2_14_41_Data_TYPE7 u8VldTelSenSta7;
   VLD_D2_14_41_Data_TYPE6 u8VldTelSenSta6;
   uint8_t LUX;
   VLD_D2_14_41_Data_TYPE4 u8VldTelSenSta4;
-  uint8_t ACCX_MSB;
+  VLD_D2_14_41_Data_TYPE3 u8VldTelSenSta3;
   VLD_D2_14_41_Data_TYPE2 u8VldTelSenSta2;
   VLD_D2_14_41_Data_TYPE1 u8VldTelSenSta1;
   VLD_D2_14_41_Data_TYPE u8VldTelSenSta;
