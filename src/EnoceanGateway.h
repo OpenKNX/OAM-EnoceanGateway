@@ -8,6 +8,12 @@
             (time & 0xC000) == 0x8000 ? ((time & 0x3FFF) > 1000 ? 3600000 : \
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
+#define MAIN_OpenKnxId 0xA2
+#define MAIN_ApplicationNumber 0
+#define MAIN_ApplicationVersion 25
+#define MAIN_ParameterSize 5173
+#define MAIN_MaxKoNumber 469
+#define MAIN_OrderNumber "MFKnxEno"
 // Parameter with single occurrence
 
 
@@ -2295,7 +2301,3 @@
 // GO_BASE_%C%_10
 #define KoENO_GO_BASE__10               (knx.getGroupObject(ENO_KoCalcNumber(ENO_KoGO_BASE__10)))
 
-#define MAIN_OpenKnxId 0xA2
-#define MAIN_ApplicationNumber 0
-#define MAIN_ApplicationVersion 23
-#define MAIN_OrderNumber "MFKnxEno"
