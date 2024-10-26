@@ -736,42 +736,42 @@
             </ParameterTypes>
             <Parameters>
               <!-- the follwoing 3 parameters represent a productive example -->
-              <Parameter Id="%AID%_P-%T%000000" Name="RepeaterFunc" ParameterType="%AID%_PT-YesNo" Text="Repeater-Function:" Value="0">
+              <Parameter Id="%AID%_P-%TT%00000" Name="RepeaterFunc" ParameterType="%AID%_PT-YesNo" Text="Repeater-Function:" Value="0">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="0" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%T%000001" Name="SetBaseIdFunc" ParameterType="%AID%_PT-YesNo" Text="Base-ID anpassen?" Value="0">
+              <Parameter Id="%AID%_P-%TT%00001" Name="SetBaseIdFunc" ParameterType="%AID%_PT-YesNo" Text="Base-ID anpassen?" Value="0">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="1" BitOffset="0" />
               </Parameter>
               <!-- Device-Id -->
               <Union SizeInBit="32">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="2" BitOffset="0" />
-                <Parameter Id="%AID%_UP-%T%000002" Name="Id0" Offset="0" BitOffset="0" ParameterType="%AID%_PT-NibbleF"  Text="" Value="15" />
-                <Parameter Id="%AID%_UP-%T%000003" Name="Id1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-NibbleF"  Text="" Value="15" />
-                <Parameter Id="%AID%_UP-%T%000004" Name="Id2" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Nibble8"  Text="" Value="8" />
-                <Parameter Id="%AID%_UP-%T%000005" Name="Id3" Offset="1" BitOffset="4" ParameterType="%AID%_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000006" Name="Id4" Offset="2" BitOffset="0" ParameterType="%AID%_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000007" Name="Id5" Offset="2" BitOffset="4" ParameterType="%AID%_PT-Nibble"   Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000008" Name="Id6" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Nibble08" Text="" Value="0" />
-                <Parameter Id="%AID%_UP-%T%000009" Name="Id7" Offset="3" BitOffset="4" ParameterType="%AID%_PT-Nibble0"  Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00002" Name="Id0" Offset="0" BitOffset="0" ParameterType="%AID%_PT-NibbleF"  Text="" Value="15" />
+                <Parameter Id="%AID%_UP-%TT%00003" Name="Id1" Offset="0" BitOffset="4" ParameterType="%AID%_PT-NibbleF"  Text="" Value="15" />
+                <Parameter Id="%AID%_UP-%TT%00004" Name="Id2" Offset="1" BitOffset="0" ParameterType="%AID%_PT-Nibble8"  Text="" Value="8" />
+                <Parameter Id="%AID%_UP-%TT%00005" Name="Id3" Offset="1" BitOffset="4" ParameterType="%AID%_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00006" Name="Id4" Offset="2" BitOffset="0" ParameterType="%AID%_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00007" Name="Id5" Offset="2" BitOffset="4" ParameterType="%AID%_PT-Nibble"   Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00008" Name="Id6" Offset="3" BitOffset="0" ParameterType="%AID%_PT-Nibble08" Text="" Value="0" />
+                <Parameter Id="%AID%_UP-%TT%00009" Name="Id7" Offset="3" BitOffset="4" ParameterType="%AID%_PT-Nibble0"  Text="" Value="0" />
               </Union>
-              <Parameter Id="%AID%_P-%T%000010" Name="RepeaterLevel" ParameterType="%AID%_PT-RepeaterLevel" Text="Option:" Value="1">
+              <Parameter Id="%AID%_P-%TT%00010" Name="RepeaterLevel" ParameterType="%AID%_PT-RepeaterLevel" Text="Option:" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="6" BitOffset="0" />
               </Parameter>
             </Parameters>
             <ParameterRefs>
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
               <!-- ParameterRef are used in the ETS UI -->
-              <ParameterRef Id="%AID%_P-%T%000000_R-%T%00000001" RefId="%AID%_P-%T%000000" />
-              <ParameterRef Id="%AID%_P-%T%000001_R-%T%00000101" RefId="%AID%_P-%T%000001" />
-              <ParameterRef Id="%AID%_UP-%T%000002_R-%T%00000201" RefId="%AID%_UP-%T%000002" />
-              <ParameterRef Id="%AID%_UP-%T%000003_R-%T%00000301" RefId="%AID%_UP-%T%000003" />
-              <ParameterRef Id="%AID%_UP-%T%000004_R-%T%00000401" RefId="%AID%_UP-%T%000004" />
-              <ParameterRef Id="%AID%_UP-%T%000005_R-%T%00000501" RefId="%AID%_UP-%T%000005" />
-              <ParameterRef Id="%AID%_UP-%T%000006_R-%T%00000601" RefId="%AID%_UP-%T%000006" />
-              <ParameterRef Id="%AID%_UP-%T%000007_R-%T%00000701" RefId="%AID%_UP-%T%000007" />
-              <ParameterRef Id="%AID%_UP-%T%000008_R-%T%00000801" RefId="%AID%_UP-%T%000008" />
-              <ParameterRef Id="%AID%_UP-%T%000009_R-%T%00000901" RefId="%AID%_UP-%T%000009" />
-              <ParameterRef Id="%AID%_P-%T%000010_R-%T%00001001" RefId="%AID%_P-%T%000010" />
+              <ParameterRef Id="%AID%_P-%TT%00000_R-%TT%0000001" RefId="%AID%_P-%TT%00000" />
+              <ParameterRef Id="%AID%_P-%TT%00001_R-%TT%0000101" RefId="%AID%_P-%TT%00001" />
+              <ParameterRef Id="%AID%_UP-%TT%00002_R-%TT%0000201" RefId="%AID%_UP-%TT%00002" />
+              <ParameterRef Id="%AID%_UP-%TT%00003_R-%TT%0000301" RefId="%AID%_UP-%TT%00003" />
+              <ParameterRef Id="%AID%_UP-%TT%00004_R-%TT%0000401" RefId="%AID%_UP-%TT%00004" />
+              <ParameterRef Id="%AID%_UP-%TT%00005_R-%TT%0000501" RefId="%AID%_UP-%TT%00005" />
+              <ParameterRef Id="%AID%_UP-%TT%00006_R-%TT%0000601" RefId="%AID%_UP-%TT%00006" />
+              <ParameterRef Id="%AID%_UP-%TT%00007_R-%TT%0000701" RefId="%AID%_UP-%TT%00007" />
+              <ParameterRef Id="%AID%_UP-%TT%00008_R-%TT%0000801" RefId="%AID%_UP-%TT%00008" />
+              <ParameterRef Id="%AID%_UP-%TT%00009_R-%TT%0000901" RefId="%AID%_UP-%TT%00009" />
+              <ParameterRef Id="%AID%_P-%TT%00010_R-%TT%0001001" RefId="%AID%_P-%TT%00010" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -783,6 +783,14 @@
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>
+      <Baggages>
+        <Baggage TargetPath="" Name="Help_de.zip" Id="%FILE-HELP-de%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+        <Baggage TargetPath="" Name="Icons.zip" Id="%FILE-ICONS%">
+          <FileInfo TimeInfo="%DATETIME%" />
+        </Baggage>
+      </Baggages>
     </Manufacturer>
   </ManufacturerData>
 </KNX>
