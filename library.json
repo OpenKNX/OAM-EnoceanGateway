@@ -1,0 +1,17 @@
+{
+    "name": "OAM-EnoceanGateway",
+    "version": "2.0.0",
+    "description": "Enocean Gateway for the knx stack, can be parametrized with ETS",
+    "homepage": "https://SmartMF.de",
+    "authors": {
+        "name": "SmartMF",
+        "email": "info@SmartMF.de",
+        "url": "https://SmartMF.de",
+        "maintainer": true
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/OpenKNX/OAM-EnoceanGateway"
+    }
+    
+}

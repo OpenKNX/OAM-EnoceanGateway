@@ -8,8 +8,9 @@
 
 #include "Arduino.h"
 //#include "DebugUtil.h"
-#include "EnoceanGateway.h"
-#include <knx.h>
+#include "OpenKNX.h"
+// #include "hardware.h"
+// #include <knx.h>
 
 #ifndef EnOceanTEST
 // important to change this to the number of devices defined.
@@ -869,7 +870,9 @@ public:
   virtual void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo) = 0;
 };
 
-class EnOcean
+class EnOceanDevice;
+
+class EnOcean: public OpenKNX::Module
 {
   EnOcean();
   virtual ~EnOcean();
@@ -890,6 +893,13 @@ public:
   uint16_t getNumberDevices();
   uint8_t *getBaseId();
   uint8_t getBaseId_Byte4();
+
+  // knx module handling
+  void processInputKo(GroupObject& iKo);
+  void setup();
+  void loop();
+  const std::string version() override;
+  const std::string name() override;
 
 private:
   Stream *_serial;

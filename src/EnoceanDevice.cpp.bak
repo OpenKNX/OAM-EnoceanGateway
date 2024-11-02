@@ -1,0 +1,77 @@
+#include <Arduino.h>
+
+#include <knx.h>
+#include "hardware.h"
+// #include "Helper.h"
+#include "KnxHelper.h"
+#include "knxprod.h"
+#include "EnoceanProfils.h"
+
+#include "Enocean.h"
+
+
+#include "Logic.h"
+
+void ProcessKoCallback(GroupObject &iKo)
+{
+  // check if we evaluate own KO
+  for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
+  {
+
+    if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_0");
+#endif
+      enOcean.handleKnxEvents(koIndex, 0, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_1");
+#endif
+      enOcean.handleKnxEvents(koIndex, 1, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_2");
+#endif
+      enOcean.handleKnxEvents(koIndex, 2, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_3");
+#endif
+      enOcean.handleKnxEvents(koIndex, 3, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_4");
+#endif
+      enOcean.handleKnxEvents(koIndex, 4, iKo);
+    }
+  }
+}
+
+// void appSetup()
+// {
+//   if (knx.configured())
+//   {
+//     if (GroupObject::classCallback() == 0)
+//       GroupObject::classCallback(ProcessKoCallback);
+//     // Setup Logik
+//     Logic::addLoopCallback(EnOcean::taskCallback, &enOcean);
+//     gLogic.setup(true);
+//     openknx.flashUserData()->readFlash();
+//   }
+// }
+
+void appLoop()
+{
+  // at this point startup-delay is done
+  // we process heartbeat
+  enOcean.task();
+}

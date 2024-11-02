@@ -6,7 +6,17 @@
             "type": "shell",
             "command": "scripts/OpenKNX-Build.ps1",
             "args": [
-                "build"
+                "develop_SAMD"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+		{
+            "label": "Build RP2040",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "develop_RP2040"
             ],
             "group": "build",
             "problemMatcher": []
@@ -16,7 +26,18 @@
             "type": "shell",
             "command": "scripts/OpenKNX-Build.ps1",
             "args": [
-                "uploadJLINK",
+                "upload_JLINK_SAMD",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Upload JLINK RP2040",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "upload_JLINK_RP2040",
                 "upload"
             ],
             "group": "build",
@@ -27,23 +48,32 @@
             "type": "shell",
             "command": "scripts/OpenKNX-Build.ps1",
             "args": [
-                "uploadUSB",
+                "upload_USB_SAMD",
                 "upload"
             ],
             "group": "build",
             "problemMatcher": []
         },
-		{
+        {
+            "label": "Upload USB RP2040",
+            "type": "shell",
+            "command": "scripts/OpenKNX-Build.ps1",
+            "args": [
+                "upload_USB_RP2040",
+                "upload"
+            ],
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
             "label": "OpenKNXproducer",
             "type": "shell",
-            "options": {
-                "cwd": "${workspaceFolder}/src"
-            },
             "command": "~/bin/OpenKNXproducer.exe",
             "args": [
                 "create",
                 "--Debug",
-                "EnoceanGateway"
+                "--HeaderFileName=include/knxprod.h",
+                "src/EnoceanGateway"
             ],
             "problemMatcher": [],
             "group": "test"

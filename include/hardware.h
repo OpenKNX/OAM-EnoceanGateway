@@ -46,6 +46,8 @@
 #endif
 #ifdef ARDUINO_ARCH_RP2040
 #define SERIAL_PORT Serial
+#define ENO_UART_RX_PIN 4
+#define ENO_UART_TX_PIN 5
 #endif
 #endif
 

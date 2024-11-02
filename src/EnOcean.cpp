@@ -15,8 +15,8 @@
 // ################################################
 
 // EnOcean unique instance creation
-EnOcean EnOcean::Eno;
-EnOcean &enOcean = EnOcean::Eno;
+// EnOcean EnOcean::Eno;
+EnOcean &enOcean;
 
 uint8_t EnOcean::u8CRC8Table[256] = {0x00, 0x07, 0x0e, 0x09, 0x1c, 0x1b, 0x12, 0x15, 0x38, 0x3f, 0x36, 0x31, 0x24,
                                      0x23, 0x2a, 0x2d, 0x70, 0x77, 0x7e, 0x79, 0x6c, 0x6b, 0x62, 0x65, 0x48, 0x4f, 0x46, 0x41, 0x54, 0x53, 0x5a, 0x5d,
@@ -52,6 +52,17 @@ EnOcean::EnOcean()
 EnOcean::~EnOcean()
 {
 }
+
+const std::string EnOcean::name()
+{
+    return "EnOcean";
+}
+
+const std::string EnOcean::version()
+{
+    return MODULE_LogicModule_Version;
+}
+
 
 bool EnOcean::sendPacket(PACKET_SERIAL_TYPE *pPacket)
 {
@@ -1025,4 +1036,73 @@ uint8_t EnOcean::uart_sendPacket(PACKET_SERIAL_TYPE *pPacket)
   while (_serial->write(u8CRC) != 1)
     ;
   return ENOCEAN_OK;
+}
+
+
+void EnOcean::processInputKo(GroupObject &iKo)
+{
+  // check if we evaluate own KO
+  for (int koIndex = 0; koIndex < MAX_NUMBER_OF_DEVICES; koIndex++)
+  {
+
+    if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__1 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_0");
+#endif
+      enOcean.handleKnxEvents(koIndex, 0, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__2 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_1");
+#endif
+      enOcean.handleKnxEvents(koIndex, 1, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__3 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_2");
+#endif
+      enOcean.handleKnxEvents(koIndex, 2, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__4 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_3");
+#endif
+      enOcean.handleKnxEvents(koIndex, 3, iKo);
+    }
+    else if (iKo.asap() == ENO_KoOffset + (ENO_KoGO_BASE__5 + (koIndex * ENO_KoBlockSize)))
+    {
+#ifdef KDEBUG
+      SERIAL_PORT.println("review KO_4");
+#endif
+      enOcean.handleKnxEvents(koIndex, 4, iKo);
+    }
+  }
+}
+
+
+
+void EnOcean::setup()
+{
+
+#ifdef KDEBUG_min
+    if (knx.configured())
+    {
+        if (enOcean.getNumberDevices() != MAX_NUMBER_OF_DEVICES)
+            SERIAL_PORT.println(F("!!! NUMBER OF DEVICES != MAX DEVICES -> change!!!"));
+        else
+            SERIAL_PORT.println(F("Ready for normal operation"));
+    }
+#endif
+
+#ifdef LED_YELLOW_PIN
+    digitalWrite(LED_YELLOW_PIN, LOW);
+#endif
+}
+
+void EnOcean::loop() {
+    enOcean.task();
 }
