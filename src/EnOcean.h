@@ -870,18 +870,20 @@ public:
   virtual void handleKnxEvents(byte koIndex, byte koNr, GroupObject &iKo) = 0;
 };
 
-class EnOceanDevice;
+
 
 class EnOcean: public OpenKNX::Module
 {
+  public:
+
   EnOcean();
   virtual ~EnOcean();
 
-public:
-  static EnOcean Eno;
+
+  //static EnOcean Eno;
 
   void initSerial(Stream &serial);
-  void init();
+  void init2();
   void task();
   static void taskCallback(void *iThis);
 
@@ -935,6 +937,6 @@ private:
   uint8_t uart_getPacket(PACKET_SERIAL_TYPE *pPacket, uint16_t u16BufferLength);
   uint8_t uart_sendPacket(PACKET_SERIAL_TYPE *pPacket);
 };
-extern EnOcean &enOcean;
+extern EnOcean enOcean;
 
 #endif /* ENOCEAN_H_ */

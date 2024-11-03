@@ -1,12 +1,19 @@
 #pragma once
 
 // MUst be updated to the new Project HW !!!
-#define PROG_LED_PIN 10
+#define PROG_LED_PIN 1
 #define PROG_LED_PIN_ACTIVE_ON HIGH
-#define PROG_BUTTON_PIN 8
+#define PROG_BUTTON_PIN 0
 #define PROG_BUTTON_PIN_INTERRUPT_ON FALLING
-#define SAVE_INTERRUPT_PIN 9 
-#define LED_YELLOW_PIN 0
+#define SAVE_INTERRUPT_PIN 29 
+#define LED_YELLOW_PIN 7
+#define KNX_UART_RX_PIN 17 
+#define KNX_UART_TX_PIN 16 
+
+#ifdef ARDUINO_ARCH_RP2040
+#define ENO_UART_RX_PIN 5
+#define ENO_UART_TX_PIN 4
+#endif
 
 #ifndef ARDUINO_ARCH_RP2040
 /* Define Arduino Board */
@@ -19,9 +26,9 @@
 //Debug Outputs
 #define KDEBUG_min
 #define KDEBUG
-#define KDEBUG_ID
-#define KDEBUG_Rocker           // comment this line to disable DEBUG Rocker info
-#define KDEBUG_handled          // comment this line to disable DEBUG info Data handled
+//#define KDEBUG_ID
+//#define KDEBUG_Rocker           // comment this line to disable DEBUG Rocker info
+//#define KDEBUG_handled          // comment this line to disable DEBUG info Data handled
 //#define KDEBUG_Received         // comment this line to disable DEBUG mode for Recvived Data infomration
 //#define KDEBUG_Repeater         // comment this line to disable DEBUG mode for Repeater
 //#define KDEBUG_BaseID           // comment this line to disable DEBUG mode for Base-ID
@@ -46,8 +53,6 @@
 #endif
 #ifdef ARDUINO_ARCH_RP2040
 #define SERIAL_PORT Serial
-#define ENO_UART_RX_PIN 4
-#define ENO_UART_TX_PIN 5
 #endif
 #endif
 

@@ -1,6 +1,6 @@
 #include "Logic.h"
 #include "OpenKNX.h"
-#include "wiring_private.h" // pinPeripheral() function
+//#include "wiring_private.h" // pinPeripheral() function
 // #include "Enocean.h"
 #include "EnOceanHandle.h"
 
@@ -22,8 +22,7 @@ void SERCOM2_Handler()
 //     #pragma message "Pico Core Version: " ARDUINO_PICO_VERSION_STR
 // #endif
 
-EnOceanDevice device[MAX_NUMBER_OF_DEVICES] = {EnOceanDevice()};
-
+EnOceanDevice device[MAX_NUMBER_OF_DEVICES] = {EnOceanDevice()}; 
 void setup()
 {
     const uint8_t firmwareRevision = 0;
@@ -38,8 +37,10 @@ void setup()
     openknx.addModule(1, openknxLogic);
     openknx.addModule(2, enOcean);
 #ifdef ARDUINO_ARCH_RP2040
-    openknx.addModule(5, openknxFileTransferModule);
+    openknx.addModule(3, openknxFileTransferModule);
 #endif
+
+    openknx.setup();
 
 #ifdef LED_YELLOW_PIN
     pinMode(LED_YELLOW_PIN, OUTPUT);
@@ -59,7 +60,7 @@ void setup()
     pinPeripheral(3, PIO_SERCOM_ALT);
 #endif
     enOcean.initSerial(Serial2);
-    enOcean.init();
+    enOcean.init2();
 
     // Set own BAse-ID for each Channel
     for (int i = 0; i < MAX_NUMBER_OF_DEVICES; i++)
@@ -67,7 +68,7 @@ void setup()
         enOcean.configureDeviceBaseID(device[i], i);
     }
 
-    openknx.setup();
+    
 
 }
 
