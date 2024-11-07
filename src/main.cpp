@@ -16,6 +16,7 @@ void SERCOM2_Handler()
 
 #ifdef ARDUINO_ARCH_RP2040
     #include "FileTransferModule.h"
+    #include "UsbExchangeModule.h"
 #endif
 
 // #ifdef ARDUINO_ARCH_RP2040
@@ -38,6 +39,7 @@ void setup()
     openknx.addModule(2, enOcean);
 #ifdef ARDUINO_ARCH_RP2040
     openknx.addModule(3, openknxFileTransferModule);
+    openknx.addModule(8, openknxUsbExchangeModule);
 #endif
 
     openknx.setup();

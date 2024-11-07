@@ -7,6 +7,9 @@
         <ApplicationProgram Id="%AID%" ApplicationNumber="0" ApplicationVersion="0" ProgramType="ApplicationProgram" MaskVersion="MV-07B0" Name="EnoceanGateway" LoadProcedureStyle="MergedProcedure" PeiType="0" DefaultLanguage="de" DynamicTableManagement="false" Linkable="true" MinEtsVersion="4.0">
           <Static>
             <ParameterTypes>
+              <ParameterType Id="%AID%_PT-ENONumChannels" Name="ENONumChannels">
+                <TypeNumber SizeInBit="8" Type="unsignedInt" minInclusive="1" maxInclusive="%N%" />
+              </ParameterType>
               <!-- enumeration with 16-bit (word) values -->
               <ParameterType Id="%AID%_PT-DelaySelection" Name="DelaySelection">
                 <TypeRestriction Base="Value" SizeInBit="16">
@@ -757,6 +760,10 @@
               <Parameter Id="%AID%_P-%TT%00010" Name="RepeaterLevel" ParameterType="%AID%_PT-RepeaterLevel" Text="Option:" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="6" BitOffset="0" />
               </Parameter>
+              <Union SizeInBit="8">
+                <Memory CodeSegment="%MID%" Offset="7" BitOffset="0" />
+                <Parameter Id="%AID%_UP-%TT%00011" Name="VisibleChannels" ParameterType="%AID%_PT-ENONumChannels" Offset="0" BitOffset="0" Text="Verfügbare Kanäle" Value="5" SuffixText=" von %N%" />
+              </Union>
             </Parameters>
             <ParameterRefs>
               <!-- ParameterRef have to be defined for each parameter, pay attention, that the ID-part (number) after R- is unique! -->
@@ -772,6 +779,7 @@
               <ParameterRef Id="%AID%_UP-%TT%00008_R-%TT%0000801" RefId="%AID%_UP-%TT%00008" />
               <ParameterRef Id="%AID%_UP-%TT%00009_R-%TT%0000901" RefId="%AID%_UP-%TT%00009" />
               <ParameterRef Id="%AID%_P-%TT%00010_R-%TT%0001001" RefId="%AID%_P-%TT%00010" />
+              <ParameterRef Id="%AID%_UP-%TT%00011_R-%TT%0001101" RefId="%AID%_UP-%TT%00011" />
             </ParameterRefs>
             <ComObjectTable>
             </ComObjectTable>
@@ -780,6 +788,26 @@
           </Static>
           <!-- Here statrs the UI definition -->
           <Dynamic>
+            <Channel Id="%AID%_CH-%PREFIX%" Number="%PREFIX%" Name="Enocean" Text="Enocean" Icon="blur" >
+              <!-- Inline ParameterBlock in Channel is invisible, so also all its contents -->
+              <ParameterBlock Id="%AID%_PB-nnn" Name="Settings" Text="Allgemein" ShowInComObjectTree="true" Icon="cog-outline" HelpContext="LOG-Dokumentation">
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Enocean-Gateway" UIHint="Headline" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Version: %ModuleVersion%" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="" UIHint="HorizontalRuler" />
+                <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                <ParameterRefRef RefId="%AID%_UP-%TT%00011_R-%TT%0001101" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
+              </ParameterBlock>
+              <!-- followed by all ENO channels -->
+              <op:include href="EnoceanGateway.templ.xml" xpath="//ApplicationProgram/Dynamic/ChannelIndependentBlock/*" type="template" prefix="ENO" IsInner="true" />
+              <choose ParamRefId="%AID%_UP-%TT%00011_R-%TT%0001101">
+                <when test="&lt;%N%">
+                  <ParameterBlock Id="%AID%_PB-nnn" Text="(mehr)" Icon="dots-horizontal" HelpContext="Empty">
+                    <ParameterSeparator Id="%AID%_PS-nnn" Text="Kanalauswahl" UIHint="Headline" />
+                    <ParameterRefRef RefId="%AID%_UP-%TT%00011_R-%TT%0001101" HelpContext="BASE-Verfuegbare-Kanaele" IndentLevel="1" />
+                  </ParameterBlock>
+                </when>
+              </choose>
+            </Channel>
           </Dynamic>
         </ApplicationProgram>
       </ApplicationPrograms>

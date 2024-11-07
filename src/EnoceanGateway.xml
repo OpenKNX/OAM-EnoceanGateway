@@ -5,7 +5,7 @@
   <op:ETS ProductName="Enocean-Gateway"
     OpenKnxId="0xA2"
     ApplicationNumber="0x00"
-    ApplicationVersion="2.0"
+    ApplicationVersion="2.1"
     ReplacesVersions="0.0"
     ApplicationRevision="0"
     ApplicationName="KNX-Enocean-Gateway"
