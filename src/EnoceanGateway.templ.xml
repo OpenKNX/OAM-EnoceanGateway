@@ -68,28 +68,28 @@
               <Parameter Id="%AID%_P-%TT%%CC%044" Name="CH%C%RockerFunktionA" ParameterType="%AID%_PT-ProfilRockerFunktion" Text="Funktion Wippe A" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="7" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%TT%%CC%045" Name="CH%C%RockerASzeneA" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="   Szene a" Value="1">
+              <Parameter Id="%AID%_P-%TT%%CC%045" Name="CH%C%RockerASzeneA" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="Szene a" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="8" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%TT%%CC%046" Name="CH%C%RockerASzeneB" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="   Szene b" Value="1">
+              <Parameter Id="%AID%_P-%TT%%CC%046" Name="CH%C%RockerASzeneB" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="Szene b" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="9" BitOffset="0" />
               </Parameter>
               <Parameter Id="%AID%_P-%TT%%CC%047" Name="CH%C%RockerFunktionB" ParameterType="%AID%_PT-ProfilRockerFunktion" Text="Funktion Wippe B" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="10" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%TT%%CC%048" Name="CH%C%RockerBSzeneA" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="   Szene a" Value="1">
+              <Parameter Id="%AID%_P-%TT%%CC%048" Name="CH%C%RockerBSzeneA" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="Szene a" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="11" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%TT%%CC%049" Name="CH%C%RockerBSzeneB" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="   Szene b" Value="1">
+              <Parameter Id="%AID%_P-%TT%%CC%049" Name="CH%C%RockerBSzeneB" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="Szene b" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="12" BitOffset="0" />
               </Parameter>
               <Parameter Id="%AID%_P-%TT%%CC%050" Name="CH%C%RockerFunktionC" ParameterType="%AID%_PT-ProfilRockerFunktion" Text="Funktion Wippe AB" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="13" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%TT%%CC%051" Name="CH%C%RockerCSzeneA" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="   Szene a" Value="1">
+              <Parameter Id="%AID%_P-%TT%%CC%051" Name="CH%C%RockerCSzeneA" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="Szene a" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="14" BitOffset="0" />
               </Parameter>
-              <Parameter Id="%AID%_P-%TT%%CC%052" Name="CH%C%RockerCSzeneB" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="   Szene b" Value="1">
+              <Parameter Id="%AID%_P-%TT%%CC%052" Name="CH%C%RockerCSzeneB" ParameterType="%AID%_PT-ProfilRockerSzeneNr" Text="Szene b" Value="1">
                 <Memory CodeSegment="%AID%_RS-04-00000" Offset="15" BitOffset="0" />
               </Parameter>
               <!-- only description no offset -->
@@ -371,801 +371,799 @@
               <choose ParamRefId="%AID%_UP-%TT%00011_R-%TT%0001101">
                 <when test="&gt;=%C%">
                   <ParameterBlock Id="%AID%_PB-nnn" Name="EnoceanKanal" Text="Kanal %C% {{0:---}}" TextParameterRefId="%AID%_P-%TT%%CC%053_R-%TT%%CC%05301" Icon="baseball-diamond-outline" ShowInComObjectTree="true">
-                    <ParameterBlock Id="%AID%_PB-ENO%C%Wrapper" Name="EnoceanKanal%C%Wrapper" Text="Wrapper" Inline="true">
-                      <ParameterSeparator Id="%AID%_PS-1" Text="Kanaldefinition" UIHint="Headline" />
-                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%053_R-%TT%%CC%05301" />
-                      <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
-                      <!-- Profil Selection -->
-                      <choose ParamRefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401">
-                        <!-- Anzeige Enocean ID -->
-                        <when test="!=0">
-                          <ParameterSeparator Id="%AID%_PS-1" Text="Device-Id" UIHint="Headline" />
-                          <ParameterSeparator Id="%AID%_PS-6" Text="Hier die ID des Enocean Device eingeben:" />
-                          <ParameterBlock Id="%AID%_PB-2" Name="Id1" Text="Id" Inline="true" Layout="Grid">
-                            <Rows>
-                              <Row Id="%AID%_PB-2_R-1" Name="Row1" />
-                            </Rows>
-                            <Columns>
-                              <Column Id="%AID%_PB-2_C-1" Name="Col1" Width="25%" />
-                              <Column Id="%AID%_PB-2_C-2" Name="Col2" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-3" Name="Col3" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-4" Name="Col4" Width="2%" />
-                              <Column Id="%AID%_PB-2_C-5" Name="Col5" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-6" Name="Col6" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-7" Name="Col7" Width="2%" />
-                              <Column Id="%AID%_PB-2_C-8" Name="Col8" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-9" Name="Col9" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-10" Name="Col10" Width="2%" />
-                              <Column Id="%AID%_PB-2_C-11" Name="Col11" Width="9%" />
-                              <Column Id="%AID%_PB-2_C-12" Name="Col12" Width="9%" />
-                            </Columns>
-                            <ParameterSeparator Id="%AID%_PS-2" Text="Enocean-ID" Cell="1,1" />
-                            <!-- <ParameterSeparator Id="%AID%_PS-nnn" Text="." Cell="1,3"/> -->
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%055_R-%TT%%CC%05501" Cell="1,2" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%056_R-%TT%%CC%05601" Cell="1,3" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%057_R-%TT%%CC%05701" Cell="1,5" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%058_R-%TT%%CC%05801" Cell="1,6" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%059_R-%TT%%CC%05901" Cell="1,8" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%060_R-%TT%%CC%06001" Cell="1,9" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%061_R-%TT%%CC%06101" Cell="1,11" />
-                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%062_R-%TT%%CC%06201" Cell="1,12" />
-                          </ParameterBlock>
-                          <ParameterSeparator Id="%AID%_PS-4" Text="" UIHint="HorizontalRuler" />
-                        </when>
-                      </choose>
-                      <ParameterSeparator Id="%AID%_PS-1" Text="Profildefinition" UIHint="Headline" />
-                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401" />
-                      <choose ParamRefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401">
-                        <!-- RPS F6 (0xF6 = 246Dez)-->
-                        <when test="246">
-                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%005_R-%TT%%CC%00501" />
-                          <choose ParamRefId="%AID%_UP-%TT%%CC%005_R-%TT%%CC%00501">
-                            <!-- F6-02-03 -->
-                            <when test="285">
-                              <ParameterRefRef RefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901" />
-                              <choose ParamRefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901">
-                                <!-- ********** ENOCEAN -> KNX ****************************** -->
-                                <when test="0">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00009" />  <!-- Status A -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00109" />  <!-- Status B -->
-                                </when>  
-                                <!-- ********** KNX -> ENOCEAN ****************************** -->
-                                <when test="1">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00002" />  <!-- Schalten A -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00102" />  <!-- Schalten B -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="not yet implemented !!!" />
-                                </when>  
-                              </choose>  
-                            </when>
-                            <!-- F6-05-00 & 02 -->
-                            <when test="291 293">
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00407" />
-                            </when>
-                            <!-- F6-05-01 -->
-                            <when test="292">
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />
-                            </when>
-                            <!-- F6-10-00 & 01 -->
-                            <when test="294 295">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- open/close-->
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Fenster open -->
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00204" /> <!-- Fenster gekippt -->
-                            </when>
-                          </choose>
-                        </when>
-                        <!-- 1BS D5 (0xD5 = 213Dez) -->
-                        <when test="213">
-                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%006_R-%TT%%CC%00601" />
-                          <choose ParamRefId="%AID%_UP-%TT%%CC%006_R-%TT%%CC%00601">
-                            <!-- D5-00-01 -->
-                            <when test="281">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00006" />
-                            </when>  
-                          </choose>   
-                        </when>
-                        <!-- 4BS A5 (0xA5 = 165Dez)-->
-                        <when test="165">
-                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%007_R-%TT%%CC%00701" />
-                          <choose ParamRefId="%AID%_UP-%TT%%CC%007_R-%TT%%CC%00701">
-                            <!-- A5-02 -->
-                            <when test="2">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%010_R-%TT%%CC%01001" />
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                            </when>
-                            <!-- A5-04 -->
-                            <when test="4">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%011_R-%TT%%CC%01101" />
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                              <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" />
-                            </when>
-                            <!-- A5-06 -->
-                            <when test="6">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%013_R-%TT%%CC%01301" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%013_R-%TT%%CC%01301">
-                                <when test="31">
-                                  <!-- A5-06-01 -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
-                                </when>
-                                <when test="32">
-                                  <!-- A5-06-02 -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
-                                </when>
-                                <when test="33">
-                                  <!-- A5-06-03 -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
-                                </when>
-                                <when test="400">
-                                  <!-- A5-06-01* -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- A5-07 -->
-                            <when test="7">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%014_R-%TT%%CC%01401" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%014_R-%TT%%CC%01401">
-                                <when test="36">
-                                  <!-- A5-07-01 -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR)" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
-                                </when>
-                                <when test="37">
-                                  <!-- A5-07-02 -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, Batterie Spannung)" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
-                                </when>
-                                <when test="38">
-                                  <!-- A5-07-03 -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Batterie Spannung)" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- A5-08 -->
-                            <when test="8">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%015_R-%TT%%CC%01501" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%015_R-%TT%%CC%01501">
-                                <when test="39 40 41">
-                                  <!-- A5-08-01 - 03-->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00502" /> <!-- OCC -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" /> <!-- Tmp -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- A5-12 -->
-                            <when test="18">  <!-- 0x12 = 18dez-->
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%019_R-%TT%%CC%01901" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%019_R-%TT%%CC%01901">
-                                <when test="91">
-                                  <!-- A5-12-01-->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00608" /> <!-- KWh -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00706" /> <!-- Watt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00904" /> <!-- Watt -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- A5-14 -->
-                            <when test="20"> <!-- 0x14 = 20dez-->
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%021_R-%TT%%CC%02101" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%021_R-%TT%%CC%02101">
-                                <!-- A5-14.01 -->
-                                <when test="106">
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
-                                </when>
-                                <!-- A5-14.02 -->
-                                <when test="107">
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX      -->
-                                </when>
-                                <!-- A5-14.03 -->
-                                <when test="108">
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX      -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.04 -->
-                                <when test="109">
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.05 -->
-                                <when test="110">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.06 -->
-                                <when test="111">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX      -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.07 -->
-                                <when test="112">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door state -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- Lock state -->
-                                </when>
-                                <!-- A5-14.08 -->
-                                <when test="113">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door state -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- Lock state -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
-                                </when>
-                                <!-- A5-14.09 -->
-                                <when test="114">
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door open -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00204" /> <!-- Door Tilt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- open/close-->
-                                </when>
-                                <!-- A5-14.0A -->
-                                <when test="115">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door open -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00204" /> <!-- Door Tilt -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- A5-20 -->
-                            <when test="32">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%022_R-%TT%%CC%02201" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%022_R-%TT%%CC%02201">
-                                <!-- A5-20-01 -->
-                                <when test="116">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-3" Text="Batteriebetriebener Heizkörperstellantrieb" />
-                                  <ParameterSeparator Id="%AID%_PS-4" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-6" Text="Definiert ob das Ventil manuell gesteuert(0.100%), oder geregelt auf eine Soll-Temp(°C) arbeitet" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%070_R-%TT%%CC%07001" /> <!-- SPS -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="KO Status byte:" />
-                                  <ParameterSeparator Id="%AID%_PS-12" Text="Bit1: ACO  (Ventilerkennung) = Der Stellantrieb erkennt im Rahmen der Inbetriebnahme, ob er an einem Ventil montiert ist" />
-                                  <ParameterSeparator Id="%AID%_PS-13" Text="Bit2: DWO  (Detection Window open) = Fenster offen Erkennung" />
-                                  <ParameterSeparator Id="%AID%_PS-14" Text="Bit3: FTS  (Failure Temp-Sensor) = Temperatursensor-Fehler" />
-                                  <ParameterSeparator Id="%AID%_PS-15" Text="Bit4: CCO  (Contact, cover open)" />
-                                  <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: BCAP (Battery capacity) = Batterie-Füllstand kritisch - Bitte in den nächsten Tagen wechseln" />
-                                  <ParameterSeparator Id="%AID%_PS-17" Text="Bit6: ES   (Energy Storage) = Der Antrieb zeigt an, dass durch den Betrieb langfristig mehr Energie verbraucht als erzeugt wurde" />
-                                  <ParameterSeparator Id="%AID%_PS-18" Text="Bit7: ENIE (Energy Input enable) = Zeigt an, ob gerade Energie zur Verfügung steht" />
-                                  <ParameterSeparator Id="%AID%_PS-19" Text="Bit8: SO   (Service ON)" />
-                                  <choose ParamRefId="%AID%_UP-%TT%%CC%070_R-%TT%%CC%07001">
-                                    <when test="0">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00014" />  <!-- Set Pos 0...100% -->
+                    <ParameterSeparator Id="%AID%_PS-1" Text="Kanaldefinition" UIHint="Headline" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%053_R-%TT%%CC%05301" IndentLevel="1"  />
+                    <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
+                    <!-- Profil Selection -->
+                    <choose ParamRefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401">
+                      <!-- Anzeige Enocean ID -->
+                      <when test="!=0">
+                        <ParameterSeparator Id="%AID%_PS-1" Text="Device-Id" UIHint="Headline" />
+                        <ParameterSeparator Id="%AID%_PS-6" Text="Hier die ID des Enocean Device eingeben:" />
+                        <ParameterBlock Id="%AID%_PB-2" Name="Id1" Text="Id" Inline="true" Layout="Grid">
+                          <Rows>
+                            <Row Id="%AID%_PB-2_R-1" Name="Row1" />
+                          </Rows>
+                          <Columns>
+                            <Column Id="%AID%_PB-2_C-1" Name="Col1" Width="25%" />
+                            <Column Id="%AID%_PB-2_C-2" Name="Col2" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-3" Name="Col3" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-4" Name="Col4" Width="2%" />
+                            <Column Id="%AID%_PB-2_C-5" Name="Col5" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-6" Name="Col6" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-7" Name="Col7" Width="2%" />
+                            <Column Id="%AID%_PB-2_C-8" Name="Col8" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-9" Name="Col9" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-10" Name="Col10" Width="2%" />
+                            <Column Id="%AID%_PB-2_C-11" Name="Col11" Width="9%" />
+                            <Column Id="%AID%_PB-2_C-12" Name="Col12" Width="9%" />
+                          </Columns>
+                          <ParameterSeparator Id="%AID%_PS-2" Text="  Enocean-ID" Cell="1,1" />
+                          <!-- <ParameterSeparator Id="%AID%_PS-nnn" Text="." Cell="1,3"/> -->
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%055_R-%TT%%CC%05501" Cell="1,2" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%056_R-%TT%%CC%05601" Cell="1,3" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%057_R-%TT%%CC%05701" Cell="1,5" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%058_R-%TT%%CC%05801" Cell="1,6" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%059_R-%TT%%CC%05901" Cell="1,8" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%060_R-%TT%%CC%06001" Cell="1,9" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%061_R-%TT%%CC%06101" Cell="1,11" />
+                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%062_R-%TT%%CC%06201" Cell="1,12" />
+                        </ParameterBlock>
+                        <ParameterSeparator Id="%AID%_PS-4" Text="" UIHint="HorizontalRuler" />
+                      </when>
+                    </choose>
+                    <ParameterSeparator Id="%AID%_PS-1" Text="Profildefinition" UIHint="Headline" />
+                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401" IndentLevel="1"  />
+                    <choose ParamRefId="%AID%_P-%TT%%CC%004_R-%TT%%CC%00401">
+                      <!-- RPS F6 (0xF6 = 246Dez)-->
+                      <when test="246">
+                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%005_R-%TT%%CC%00501" IndentLevel="1"  />
+                        <choose ParamRefId="%AID%_UP-%TT%%CC%005_R-%TT%%CC%00501">
+                          <!-- F6-02-03 -->
+                          <when test="285">
+                            <ParameterRefRef RefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901">
+                              <!-- ********** ENOCEAN -> KNX ****************************** -->
+                              <when test="0">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00009" />  <!-- Status A -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00109" />  <!-- Status B -->
+                              </when>  
+                              <!-- ********** KNX -> ENOCEAN ****************************** -->
+                              <when test="1">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00002" />  <!-- Schalten A -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00102" />  <!-- Schalten B -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="not yet implemented !!!" />
+                              </when>  
+                            </choose>  
+                          </when>
+                          <!-- F6-05-00 & 02 -->
+                          <when test="291 293">
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00407" />
+                          </when>
+                          <!-- F6-05-01 -->
+                          <when test="292">
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />
+                          </when>
+                          <!-- F6-10-00 & 01 -->
+                          <when test="294 295">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" IndentLevel="1"  /> <!-- Par Wert für geschlossen -->
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- open/close-->
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Fenster open -->
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00204" /> <!-- Fenster gekippt -->
+                          </when>
+                        </choose>
+                      </when>
+                      <!-- 1BS D5 (0xD5 = 213Dez) -->
+                      <when test="213">
+                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%006_R-%TT%%CC%00601" IndentLevel="1"  />
+                        <choose ParamRefId="%AID%_UP-%TT%%CC%006_R-%TT%%CC%00601">
+                          <!-- D5-00-01 -->
+                          <when test="281">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" IndentLevel="1"  /> <!-- Par Wert für geschlossen -->
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00006" />
+                          </when>  
+                        </choose>   
+                      </when>
+                      <!-- 4BS A5 (0xA5 = 165Dez)-->
+                      <when test="165">
+                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%007_R-%TT%%CC%00701" IndentLevel="1" />
+                        <choose ParamRefId="%AID%_UP-%TT%%CC%007_R-%TT%%CC%00701">
+                          <!-- A5-02 -->
+                          <when test="2">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%010_R-%TT%%CC%01001" IndentLevel="1"  />
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                          </when>
+                          <!-- A5-04 -->
+                          <when test="4">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%011_R-%TT%%CC%01101" IndentLevel="1"  />
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                            <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" />
+                          </when>
+                          <!-- A5-06 -->
+                          <when test="6">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%013_R-%TT%%CC%01301" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%013_R-%TT%%CC%01301">
+                              <when test="31">
+                                <!-- A5-06-01 -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
+                              </when>
+                              <when test="32">
+                                <!-- A5-06-02 -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
+                              </when>
+                              <when test="33">
+                                <!-- A5-06-03 -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
+                              </when>
+                              <when test="400">
+                                <!-- A5-06-01* -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- A5-07 -->
+                          <when test="7">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%014_R-%TT%%CC%01401" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%014_R-%TT%%CC%01401">
+                              <when test="36">
+                                <!-- A5-07-01 -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR)" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
+                              </when>
+                              <when test="37">
+                                <!-- A5-07-02 -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, Batterie Spannung)" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
+                              </when>
+                              <when test="38">
+                                <!-- A5-07-03 -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Batterie Spannung)" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- A5-08 -->
+                          <when test="8">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%015_R-%TT%%CC%01501" IndentLevel="1" />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%015_R-%TT%%CC%01501">
+                              <when test="39 40 41">
+                                <!-- A5-08-01 - 03-->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" /> <!-- PIR -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00203" /> <!-- Bat -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00502" /> <!-- OCC -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" /> <!-- Tmp -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- A5-12 -->
+                          <when test="18">  <!-- 0x12 = 18dez-->
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%019_R-%TT%%CC%01901" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%019_R-%TT%%CC%01901">
+                              <when test="91">
+                                <!-- A5-12-01-->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Bewegungsmelder ( PIR, LUX, Temp, OCC-Button,  Batterie Spannung)" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00608" /> <!-- KWh -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00706" /> <!-- Watt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00904" /> <!-- Watt -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- A5-14 -->
+                          <when test="20"> <!-- 0x14 = 20dez-->
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%021_R-%TT%%CC%02101" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%021_R-%TT%%CC%02101">
+                              <!-- A5-14.01 -->
+                              <when test="106">
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
+                              </when>
+                              <!-- A5-14.02 -->
+                              <when test="107">
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX      -->
+                              </when>
+                              <!-- A5-14.03 -->
+                              <when test="108">
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX      -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
+                              </when>
+                              <!-- A5-14.04 -->
+                              <when test="109">
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- contact  -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
+                              </when>
+                              <!-- A5-14.05 -->
+                              <when test="110">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
+                              </when>
+                              <!-- A5-14.06 -->
+                              <when test="111">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00106" /> <!-- LUX      -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
+                              </when>
+                              <!-- A5-14.07 -->
+                              <when test="112">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door state -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- Lock state -->
+                              </when>
+                              <!-- A5-14.08 -->
+                              <when test="113">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door state -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- Lock state -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
+                              </when>
+                              <!-- A5-14.09 -->
+                              <when test="114">
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%067_R-%TT%%CC%06701" /> <!-- Par Wert für geschlossen -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door open -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00204" /> <!-- Door Tilt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- open/close-->
+                              </when>
+                              <!-- A5-14.0A -->
+                              <when test="115">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- Bat Volt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00107" /> <!-- Door open -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00204" /> <!-- Door Tilt -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00012" /> <!-- Vib Det  -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- A5-20 -->
+                          <when test="32">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%022_R-%TT%%CC%02201" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%022_R-%TT%%CC%02201">
+                              <!-- A5-20-01 -->
+                              <when test="116">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="Batteriebetriebener Heizkörperstellantrieb" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-6" Text="Definiert ob das Ventil manuell gesteuert(0.100%), oder geregelt auf eine Soll-Temp(°C) arbeitet" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%070_R-%TT%%CC%07001" IndentLevel="1"  /> <!-- SPS -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-11" Text="KO Status byte:" />
+                                <ParameterSeparator Id="%AID%_PS-12" Text="Bit1: ACO  (Ventilerkennung) = Der Stellantrieb erkennt im Rahmen der Inbetriebnahme, ob er an einem Ventil montiert ist" />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="Bit2: DWO  (Detection Window open) = Fenster offen Erkennung" />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="Bit3: FTS  (Failure Temp-Sensor) = Temperatursensor-Fehler" />
+                                <ParameterSeparator Id="%AID%_PS-15" Text="Bit4: CCO  (Contact, cover open)" />
+                                <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: BCAP (Battery capacity) = Batterie-Füllstand kritisch - Bitte in den nächsten Tagen wechseln" />
+                                <ParameterSeparator Id="%AID%_PS-17" Text="Bit6: ES   (Energy Storage) = Der Antrieb zeigt an, dass durch den Betrieb langfristig mehr Energie verbraucht als erzeugt wurde" />
+                                <ParameterSeparator Id="%AID%_PS-18" Text="Bit7: ENIE (Energy Input enable) = Zeigt an, ob gerade Energie zur Verfügung steht" />
+                                <ParameterSeparator Id="%AID%_PS-19" Text="Bit8: SO   (Service ON)" />
+                                <choose ParamRefId="%AID%_UP-%TT%%CC%070_R-%TT%%CC%07001">
+                                  <when test="0">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00014" />  <!-- Set Pos 0...100% -->
+                                  </when>
+                                  <when test="1"> 
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00013" />  <!-- Set Temp -->
+                                  </when>
+                                </choose>
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00104" /> <!-- Sommer Umschaltung-->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00209" /> <!-- Reference RUN-->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00308" /> <!-- Raum Temperatur -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00408" /> <!-- Servcie CMD -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" /> <!-- Temperatur am Ventil  -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00701" /> <!-- Aktuelle Ventil Pos -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits -->
+                              </when>
+                              <!-- A5-20-04 -->
+                              <when test="119">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="Heizkörperstellantrieb" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-5" Text="Definiert welche Werte vom Aktor an das Gateway gesendet werden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%071_R-%TT%%CC%07101" IndentLevel="1"  /> <!-- MC -->
+                                <ParameterSeparator Id="%AID%_PS-6" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-7" Text="Definert die Display Orientierung" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%072_R-%TT%%CC%07201" IndentLevel="1"  /> <!-- DSO -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-20" Text="Definiert die Zeit alle wieviel sec/hrs das Stellventil daten an das Gateway schickt (default 10min)"  />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%073_R-%TT%%CC%07301" IndentLevel="1"  /> <!-- WCU -->
+                                <ParameterSeparator Id="%AID%_PS-21" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-11" Text="KO Status byte:" />
+                                <ParameterSeparator Id="%AID%_PS-12" Text="Bit1: FL   (Failure) 1 = Fehler erkannt" />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="Bit2: TS   (Temp Sel) 0 = Feed Temp  /  1 = Temp Set-Point" />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="Bit3: BLS  (Button Lock Status) 0 = Unlocked  /  1 = Locked" />
+                                <ParameterSeparator Id="%AID%_PS-15" Text="Bit4: LRN  (TeachIn Bit) 1 = Datenpaket" />
+                                <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: NA" />
+                                <ParameterSeparator Id="%AID%_PS-17" Text="Bit6: NA" />
+                                <ParameterSeparator Id="%AID%_PS-18" Text="Bit7: STR  (Status Request)" />
+                                <ParameterSeparator Id="%AID%_PS-19" Text="Bit8: MST  (Measurement Status) zeigt ob Temp Messung ist aktiv: 0 = Active" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00014" /> <!-- Set Pos 0...100% -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00112" /> <!-- Set Temp -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00208" /> <!-- Com Interval-->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00309" /> <!-- Button Lock -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00408" /> <!-- Servcie CMD -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00701" /> <!-- Aktuelle Ventil Pos -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits -->
+                                <choose ParamRefId="%AID%_UP-%TT%%CC%071_R-%TT%%CC%07101">
+                                  <when test="0">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00607" /> <!-- Feed Temperatur -->
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00804" /> <!-- Raum Temp -->
+                                  </when>
+                                  <when test="1">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00506" /> <!-- Failure Code -->
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00606" /> <!-- Info SetPoint Temp -->
+                                  </when>
+                                </choose>  
+                              </when>
+                              <!-- A5-20-06 -->
+                              <when test="121">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="Energieautarker Heizkörperstellantrieb" />
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="Default Einstellung: kann per KNX KO mit dem Wert KO_val über eine Logik angepasst werden" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%064_R-%TT%%CC%06401" IndentLevel="1"  /> <!-- RFC -->
+                                <ParameterSeparator Id="%AID%_PS-5" Text="Ein dauerhaft niedriges Sende-Intervall entlädt den internen Speicher überproportional!" />
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-6" Text="Definiert ob das Ventil manuell gesteuert(0.100%), oder geregelt auf eine Soll-Temp(°C) arbeitet" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%065_R-%TT%%CC%06501" IndentLevel="1"  /> <!-- SPS -->
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-7" Text="Definiert welcher Sensor im Ventil seine aktuelle Temperatur liefert:" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%066_R-%TT%%CC%06601" IndentLevel="1"  /> <!-- TSL -->
+                                <ParameterSeparator Id="%AID%_PS-10" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-11" Text="KO Status byte:" />
+                                <ParameterSeparator Id="%AID%_PS-12" Text="Bit1: ACO  (Ventilerkennung) = Der Stellantrieb erkennt im Rahmen der Inbetriebnahme, ob er an einem Ventil montiert ist" />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="Bit2: RSS  (Radio Signal Strength) = Warnung bei schwachem Radiosignal" />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="Bit3: RCE  (Radio Comm Errors) = Anzeige bei Übertragungsfehlern" />
+                                <ParameterSeparator Id="%AID%_PS-15" Text="Bit4: LRNB (Learn Bit) = Teachin Nachricht Bit" />
+                                <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: DWO  (Fenster-Auf Erkennung) = Die Funktion Fenster-Auf-Erkennung erkennt innerhalb von 2 Minuten einen Temperatur-Abfall am lokalen Umgebungstemperatur Sensor." />
+                                <ParameterSeparator Id="%AID%_PS-17" Text="Bit6: ES   (Energy Storage) = Der Antrieb zeigt an, dass durch den Betrieb langfristig mehr Energie verbraucht als erzeugt wurde" />
+                                <ParameterSeparator Id="%AID%_PS-18" Text="Bit7: ENIE (Harvesting Status) = Zeigt an, ob gerade Energie erzeugt wird" />
+                                <ParameterSeparator Id="%AID%_PS-19" Text="Bit8: TSL  (Temperatur Selection) Welcher interne Temp-Sensor sendet seine Werte. Umgebungssensor oder Vorlauftemperatur" />
+                                <ParameterSeparator Id="%AID%_PS-20" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-21" Text="SB  (Sommerbit) = Erhält der Stellantrieb vom externen Funkpartner das Signal „Sommerbetrieb Ein (1)“, dann wird das Funkintervall auf 8 Stunden erhöht." />
+                                <ParameterSeparator Id="%AID%_PS-22" Text="SBY (Standby) = Bei Einsatz in dauerhaft unbeheizten Räumen kann sich der interne Energiespeicher des Stellantriebs nicht nachladen, ein Zustand den es zu vermeiden gilt." />
+                                <ParameterSeparator Id="%AID%_PS-23" Text="REF (Referenzlauf) = Mit dem Setzen des REF Bits führt der Antrieb einen Referenzlauf aus, wodurch der Motor eine Nullpunktkorrektor erfährt. Anschließend startet der Antrieb neu." />
+                                <choose ParamRefId="%AID%_UP-%TT%%CC%065_R-%TT%%CC%06501">
+                                  <when test="0">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00014" />  <!-- Set Pos 0...100% -->
+                                  </when>
+                                  <when test="1">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00013" />  <!-- Set Temp -->
+                                  </when>
+                                </choose>
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00104" /> <!-- Sommer Umschaltung-->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00208" /> <!-- Refenrence RUN-->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00308" /> <!-- Raum Temperatur -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00406" /> <!-- Standby -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" /> <!-- Temperatur am Ventil  -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00801" /> <!-- ATemp Offset -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00701" /> <!-- Aktuelle Ventil Pos -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- Spezielles 4BS Profil des D5-00-01 Eltako Fensterkontakt -->
+                          <when test="255">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%069_R-%TT%%CC%06901" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%069_R-%TT%%CC%06901">
+                              <when test="401">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="Eltako FTKB / FFKB" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="Zyklisch ca. alle 60 Minuten wird das aktuelle Spannungs-Telegramm gesendet" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- KO Batterie voltage -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00704" /> <!-- KO Energy storage voltage -->
+                              </when> 
+                            </choose>
+                          </when> 
+                        </choose>
+                      </when>
+                      <!-- VLD D2 (0xD2 = 210dez)-->
+                      <when test="210">
+                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%008_R-%TT%%CC%00801" IndentLevel="1"  />
+                        <choose ParamRefId="%AID%_UP-%TT%%CC%008_R-%TT%%CC%00801">
+                          <!-- VLD D2-01 -->
+                          <when test="1">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%025_R-%TT%%CC%02501" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%025_R-%TT%%CC%02501">
+                              <!-- VLD D2-01-0E -->
+                              <when test="151">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00001" /> <!-- Input schalten -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00115" /> <!-- input Abfrage Messung -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00211" /> <!-- input Abfrage Status schalten -->     
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00409" /> <!-- OUtput Status schalten -->
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="Schaltaktor mit Messfunktion" UIHint="Headline" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="Wähle die passende Einheit:" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%076_R-%TT%%CC%07601" IndentLevel="1" /> <!--Einheit Energy --> 
+                                  <choose ParamRefId="%AID%_UP-%TT%%CC%076_R-%TT%%CC%07601">
+                                    <when test="0"> <!-- Wh -->
+                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00509" /> <!-- KO Wh -->
+                                      <ParameterRefRef RefId="%AID%_UP-%TT%%CC%080_R-%TT%%CC%08001" IndentLevel="1"  /> <!--Delta Value Wh --> 
                                     </when>
-                                    <when test="1"> 
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00013" />  <!-- Set Temp -->
-                                    </when>
+                                    <when test="1"> <!-- KWh -->
+                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00608" /> <!-- KO KWh-->
+                                      <ParameterRefRef RefId="%AID%_UP-%TT%%CC%081_R-%TT%%CC%08101" IndentLevel="1"  /> <!--Delta Value KWh --> 
+                                    </when>    
                                   </choose>
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00104" /> <!-- Sommer Umschaltung-->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00209" /> <!-- Reference RUN-->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00308" /> <!-- Raum Temperatur -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00408" /> <!-- Servcie CMD -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" /> <!-- Temperatur am Ventil  -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00701" /> <!-- Aktuelle Ventil Pos -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits -->
-                                </when>
-                                <!-- A5-20-04 -->
-                                <when test="119">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-3" Text="Heizkörperstellantrieb" />
-                                  <ParameterSeparator Id="%AID%_PS-4" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-5" Text="Definiert welche Werte vom Aktor an das Gateway gesendet werden" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%071_R-%TT%%CC%07101" /> <!-- MC -->
-                                  <ParameterSeparator Id="%AID%_PS-6" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-7" Text="Definert die Display Orientierung" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%072_R-%TT%%CC%07201" /> <!-- DSO -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-20" Text="Definiert die Zeit alle wieviel sec/hrs das Stellventil daten an das Gateway schickt (default 10min)"  />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%073_R-%TT%%CC%07301" /> <!-- WCU -->
-                                  <ParameterSeparator Id="%AID%_PS-21" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="KO Status byte:" />
-                                  <ParameterSeparator Id="%AID%_PS-12" Text="Bit1: FL   (Failure) 1 = Fehler erkannt" />
-                                  <ParameterSeparator Id="%AID%_PS-13" Text="Bit2: TS   (Temp Sel) 0 = Feed Temp  /  1 = Temp Set-Point" />
-                                  <ParameterSeparator Id="%AID%_PS-14" Text="Bit3: BLS  (Button Lock Status) 0 = Unlocked  /  1 = Locked" />
-                                  <ParameterSeparator Id="%AID%_PS-15" Text="Bit4: LRN  (TeachIn Bit) 1 = Datenpaket" />
-                                  <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: NA" />
-                                  <ParameterSeparator Id="%AID%_PS-17" Text="Bit6: NA" />
-                                  <ParameterSeparator Id="%AID%_PS-18" Text="Bit7: STR  (Status Request)" />
-                                  <ParameterSeparator Id="%AID%_PS-19" Text="Bit8: MST  (Measurement Status) zeigt ob Temp Messung ist aktiv: 0 = Active" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00014" /> <!-- Set Pos 0...100% -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00112" /> <!-- Set Temp -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00208" /> <!-- Com Interval-->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00309" /> <!-- Button Lock -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00408" /> <!-- Servcie CMD -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00701" /> <!-- Aktuelle Ventil Pos -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits -->
-                                  <choose ParamRefId="%AID%_UP-%TT%%CC%071_R-%TT%%CC%07101">
-                                    <when test="0">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00607" /> <!-- Feed Temperatur -->
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00804" /> <!-- Raum Temp -->
+                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%077_R-%TT%%CC%07701" IndentLevel="1"  /> <!--Einheit Power --> 
+                                  <choose ParamRefId="%AID%_UP-%TT%%CC%077_R-%TT%%CC%07701">
+                                    <when test="0"> <!-- W -->
+                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00706" /> <!-- KO W -->
+                                      <ParameterRefRef RefId="%AID%_UP-%TT%%CC%082_R-%TT%%CC%08201" IndentLevel="1"  /> <!--Delta Value W --> 
                                     </when>
-                                    <when test="1">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00506" /> <!-- Failure Code -->
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00606" /> <!-- Info SetPoint Temp -->
-                                    </when>
+                                    <when test="1"> <!-- KW -->
+                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00806" /> <!-- KO KW -->
+                                      <ParameterRefRef RefId="%AID%_UP-%TT%%CC%083_R-%TT%%CC%08301" IndentLevel="1"  /> <!--Delta Value KW --> 
+                                    </when>    
                                   </choose>  
-                                </when>
-                                <!-- A5-20-06 -->
-                                <when test="121">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-3" Text="Energieautarker Heizkörperstellantrieb" />
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-4" Text="Default Einstellung: kann per KNX KO mit dem Wert KO_val über eine Logik angepasst werden" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%064_R-%TT%%CC%06401" /> <!-- RFC -->
-                                  <ParameterSeparator Id="%AID%_PS-5" Text="Ein dauerhaft niedriges Sende-Intervall entlädt den internen Speicher überproportional!" />
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-6" Text="Definiert ob das Ventil manuell gesteuert(0.100%), oder geregelt auf eine Soll-Temp(°C) arbeitet" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%065_R-%TT%%CC%06501" /> <!-- SPS -->
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-7" Text="Definiert welcher Sensor im Ventil seine aktuelle Temperatur liefert:" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%066_R-%TT%%CC%06601" /> <!-- TSL -->
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="KO Status byte:" />
-                                  <ParameterSeparator Id="%AID%_PS-12" Text="Bit1: ACO  (Ventilerkennung) = Der Stellantrieb erkennt im Rahmen der Inbetriebnahme, ob er an einem Ventil montiert ist" />
-                                  <ParameterSeparator Id="%AID%_PS-13" Text="Bit2: RSS  (Radio Signal Strength) = Warnung bei schwachem Radiosignal" />
-                                  <ParameterSeparator Id="%AID%_PS-14" Text="Bit3: RCE  (Radio Comm Errors) = Anzeige bei Übertragungsfehlern" />
-                                  <ParameterSeparator Id="%AID%_PS-15" Text="Bit4: LRNB (Learn Bit) = Teachin Nachricht Bit" />
-                                  <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: DWO  (Fenster-Auf Erkennung) = Die Funktion Fenster-Auf-Erkennung erkennt innerhalb von 2 Minuten einen Temperatur-Abfall am lokalen Umgebungstemperatur Sensor." />
-                                  <ParameterSeparator Id="%AID%_PS-17" Text="Bit6: ES   (Energy Storage) = Der Antrieb zeigt an, dass durch den Betrieb langfristig mehr Energie verbraucht als erzeugt wurde" />
-                                  <ParameterSeparator Id="%AID%_PS-18" Text="Bit7: ENIE (Harvesting Status) = Zeigt an, ob gerade Energie erzeugt wird" />
-                                  <ParameterSeparator Id="%AID%_PS-19" Text="Bit8: TSL  (Temperatur Selection) Welcher interne Temp-Sensor sendet seine Werte. Umgebungssensor oder Vorlauftemperatur" />
-                                  <ParameterSeparator Id="%AID%_PS-20" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-21" Text="SB  (Sommerbit) = Erhält der Stellantrieb vom externen Funkpartner das Signal „Sommerbetrieb Ein (1)“, dann wird das Funkintervall auf 8 Stunden erhöht." />
-                                  <ParameterSeparator Id="%AID%_PS-22" Text="SBY (Standby) = Bei Einsatz in dauerhaft unbeheizten Räumen kann sich der interne Energiespeicher des Stellantriebs nicht nachladen, ein Zustand den es zu vermeiden gilt." />
-                                  <ParameterSeparator Id="%AID%_PS-23" Text="REF (Referenzlauf) = Mit dem Setzen des REF Bits führt der Antrieb einen Referenzlauf aus, wodurch der Motor eine Nullpunktkorrektor erfährt. Anschließend startet der Antrieb neu." />
-                                  <choose ParamRefId="%AID%_UP-%TT%%CC%065_R-%TT%%CC%06501">
-                                    <when test="0">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00014" />  <!-- Set Pos 0...100% -->
-                                    </when>
-                                    <when test="1">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00013" />  <!-- Set Temp -->
-                                    </when>
-                                  </choose>
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00104" /> <!-- Sommer Umschaltung-->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00208" /> <!-- Refenrence RUN-->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00308" /> <!-- Raum Temperatur -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00406" /> <!-- Standby -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" /> <!-- Temperatur am Ventil  -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00801" /> <!-- ATemp Offset -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00701" /> <!-- Aktuelle Ventil Pos -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- Spezielles 4BS Profil des D5-00-01 Eltako Fensterkontakt -->
-                            <when test="255">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%069_R-%TT%%CC%06901" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%069_R-%TT%%CC%06901">
-                                <when test="401">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-3" Text="Eltako FTKB / FFKB" />
-                                  <ParameterSeparator Id="%AID%_PS-4" Text="Zyklisch ca. alle 60 Minuten wird das aktuelle Spannungs-Telegramm gesendet" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00405" /> <!-- KO Batterie voltage -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00704" /> <!-- KO Energy storage voltage -->
-                                </when> 
-                              </choose>
-                            </when> 
-                          </choose>
-                        </when>
-                        <!-- VLD D2 (0xD2 = 210dez)-->
-                        <when test="210">
-                          <ParameterRefRef RefId="%AID%_UP-%TT%%CC%008_R-%TT%%CC%00801" />
-                          <choose ParamRefId="%AID%_UP-%TT%%CC%008_R-%TT%%CC%00801">
-                            <!-- VLD D2-01 -->
-                            <when test="1">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%025_R-%TT%%CC%02501" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%025_R-%TT%%CC%02501">
-                                <!-- VLD D2-01-0E -->
-                                <when test="151">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00001" /> <!-- Input schalten -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00115" /> <!-- input Abfrage Messung -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00211" /> <!-- input Abfrage Status schalten -->     
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00409" /> <!-- OUtput Status schalten -->
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-3" Text="Schaltaktor mit Messfunktion" UIHint="Headline" />
-                                  <ParameterSeparator Id="%AID%_PS-4" Text="Wähle die passende Einheit:" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%076_R-%TT%%CC%07601" /> <!--Einheit Energy --> 
-                                    <choose ParamRefId="%AID%_UP-%TT%%CC%076_R-%TT%%CC%07601">
-                                      <when test="0"> <!-- Wh -->
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00509" /> <!-- KO Wh -->
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%080_R-%TT%%CC%08001" /> <!--Delta Value Wh --> 
-                                      </when>
-                                      <when test="1"> <!-- KWh -->
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00608" /> <!-- KO KWh-->
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%081_R-%TT%%CC%08101" /> <!--Delta Value KWh --> 
-                                      </when>    
-                                    </choose>
-                                    <ParameterRefRef RefId="%AID%_UP-%TT%%CC%077_R-%TT%%CC%07701" /> <!--Einheit Power --> 
-                                    <choose ParamRefId="%AID%_UP-%TT%%CC%077_R-%TT%%CC%07701">
-                                      <when test="0"> <!-- W -->
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00706" /> <!-- KO W -->
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%082_R-%TT%%CC%08201" /> <!--Delta Value W --> 
-                                      </when>
-                                      <when test="1"> <!-- KW -->
-                                        <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00806" /> <!-- KO KW -->
-                                        <ParameterRefRef RefId="%AID%_UP-%TT%%CC%083_R-%TT%%CC%08301" /> <!--Delta Value KW --> 
-                                      </when>    
-                                    </choose>  
-                                  <ParameterSeparator Id="%AID%_PS-5" Text="delta Value: Delta-Wert (absolut) wenn automatisch ein neuer Wert gesendet werden soll. Dazu muss der Sende-Modus auf automatisch stehen. Sollen alle neuen Werte gesendet werden dann das delta Value = 0 setzen" />  
-                                  <ParameterSeparator Id="%AID%_PS-6" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%075_R-%TT%%CC%07501" /> <!-- man/auto Senden -->  
-                                  <ParameterSeparator Id="%AID%_PS-7" Text="nur manuelle Abfrage über KO, oder automatisches und manuellen Senden über KO"  />
-                                  <ParameterSeparator Id="%AID%_PS-9" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="minimale Zeit zwischen zwei aufeinanderfolgenden Aktormeldungen"  />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%078_R-%TT%%CC%07801" /> <!-- min Sendezyklus -->  
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="maximale Zeit zwischen zwei aufeinanderfolgenden Aktormeldungen"  />
-                                  <ParameterRefRef RefId="%AID%_UP-%TT%%CC%079_R-%TT%%CC%07901" /> <!-- max Sendezyklus -->  
-                                  <ParameterSeparator Id="%AID%_PS-12" Text="Achtung:"  />
-                                  <ParameterSeparator Id="%AID%_PS-13" Text="- min muss >0 sein"  />
-                                  <ParameterSeparator Id="%AID%_PS-14" Text="- max >= min"  />
-                                </when>
-                                <!-- VLD D2-01-12 -->
-                                <when test="155">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00011" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00111" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00206" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00305" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00404" />
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- VLD D2-03 -->
-                            <when test="3">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%027_R-%TT%%CC%02701" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%027_R-%TT%%CC%02701">
-                                <!-- VLD D2-03-0A -->
-                                <when test="164">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="Button: single / double / long press" />
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="Button: for long press a release KO is available" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00603" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00702" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00802" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00902" />
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- VLD D2-04 -->
-                            <when test="4">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%028_R-%TT%%CC%02801" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%028_R-%TT%%CC%02801">
-                                <when test="167 175">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
-                                </when>
-                                <when test="168 176">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
-                                </when>
-                                <when test="169 178">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
-                                </when>
-                                <when test="170 179">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
-                                </when>
-                                <when test="171 180">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                                </when>
-                                <when test="172 181">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
-                                </when>
-                                <when test="173 182">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
-                                </when>
-                                <when test="174 183">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- VLD D2-06 -->
-                            <when test="6">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%030_R-%TT%%CC%03001" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%030_R-%TT%%CC%03001">
-                                <!-- VLD D2-06-01 -->
-                                <when test="191">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" />  <!-- PIR -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00113" />  <!-- Status1 -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00210" />  <!-- Status2 -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />  <!-- Alarm -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00411" />  <!-- Bat in % -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00507" />  <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" />  <!-- TEMP -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00705" />  <!-- HUM -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00805" />  <!-- Taster1 -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00903" />  <!-- Taster2 -->
-                                </when>
-                                <!-- VLD D2-06-50 -->
-                                <when test="195">
-                                  <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="Status Fenster:" />
-                                  <ParameterSeparator Id="%AID%_PS-3" Text="0x01: Flügel=ZU und Griff=ZU" />
-                                  <ParameterSeparator Id="%AID%_PS-4" Text="0x02: Flügel=ZU und Griff=AUF" />
-                                  <ParameterSeparator Id="%AID%_PS-5" Text="0x03: Flügel=ZU und Griff=GEKIPPT" />
-                                  <ParameterSeparator Id="%AID%_PS-6" Text="0x04: Flügel=AUF und Griff=ZU" />
-                                  <ParameterSeparator Id="%AID%_PS-7" Text="0x05: Flügel=AUF und Griff=OPEN" />
-                                  <ParameterSeparator Id="%AID%_PS-8" Text="0x06: Flügel=AUF und Griff=GEKIPPT" />
-                                  <ParameterSeparator Id="%AID%_PS-9" Text="0x07: Flügel=GEKIPPT und Griff=ZU" />
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="0x07: Flügel=GEKIPPT und Griff=AUF" />
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="0x07: Flügel=GEKIPPT und Griff=GEKIPPT" />
-                                  <ParameterSeparator Id="%AID%_PS-12" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-13" Text="KO Status byte (Bit1-8):" />
-                                  <ParameterSeparator Id="%AID%_PS-14" Text="Bit1: SE   (System Error) 1 = ERROR" />
-                                  <ParameterSeparator Id="%AID%_PS-15" Text="Bit3: MAE  (Magnetic Sensor Works) 1 = ERROR" />
-                                  <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: ACE  (Acceleration Sensor Works) 1 = ERROR" />
-                                  <ParameterSeparator Id="%AID%_PS-17" Text="Bit7: MOE  (Motion Sensor Works)  1 = ERROR" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00015" />  <!-- Bat in % -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00114" />  <!-- Status Fenster -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />  <!-- Alarm -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00407" />  <!-- Alarm BAT Low -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00508" />  <!-- Counter Status -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" />  <!-- Status 8Bit -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- VLD D2-14 -->
-                            <when test="20">
-                              <!-- 0x14 = 20dec -->
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%063_R-%TT%%CC%06301" />
-                              <choose ParamRefId="%AID%_UP-%TT%%CC%063_R-%TT%%CC%06301">
-                                <!-- VLD D2-14-30 -->
-                                <when test="241">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ParameterSeparator Id="%AID%_PS-10" Text="KO Status Byte:" />
-                                  <ParameterSeparator Id="%AID%_PS-11" Text="Bit1: Smoke Alarm Condition analysis: Temperature" />
-                                  <ParameterSeparator Id="%AID%_PS-12" Text="Bit2: Smoke Alarm Condition analysis: Humidity" />
-                                  <ParameterSeparator Id="%AID%_PS-13" Text="Bit3: Smoke Alarm Condition analysis: Maintenance" />
-                                  <ParameterSeparator Id="%AID%_PS-14" Text="Bit4: Sensor fault mode status" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" /> <!-- Temp -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" /> <!-- Hum -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" /> <!-- ALARM -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" /> <!-- Energy Storage -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00501" /> <!-- Product life time -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00602" /> <!-- Human Comfort Index -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00703" /> <!-- AIR Quality -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00803" /> <!-- Time since last Maintaince-->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits-->
-                                </when>
-                                <!-- VLD D2-14-41 -->
-                                <when test="244">
-                                  <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" /> <!-- Temp -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" /> <!-- Hum -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- Contact -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00507" /> <!-- LUX -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00905" /> <!-- Sensor Status -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00609" /> <!-- ACC X -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00707" /> <!-- ACC Y -->
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00807" /> <!-- ACC X -->
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- VLD D2-20 -->
-                            <when test="32">
-                              <!-- 0x20 = 32dec -->
-                            </when>
-                          </choose>
-                        </when>
-                        <!-- Rocker (0xFA = 250)-->
-                        <when test="250">
-                          <ParameterRefRef RefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901" />
-                          <choose ParamRefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901">
-                            <!-- ********** ENOCEAN -> KNX ****************************** -->
-                            <when test="0">
-                              <ParameterRefRef RefId="%AID%_UP-%TT%%CC%068_R-%TT%%CC%06801" />
-                              <ParameterRefRef RefId="%AID%_P-%TT%%CC%043_R-%TT%%CC%04301" />
-                              <choose ParamRefId="%AID%_P-%TT%%CC%043_R-%TT%%CC%04301">
-                                <!-- 1 Wippe -->
-                                <when test="1">
-                                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401" />
-                                  <choose ParamRefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401">
-                                    <!-- Wippe 1 schalten -->
-                                    <when test="1 2">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
-                                    </when>
-                                    <!-- Wippe 1 Dimming -->
-                                    <when test="3 4">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00202" />
-                                    </when>
-                                    <!-- Wippe 1 Jalousie -->
-                                    <when test="5 6">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00201" />
-                                    </when>
-                                    <!-- Wippe 1 Szene -->
-                                    <when test="7">
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%045_R-%TT%%CC%04501" />
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%046_R-%TT%%CC%04601" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" />
-                                    </when>
-                                  </choose>
-                                </when>
-                                <!-- 2 Wippen -->
-                                <when test="2">
-                                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401" />
-                                  <choose ParamRefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401">
-                                    <!-- Wippe 1 schalten -->
-                                    <when test="1 2">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
-                                    </when>
-                                    <!-- Wippe 1 Dimming -->
-                                    <when test="3 4">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00202" />
-                                    </when>
-                                    <!-- Wippe 1 Jalousie -->
-                                    <when test="5 6">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00201" />
-                                    </when>
-                                    <!-- Wippe 1 Szene -->
-                                    <when test="7">
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%045_R-%TT%%CC%04501" />
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%046_R-%TT%%CC%04601" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" />
-                                    </when>
-                                  </choose>
-                                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701" />
-                                  <choose ParamRefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701">
-                                    <!-- Wippe 2 schalten -->
-                                    <when test="1 2">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
-                                    </when>
-                                    <!-- Wippe 2 Dimming -->
-                                    <when test="3 4">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00402" />
-                                    </when>
-                                    <!-- Wippe 2 Jalousie -->
-                                    <when test="5 6">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00302" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00403" />
-                                    </when>
-                                    <!-- Wippe 2 Szene -->
-                                    <when test="7">
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%048_R-%TT%%CC%04801" />
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%049_R-%TT%%CC%04901" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00303" />
-                                    </when>
-                                  </choose>
-                                </when>
-                                <!-- 3 Wippen -->
-                                <when test="3">
-                                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401" />
-                                  <choose ParamRefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401">
-                                    <!-- Wippe 1 schalten -->
-                                    <when test="1 2">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
-                                    </when>
-                                    <!-- Wippe 1 Dimming -->
-                                    <when test="3 4">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00202" />
-                                    </when>
-                                    <!-- Wippe 1 Jalousie -->
-                                    <when test="5 6">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00201" />
-                                    </when>
-                                    <!-- Wippe 1 Szene -->
-                                    <when test="7">
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%045_R-%TT%%CC%04501" />
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%046_R-%TT%%CC%04601" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" />
-                                    </when>
-                                  </choose>
-                                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701" />
-                                  <choose ParamRefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701">
-                                    <!-- Wippe 2 schalten -->
-                                    <when test="1 2">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
-                                    </when>
-                                    <!-- Wippe 2 Dimming -->
-                                    <when test="3 4">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00402" />
-                                    </when>
-                                    <!-- Wippe 2 Jalousie -->
-                                    <when test="5 6">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00302" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00403" />
-                                    </when>
-                                    <!-- Wippe 2 Szene -->
-                                    <when test="7">
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%048_R-%TT%%CC%04801" />
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%049_R-%TT%%CC%04901" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00303" />
-                                    </when>
-                                  </choose>
-                                  <ParameterRefRef RefId="%AID%_P-%TT%%CC%050_R-%TT%%CC%05001" />
-                                  <choose ParamRefId="%AID%_P-%TT%%CC%050_R-%TT%%CC%05001">
-                                    <!-- Wippe 3 Schalten -->
-                                    <when test="1 2">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00503" />
-                                    </when>
-                                    <!-- Wippe 3 Dimming -->
-                                    <when test="3 4">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00503" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00604" />
-                                    </when>
-                                    <!-- Wippe 3 Jalousie -->
-                                    <when test="5 6">
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00504" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00605" />
-                                    </when>
-                                    <!-- Wippe 3 Szene -->
-                                    <when test="7">
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%051_R-%TT%%CC%05101" />
-                                      <ParameterRefRef RefId="%AID%_P-%TT%%CC%052_R-%TT%%CC%05201" />
-                                      <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00505" />
-                                    </when>
-                                  </choose>
-                                </when>
-                              </choose>
-                            </when>
-                            <!-- ********** KNX -> ENOCEAN ****************************** -->
-                            <when test="1">
-                              <ParameterRefRef RefId="%AID%_P-%TT%%CC%054_R-%TT%%CC%05401" />
-                              <choose ParamRefId="%AID%_P-%TT%%CC%054_R-%TT%%CC%05401">
-                                <!-- schalten -->
-                                <when test="1">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00001" />
-                                </when>
-                                <!-- Dimmen -->
-                                <when test="2">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00003" />
-                                </when>
-                                <!-- Jalousie -->
-                                <when test="3">
-                                  <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00004" />
-                                </when>
-                              </choose>
-                            </when>
-                          </choose>
-                        </when>
-                      </choose>
-                    </ParameterBlock>
+                                <ParameterSeparator Id="%AID%_PS-5" Text="delta Value: Delta-Wert (absolut) wenn automatisch ein neuer Wert gesendet werden soll. Dazu muss der Sende-Modus auf automatisch stehen. Sollen alle neuen Werte gesendet werden dann das delta Value = 0 setzen" />  
+                                <ParameterSeparator Id="%AID%_PS-6" Text="" UIHint="HorizontalRuler" />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%075_R-%TT%%CC%07501" IndentLevel="1"  /> <!-- man/auto Senden -->  
+                                <ParameterSeparator Id="%AID%_PS-7" Text="nur manuelle Abfrage über KO, oder automatisches und manuellen Senden über KO"  />
+                                <ParameterSeparator Id="%AID%_PS-9" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-10" Text="minimale Zeit zwischen zwei aufeinanderfolgenden Aktormeldungen"  />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%078_R-%TT%%CC%07801" IndentLevel="1"  /> <!-- min Sendezyklus -->  
+                                <ParameterSeparator Id="%AID%_PS-11" Text="maximale Zeit zwischen zwei aufeinanderfolgenden Aktormeldungen"  />
+                                <ParameterRefRef RefId="%AID%_UP-%TT%%CC%079_R-%TT%%CC%07901" IndentLevel="1"  /> <!-- max Sendezyklus -->  
+                                <ParameterSeparator Id="%AID%_PS-12" Text="Achtung:"  />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="- min muss >0 sein"  />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="- max >= min"  />
+                              </when>
+                              <!-- VLD D2-01-12 -->
+                              <when test="155">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00011" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00111" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00206" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00305" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00404" />
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- VLD D2-03 -->
+                          <when test="3">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%027_R-%TT%%CC%02701" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%027_R-%TT%%CC%02701">
+                              <!-- VLD D2-03-0A -->
+                              <when test="164">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-10" Text="Button: single / double / long press" />
+                                <ParameterSeparator Id="%AID%_PS-11" Text="Button: for long press a release KO is available" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00603" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00702" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00802" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00902" />
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- VLD D2-04 -->
+                          <when test="4">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%028_R-%TT%%CC%02801" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%028_R-%TT%%CC%02801">
+                              <when test="167 175">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
+                              </when>
+                              <when test="168 176">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
+                              </when>
+                              <when test="169 178">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
+                              </when>
+                              <when test="170 179">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
+                              </when>
+                              <when test="171 180">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                              </when>
+                              <when test="172 181">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
+                              </when>
+                              <when test="173 182">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
+                              </when>
+                              <when test="174 183">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00008" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00304" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" />
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- VLD D2-06 -->
+                          <when test="6">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%030_R-%TT%%CC%03001" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%030_R-%TT%%CC%03001">
+                              <!-- VLD D2-06-01 -->
+                              <when test="191">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00007" />  <!-- PIR -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00113" />  <!-- Status1 -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00210" />  <!-- Status2 -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />  <!-- Alarm -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00411" />  <!-- Bat in % -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00507" />  <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00601" />  <!-- TEMP -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00705" />  <!-- HUM -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00805" />  <!-- Taster1 -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00903" />  <!-- Taster2 -->
+                              </when>
+                              <!-- VLD D2-06-50 -->
+                              <when test="195">
+                                <ParameterSeparator Id="%AID%_PS-1" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-2" Text="Status Fenster:" />
+                                <ParameterSeparator Id="%AID%_PS-3" Text="0x01: Flügel=ZU und Griff=ZU" />
+                                <ParameterSeparator Id="%AID%_PS-4" Text="0x02: Flügel=ZU und Griff=AUF" />
+                                <ParameterSeparator Id="%AID%_PS-5" Text="0x03: Flügel=ZU und Griff=GEKIPPT" />
+                                <ParameterSeparator Id="%AID%_PS-6" Text="0x04: Flügel=AUF und Griff=ZU" />
+                                <ParameterSeparator Id="%AID%_PS-7" Text="0x05: Flügel=AUF und Griff=OPEN" />
+                                <ParameterSeparator Id="%AID%_PS-8" Text="0x06: Flügel=AUF und Griff=GEKIPPT" />
+                                <ParameterSeparator Id="%AID%_PS-9" Text="0x07: Flügel=GEKIPPT und Griff=ZU" />
+                                <ParameterSeparator Id="%AID%_PS-10" Text="0x07: Flügel=GEKIPPT und Griff=AUF" />
+                                <ParameterSeparator Id="%AID%_PS-11" Text="0x07: Flügel=GEKIPPT und Griff=GEKIPPT" />
+                                <ParameterSeparator Id="%AID%_PS-12" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="KO Status byte (Bit1-8):" />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="Bit1: SE   (System Error) 1 = ERROR" />
+                                <ParameterSeparator Id="%AID%_PS-15" Text="Bit3: MAE  (Magnetic Sensor Works) 1 = ERROR" />
+                                <ParameterSeparator Id="%AID%_PS-16" Text="Bit5: ACE  (Acceleration Sensor Works) 1 = ERROR" />
+                                <ParameterSeparator Id="%AID%_PS-17" Text="Bit7: MOE  (Motion Sensor Works)  1 = ERROR" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00015" />  <!-- Bat in % -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00114" />  <!-- Status Fenster -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" />  <!-- Alarm -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00407" />  <!-- Alarm BAT Low -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00508" />  <!-- Counter Status -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" />  <!-- Status 8Bit -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- VLD D2-14 -->
+                          <when test="20">
+                            <!-- 0x14 = 20dec -->
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%063_R-%TT%%CC%06301" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_UP-%TT%%CC%063_R-%TT%%CC%06301">
+                              <!-- VLD D2-14-30 -->
+                              <when test="241">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ParameterSeparator Id="%AID%_PS-10" Text="KO Status Byte:" />
+                                <ParameterSeparator Id="%AID%_PS-11" Text="Bit1: Smoke Alarm Condition analysis: Temperature" />
+                                <ParameterSeparator Id="%AID%_PS-12" Text="Bit2: Smoke Alarm Condition analysis: Humidity" />
+                                <ParameterSeparator Id="%AID%_PS-13" Text="Bit3: Smoke Alarm Condition analysis: Maintenance" />
+                                <ParameterSeparator Id="%AID%_PS-14" Text="Bit4: Sensor fault mode status" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" /> <!-- Temp -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" /> <!-- Hum -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00307" /> <!-- ALARM -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00401" /> <!-- Energy Storage -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00501" /> <!-- Product life time -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00602" /> <!-- Human Comfort Index -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00703" /> <!-- AIR Quality -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00803" /> <!-- Time since last Maintaince-->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00901" /> <!-- Status Bits-->
+                              </when>
+                              <!-- VLD D2-14-41 -->
+                              <when test="244">
+                                <ParameterSeparator Id="%AID%_PS-2" Text="" UIHint="HorizontalRuler" />
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00108" /> <!-- Temp -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00205" /> <!-- Hum -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00306" /> <!-- Contact -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00507" /> <!-- LUX -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%009_R-%TT%%CC%00905" /> <!-- Sensor Status -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00609" /> <!-- ACC X -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%007_R-%TT%%CC%00707" /> <!-- ACC Y -->
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%008_R-%TT%%CC%00807" /> <!-- ACC X -->
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- VLD D2-20 -->
+                          <when test="32">
+                            <!-- 0x20 = 32dec -->
+                          </when>
+                        </choose>
+                      </when>
+                      <!-- Rocker (0xFA = 250)-->
+                      <when test="250">
+                        <ParameterRefRef RefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901" IndentLevel="1"  />
+                        <choose ParamRefId="%AID%_P-%TT%%CC%009_R-%TT%%CC%00901">
+                          <!-- ********** ENOCEAN -> KNX ****************************** -->
+                          <when test="0">
+                            <ParameterRefRef RefId="%AID%_UP-%TT%%CC%068_R-%TT%%CC%06801" IndentLevel="1"  />
+                            <ParameterRefRef RefId="%AID%_P-%TT%%CC%043_R-%TT%%CC%04301" IndentLevel="1"  />
+                            <choose ParamRefId="%AID%_P-%TT%%CC%043_R-%TT%%CC%04301">
+                              <!-- 1 Wippe -->
+                              <when test="1">
+                                <ParameterRefRef RefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401" IndentLevel="1"  />
+                                <choose ParamRefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401">
+                                  <!-- Wippe 1 schalten -->
+                                  <when test="1 2">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
+                                  </when>
+                                  <!-- Wippe 1 Dimming -->
+                                  <when test="3 4">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00202" />
+                                  </when>
+                                  <!-- Wippe 1 Jalousie -->
+                                  <when test="5 6">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00201" />
+                                  </when>
+                                  <!-- Wippe 1 Szene -->
+                                  <when test="7">
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%045_R-%TT%%CC%04501" IndentLevel="2"  />
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%046_R-%TT%%CC%04601" IndentLevel="2"  />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- 2 Wippen -->
+                              <when test="2">
+                                <ParameterRefRef RefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401" IndentLevel="1"  />
+                                <choose ParamRefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401">
+                                  <!-- Wippe 1 schalten -->
+                                  <when test="1 2">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
+                                  </when>
+                                  <!-- Wippe 1 Dimming -->
+                                  <when test="3 4">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00202" />
+                                  </when>
+                                  <!-- Wippe 1 Jalousie -->
+                                  <when test="5 6">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00201" />
+                                  </when>
+                                  <!-- Wippe 1 Szene -->
+                                  <when test="7">
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%045_R-%TT%%CC%04501" IndentLevel="2"  />
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%046_R-%TT%%CC%04601" IndentLevel="2"  />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" />
+                                  </when>
+                                </choose>
+                                <ParameterRefRef RefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701" IndentLevel="1"  />
+                                <choose ParamRefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701">
+                                  <!-- Wippe 2 schalten -->
+                                  <when test="1 2">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
+                                  </when>
+                                  <!-- Wippe 2 Dimming -->
+                                  <when test="3 4">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00402" />
+                                  </when>
+                                  <!-- Wippe 2 Jalousie -->
+                                  <when test="5 6">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00302" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00403" />
+                                  </when>
+                                  <!-- Wippe 2 Szene -->
+                                  <when test="7">
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%048_R-%TT%%CC%04801" IndentLevel="2"  />
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%049_R-%TT%%CC%04901" IndentLevel="2"  />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00303" />
+                                  </when>
+                                </choose>
+                              </when>
+                              <!-- 3 Wippen -->
+                              <when test="3">
+                                <ParameterRefRef RefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401" IndentLevel="1"  />
+                                <choose ParamRefId="%AID%_P-%TT%%CC%044_R-%TT%%CC%04401">
+                                  <!-- Wippe 1 schalten -->
+                                  <when test="1 2">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
+                                  </when>
+                                  <!-- Wippe 1 Dimming -->
+                                  <when test="3 4">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00101" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00202" />
+                                  </when>
+                                  <!-- Wippe 1 Jalousie -->
+                                  <when test="5 6">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00103" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%002_R-%TT%%CC%00201" />
+                                  </when>
+                                  <!-- Wippe 1 Szene -->
+                                  <when test="7">
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%045_R-%TT%%CC%04501" IndentLevel="2"  />
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%046_R-%TT%%CC%04601" IndentLevel="2"  />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%001_R-%TT%%CC%00105" />
+                                  </when>
+                                </choose>
+                                <ParameterRefRef RefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701" IndentLevel="1"  />
+                                <choose ParamRefId="%AID%_P-%TT%%CC%047_R-%TT%%CC%04701">
+                                  <!-- Wippe 2 schalten -->
+                                  <when test="1 2">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
+                                  </when>
+                                  <!-- Wippe 2 Dimming -->
+                                  <when test="3 4">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00301" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00402" />
+                                  </when>
+                                  <!-- Wippe 2 Jalousie -->
+                                  <when test="5 6">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00302" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%004_R-%TT%%CC%00403" />
+                                  </when>
+                                  <!-- Wippe 2 Szene -->
+                                  <when test="7">
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%048_R-%TT%%CC%04801" IndentLevel="2"  />
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%049_R-%TT%%CC%04901" IndentLevel="2"  />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%003_R-%TT%%CC%00303" />
+                                  </when>
+                                </choose>
+                                <ParameterRefRef RefId="%AID%_P-%TT%%CC%050_R-%TT%%CC%05001" IndentLevel="1"  />
+                                <choose ParamRefId="%AID%_P-%TT%%CC%050_R-%TT%%CC%05001">
+                                  <!-- Wippe 3 Schalten -->
+                                  <when test="1 2">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00503" />
+                                  </when>
+                                  <!-- Wippe 3 Dimming -->
+                                  <when test="3 4">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00503" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00604" />
+                                  </when>
+                                  <!-- Wippe 3 Jalousie -->
+                                  <when test="5 6">
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00504" />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%006_R-%TT%%CC%00605" />
+                                  </when>
+                                  <!-- Wippe 3 Szene -->
+                                  <when test="7">
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%051_R-%TT%%CC%05101" IndentLevel="2"  />
+                                    <ParameterRefRef RefId="%AID%_P-%TT%%CC%052_R-%TT%%CC%05201" IndentLevel="2"  />
+                                    <ComObjectRefRef RefId="%AID%_O-%TT%%CC%005_R-%TT%%CC%00505" />
+                                  </when>
+                                </choose>
+                              </when>
+                            </choose>
+                          </when>
+                          <!-- ********** KNX -> ENOCEAN ****************************** -->
+                          <when test="1">
+                            <ParameterRefRef RefId="%AID%_P-%TT%%CC%054_R-%TT%%CC%05401" />
+                            <choose ParamRefId="%AID%_P-%TT%%CC%054_R-%TT%%CC%05401">
+                              <!-- schalten -->
+                              <when test="1">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00001" />
+                              </when>
+                              <!-- Dimmen -->
+                              <when test="2">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00003" />
+                              </when>
+                              <!-- Jalousie -->
+                              <when test="3">
+                                <ComObjectRefRef RefId="%AID%_O-%TT%%CC%000_R-%TT%%CC%00004" />
+                              </when>
+                            </choose>
+                          </when>
+                        </choose>
+                      </when>
+                    </choose>
                   </ParameterBlock>
                 </when>
               </choose>
