@@ -2,17 +2,18 @@
 <?xml-model href="../../Organization/knxprod-support/knx_project_20/knx-editor.xsd" type="application/xml" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <KNX xmlns="http://knx.org/xml/project/20" xmlns:op="http://github.com/OpenKNX/OpenKNXproducer">
   
-  <op:ETS ProductName="Enocean-Gateway"
+  <op:ETS ProductName="Enocean-Gateway 2.0"
     OpenKnxId="0xA2"
     ApplicationNumber="0x00"
-    ApplicationVersion="2.1"
+    ApplicationVersion="0.1"
     ReplacesVersions="0.0"
     ApplicationRevision="0"
     ApplicationName="KNX-Enocean-Gateway"
     BuildSuffix="-Dev"
     BuildSuffixText=" (dev)"
-    OrderNumber="MFKnxEno"
-    SerialNumber="MF203"
+    BusCurrent="10"
+    SerialNumber="EnoceanGatewayV2"
+    OrderNumber="SmartMF-EnoceanGateway"
   />
 
   <op:define prefix="BASE" 
@@ -41,7 +42,7 @@
     NumChannels="50"
     KoOffset="320"
     ModuleType="1">
-    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="3.3" /> 
+    <op:verify File="../lib/OFM-LogicModule/library.json" ModuleVersion="3.5" /> 
   </op:define>
 
   <!-- <generate base="MyApplication.xml" /> -->

@@ -1,10 +1,12 @@
 #include "Logic.h"
 #include "OpenKNX.h"
-//#include "wiring_private.h" // pinPeripheral() function
+#ifndef ARDUINO_ARCH_RP2040
+  #include "wiring_private.h" // pinPeripheral() function
+#endif
 // #include "Enocean.h"
 #include "EnOceanHandle.h"
 
-#ifdef SEEED_XIAO_M0
+#ifndef ARDUINO_ARCH_RP2040
 // XIAO PINS   RX = D3  TX = D2
 Uart Serial2(&sercom2, 3, 2, SERCOM_RX_PAD_3, UART_TX_PAD_2);
 
