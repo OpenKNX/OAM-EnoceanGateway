@@ -28,8 +28,12 @@
 ../OGM-Common/scripts/setup/reusable/Build-Release-Preprocess.ps1 $args[0]
 if (!$?) { exit 1 }
 
-# build firmware based on generated headerfile for SAMD
-../OGM-Common/scripts/setup/reusable/Build-Step.ps1 build firmware bin
+# # build firmware based on generated headerfile for SAMD
+# ../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_EnoceanGateway_SAMD EnoceanGateway_SAMD bin
+# if (!$?) { exit 1 }
+
+# build firmware based on generated headerfile for RP2040
+../OGM-Common/scripts/setup/reusable/Build-Step.ps1 release_EnoceanGateway_RP2040 EnoceanGateway_RP2040 uf2
 if (!$?) { exit 1 }
 
 # execute generic post-build steps
