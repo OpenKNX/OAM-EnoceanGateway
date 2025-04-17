@@ -1,23 +1,8 @@
 **KNX EnOcean Gateway for SAMD Hardware**
 
-Bezugsquelle: [Link to page](https://diy-smarthome-projekt.company.site/)
+THIS DEVELOPMENT IS STOPPED BECAUSE OF HARDWARE LIMITATIONS !!! 
 
-_Hinweise bitte vorher lesen:_ 
-- _Es kommt zu keinen Kaufvertrag, mit euerem Betrag Spendet ihr für mein Projekt und erhaltet dafür die Hardware._
-- _Jedliche HW wird als Bausatz geliefert._
-- _Die HW wird ohne Softwar geliefert._
-- _**->jeder trägt damit selber die Verantwortung was er damit tut.**_
-
-------------------------------------------------
-
-**Anleitung "build and flash" Firmware**
-
-1. Firmware für eine ETS integration -> [_link_](https://gitlab.com/DIY-Smarthome-Projekt/knx-enocean-gateway/-/blob/main/doc/knx-dev-setup.md)
-
-2. Firmware für eine Konnekting-Suite integration -> _link_
-
-------------------------------------------------
-
+NEW DEVLOPMENT WITH AN UPDATED HW-VERSION -> [Link to page]((https://github.com/OpenKNX/OAM-EnoceanGateway_V2)
 
 Übersicht aktuell unterstützer EEP Profile
 
