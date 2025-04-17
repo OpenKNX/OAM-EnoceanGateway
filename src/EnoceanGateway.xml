@@ -4,7 +4,7 @@
   
   <op:ETS ProductName="Enocean-Gateway 2.0"
     OpenKnxId="0xA2"
-    ApplicationNumber="0x00"
+    ApplicationNumber="0x01"
     ApplicationVersion="0.1"
     ReplacesVersions="0.0"
     ApplicationRevision="0"

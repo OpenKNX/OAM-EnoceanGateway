@@ -1,23 +1,7 @@
-**KNX EnOcean Gateway**
+**KNX EnOcean Gateway for RP2040**
 
-Bezugsquelle: [Link to page](https://diy-smarthome-projekt.company.site/)
-
-_Hinweise bitte vorher lesen:_ 
-- _Es kommt zu keinen Kaufvertrag, mit euerem Betrag Spendet ihr für mein Projekt und erhaltet dafür die Hardware._
-- _Jedliche HW wird als Bausatz geliefert._
-- _Die HW wird ohne Softwar geliefert._
-- _**->jeder trägt damit selber die Verantwortung was er damit tut.**_
-
+Bezugsquelle: [Link to page](https://Smart-mf.de/)
 ------------------------------------------------
-
-**Anleitung "build and flash" Firmware**
-
-1. Firmware für eine ETS integration -> [_link_](https://gitlab.com/DIY-Smarthome-Projekt/knx-enocean-gateway/-/blob/main/doc/knx-dev-setup.md)
-
-2. Firmware für eine Konnekting-Suite integration -> _link_
-
-------------------------------------------------
-
 
 Übersicht aktuell unterstützer EEP Profile
 

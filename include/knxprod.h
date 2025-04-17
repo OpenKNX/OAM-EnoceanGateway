@@ -9,7 +9,7 @@
                                          (time & 0x3FFF) * 3600000 ) : 0 )
                                              
 #define MAIN_OpenKnxId 0xA2
-#define MAIN_ApplicationNumber 0
+#define MAIN_ApplicationNumber 1
 #define MAIN_ApplicationVersion 1
 #define MAIN_ParameterSize 8158
 #define MAIN_MaxKoNumber 469
