@@ -1,4 +1,4 @@
-**KNX EnOcean Gateway**
+**KNX EnOcean Gateway for SAMD Hardware**
 
 Bezugsquelle: [Link to page](https://diy-smarthome-projekt.company.site/)
 
